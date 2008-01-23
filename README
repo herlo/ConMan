@@ -1,0 +1,9 @@
+This file will eventually contain the licensing for conman and its website code
+
+Authors: Clint Savage <clints@utos.org>, et al.
+
+The Utah Open Source Foundation (UTOS) started running the Utah Open Source Conference (UTOSC) in September of 2007.  With the success of this conference behind us and not happy with the proprietary solution chosen for conference management, UTOS decided that it would be best if we researched and found a useful open source alternative.  Most of those sucked more than we could handle.
+
+Because of the lack of a *good* conference management system, we thought we'd hack our own, make it free to use and license it with a valid open source license, which we have yet to decide upon.
+
+Hopefully, conman will become *the* open source tool for running conferences.

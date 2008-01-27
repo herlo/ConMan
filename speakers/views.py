@@ -20,8 +20,8 @@ def index(request):
                
                 user = User.objects.create_user(pf.cleaned_data['username'], pf.cleaned_data['email'], password = pf.cleaned_data['password'])
                 isinstance(user, User)
-            if request.user.is_authenticated():
-                user = authenticate(username=request.user.username,password=request.user.password)
+            else:
+                user = request.user
                 
             user.first_name = pf.cleaned_data['first_name']
             user.last_name = pf.cleaned_data['last_name']
@@ -52,12 +52,10 @@ def index(request):
             return render_to_response('paper_submitted.html',{'user':userinfo})
             
     else :
-        print request.method
+        if request.user.is_authenticated():
+            isinstance(pf.fields,dict)
+            pf.fields.pop('username')
+            pf.fields.pop('password')
+            pf.fields.pop('confirm_password')
         return render_to_response('call_for_papers.html',{'presenter_form':pf})
     
-def submitted(request):
-    user2 =authenticate(username=request.user.username,password=request.user.password)
-    userinfo = dict()
-    userinfo['name']= user2.get_full_name()
-    userinfo['email']= user2.email
-    return render_to_response('paper_submitted.html',{'user':userinfo})

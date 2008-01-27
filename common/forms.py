@@ -23,7 +23,11 @@ class VolunteerForm(forms.Form):
     #role = forms.ChoiceField(vf_objects)
     requested_role = forms.ChoiceField(vf_objects)
     comments = forms.CharField(widget=forms.Textarea,min_length=1,max_length=1000,required=False,help_text="Please let us know about any special requests or circumstances.")
-
+    def clean(self):
+        if self.cleaned_data.get('password') and self.cleaned_data.get('confirm_password') and self.cleaned_data['password'] != self.cleaned_data['confirm_password']:
+            raise ValidationError(u'Please make sure your passwords match.')
+        return self.cleaned_data
+    
 class PresenterForm(forms.Form):
     cat_objects = list()
     audience_objects = list()
@@ -58,3 +62,8 @@ class PresenterForm(forms.Form):
         if self.cleaned_data.get('password') and self.cleaned_data.get('confirm_password') and self.cleaned_data['password'] != self.cleaned_data['confirm_password']:
             raise ValidationError(u'Please make sure your passwords match.')
         return self.cleaned_data
+
+class ContactUsForm(forms.Form):
+    subject = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea(attrs={'class':'autoexpandbox'}))
+    

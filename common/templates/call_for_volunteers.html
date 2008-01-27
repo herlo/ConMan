@@ -5,6 +5,13 @@
 
 {% block primaryContent %}
 <h2>Call for Volunteers</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_comments').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
 {% block formsWrapper %}
 
 	

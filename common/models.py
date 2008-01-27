@@ -108,7 +108,7 @@ class Volunteer(models.Model):
     '''
     #role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     #request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
-    role = models.ForeignKey(VolunteerRole,related_name='role')
+    role = models.ForeignKey(VolunteerRole,related_name='role',blank=True, null=True)
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
     

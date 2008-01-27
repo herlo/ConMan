@@ -14,8 +14,9 @@ def index(request):
             request=VolunteerRole.objects.get(id=form.data['requested_role']), 
             comments=form.data['comments'])
 
-            return render_to_response('volunteer_submitted.html')
-            #return HttpResponseRedirect(reverse('conman.common.views.submitted', args=(p.id,)))
+            return render_to_response('volunteer_submitted.html/' + v.id)
+            # the line above should really be the one below, but its currently sucking
+            #return HttpResponseRedirect(reverse('conman.common.views.submitted', args=(v.id,)))
         else:
             return render_to_response('call_for_volunteers.html', {'volunteers_form': form} )
     else:

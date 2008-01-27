@@ -16,8 +16,8 @@ def index(request):
             comments=form.comments)
             HttpResponseRedirect(reverse(conman.common.views.accepted, args=(v.id)))
         else:
-            return render_to_response('volunteer_template.html',{'volunteer_form':form} )
-    return render_to_response('call_for_volunteers.html' )
+            return render_to_response('call_for_volunteers.html',{'volunteers_form':form} )
+    return render_to_response('call_for_volunteers.html',{'volunteers_form':form} )
 
 def post(request):
     form = VolunteerForm(request.POST)
@@ -27,7 +27,7 @@ def post(request):
         comments=form.comments)
         HttpResponseRedirect(reverse(conman.common.views.accepted, args=(v.id)))
     else:
-        return render_to_response('volunteer_template.html',{'volunteer_form':form} )
+        return render_to_response('volunteer_template.html',{'volunteers_form':form} )
 
 
 def accepted(request, v_id):

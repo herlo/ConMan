@@ -103,6 +103,8 @@ class Volunteer(models.Model):
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
     
+    def __str__(self):
+        return self.role.name + " Volunteer " +self.pk
     class Admin:
         list_filter = ['role','request']
         
@@ -113,6 +115,9 @@ class Presentation(models.Model):
     abstract = models.CharField(max_length=500)
     longabstract = models.TextField()
     approved = models.BooleanField()
+    
+    def __str__(self):
+        return self.role.name + " Volunteer"
     class Admin:
         list_filter = ['cat','audience']
     

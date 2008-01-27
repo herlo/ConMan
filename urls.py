@@ -7,5 +7,6 @@ urlpatterns = patterns('',
     # Uncomment this for admin:
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
+    (r'^testtemplate/', include('common.views.test')),
 )
 

@@ -5,6 +5,9 @@ class VolunteerForm(forms.Form):
     vf_objects = list()
     for vf in VolunteerRole.objects.all():
         vf_objects.append((vf.pk,vf.name))
+    username = forms.CharField()
+    password = forms.PasswordInput()
+    confirm_password = forms.PasswordInput()
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
@@ -21,9 +24,12 @@ class PresenterForm(forms.Form):
         
     for audience in AudienceType.objects.all():
         audience_objects.append((audience.pk,audience.name))
-    
-    firstname = forms.CharField()
-    lastname = forms.CharField()
+        
+    username = forms.CharField()
+    password = forms.PasswordInput()
+    confirm_password = forms.PasswordInput()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
     email = forms.EmailField()
     title = forms.CharField()
     category = forms.ChoiceField(cat_objects)

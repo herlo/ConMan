@@ -24,7 +24,7 @@ class PresenterForm(forms.Form):
         
     for audience in AudienceType.objects.all():
         audience_objects.append((audience.pk,audience.name))
-        
+    
     username = forms.CharField()
     password = forms.PasswordInput()
     confirm_password = forms.PasswordInput()

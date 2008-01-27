@@ -15,7 +15,6 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=500)
     presentation = models.ForeignKey(Presentation)
     
-    
 class Presentation(models.Model):
     cat = models.ForeignKey(Catagory)
     audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES)

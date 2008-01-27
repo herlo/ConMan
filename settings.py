@@ -77,6 +77,7 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
+    'django.contrib.admin',
 )
 
 AUTH_PROFILE_MODULE = 'common.userprofile'

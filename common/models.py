@@ -112,6 +112,7 @@ class Presentation(models.Model):
    # audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES,db_index=True)
     abstract = models.CharField(max_length=500)
     longabstract = models.TextField()
+    approved = models.BooleanField()
     class Admin:
         list_filter = ['cat','audience']
     

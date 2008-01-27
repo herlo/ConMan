@@ -6,4 +6,5 @@ from common.forms import *
 def index(request):
     return render_to_response('call_for_papers.html',None)
     
-def
+def saveSubmission(request):
+    return render_to_response('call_for_papers.html',None)

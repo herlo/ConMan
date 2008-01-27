@@ -64,8 +64,8 @@ class Presentation(models.Model):
     cat = models.ForeignKey(Category)
     audience = models.ForeignKey(AudienceTypes)
    # audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES,db_index=True)
-    shortsummary = models.CharField(max_length=500)
-    longsummary = models.TextField()
+    abstract = models.CharField(max_length=500)
+    longabstract = models.TextField()
     class Admin:
         list_filter = ['cat','audience']
     
@@ -75,5 +75,6 @@ class UserProfile(models.Model):
     presentation = models.ForeignKey(Presentation)
     shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     volunteerinfo = models.ForeignKey(Volunteer)
+    
     class Admin:
         pass

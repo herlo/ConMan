@@ -11,10 +11,11 @@ class VolunteerForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
-    title = forms.CharField()
+    job_title = forms.CharField()
+    irc_nick = forms.CharField(label="IRC Nickname")
     #role = forms.ChoiceField(vf_objects)
     requested_role = forms.ChoiceField(vf_objects)
-    comments = forms.CharField(widget=forms.Textarea,min_length=1,max_length=1000,help_text="Please let us know about any special requests or circumstances.")
+    comments = forms.CharField(widget=forms.Textarea,min_length=1,max_length=1000,required=False,help_text="Please let us know about any special requests or circumstances.")
 
 class PresenterForm(forms.Form):
     cat_objects = list()

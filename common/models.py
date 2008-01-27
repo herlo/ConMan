@@ -33,7 +33,9 @@ class Category(models.Model):
     
     class Admin:
         pass
-
+    
+    class Meta:
+        verbose_name_plural = "Categories"
     
 class VolunteerRole(models.Model):
     name = models.CharField(max_length=150, db_index=True)
@@ -76,7 +78,7 @@ class Presentation(models.Model):
         list_filter = ['cat','audience']
     
 class UserProfile(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User,unique=True)
     bio = models.CharField(max_length=500)
     presentation = models.ForeignKey(Presentation)
     #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)

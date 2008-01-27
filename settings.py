@@ -59,9 +59,14 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
+    #'psycomid.PsycoMiddleware',
+    #'django.middleware.cache.CacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
+    #'django.middleware.http.ConditionalGetMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+
 )
 
 ROOT_URLCONF = 'urls'
@@ -80,6 +85,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'common',
+    'planner',
+    'register',
+    'speakers',
+    'sponsors',
 )
 
 AUTH_PROFILE_MODULE = 'common.userprofile'

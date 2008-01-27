@@ -5,6 +5,6 @@ from common.forms import *
 
 def test(request):
     volunteer_form = VolunteerForm()
-    
-    return render_to_response('test_template.html',{'volunteer_form':volunteer_form})
+    presenter_form = PresenterForm()
+    return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
 

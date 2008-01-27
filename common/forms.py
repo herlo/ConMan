@@ -9,7 +9,7 @@ class VolunteerForm(forms.Form):
     last_name = forms.CharField()
     email = forms.EmailField()
     title = forms.CharField()
-    role = forms.ChoiceField(vf_objects)
+    #role = forms.ChoiceField(vf_objects)
     requested_role = forms.ChoiceField(vf_objects)
     comments = forms.CharField()
 

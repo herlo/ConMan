@@ -37,7 +37,7 @@ def index(request):
                                                        longabstract="",status='Pending', title=pf.cleaned_data['presentation_title'])
             
             profile = UserProfile.objects.create(user=user,
-                                                     bio = '',
+                                                     bio = pf.cleaned_data['bio'],
                                                      presentation=presentation,
                                                      shirtsize=ShirtSize.objects.get(id=pf.cleaned_data['shirt_size']),
                                                      job_title=pf.cleaned_data['job_title'],

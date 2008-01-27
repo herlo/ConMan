@@ -47,11 +47,12 @@ class PresenterForm(forms.Form):
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)
+    bio = forms.CharField(label="Short Bio",required=False,widget=forms.Textarea(attrs={'class':'autoexpandbox'}))
     shirt_size = forms.ChoiceField(shirt_objects)
     category = forms.ChoiceField(cat_objects)
     audience = forms.ChoiceField(audience_objects)
     presentation_title = forms.CharField()
-    short_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
+    short_abstract = forms.CharField(widget=forms.Textarea(attrs={'class':'autoexpandbox'}),min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
     #long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=3000)
     def clean(self):
         if self.cleaned_data.get('password') and self.cleaned_data.get('confirm_password') and self.cleaned_data['password'] != self.cleaned_data['confirm_password']:

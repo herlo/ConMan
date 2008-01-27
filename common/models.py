@@ -2,13 +2,17 @@ from django.db import models
 from django.contrib.auth.models import User
 
 AUDIENCE_CHOICES = (
-    ('M', 'Male'),
-    ('F', 'Female'),
+    ('BUS', 'Business'),
+    ('TEK', 'Technical'),
+    ('EDU', 'Educational'),
 )
 
 VOLUNTEER_CHOICES = (
-    ('M', 'Male'),
-    ('F', 'Female'),
+    ('RMGR', 'Room Manager'),
+    ('USH', 'Usher'),
+    ('GRT', 'Greeter'),
+    ('HRT', 'Heartsbane'),
+    ('TEK', 'Technician'),
 )
 
 SHIRT_SIZES = (
@@ -16,7 +20,7 @@ SHIRT_SIZES = (
     ('XS', 'Xtra-Small'),
 )
 # Create your models here.    
-class Catagory(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=150,db_index=True)
 
 #class AudienceType(models.Model):

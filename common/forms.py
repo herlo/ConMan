@@ -5,12 +5,12 @@ class VolunteerForm(forms.Form):
     vf_objects = list()
     for vf in VolunteerRole.objects.all():
         vf_objects.append((vf.pk,vf.name))
-    firstname = forms.CharField()
-    lastname = forms.CharField()
+    first_name = forms.CharField()
+    last_name = forms.CharField()
     email = forms.EmailField()
     title = forms.CharField()
     role = forms.ChoiceField(vf_objects)
-    req = forms.CharField()
+    requested_role = forms.ChoiceField(vf_objects)
     comments = forms.CharField()
 
 class PresenterForm(forms.Form):

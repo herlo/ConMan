@@ -15,6 +15,14 @@ VOLUNTEER_CHOICES = (
     ('TEK', 'Technician'),
 )
 
+CATEGORY_CHOICES = (
+    ('RMGR', 'Room Manager'),
+    ('USH', 'Usher'),
+    ('GRT', 'Greeter'),
+    ('HRT', 'Heartsbane'),
+    ('TEK', 'Technician'),
+)
+
 SHIRT_SIZES = (
     ('S', 'Small'),
     ('XS', 'Extra-Small'),
@@ -34,7 +42,7 @@ class Volunteer(models.Model):
     comments = models.TextField()
     
 class Presentation(models.Model):
-    cat = models.ForeignKey(Catagory)
+    cat = models.CharField(max_length=200, choices=CATEGORY_CHOICES, db_index=True)
     audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES,db_index=True)
     shortsummary = models.CharField(max_length=500)
     longsummary = models.TextField()

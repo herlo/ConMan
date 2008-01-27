@@ -35,26 +35,32 @@ class Category(models.Model):
         pass
 
     
-class VolunteerRoles(models.Model):
+class VolunteerRole(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
         return name
     class Admin:
         pass
     
-class AudienceTypes(models.Model):
+class AudienceType(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
         return name
     class Admin:
         pass
     
+class ShirtSize(models.Model):
+    name = models.CharField(max_length=150, db_index=True)
+    def __str__(self):
+        return name
+    class Admin:
+        pass
     
 class Volunteer(models.Model):
     #role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     #request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
-    role = models.ForeignKey(VolunteerRoles)
-    request = models.ForeignKey(VolunteerRoles)
+    role = models.ForeignKey(VolunteerRole,related_name='role')
+    request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
     
     class Admin:
@@ -62,7 +68,7 @@ class Volunteer(models.Model):
         
 class Presentation(models.Model):
     cat = models.ForeignKey(Category)
-    audience = models.ForeignKey(AudienceTypes)
+    audience = models.ForeignKey(AudienceType)
    # audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES,db_index=True)
     abstract = models.CharField(max_length=500)
     longabstract = models.TextField()
@@ -73,7 +79,7 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User)
     bio = models.CharField(max_length=500)
     presentation = models.ForeignKey(Presentation)
-    shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
+    #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     volunteerinfo = models.ForeignKey(Volunteer)
     
     class Admin:

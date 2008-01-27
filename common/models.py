@@ -25,6 +25,13 @@ SHIRT_SIZES = (
     ('XXXL', 'XXX Large'),
 )
 
+STATUS_CHOICES = (
+    ('Pending', 'Pending'),
+    ('Denied', 'Denied'),
+    ('Alternate', 'Alternate'),
+    ('Approved', 'Approved'),
+)
+
 # Create your models here.    
 class Category(models.Model):
     '''
@@ -114,7 +121,7 @@ class Presentation(models.Model):
    # audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES,db_index=True)
     abstract = models.CharField(max_length=500)
     longabstract = models.TextField()
-    approved = models.BooleanField()
+    status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     
     def __str__(self):
         return " Presentation " + self.pk

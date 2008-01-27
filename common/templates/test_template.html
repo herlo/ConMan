@@ -1,32 +1,12 @@
 {% extends "base_forms.html" %}
 
-{% block title %}Call for Papers{% endblock title%}
+{% block title %}Call for Volunteers{% endblock title%}
 
 
 {% block primaryContent %}
-<h2>Call for Papers</h2>
-{% 	  block formsWrapper %}
-
-	
-		<form method="post" action="">
-			<table> 
-				{% for field in presenter_form %}
-					<tr>
-				    <td>{{ field.label_tag }}</td>
-				    <td>{{ field }}</td>
-				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
-				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
-				   </tr>
-				{% endfor %}
-				
-				
-			
-			</table>
-			<input type="submit" value="Submit" />
-		</form>
-
-	
-{% endblock formsWrapper %}
+<h2>Welcome to UTOSF Confrence Manager 2008</h2>
+<p>Here is a description of the home page.</p>
 
 {% endblock primaryContent%}
 
+djangoproject.com/documentation/forms/

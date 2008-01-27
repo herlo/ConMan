@@ -24,15 +24,22 @@ SHIRT_SIZES = (
     ('XXL', 'XX Large'),
     ('XXXL', 'XXX Large'),
 )
+
 # Create your models here.    
 class Category(models.Model):
     name = models.CharField(max_length=150,db_index=True)
-
+    def __str__(self):
+        return name
+    
 class VolunteerRoles(models.Model):
     name = models.CharField(max_length=150, db_index=True)
+    def __str__(self):
+        return name
     
 class AudienceTypes(models.Model):
     name = models.CharField(max_length=150, db_index=True)
+    def __str__(self):
+        return name
     
 class Volunteer(models.Model):
     #role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
@@ -40,9 +47,6 @@ class Volunteer(models.Model):
     role = models.ForeignKey(VolunteerRoles)
     request = models.ForeignKey(VolunteerRoles)
     comments = models.TextField()
-    
-
-    
     
 class Presentation(models.Model):
     cat = models.ForeignKey(Catagory)
@@ -56,3 +60,4 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=500)
     presentation = models.ForeignKey(Presentation)
     shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
+    volunteerinfo = models.ForeignKey(Volunteer)

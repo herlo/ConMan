@@ -1,0 +1,18 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Call for Papers{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>Call for Papers</h2>
+{% block formsWrapper %}
+
+		<h3>Congratulations!</h3>
+		<p>Your username {{ user.name }} has been created. A conformation email has been sent to {{user.email}} containing your new password. </p>
+	 
+	
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+
+djangoproject.com/documentation/forms/

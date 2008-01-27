@@ -117,7 +117,7 @@ class Presentation(models.Model):
     approved = models.BooleanField()
     
     def __str__(self):
-        return self.role.name + " Volunteer"
+        return " Presentation " + self.pk
     class Admin:
         list_filter = ['cat','audience']
     
@@ -128,6 +128,9 @@ class UserProfile(models.Model):
     #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     shrirtsize = models.ForeignKey(ShirtSize)
     volunteerinfo = models.ForeignKey(Volunteer)
+
+    def __str__(self):
+        return str(self.user)
     
     class Admin:
         pass

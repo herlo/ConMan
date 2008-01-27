@@ -6,8 +6,8 @@ class VolunteerForm(forms.Form):
     for vf in VolunteerRole.objects.all():
         vf_objects.append((vf.pk,vf.name))
     username = forms.CharField()
-    password = forms.PasswordInput()
-    confirm_password = forms.PasswordInput()
+    password = forms.PasswordInput(render_value=True)
+    confirm_password = forms.PasswordInput(render_value=True)
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()

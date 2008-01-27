@@ -11,6 +11,10 @@ VOLUNTEER_CHOICES = (
     ('F', 'Female'),
 )
 
+SHIRT_SIZES = (
+    ('S', 'Small'),
+    ('XS', 'Xtra-Small'),
+)
 # Create your models here.    
 class Catagory(models.Model):
     name = models.CharField(max_length=150,db_index=True)
@@ -22,6 +26,7 @@ class Volunteer(models.Model):
     role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     comments = models.TextField()
+    
 #class VolunteerRoles(models.Model):
     #name = models.CharField(max_length=150)
     
@@ -35,3 +40,4 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User)
     bio = models.CharField(max_length=500)
     presentation = models.ForeignKey(Presentation)
+    shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)

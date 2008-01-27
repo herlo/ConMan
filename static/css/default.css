@@ -286,3 +286,8 @@ a:hover
 {
 	clear: both;
 }
+
+.myerrors
+{ 
+	color:red;
+	}

@@ -1,7 +1,9 @@
 # Create your views here.
 from django.shortcuts import render_to_response
+from django.http import HttpResponse
 from common.models import User,UserProfile,Presentation,Category
 from common.forms import *
+from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect,HttpResponse
 
 def test(request):
@@ -12,6 +14,25 @@ def test(request):
         if not presenter_form.is_valid():
             render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authnticate(username=username, password=password)
+        if user is not None:
+            if user.is_active:
+                login(request, user)
+                # Redirect to a success page
+                print "I am redirecting you."
+            else:
+                # Return disabled account messege
+                print "you are disabled"
+        else:
+            # Return an invalid login error messege
+            print "invalid login"
+    else:
+        return render_to_response(login.html)
 
 def index(request):
     return render_to_response('index.html',None)

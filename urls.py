@@ -19,6 +19,9 @@ urlpatterns = patterns('',
     #(r'^speaker/submitted/$', 'speakers.views.submitted'),
     
 
+
+    #Login page
+    (r'^login/', 'common.views.login'),
 )
 #from django.contrib import databrowse
 #from common.models import *

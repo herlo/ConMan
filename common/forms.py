@@ -35,7 +35,7 @@ class PresenterForm(forms.Form):
     category = forms.ChoiceField(cat_objects)
     audience = forms.ChoiceField(audience_objects)
     short_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
-    long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=3000)
+    #long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=3000)
 
 vftest = VolunteerForm()
 print vftest.as_p()

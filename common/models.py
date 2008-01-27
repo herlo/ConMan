@@ -227,6 +227,8 @@ class UserProfile(models.Model):
     volunteerinfo = models.ForeignKey(Volunteer)
     job_title = models.CharField(max_length=200, db_index=True)
     irc_nick = models.CharField(max_length=100, db_index=True)
+    irc_server = models.CharField(max_length=150, db_index=True)
+    common_channels = models.CharField(max_length=500, db_index=True)
     
     def __str__(self):
         return str(self.user)

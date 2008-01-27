@@ -322,3 +322,5 @@ class CaptchaRequest(models.Model):
 	    captcha = CaptchaRequest(text=text,request_path=request_path,answer=answer)
 	    captcha.save()
 	    return captcha
+	
+

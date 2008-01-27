@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 from common.models import *
 from common.forms import *
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
-from django.contrib.auth.models import User,UserManager
+from django.contrib.auth.models import User,UserManager,Group
 from django.contrib.auth import authenticate,login
 
 def index(request):
@@ -26,6 +26,7 @@ def index(request):
             user.first_name = pf.cleaned_data['first_name']
             user.last_name = pf.cleaned_data['last_name']
             user.save()
+            user.groups.add(Group.objects.get(id=1))
             profile = None
             try:
                 profile = user.get_profile()

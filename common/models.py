@@ -27,6 +27,11 @@ SHIRT_SIZES = (
 
 # Create your models here.    
 class Category(models.Model):
+    '''
+    >>> c = Category(name="hot_or_not")
+    >>> c.name
+    'hot_or_not'
+    '''
     name = models.CharField(max_length=150,db_index=True)
     def __str__(self):
         return self.name
@@ -38,6 +43,11 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
     
 class VolunteerRole(models.Model):
+    '''
+    >>> v = VolunteerRole(name = "killa")
+    >>> v.name
+    'killa'
+    '''
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
         return self.name
@@ -45,6 +55,11 @@ class VolunteerRole(models.Model):
         pass
     
 class AudienceType(models.Model):
+    '''
+    >>> a = AudienceType(name="Legendary")
+    >>> a.name
+    'Legendary'
+    '''
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
         return self.name
@@ -52,6 +67,11 @@ class AudienceType(models.Model):
         pass
     
 class ShirtSize(models.Model):
+    '''
+      >>> size = ShirtSize(name="XXL")
+      >>> size.name
+      'XXL'
+    '''
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
         return self.name
@@ -59,6 +79,21 @@ class ShirtSize(models.Model):
         pass
     
 class Volunteer(models.Model):
+    '''
+    Set up the Volunteer
+      >>> janx = Volunteer()
+      >>> janx.role = Volunteer(name="Usher")
+      >>> janx.request(name="AwesomeMan")
+      >>> janx.comments = "I really would like to be awesome. Can you hook a brother up?"
+
+    test him
+      >>> janx.role.name
+      'Usher'
+      >>> janx.request.name
+      'AwesomeMan'
+      >>> janx.comments
+      'I really would like to be awesome. Can you hook a brother up?'
+    '''
     #role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     #request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     role = models.ForeignKey(VolunteerRole,related_name='role')

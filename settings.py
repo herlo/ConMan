@@ -59,7 +59,7 @@ TEMPLATE_LOADERS = (
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
-    #'psycomid.PsycoMiddleware',
+    'psycomiddleware.PsycoMiddleware',
     #'django.middleware.cache.CacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

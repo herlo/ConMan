@@ -5,7 +5,6 @@ from common.models import Volunteer, UserProfile
 from common.forms import VolunteerForm
 from django.shortcuts import render_to_response
 
-
 def index(request):
     form = VolunteerForm()
     if request.method == 'POST':
@@ -16,10 +15,10 @@ def index(request):
             comments=form.comments)
             HttpResponseRedirect(reverse(conman.common.views.accepted, args=(v.id)))
         else:
-            return render_to_response('call_for_volunteers.html', {'form': form} )
+            return render_to_response('call_for_volunteers.html', {'volunteers_form': form} )
     else:
         return render_to_response('call_for_volunteers.html',{'volunteers_form':form} )
 
-def accepted(request, v_id):
-    vol = get_object_or_404(Volunteer, pk=v_id)
-    return render_to_response('volunteer_accepted.html', {'vol_info': vol})
+def submitted(request, v_id):
+    v = get_object_or_404(Volunteer, pk=v_id)
+    return render_to_response('volunteer_submitted.html', {'volunteers_info': v})

@@ -2,7 +2,7 @@
 from django.shortcuts import render_to_response
 from common.models import *
 
-def index(request):
+def testtemplate(request):
     
-    return render_to_response('polls/index.html', {'latest_poll_list': latest_poll_list})
+    return render_to_response('test_template.html',None)
 

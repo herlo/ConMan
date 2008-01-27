@@ -35,7 +35,7 @@ class PresenterForm(forms.Form):
     category = forms.ChoiceField(cat_objects)
     audience = forms.ChoiceField(audience_objects)
     abstract = forms.CharField()
-    longabstract = forms.CharField()
+    long_abstract = forms.CharField()
 
 vftest = VolunteerForm()
 print vftest.as_p()

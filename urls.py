@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     (r'^volunteer/', 'volunteers.views.index'),
     #(r'^volunteer/submitted/', 'volunteers.views.submitted'),
     (r'^speaker/$', 'speakers.views.index'),
-    (r'^speaker/submitted/$', 'speakers.views.submitted'),
+    (r'', 'common.views.index'),
+    #(r'^speaker/submitted/$', 'speakers.views.submitted'),
 )
 

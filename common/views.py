@@ -12,3 +12,5 @@ def test(request):
             render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
 
+def index(request):
+    return render_to_response('index.html',None)

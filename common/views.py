@@ -1,8 +1,9 @@
 # Create your views here.
 from django.shortcuts import render_to_response
-from common.models import *
+from common.models import User,UserProfile,Presentation,Catagory
 
-def testtemplate(request):
+
+def test(request):
     
     return render_to_response('test_template.html',None)
 

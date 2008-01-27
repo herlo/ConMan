@@ -3,8 +3,12 @@ from django import newforms as forms
 
 class VolunteerForm(forms.Form):
     vf_objects = list()
+    shirt_objects = list()
     for vf in VolunteerRole.objects.all():
         vf_objects.append((vf.pk,vf.name))
+    
+    for ss in ShirtSize.objects.all():
+        shirt_objects.append((ss.pk,ss.name))
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
@@ -15,6 +19,7 @@ class VolunteerForm(forms.Form):
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)
+    shirt_size = forms.ChoiceField(shirt_objects)
     #role = forms.ChoiceField(vf_objects)
     requested_role = forms.ChoiceField(vf_objects)
     comments = forms.CharField(widget=forms.Textarea,min_length=1,max_length=1000,required=False,help_text="Please let us know about any special requests or circumstances.")
@@ -22,11 +27,15 @@ class VolunteerForm(forms.Form):
 class PresenterForm(forms.Form):
     cat_objects = list()
     audience_objects = list()
+    shirt_objects = list()
     for cat in Category.objects.all():
         cat_objects.append((cat.pk,cat.name))
         
     for audience in AudienceType.objects.all():
         audience_objects.append((audience.pk,audience.name))
+        
+    for ss in ShirtSize.objects.all():
+        shirt_objects.append((ss.pk,ss.name))
     
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
@@ -38,11 +47,13 @@ class PresenterForm(forms.Form):
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)
+    shirt_size = forms.ChoiceField(shirt_objects)
     category = forms.ChoiceField(cat_objects)
     audience = forms.ChoiceField(audience_objects)
     presentation_title = forms.CharField()
     short_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
     #long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=3000)
-
-vftest = VolunteerForm()
-print vftest.as_p()
+    def clean(self):
+        if self.cleaned_data.get('password') and self.cleaned_data.get('confirm_password') and self.cleaned_data['password'] != self.cleaned_data['confirm_password']:
+            raise ValidationError(u'Please make sure your passwords match.')
+        return self.cleaned_data

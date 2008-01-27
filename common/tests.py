@@ -9,5 +9,8 @@ class CategoryTestCase(unittest.TestCase):
         
 
     def testSpeaking(self):
-        for cat in list:
+        for cat in self.list:
             Category.save(cat)
+
+    def testAssert(self):
+        self.assertEqual(first=True,second=False)

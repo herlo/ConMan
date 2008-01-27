@@ -80,6 +80,7 @@ class UserProfile(models.Model):
     bio = models.CharField(max_length=500)
     presentation = models.ForeignKey(Presentation)
     #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
+    shrirtsize = models.ForeignKey(ShirtSize)
     volunteerinfo = models.ForeignKey(Volunteer)
     
     class Admin:

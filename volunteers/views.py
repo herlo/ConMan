@@ -16,19 +16,9 @@ def index(request):
             comments=form.comments)
             HttpResponseRedirect(reverse(conman.common.views.accepted, args=(v.id)))
         else:
-            return render_to_response('call_for_volunteers.html',{'volunteers_form':form} )
-    return render_to_response('call_for_volunteers.html',{'volunteers_form':form} )
-
-def post(request):
-    form = VolunteerForm(request.POST)
-    if form.is_valid():
-        v = Volunteers.objects.create(role=VolunteerRole.objects.create(name=form.name), 
-        request=VolunteerRole(name=form.requested_role), 
-        comments=form.comments)
-        HttpResponseRedirect(reverse(conman.common.views.accepted, args=(v.id)))
+            return render_to_response('call_for_volunteers.html', {'form': form} )
     else:
-        return render_to_response('volunteer_template.html',{'volunteers_form':form} )
-
+        return render_to_response('call_for_volunteers.html',{'volunteers_form':form} )
 
 def accepted(request, v_id):
     vol = get_object_or_404(Volunteer, pk=v_id)

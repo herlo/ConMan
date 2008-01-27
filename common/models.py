@@ -17,22 +17,21 @@ VOLUNTEER_CHOICES = (
 
 SHIRT_SIZES = (
     ('S', 'Small'),
-    ('XS', 'Xtra-Small'),
+    ('XS', 'Extra-Small'),
+    ('M', 'Medium'),
+    ('L', 'Large'),
+    ('XL', 'Extra Large'),
+    ('XXL', 'XX Large'),
+    ('XXXL', 'XXX Large'),
 )
 # Create your models here.    
 class Category(models.Model):
     name = models.CharField(max_length=150,db_index=True)
 
-#class AudienceType(models.Model):
-    #name = models.CharField(max_length=150)
-    
 class Volunteer(models.Model):
     role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     comments = models.TextField()
-    
-#class VolunteerRoles(models.Model):
-    #name = models.CharField(max_length=150)
     
 class Presentation(models.Model):
     cat = models.ForeignKey(Catagory)

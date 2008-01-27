@@ -5,13 +5,15 @@ from common.forms import *
 from django.http import HttpRequest
 def index(request):
     isinstance(request,HttpRequest)
+    pf = PresenterForm()
     if request.POST != None:
         pf = PresenterForm(request.POST)
-        if pf.is_valid():
+        if not pf.is_valid():
+             return render_to_response('call_for_papers.html',{'presentation_form':pf})
+        else:
             
-        
     else :
-        return render_to_response('call_for_papers.html',None)
+        return render_to_response('call_for_papers.html',{'presentation_form':pf})
     
-def saveSubmission(request):
+def submitted(request):
     return render_to_response('call_for_papers.html',None)

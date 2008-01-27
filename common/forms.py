@@ -13,6 +13,8 @@ class VolunteerForm(forms.Form):
     email = forms.EmailField()
     job_title = forms.CharField(required=False)
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
+    irc_server = forms.CharField(label="IRC Server", required=False)
+    irc_channels = forms.CharField(label="IRC Channels", required=False)
     #role = forms.ChoiceField(vf_objects)
     requested_role = forms.ChoiceField(vf_objects)
     comments = forms.CharField(widget=forms.Textarea,min_length=1,max_length=1000,required=False,help_text="Please let us know about any special requests or circumstances.")

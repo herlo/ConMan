@@ -122,7 +122,7 @@ class Presentation(models.Model):
     abstract = models.CharField(max_length=500)
     longabstract = models.TextField()
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
-    
+    title = models.CharField(max_length=150, db_index=True)
     def __str__(self):
         return " Presentation " + self.pk
     class Admin:

@@ -7,9 +7,9 @@
 <h2>Contact Us</h2>
 <script type="text/javascript">
 $(document).ready(function(){
-	$('#id_password').pstrength();
-	$('#id_short_abstract').autogrow();
-	$('#id_bio').autogrow();
+	
+	$('#id_message').autogrow();
+
 	});
 </script>
 
@@ -19,17 +19,23 @@ $(document).ready(function(){
 		<form method="post" action="">
 			<table> 
 				{% for field in contactform %}
+				{% ifnotequal field.label "captcha_uid" %}
 					<tr>
-				    <td>{{ field.label_tag }}</td>
+				    <td>{{ field.label_tag }}
+				    {%ifequal field.label "captcha_text" %}
+	<img src="http://127.0.0.1:8000/captcha/{{ captcha.uid }}.jpg"/> 
+				{% endifequal %}				    
+				    </td>
 				    <td>{{ field }}</td>
 				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
 				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
 				   </tr>
+				   {% endifnotequal %}
 				{% endfor %}
 				
 				
-			
 			</table>
+			<img src="http://127.0.0.1:8000/captcha/{{ captcha.uid }}.jpg"/>
 			<input type="submit" value="Submit" />
 		</form>
 	

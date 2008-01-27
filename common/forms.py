@@ -66,4 +66,6 @@ class PresenterForm(forms.Form):
 class ContactUsForm(forms.Form):
     subject = forms.CharField()
     message = forms.CharField(widget=forms.Textarea(attrs={'class':'autoexpandbox'}))
+    captcha_text = forms.CharField()
+    captcha_uid = forms.CharField(widget=forms.HiddenInput())
     

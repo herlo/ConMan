@@ -6,13 +6,16 @@ urlpatterns = patterns('',
     # (r'^conman/', include('conman.foo.urls')),
     #(r'^databrowse/(.*)', databrowse.site.root),
     # Uncomment this for admin:
+    (r'^captcha/(?P<token_uid>\w+).jpg$','common.views.captcha_image'),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
     (r'^testtemplate/', 'common.views.test'),
     (r'^volunteer/$', 'volunteers.views.index'),
     #(r'^volunteer/submitted/$', 'volunteers.views.submitted'),
     (r'^speaker/$', 'speakers.views.index'),
+       (r'^contact/$', 'common.views.contact'),
     (r'$', 'common.views.index'),
+ 
     #(r'^speaker/submitted/$', 'speakers.views.submitted'),
     
 

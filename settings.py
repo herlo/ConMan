@@ -94,3 +94,14 @@ INSTALLED_APPS = (
 )
 
 AUTH_PROFILE_MODULE = 'common.userprofile'
+
+EMAIL_HOST = 'mail.utos.org'
+EMAIL_HOST_USER = 'conman'
+EMAIL_HOST_PASSWORD = 'Advifnuc0'
+EMAIL_USE_TLS = True
+
+FONT_PATH = "/usr/share/fonts/truetype/ttf-bitstream-vera/VeraBd.ttf"
+#FONT_PATH="arial.pil"
+FONT_SIZE = 16
+# Timeout in minutes
+TIMEOUT = 15

@@ -34,6 +34,7 @@ class PresenterForm(forms.Form):
     title = forms.CharField()
     category = forms.ChoiceField(cat_objects)
     audience = forms.ChoiceField(audience_objects)
+    presentation_title = forms.CharField()
     short_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
     #long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=3000)
 

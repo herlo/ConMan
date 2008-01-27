@@ -20,7 +20,7 @@ def index(request):
                
                 user = User.objects.create_user(pf.cleaned_data['username'], pf.cleaned_data['email'], password = pf.cleaned_data['password'])
                 isinstance(user, User)
-            else:
+            if request.user.is_authenticated():
                 user = authenticate(username=request.user.username,password=request.user.password)
                 
             user.first_name = pf.cleaned_data['first_name']

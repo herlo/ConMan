@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
     (r'^testtemplate/', 'common.views.test'),
     (r'^volunteer/', 'volunteers.views.index'),
-    (r'^volunteer/submitted/', 'volunteers.views.submitted'),
-    (r'^speaker/', 'speakers.views.index'),
-    (r'^speaker/submitted/', 'speakers.views.submitted'),
+    #(r'^volunteer/submitted/', 'volunteers.views.submitted'),
+    (r'^speaker/$', 'speakers.views.index'),
+    (r'^speaker/submitted/$', 'speakers.views.submitted'),
 )
 

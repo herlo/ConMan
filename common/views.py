@@ -1,6 +1,6 @@
 # Create your views here.
 from django.shortcuts import render_to_response
-from common.models import User,UserProfile,Presentation,Catagory
+from common.models import User,UserProfile,Presentation,Category
 
 
 def test(request):

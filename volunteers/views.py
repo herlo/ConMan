@@ -31,16 +31,17 @@ def index(request):
                 profile = user.get_profile()
             except :
                 print 'No Profile Found'
+
+            role=VolunteerRole.objects.get(id=vf.cleaned_data['requested_role'])
     
-            r = VolunteerRole.objects.get(id=vf.cleaned_data['requested_role'])
             profile = UserProfile.objects.create(user=user,
                     bio = '', 
                     shirtsize=ShirtSize.objects.get(id=vf.cleaned_data['shirt_size']),
                     job_title=vf.cleaned_data['job_title'],
                     irc_nick=vf.cleaned_data['irc_nick'], 
                     irc_server=vf.cleaned_data['irc_server'],
-                    common_channels=vf.cleaned_data['irc_channels'])
-    
+                    common_channels=vf.cleaned_data['irc_channels'],
+                    volunteerinfo=Volunteer.objects.create(request=role, comments=vf.cleaned_data['comments']),)    
             user2 =authenticate(username=vf.cleaned_data['username'],password=vf.cleaned_data['password'])
             userinfo = dict()
             userinfo['name']= user2.get_full_name()

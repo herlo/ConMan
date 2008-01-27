@@ -49,18 +49,6 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
     
-class VolunteerRole(models.Model):
-    '''
-    >>> v = VolunteerRole(name = "killa")
-    >>> v.name
-    'killa'
-    '''
-    name = models.CharField(max_length=150, db_index=True)
-    def __str__(self):
-        return self.name
-    class Admin:
-        pass
-    
 class AudienceType(models.Model):
     '''
     >>> a = AudienceType(name="Legendary")
@@ -84,7 +72,19 @@ class ShirtSize(models.Model):
         return self.name
     class Admin:
         pass
-    
+
+class VolunteerRole(models.Model):
+    '''
+    >>> v = VolunteerRole(name = "killa")
+    >>> v.name
+    'killa'
+    '''
+    name = models.CharField(max_length=150, db_index=True)
+    def __str__(self):
+        return self.name
+    class Admin:
+        pass
+
 class Volunteer(models.Model):
     '''
     Create a VolunteerRole for the user
@@ -116,7 +116,7 @@ class Volunteer(models.Model):
         return self.role.name + " Volunteer " + str(self.pk)
     class Admin:
         list_filter = ['role','request']
-        
+
 class Presentation(models.Model):
     '''
     Create the category and audience for the presentation

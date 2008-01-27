@@ -80,19 +80,22 @@ class ShirtSize(models.Model):
     
 class Volunteer(models.Model):
     '''
-    Set up the Volunteer
-      >>> janx = Volunteer()
-      >>> janx.role = Volunteer(name="Usher")
-      >>> janx.request(name="AwesomeMan")
-      >>> janx.comments = "I really would like to be awesome. Can you hook a brother up?"
+    Create the VolunteerRole
+      >>> VolunteerRole.objects.create(name="Fun Sucker")
+      <VolunteerRole: Fun Sucker>
 
-    test him
-      >>> janx.role.name
-      'Usher'
-      >>> janx.request.name
-      'AwesomeMan'
-      >>> janx.comments
-      'I really would like to be awesome. Can you hook a brother up?'
+    Create a volunteer with the first default role value
+      >>> v = Volunteer.objects.create(
+      ... role=VolunteerRole.objects.get(id=1),
+      ... request=VolunteerRole.objects.get(id=1),
+      ... comments="This is my comment")
+
+      >>> v.role
+      <VolunteerRole: Fun Sucker>
+      >>> v.request
+      <VolunteerRole: Fun Sucker>
+      >>> v.comments
+      'This is my comment'
     '''
     #role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     #request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)

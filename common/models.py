@@ -29,7 +29,7 @@ SHIRT_SIZES = (
 class Category(models.Model):
     name = models.CharField(max_length=150,db_index=True)
     def __str__(self):
-        return name
+        return self.name
     
     class Admin:
         pass
@@ -38,21 +38,21 @@ class Category(models.Model):
 class VolunteerRole(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
-        return name
+        return self.name
     class Admin:
         pass
     
 class AudienceType(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
-        return name
+        return self.name
     class Admin:
         pass
     
 class ShirtSize(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     def __str__(self):
-        return name
+        return self.name
     class Admin:
         pass
     

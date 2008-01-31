@@ -8,8 +8,7 @@ from django.contrib.auth import authenticate,login
 
 def index(request):
     isinstance(request,HttpRequest)
-   
-        
+
     pf = PresenterForm()
     if request.method == 'POST':
         pf = PresenterForm(request.POST)

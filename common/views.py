@@ -75,7 +75,7 @@ def test(request):
     if not presenter_form.is_valid():
         render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
-
+@login_required
 def index(request):
     posts = NewPost.objects.order_by('display_date')[:10]
     postlist = list()
@@ -93,6 +93,9 @@ def index(request):
 	postdata['tags'] = p.tags
 	postdata['created'] = p.created
 	postdata['files'] = files
+	postdata['pic'] = request.user.get_profile().user_photo
+	postdata['username'] = request.user.full_name
+	postdata['email'] = request.user.email
 	postlist.append(postdata)
     
     return render_to_response('index.html',{'posts':postlist,'context_instance':RequestContext(request)})

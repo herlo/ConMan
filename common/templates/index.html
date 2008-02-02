@@ -8,14 +8,14 @@
 <p>Here is a description of the home page...</p>
 
 <!--This should be looped over using the  for statement  in Django -->
-
+{% for p in posts %}
 <div class="blogEntry" >
 	<div> 
 		<div class="blogUserProfile">
 
-				<img class="blogUserImage" src="/static/img/conman_large.png" />
-				<div class="blogUserName">Janx Unlimited...</div>
-				<div class="blogUserEmail">janx@janx.com</div>
+				<img class="blogUserImage" src="{{ p.pic }}." />
+				<div class="blogUserName">{{ p.username }}</div>
+				<div class="blogUserEmail">{{ p.email }}</div>
 
 		</div>
 		
@@ -34,7 +34,7 @@
 		<span class="blogIncludedFiles"> <!--Should be looping here over each object in the files getting the urls and making links out of them --> </span>
 	</div>
 </div>
-
+{% endfor %}
 <!--This should be looped over using the for statement  in Django -->
 
 {% endblock primaryContent%}

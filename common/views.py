@@ -7,6 +7,53 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 
+def save_user(request, form):
+    if request.user.is_anonymous():
+        try:
+            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], password = form.cleaned_data['password'])
+            isinstance(user, User)
+        except:
+            return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
+    else:
+        user = request.user
+
+    print request.user.is_anonymous()
+    user.first_name = form.cleaned_data['first_name']
+    user.last_name = form.cleaned_data['last_name']
+    user.groups.add(Group.objects.get(id=2))
+    user.save()
+
+    return user
+
+def save_volunteer(request):
+    volunteerinfo=Volunteer.objects.create(request=role, comments=form.cleaned_data['comments']),)    
+    return VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
+
+def save_user_profile(request, user, type):
+   try:
+       profile = user.get_profile()
+   except :
+       print 'No Profile Found'
+
+   profile = UserProfile.objects.create(user=user,
+               bio = '', 
+           shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
+           job_title=form.cleaned_data['job_title'],
+           irc_nick=form.cleaned_data['irc_nick'], 
+           irc_server=form.cleaned_data['irc_server'],
+           common_channels=form.cleaned_data['irc_channels'],
+
+    if (type == "volunteer"):
+        profile = save_volunteer(request)
+    if (type == "speaker"):
+        profile = save_speaker(request)
+        
+    userinfo = dict()
+    userinfo['name']= profile.get_full_name()
+    userinfo['email']= profile.email
+    print "userinfo: " + str(profile) 
+    return userinfo
+
 def test(request):
     volunteer_form = VolunteerForm()
     presenter_form = PresenterForm()

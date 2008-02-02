@@ -5,10 +5,11 @@ from common.forms import *
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.contrib.auth.models import User,UserManager,Group
 from django.contrib.auth import authenticate,login
+import pdb
 
 def index(request):
     isinstance(request,HttpRequest)
-
+#    pdb.set_trace()
     pf = PresenterForm()
     if request.method == 'POST':
         pf = PresenterForm(request.POST)

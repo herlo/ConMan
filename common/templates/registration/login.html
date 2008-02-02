@@ -7,12 +7,12 @@
   <h2>Please Login with you username and password</h2>
   {% block formsWrapper %}
   <form method="post" action=".">
-      <table>
+      <table id="loginForm">
           <tr><td><label for="id_username">Username:</label></td><td>{{ form.username }}</td></tr>
           <tr><td><label for="id_password">Password:</label></td><td>{{ form.password }}</td></tr>
       </table>
 
-      <input type="submit" value="login" />
+      <input type="submit" value="Sign In">
       <input type="hidden" name="next" value="{{ next }}" />
   </form>
   {% endblock formsWrapper %}

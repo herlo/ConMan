@@ -2,7 +2,7 @@
 	Design by Free CSS Templates
 	http://www.freecsstemplates.org
 	Released for free under a Creative Commons Attribution 2.5 License
-    And modified to fit my the strange and often varied needs of UTOSF by Will Smith
+   Modified by John Weis
 */
 
 /* Basic */
@@ -78,6 +78,18 @@ a:hover
 }
 
 /* Menu */
+
+#login
+{
+	position: absolute;
+	top: 5em;
+	right: 3em;
+	color: white;
+}
+
+#login a{ 
+	color:white;
+}
 
 #menu
 {
@@ -297,6 +309,11 @@ a:hover
 	line-height: 16px;
 	min-height: 42px;
 	height: 42px;
+}
+
+
+#loginForm{
+	text-align: right;
 }
 
 

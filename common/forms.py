@@ -2,6 +2,7 @@ from common.models import *
 from django import newforms as forms
 from django.newforms import ValidationError
 
+
 class VolunteerForm(forms.Form):
     vf_objects = list()
     shirt_objects = list()

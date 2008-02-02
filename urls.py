@@ -6,6 +6,8 @@ urlpatterns = patterns('',
     # (r'^conman/', include('conman.foo.urls')),
     #(r'^databrowse/(.*)', databrowse.site.root),
     # Uncomment this for admin:
+    #Login page
+    (r'^login/', 'common.views.login'),
     (r'^captcha/(?P<token_uid>\w+).jpg$','common.views.captcha_image'),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
@@ -18,10 +20,6 @@ urlpatterns = patterns('',
  
     #(r'^speaker/submitted/$', 'speakers.views.submitted'),
     
-
-
-    #Login page
-    (r'^login/', 'common.views.login'),
 )
 #from django.contrib import databrowse
 #from common.models import *

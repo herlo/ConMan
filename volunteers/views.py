@@ -25,6 +25,7 @@ def index(request):
             print request.user.is_anonymous()
             user.first_name = vf.cleaned_data['first_name']
             user.last_name = vf.cleaned_data['last_name']
+	    user.groups.add(Group.objects.get(id=2))
             user.save()
             profile = None
     

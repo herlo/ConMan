@@ -7,7 +7,9 @@ urlpatterns = patterns('',
     #(r'^databrowse/(.*)', databrowse.site.root),
     # Uncomment this for admin:
     #Login page
-    (r'^login/', 'common.views.login'),
+    #(r'^login/', 'common.views.login'),
+    (r'^login/$', 'django.contrib.auth.views.login'),
+    (r'^logout/$', 'django.contrib.auth.views.logout'),
     (r'^captcha/(?P<token_uid>\w+).jpg$','common.views.captcha_image'),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),

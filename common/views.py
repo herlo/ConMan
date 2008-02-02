@@ -17,8 +17,9 @@ def test(request):
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+	login_form = LoginForm(request.POST)
+        #username = request.POST['username']
+        #password = request.POST['password']
         user = authenticate(username=username, password=password)
         if user is not None:
             if user.is_active:
@@ -32,7 +33,7 @@ def login(request):
             # Return an invalid login error messege
             print "invalid login"
     else:
-        return render_to_response('login.html')
+        return render_to_response('login.html',{'login_form':login_form })
 
 def index(request):
     return render_to_response('index.html',None)
@@ -57,6 +58,9 @@ def contact(request):
     
 def profile_show(request):
     return render_to_response('profile.html', None)
+
+
+
 from common.models import CaptchaRequest
 from cStringIO import StringIO
 import random

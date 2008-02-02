@@ -2,6 +2,9 @@ from common.models import *
 from django import newforms as forms
 from django.newforms import ValidationError
 
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
 class VolunteerForm(forms.Form):
     vf_objects = list()

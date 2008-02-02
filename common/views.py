@@ -63,7 +63,7 @@ def profile_show(request):
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
 	return render_to_response('profile_volunteers.html',{'user':request.user})
     
-    PresenterForm pf = PresenterForm()
+    #PresenterForm pf = PresenterForm()
     
 
     

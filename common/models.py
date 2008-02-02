@@ -242,19 +242,19 @@ class UserProfile(models.Model):
       '#crapology, #shitonomics'
 
     '''
-
-    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True)
-    presentation = models.ForeignKey(Presentation, null=True, blank=True)
-    user = models.ForeignKey(User,unique=True)
-    bio = models.TextField(null=True, blank=True)
     
-    shirtsize = models.ForeignKey(ShirtSize)
-    job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True)
-    irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True)
-    irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True)
-    common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True)
-    user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True)
-    site = models.URLField(db_index=True, blank=True, null=True)
+    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_in_admin=1)
+    presentation = models.ForeignKey(Presentation, null=True, blank=True,edit_inline=models.STACKED,num_in_admin=1)
+    user = models.ForeignKey(User,unique=True,core=True)
+    bio = models.TextField(null=True, blank=True,core=True)
+    
+    shirtsize = models.ForeignKey(ShirtSize,core=True)
+    job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
+    irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,core=True)
+    irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,core=True)
+    common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,core=True)
+    user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True,core=True)
+    site = models.URLField(db_index=True, blank=True, null=True,core=True)
     
     def __unicode__(self):
         return str(self.user)  + "'s profile" 
@@ -278,6 +278,10 @@ class PostFiles(models.Model):
 
     class Admin:
         pass
+    
+    class Meta:
+	verbose_name_plural = "Post Files"
+	
 class NewPost(models.Model): 
     poster = models.ForeignKey(User)
     created = models.DateTimeField(db_index=True)

@@ -26,8 +26,8 @@ SHIRT_SIZES = (
     ('M', 'Medium'),
     ('L', 'Large'),
     ('XL', 'Extra Large'),
-    ('XXL', 'XX Large'),
-    ('XXXL', 'XXX Large'),
+    ('2XL', 'XX Large'),
+    ('3XL', 'XXX Large'),
 )
 
 STATUS_CHOICES = (
@@ -156,7 +156,6 @@ class Presentation(models.Model):
     '''
     cat = models.ForeignKey(Category)
     audience = models.ForeignKey(AudienceType)
-   # audience = models.CharField(max_length=200, choices=AUDIENCE_CHOICES,db_index=True)
     abstract = models.CharField(max_length=500)
     longabstract = models.TextField()
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)

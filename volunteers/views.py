@@ -18,8 +18,8 @@ def index(request):
         if not vf.is_valid():
             return render_to_response('call_for_volunteers.html', {'volunteer_form':vf})
         else:
-            save_user(request, vf)
-            profile = save_user_profile(request, user, "volunteer")
+            user = save_user(request, vf)
+            profile = save_user_profile(request, user, vf, "volunteer")
             try:
                 user = authenticate(username=vf.cleaned_data['username'],password=vf.cleaned_data['password'])
             except e:

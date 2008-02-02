@@ -4,7 +4,9 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost
 from common.forms import *
+from common.config import Static
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
@@ -12,25 +14,34 @@ from django.template import RequestContext
 def save_user(request, form):
     if request.user.is_anonymous():
         try:
-            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], password = form.cleaned_data['password'])
+            luser = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], password = form.cleaned_data['password'])
             isinstance(user, User)
         except:
             return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
     else:
-        user = request.user
-
-    print request.user.is_anonymous()
-    user.first_name = form.cleaned_data['first_name']
-    user.last_name = form.cleaned_data['last_name']
-    user.groups.add(Group.objects.get(id=2))
-    user.save()
-
+        luser = request.user
+    print luser.is_anonymous()
+    luser.first_name = form.cleaned_data['first_name']
+    luser.last_name = form.cleaned_data['last_name']
+    luser.groups.add(Group.objects.get(id=2))
+    luser.save()
     return user
 
-def save_speaker(form):
-   profile = UserProfile.objects.create(user=user,
+def save_speaker(request, form):
+    pres = Presentation.objects.create(
+        cat = form.cleaned_data['category'],
+        audience = form.cleaned_data['audience'],
+        abstract = form.cleaned_data['abstract'],
+        longabstract = form.cleaned_data['longabstract'],
+        status = form.cleaned_data['Pending'],
+        title = form.cleaned_data['title'],
+#        slides = form.clean_data(upload_to="slides",blank=True,null=True) 
+    )
+    pres.save()
+
+    return UserProfile.objects.create(user=user,
       bio = pf.cleaned_data['bio'],
-      presentation=presentation,
+      presentation=pres,
       shirtsize=ShirtSize.objects.get(id=pf.cleaned_data['shirt_size']),
       job_title=pf.cleaned_data['job_title'],
       irc_nick=pf.cleaned_data['irc_nick'],
@@ -41,25 +52,17 @@ def save_volunteer(form):
     role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
 #    UserProfile.objects.create(request=role, comments=form.cleaned_data['comments']),)    
 
-def save_user_profile(request, user, type):
+def save_user_profile(request, user, form, type):
     try:
-	profile = user.get_profile()
+	    profile = user.get_profile()
     except :
-	print 'No Profile Found'
-
-    profile = UserProfile.objects.create(user=user,
-            bio = '', 
-            shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
-            job_title=form.cleaned_data['job_title'],
-            irc_nick=form.cleaned_data['irc_nick'], 
-            irc_server=form.cleaned_data['irc_server'],
-            common_channels=form.cleaned_data['irc_channels'])
+    	print 'No Profile Found'
 
     if (type == "volunteer"):
-        profile = save_volunteer(request)
+        profile = save_volunteer(request, form)
 
     if (type == "speaker"):
-        profile = save_speaker(request)
+        profile = save_speaker(request, form)
 
     userinfo = dict()
     userinfo['name']= profile.get_full_name()

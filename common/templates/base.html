@@ -1,8 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
-	Design by Free CSS Templates
-	http://www.freecsstemplates.org
-	Released for free under a Creative Commons Attribution 2.5 License
 	Moded out by John P. Weis
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,20 +18,26 @@
 		<div id="header">
 			<h1><a href="#">UTOSF ConMan</a></h1>
 		</div>
-		<div id="menu">
-			<ul>
-				<li class="first"><a href="/" accesskey="1" title="">Home</a></li>
-				<li><a href="/speaker/" accesskey="2" title="">Call for Papers</a></li>
-				<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
-				<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
-			</ul>
+		<div>
+			<div id="login">
+				{% block login %}
+				{% end login %}
+			</div>
+			<div id="menu">
+				<ul>
+					<li class="first"><a href="/" accesskey="1" title="">Home</a></li>
+					<li><a href="/speaker/" accesskey="2" title="">Call for Papers</a></li>
+					<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
+					<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
+				</ul>
+			</div>
 		</div>
 	<div id="content">
-		<div id="rightMenu">
+		<!--<div id="rightMenu">
 		{% block rightMenu %}
 		{% endblock rightMenu %}
 		<div class="xbg"></div>
-		</div>
+		</div> -->
 		<div id="primaryContentContainer">
 			<div id="primaryContent">
 				{% block primaryContent %}				
@@ -49,7 +52,7 @@
 		<div class="clear"></div>
 	</div>
 	<div id="footer">
-		<p>Copyright &copy; 2008 Sitename.com. Designed by <a href="http://www.freecsstemplates.org">Free CSS Templates</a></p>
+		<p>Copyright &copy; 2008 UTOSF</a></p>
 	</div>
 </div>
 </body>

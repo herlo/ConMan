@@ -82,7 +82,7 @@ a:hover
 #menu
 {
 	position: absolute;
-	top: 5em;
+	top: 7em;
 	right: 3em;
 }
 
@@ -217,14 +217,14 @@ a:hover
 {
 	background-color: #fff;
 	float: right;
-	margin: 0em -19em 0em -19em;
+	margin: 0em 10% 0em 10%;
 	width: 100%;
 }
 
 #primaryContent
 {
-	margin: 1.5em 19em 0em 17.25em;
-	padding: 1.5em 3em 1.5em 3em;
+	margin: 1.5em 8em 0em 17.25em;
+	padding: 1.5em 2em 1.5em 2em;
 }
 
 /* Left Menu */
@@ -233,7 +233,7 @@ a:hover
 {
 	position: relative;
 	float: left;
-	width: 14em;
+	width: 10%;
 	padding: 3em 2em 1.5em 2em;
 	background: #fff url('images/a1.gif') top right repeat-y;
 }
@@ -245,7 +245,7 @@ a:hover
 	bottom: -64px;
 	background: #fff url('images/a3.gif') top right no-repeat;
 	height: 64px;
-	width: 128px;
+	width: ;
 }
 
 /* Tertiary Content */

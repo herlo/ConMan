@@ -5,6 +5,7 @@ from common.models import User,UserProfile,Presentation,Category
 from common.forms import *
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect,HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def test(request):
     volunteer_form = VolunteerForm()
@@ -55,8 +56,14 @@ def contact(request):
 	con_form.data = {'captcha_uid':captcha.uid}
         return render_to_response('contactus.html',{'contactform':con_form, 'captcha':captcha})
     
-    
+@login_required
 def profile_show(request):
+    temp= request.user.groups.get_query_set()
+    
+    print request.user
+    print temp
+    print temp.get(id=1)
+
     return render_to_response('profile.html', None)
 
 

@@ -62,11 +62,33 @@ def profile_show(request):
 	return render_to_response('profile_papers.html',{'user':request.user})
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
 	return render_to_response('profile_volunteers.html',{'user':request.user})
+    user_data = request.user
+    user_profile = request.user.get_profile()
+    user_presentation = user_profile.presentation
+    #user_ 
+    #data = {'audience': user_presentation.audience,
+	    #'message': 'Hi there',
+	    #'sender': 'foo@example.com',
+	    #'cc_myself': True}
     
-    #PresenterForm pf = PresenterForm()
+    pf = PresenterForm()
+    pf.audience = user_presentation.audience
+    pf.bio = user_profile.bio
+    pf.cat = user_presentation.cat
+    pf.email = user_data.email
+    pf.first_name = user_data.first_name
+    pf.last_name = user_data.last_name
+    pf.irc_channels = user_profile.common_channels
+    pf.irc_nick = user_profile.irc_nick
+    pf.irc_server = user_profile.irc_server
+    pf.job_title = user_profile.job_title
+    pf.presentation_title = user_presentation.title
+    pf.ss = user_profile.shirtsize
     
-
-    
+    if request.user.groups.get_query_set().get(id=1) == 'Presenters':
+	return render_to_response('edit_papers.html',{'pf':pf})
+    elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
+	return render_to_response('edit_volunteers.html',{'user':request.user})
     return render_to_response('profile.html', None)
 
 

@@ -164,7 +164,7 @@ class Presentation(models.Model):
     def __unicode__(self):
         return " Presentation " + str(self.pk)
     class Admin:
-        list_filter = ['cat','audience']
+        list_filter = ['cat','audience','status']
     
 class UserProfile(models.Model):    
     '''

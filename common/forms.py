@@ -15,8 +15,8 @@ class VolunteerForm(forms.Form):
     for ss in ShirtSize.objects.all():
         shirt_objects.append((ss.pk,ss.name))
     username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput,min_length=6)
+    confirm_password = forms.CharField(widget=forms.PasswordInput,min_length=6)
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()
@@ -48,8 +48,8 @@ class SpeakerForm(forms.Form):
         shirt_objects.append((ss.pk,ss.name))
     
     username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
+    password = forms.CharField(widget=forms.PasswordInput,min_length=6)
+    confirm_password = forms.CharField(widget=forms.PasswordInput,min_length=6)
     first_name = forms.CharField()
     last_name = forms.CharField()
     email = forms.EmailField()

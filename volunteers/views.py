@@ -16,7 +16,7 @@ def index(request):
     if request.method == 'POST':
         vf = VolunteerForm(request.POST)
         if not vf.is_valid():
-            return render_to_response('call_for_volunteers.html',{'volunteer_form':vf})
+            return render_to_response('call_for_volunteers.html', {'volunteer_form':vf})
         else:
             user = save_user(request, vf)
             profile = save_user_profile(request, user, "volunteer")

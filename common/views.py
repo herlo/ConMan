@@ -26,28 +26,29 @@ def save_user(request, form):
     return user
 
 def save_volunteer(request):
-    volunteerinfo=Volunteer.objects.create(request=role, comments=form.cleaned_data['comments']),)    
+    volunteerinfo=Volunteer.objects.create(request=role, comments=form.cleaned_data['comments'])
     return VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
 
 def save_user_profile(request, user, type):
-   try:
-       profile = user.get_profile()
-   except :
-       print 'No Profile Found'
+    try:
+        profile = user.get_profile()
+    except:
+        print 'No Profile Found'
 
-   profile = UserProfile.objects.create(user=user,
-               bio = '', 
-           shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
-           job_title=form.cleaned_data['job_title'],
-           irc_nick=form.cleaned_data['irc_nick'], 
-           irc_server=form.cleaned_data['irc_server'],
-           common_channels=form.cleaned_data['irc_channels'],
+    profile = UserProfile.objects.create(user=user,
+            bio = '', 
+            shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
+            job_title=form.cleaned_data['job_title'],
+            irc_nick=form.cleaned_data['irc_nick'], 
+            irc_server=form.cleaned_data['irc_server'],
+            common_channels=form.cleaned_data['irc_channels'])
 
     if (type == "volunteer"):
         profile = save_volunteer(request)
+
     if (type == "speaker"):
         profile = save_speaker(request)
-        
+
     userinfo = dict()
     userinfo['name']= profile.get_full_name()
     userinfo['email']= profile.email
@@ -59,29 +60,9 @@ def test(request):
     presenter_form = PresenterForm()
     if request.method == 'POST':
         presenter_form = PresenterForm(request.POST)
-        if not presenter_form.is_valid():
-            render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
+    if not presenter_form.is_valid():
+        render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
-
-def login(request):
-    if request.method == 'POST':
-	login_form = LoginForm(request.POST)
-        #username = request.POST['username']
-        #password = request.POST['password']
-        user = authenticate(username=username, password=password)
-        if user is not None:
-            if user.is_active:
-                login(request, user)
-                # Redirect to a success page
-                print "I am redirecting you."
-            else:
-                # Return disabled account messege
-                print "you are disabled"
-        else:
-            # Return an invalid login error messege
-            print "invalid login"
-    else:
-        return render_to_response('login.html',{'login_form':login_form })
 
 def index(request):
     return render_to_response('index.html',None)
@@ -90,34 +71,33 @@ def contact(request):
     con_form = ContactUsForm()
     if request.method == 'POST':
         con_form = ContactUsForm(request.POST)
-        if con_form.is_valid:
-	    CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
-            admin = User.objects.filter(is_superuser__exact=True)
-            for u in admin:
-                u.email_user(con_form.data['subject'],con_form.data['message'],'utosc@utosf.org')
-                print u.username
-        
+    if con_form.is_valid:
+        CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
+        admin = User.objects.filter(is_superuser__exact=True)
+        for u in admin:
+            u.email_user(con_form.data['subject'],con_form.data['message'],'utosc@utosf.org')
+        print u.username
+
         return HttpResponseRedirect('/')
     else:
-	captcha = generate_sum_captcha()
-	con_form.data = {'captcha_uid':captcha.uid}
+        captcha = generate_sum_captcha()
+        con_form.data = {'captcha_uid':captcha.uid}
         return render_to_response('contactus.html',{'contactform':con_form, 'captcha':captcha})
-    
+
 @login_required
 def profile_show(request):
     if request.user.groups.get_query_set().get(id=1) == 'Presenters':
-	return render_to_response('profile_papers.html',{'user':request.user})
+        return render_to_response('profile_papers.html',{'user':request.user})
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
-	return render_to_response('profile_volunteers.html',{'user':request.user})
+        return render_to_response('profile_volunteers.html',{'user':request.user})
     user_data = request.user
     user_profile = request.user.get_profile()
     user_presentation = user_profile.presentation
-    #user_ 
-    #data = {'audience': user_presentation.audience,
-	    #'message': 'Hi there',
-	    #'sender': 'foo@example.com',
-	    #'cc_myself': True}
-    
+#data = {'audience': user_presentation.audience,
+    #'message': 'Hi there',
+    #'sender': 'foo@example.com',
+    #'cc_myself': True}
+
     pf = PresenterForm()
     pf.audience = user_presentation.audience
     pf.bio = user_profile.bio
@@ -133,11 +113,11 @@ def profile_show(request):
     pf.ss = user_profile.shirtsize
     
     if request.user.groups.get_query_set().get(id=1) == 'Presenters':
-	return render_to_response('edit_papers.html',{'pf':pf})
+        return render_to_response('edit_papers.html',{'pf':pf})
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
-	return render_to_response('edit_volunteers.html',{'user':request.user})
+        return render_to_response('edit_volunteers.html',{'user':request.user})
     return render_to_response('profile.html', None)
-
+    
 
 
 from common.models import CaptchaRequest

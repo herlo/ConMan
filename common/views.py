@@ -58,11 +58,17 @@ def contact(request):
     
 @login_required
 def profile_show(request):
-    temp= request.user.groups.get_query_set()
+    if request.user.groups.get_query_set().get(id=1) == 'Presenters':
+	
+	return render_to_response('profile_papers.html',{'user':user_loc})
+    elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
+	user_loc =request.user
+	return render_to_response('profile_volunteers.html',{'user':user_loc})
     
-    print request.user
-    print temp
-    print temp.get(id=1)
+    
+    #print request.user
+    #print temp
+    #print temp.get(id=1)
 
     return render_to_response('profile.html', None)
 

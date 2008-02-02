@@ -45,7 +45,7 @@ class Category(models.Model):
     'hot_or_not'
     '''
     name = models.CharField(max_length=150,db_index=True)
-    def __str__(self):
+    def __unicode__(self):
         return self.name
     
     class Admin:
@@ -61,7 +61,7 @@ class AudienceType(models.Model):
     'Legendary'
     '''
     name = models.CharField(max_length=150, db_index=True)
-    def __str__(self):
+    def __unicode__(self):
         return self.name
     class Admin:
         pass
@@ -73,7 +73,7 @@ class ShirtSize(models.Model):
       'XXL'
     '''
     name = models.CharField(max_length=150, db_index=True)
-    def __str__(self):
+    def __unicode__(self):
         return self.name
     class Admin:
         pass
@@ -85,7 +85,7 @@ class VolunteerRole(models.Model):
     'killa'
     '''
     name = models.CharField(max_length=150, db_index=True)
-    def __str__(self):
+    def __unicode__(self):
         return self.name
     class Admin:
         pass
@@ -117,7 +117,7 @@ class Volunteer(models.Model):
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
     
-    def __str__(self):
+    def __unicode__(self):
         return self.role.name + " Volunteer " + str(self.pk)
     class Admin:
         list_filter = ['role','request']
@@ -161,7 +161,7 @@ class Presentation(models.Model):
     longabstract = models.TextField()
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     title = models.CharField(max_length=150, db_index=True)
-    def __str__(self):
+    def __unicode__(self):
         return " Presentation " + str(self.pk)
     class Admin:
         list_filter = ['cat','audience']
@@ -250,7 +250,7 @@ class UserProfile(models.Model):
     irc_server = models.CharField(max_length=150, db_index=True)
     common_channels = models.CharField(max_length=500, db_index=True)
     
-    def __str__(self):
+    def __unicode__(self):
         return str(self.user)  + "'s profile" 
     
     class Admin:

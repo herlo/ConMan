@@ -22,7 +22,7 @@ def index(request):
             profile = save_user_profile(request, user, "volunteer")
             try:
                 user = authenticate(username=vf.cleaned_data['username'],password=vf.cleaned_data['password'])
-            except AuthenticationError e:
+            except e:
                 return render_to_response('login.html', {'error': e})
 
             userinfo = dict()

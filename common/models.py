@@ -254,7 +254,7 @@ class UserProfile(models.Model):
     irc_nick = models.CharField(max_length=100, db_index=True)
     irc_server = models.CharField(max_length=150, db_index=True)
     common_channels = models.CharField(max_length=500, db_index=True)
-    user_photo = models.ImageField(width_field=500,height_field=500,upload_to='user_photos',null=True,blank=True)
+    user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True)
     site = models.URLField(db_index=True, blank=True, null=True)
     
     def __unicode__(self):

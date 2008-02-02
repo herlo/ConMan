@@ -97,9 +97,9 @@ def index(request):
 	postdata['tags'] = p.tags
 	postdata['created'] = p.created
 	postdata['files'] = files
-	postdata['pic'] = request.user.get_profile().user_photo
-	postdata['username'] = request.user.full_name
-	postdata['email'] = request.user.email
+	postdata['pic'] = p.poster.get_profile().user_photo
+	postdata['username'] = p.poster.get_full_name()
+	postdata['email'] = p.poster.email
 	postlist.append(postdata)
     
     return render_to_response('index.html',{'posts':postlist,'context_instance':RequestContext(request)})

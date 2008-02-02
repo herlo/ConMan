@@ -261,7 +261,7 @@ class UserProfile(models.Model):
         return str(self.user)  + "'s profile" 
     
     class Admin:
-        pass
+        search_fields = ['job_title','common_channels','@bio','site']
 
 class PostTag(models.Model):
     name = models.CharField(max_length=150,db_index=True)
@@ -288,7 +288,7 @@ class NewPost(models.Model):
     content = models.TextField()
     title = models.CharField(max_length=200,db_index=True)
     class Admin:
-        pass
+        search_fields = ['title','@content']
 
     
 def future_datetime(**kw_args):

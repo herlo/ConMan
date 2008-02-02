@@ -2,43 +2,35 @@
 <django-objects version="1.0">
     <object pk="1" model="auth.group">
         <field type="CharField" name="name">Admin</field>
-        <field to="auth.permission" name="permissions" rel="ManyToManyRel"><object pk="1"></object><object pk="2"></object><object pk="3"></object><object pk="4"></object><object pk="5"></object><object pk="6"></object><object pk="7"></object><object pk="8"></object><object pk="9"></object><object pk="10"></object><object pk="11"></object><object pk="12"></object><object pk="13"></object><object pk="14"></object><object pk="15"></object><object pk="16"></object><object pk="17"></object><object pk="18"></object><object pk="19"></object><object pk="20"></object><object pk="21"></object><object pk="22"></object><object pk="23"></object><object pk="24"></object><object pk="25"></object><object pk="26"></object><object pk="27"></object><object pk="28"></object><object pk="29"></object><object pk="30"></object><object pk="31"></object><object pk="32"></object><object pk="33"></object><object pk="34"></object><object pk="35"></object><object pk="36"></object><object pk="37"></object><object pk="38"></object><object pk="39"></object><object pk="40"></object><object pk="41"></object><object pk="42"></object><object pk="43"></object><object pk="44"></object><object pk="45"></object><object pk="46"></object><object pk="47"></object><object pk="48"></object><object pk="49"></object><object pk="50"></object><object pk="51"></object><object pk="52"></object><object pk="53"></object><object pk="54"></object><object pk="55"></object><object pk="56"></object><object pk="57"></object></field>
-    </object>
-    <object pk="7" model="auth.group">
-        <field type="CharField" name="name">Attendee</field>
-        <field to="auth.permission" name="permissions" rel="ManyToManyRel"></field>
-    </object>
-    <object pk="2" model="auth.group">
-        <field type="CharField" name="name">Blogger</field>
-        <field to="auth.permission" name="permissions" rel="ManyToManyRel"></field>
+        <field to="auth.permission" name="permissions" rel="ManyToManyRel"><object pk="1"></object><object pk="2"></object><object pk="3"></object><object pk="4"></object><object pk="5"></object><object pk="6"></object><object pk="7"></object><object pk="8"></object><object pk="9"></object><object pk="10"></object><object pk="11"></object><object pk="12"></object><object pk="13"></object><object pk="14"></object><object pk="15"></object><object pk="16"></object><object pk="17"></object><object pk="18"></object><object pk="19"></object><object pk="20"></object><object pk="21"></object><object pk="22"></object><object pk="23"></object><object pk="24"></object><object pk="25"></object><object pk="26"></object><object pk="27"></object><object pk="28"></object><object pk="29"></object><object pk="30"></object><object pk="31"></object><object pk="32"></object><object pk="33"></object></field>
     </object>
     <object pk="4" model="auth.group">
-        <field type="CharField" name="name">Speaker</field>
+        <field type="CharField" name="name">Blogger</field>
         <field to="auth.permission" name="permissions" rel="ManyToManyRel"></field>
     </object>
     <object pk="5" model="auth.group">
         <field type="CharField" name="name">Sponsor</field>
         <field to="auth.permission" name="permissions" rel="ManyToManyRel"></field>
     </object>
-    <object pk="3" model="auth.group">
+    <object pk="2" model="auth.group">
         <field type="CharField" name="name">Staff</field>
         <field to="auth.permission" name="permissions" rel="ManyToManyRel"></field>
     </object>
-    <object pk="6" model="auth.group">
+    <object pk="3" model="auth.group">
         <field type="CharField" name="name">Volunteer</field>
         <field to="auth.permission" name="permissions" rel="ManyToManyRel"></field>
     </object>
     <object pk="1" model="auth.user">
-        <field type="CharField" name="username">utos</field>
+        <field type="CharField" name="username">conman</field>
         <field type="CharField" name="first_name"></field>
         <field type="CharField" name="last_name"></field>
         <field type="CharField" name="email">conman@utos.org</field>
-        <field type="CharField" name="password">sha1$0e138$dd7b9ef865aa6e0d8db290168f55df63413d3c97</field>
+        <field type="CharField" name="password">sha1$12b2b$06e61ab804990575a306f77fd9c612df67372227</field>
         <field type="BooleanField" name="is_staff">True</field>
         <field type="BooleanField" name="is_active">True</field>
         <field type="BooleanField" name="is_superuser">True</field>
-        <field type="DateTimeField" name="last_login">2008-02-02 07:00:53</field>
-        <field type="DateTimeField" name="date_joined">2008-02-02 06:59:40</field>
+        <field type="DateTimeField" name="last_login">2008-02-02 12:16:07</field>
+        <field type="DateTimeField" name="date_joined">2008-02-02 12:11:05</field>
         <field to="auth.group" name="groups" rel="ManyToManyRel"></field>
         <field to="auth.permission" name="user_permissions" rel="ManyToManyRel"></field>
     </object>
@@ -178,19 +170,19 @@
         <field type="CharField" name="codename">delete_category</field>
     </object>
     <object pk="28" model="auth.permission">
-        <field type="CharField" name="name">Can add post tag</field>
+        <field type="CharField" name="name">Can add speaker profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">10</field>
-        <field type="CharField" name="codename">add_posttag</field>
+        <field type="CharField" name="codename">add_speakerprofile</field>
     </object>
     <object pk="29" model="auth.permission">
-        <field type="CharField" name="name">Can change post tag</field>
+        <field type="CharField" name="name">Can change speaker profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">10</field>
-        <field type="CharField" name="codename">change_posttag</field>
+        <field type="CharField" name="codename">change_speakerprofile</field>
     </object>
     <object pk="30" model="auth.permission">
-        <field type="CharField" name="name">Can delete post tag</field>
+        <field type="CharField" name="name">Can delete speaker profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">10</field>
-        <field type="CharField" name="codename">delete_posttag</field>
+        <field type="CharField" name="codename">delete_speakerprofile</field>
     </object>
     <object pk="31" model="auth.permission">
         <field type="CharField" name="name">Can add post files</field>
@@ -208,131 +200,161 @@
         <field type="CharField" name="codename">delete_postfiles</field>
     </object>
     <object pk="34" model="auth.permission">
-        <field type="CharField" name="name">Can add user profile</field>
+        <field type="CharField" name="name">Can add post tag</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">12</field>
-        <field type="CharField" name="codename">add_userprofile</field>
+        <field type="CharField" name="codename">add_posttag</field>
     </object>
     <object pk="35" model="auth.permission">
-        <field type="CharField" name="name">Can change user profile</field>
+        <field type="CharField" name="name">Can change post tag</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">12</field>
-        <field type="CharField" name="codename">change_userprofile</field>
+        <field type="CharField" name="codename">change_posttag</field>
     </object>
     <object pk="36" model="auth.permission">
-        <field type="CharField" name="name">Can delete user profile</field>
+        <field type="CharField" name="name">Can delete post tag</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">12</field>
-        <field type="CharField" name="codename">delete_userprofile</field>
+        <field type="CharField" name="codename">delete_posttag</field>
     </object>
     <object pk="37" model="auth.permission">
-        <field type="CharField" name="name">Can add captcha request</field>
+        <field type="CharField" name="name">Can add user profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">13</field>
-        <field type="CharField" name="codename">add_captcharequest</field>
+        <field type="CharField" name="codename">add_userprofile</field>
     </object>
     <object pk="38" model="auth.permission">
-        <field type="CharField" name="name">Can change captcha request</field>
+        <field type="CharField" name="name">Can change user profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">13</field>
-        <field type="CharField" name="codename">change_captcharequest</field>
+        <field type="CharField" name="codename">change_userprofile</field>
     </object>
     <object pk="39" model="auth.permission">
-        <field type="CharField" name="name">Can delete captcha request</field>
+        <field type="CharField" name="name">Can delete user profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">13</field>
-        <field type="CharField" name="codename">delete_captcharequest</field>
+        <field type="CharField" name="codename">delete_userprofile</field>
     </object>
     <object pk="40" model="auth.permission">
-        <field type="CharField" name="name">Can add shirt size</field>
+        <field type="CharField" name="name">Can add captcha request</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
-        <field type="CharField" name="codename">add_shirtsize</field>
+        <field type="CharField" name="codename">add_captcharequest</field>
     </object>
     <object pk="41" model="auth.permission">
-        <field type="CharField" name="name">Can change shirt size</field>
+        <field type="CharField" name="name">Can change captcha request</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
-        <field type="CharField" name="codename">change_shirtsize</field>
+        <field type="CharField" name="codename">change_captcharequest</field>
     </object>
     <object pk="42" model="auth.permission">
-        <field type="CharField" name="name">Can delete shirt size</field>
+        <field type="CharField" name="name">Can delete captcha request</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
-        <field type="CharField" name="codename">delete_shirtsize</field>
+        <field type="CharField" name="codename">delete_captcharequest</field>
     </object>
     <object pk="43" model="auth.permission">
-        <field type="CharField" name="name">Can add audience type</field>
+        <field type="CharField" name="name">Can add shirt size</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
-        <field type="CharField" name="codename">add_audiencetype</field>
+        <field type="CharField" name="codename">add_shirtsize</field>
     </object>
     <object pk="44" model="auth.permission">
-        <field type="CharField" name="name">Can change audience type</field>
+        <field type="CharField" name="name">Can change shirt size</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
-        <field type="CharField" name="codename">change_audiencetype</field>
+        <field type="CharField" name="codename">change_shirtsize</field>
     </object>
     <object pk="45" model="auth.permission">
-        <field type="CharField" name="name">Can delete audience type</field>
+        <field type="CharField" name="name">Can delete shirt size</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
-        <field type="CharField" name="codename">delete_audiencetype</field>
+        <field type="CharField" name="codename">delete_shirtsize</field>
     </object>
     <object pk="46" model="auth.permission">
-        <field type="CharField" name="name">Can add new post</field>
+        <field type="CharField" name="name">Can add volunteer profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">16</field>
-        <field type="CharField" name="codename">add_newpost</field>
+        <field type="CharField" name="codename">add_volunteerprofile</field>
     </object>
     <object pk="47" model="auth.permission">
-        <field type="CharField" name="name">Can change new post</field>
+        <field type="CharField" name="name">Can change volunteer profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">16</field>
-        <field type="CharField" name="codename">change_newpost</field>
+        <field type="CharField" name="codename">change_volunteerprofile</field>
     </object>
     <object pk="48" model="auth.permission">
-        <field type="CharField" name="name">Can delete new post</field>
+        <field type="CharField" name="name">Can delete volunteer profile</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">16</field>
-        <field type="CharField" name="codename">delete_newpost</field>
+        <field type="CharField" name="codename">delete_volunteerprofile</field>
     </object>
     <object pk="49" model="auth.permission">
-        <field type="CharField" name="name">Can add volunteer role</field>
+        <field type="CharField" name="name">Can add audience type</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
-        <field type="CharField" name="codename">add_volunteerrole</field>
+        <field type="CharField" name="codename">add_audiencetype</field>
     </object>
     <object pk="50" model="auth.permission">
-        <field type="CharField" name="name">Can change volunteer role</field>
+        <field type="CharField" name="name">Can change audience type</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
-        <field type="CharField" name="codename">change_volunteerrole</field>
+        <field type="CharField" name="codename">change_audiencetype</field>
     </object>
     <object pk="51" model="auth.permission">
-        <field type="CharField" name="name">Can delete volunteer role</field>
+        <field type="CharField" name="name">Can delete audience type</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
-        <field type="CharField" name="codename">delete_volunteerrole</field>
+        <field type="CharField" name="codename">delete_audiencetype</field>
     </object>
     <object pk="52" model="auth.permission">
-        <field type="CharField" name="name">Can add presentation</field>
+        <field type="CharField" name="name">Can add new post</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">18</field>
-        <field type="CharField" name="codename">add_presentation</field>
+        <field type="CharField" name="codename">add_newpost</field>
     </object>
     <object pk="53" model="auth.permission">
-        <field type="CharField" name="name">Can change presentation</field>
+        <field type="CharField" name="name">Can change new post</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">18</field>
-        <field type="CharField" name="codename">change_presentation</field>
+        <field type="CharField" name="codename">change_newpost</field>
     </object>
     <object pk="54" model="auth.permission">
-        <field type="CharField" name="name">Can delete presentation</field>
+        <field type="CharField" name="name">Can delete new post</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">18</field>
-        <field type="CharField" name="codename">delete_presentation</field>
+        <field type="CharField" name="codename">delete_newpost</field>
     </object>
     <object pk="55" model="auth.permission">
-        <field type="CharField" name="name">Can add volunteer</field>
+        <field type="CharField" name="name">Can add volunteer role</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">19</field>
-        <field type="CharField" name="codename">add_volunteer</field>
+        <field type="CharField" name="codename">add_volunteerrole</field>
     </object>
     <object pk="56" model="auth.permission">
-        <field type="CharField" name="name">Can change volunteer</field>
+        <field type="CharField" name="name">Can change volunteer role</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">19</field>
-        <field type="CharField" name="codename">change_volunteer</field>
+        <field type="CharField" name="codename">change_volunteerrole</field>
     </object>
     <object pk="57" model="auth.permission">
-        <field type="CharField" name="name">Can delete volunteer</field>
+        <field type="CharField" name="name">Can delete volunteer role</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">19</field>
+        <field type="CharField" name="codename">delete_volunteerrole</field>
+    </object>
+    <object pk="58" model="auth.permission">
+        <field type="CharField" name="name">Can add presentation</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">20</field>
+        <field type="CharField" name="codename">add_presentation</field>
+    </object>
+    <object pk="59" model="auth.permission">
+        <field type="CharField" name="name">Can change presentation</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">20</field>
+        <field type="CharField" name="codename">change_presentation</field>
+    </object>
+    <object pk="60" model="auth.permission">
+        <field type="CharField" name="name">Can delete presentation</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">20</field>
+        <field type="CharField" name="codename">delete_presentation</field>
+    </object>
+    <object pk="61" model="auth.permission">
+        <field type="CharField" name="name">Can add volunteer</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">21</field>
+        <field type="CharField" name="codename">add_volunteer</field>
+    </object>
+    <object pk="62" model="auth.permission">
+        <field type="CharField" name="name">Can change volunteer</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">21</field>
+        <field type="CharField" name="codename">change_volunteer</field>
+    </object>
+    <object pk="63" model="auth.permission">
+        <field type="CharField" name="name">Can delete volunteer</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">21</field>
         <field type="CharField" name="codename">delete_volunteer</field>
     </object>
-    <object pk="15" model="contenttypes.contenttype">
+    <object pk="17" model="contenttypes.contenttype">
         <field type="CharField" name="name">audience type</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">audiencetype</field>
     </object>
-    <object pk="13" model="contenttypes.contenttype">
+    <object pk="14" model="contenttypes.contenttype">
         <field type="CharField" name="name">captcha request</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">captcharequest</field>
@@ -362,7 +384,7 @@
         <field type="CharField" name="app_label">auth</field>
         <field type="CharField" name="model">message</field>
     </object>
-    <object pk="16" model="contenttypes.contenttype">
+    <object pk="18" model="contenttypes.contenttype">
         <field type="CharField" name="name">new post</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">newpost</field>
@@ -377,12 +399,12 @@
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">postfiles</field>
     </object>
-    <object pk="10" model="contenttypes.contenttype">
+    <object pk="12" model="contenttypes.contenttype">
         <field type="CharField" name="name">post tag</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">posttag</field>
     </object>
-    <object pk="18" model="contenttypes.contenttype">
+    <object pk="20" model="contenttypes.contenttype">
         <field type="CharField" name="name">presentation</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">presentation</field>
@@ -392,7 +414,7 @@
         <field type="CharField" name="app_label">sessions</field>
         <field type="CharField" name="model">session</field>
     </object>
-    <object pk="14" model="contenttypes.contenttype">
+    <object pk="15" model="contenttypes.contenttype">
         <field type="CharField" name="name">shirt size</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">shirtsize</field>
@@ -402,56 +424,49 @@
         <field type="CharField" name="app_label">sites</field>
         <field type="CharField" name="model">site</field>
     </object>
+    <object pk="10" model="contenttypes.contenttype">
+        <field type="CharField" name="name">speaker profile</field>
+        <field type="CharField" name="app_label">common</field>
+        <field type="CharField" name="model">speakerprofile</field>
+    </object>
     <object pk="3" model="contenttypes.contenttype">
         <field type="CharField" name="name">user</field>
         <field type="CharField" name="app_label">auth</field>
         <field type="CharField" name="model">user</field>
     </object>
-    <object pk="12" model="contenttypes.contenttype">
+    <object pk="13" model="contenttypes.contenttype">
         <field type="CharField" name="name">user profile</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">userprofile</field>
     </object>
-    <object pk="19" model="contenttypes.contenttype">
+    <object pk="21" model="contenttypes.contenttype">
         <field type="CharField" name="name">volunteer</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">volunteer</field>
     </object>
-    <object pk="17" model="contenttypes.contenttype">
+    <object pk="16" model="contenttypes.contenttype">
+        <field type="CharField" name="name">volunteer profile</field>
+        <field type="CharField" name="app_label">common</field>
+        <field type="CharField" name="model">volunteerprofile</field>
+    </object>
+    <object pk="19" model="contenttypes.contenttype">
         <field type="CharField" name="name">volunteer role</field>
         <field type="CharField" name="app_label">common</field>
         <field type="CharField" name="model">volunteerrole</field>
     </object>
-    <object pk="bd23bc7ebdbf00abea15eaa8926ad42e" model="sessions.session">
+    <object pk="5a7c858b82cba75a586d2049f4dbc154" model="sessions.session">
         <field type="TextField" name="session_data">gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k
 cy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwF1LjhlZmY2ZDhjOGFiZWQ2MjVhNTEw
-NGQ2MWMyYmYyZjdk</field>
-        <field type="DateTimeField" name="expire_date">2008-02-16 07:00:53</field>
+NGQ2MWMyYmYyZjdk
+</field>
+        <field type="DateTimeField" name="expire_date">2008-02-16 12:16:08</field>
     </object>
     <object pk="1" model="sites.site">
         <field type="CharField" name="domain">example.com</field>
         <field type="CharField" name="name">example.com</field>
     </object>
-    <object pk="28" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:24:45</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
-        <field type="TextField" name="object_id">7</field>
-        <field type="CharField" name="object_repr">Attendee</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
-        <field type="TextField" name="change_message"></field>
-    </object>
     <object pk="27" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:24:35</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
-        <field type="TextField" name="object_id">6</field>
-        <field type="CharField" name="object_repr">Volunteer</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
-        <field type="TextField" name="change_message"></field>
-    </object>
-    <object pk="26" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:24:12</field>
+        <field type="DateTimeField" name="action_time">2008-02-02 12:30:34</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
         <field type="TextField" name="object_id">5</field>
@@ -459,170 +474,152 @@ NGQ2MWMyYmYyZjdk</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="25" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:24:04</field>
+    <object pk="26" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:29:51</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
-        <field type="TextField" name="object_id">4</field>
-        <field type="CharField" name="object_repr">Speaker</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="object_id">6</field>
+        <field type="CharField" name="object_repr">Usher</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">3</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
+    <object pk="25" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:29:37</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
+        <field type="TextField" name="object_id">5</field>
+        <field type="CharField" name="object_repr">RoomManager</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">3</field>
         <field type="TextField" name="change_message"></field>
     </object>
     <object pk="24" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:23:56</field>
+        <field type="DateTimeField" name="action_time">2008-02-02 12:29:22</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
-        <field type="TextField" name="object_id">3</field>
-        <field type="CharField" name="object_repr">Staff</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
-        <field type="TextField" name="change_message"></field>
+        <field type="TextField" name="object_id">4</field>
+        <field type="CharField" name="object_repr">Blogger</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">2</field>
+        <field type="TextField" name="change_message">Changed name.</field>
     </object>
     <object pk="23" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:23:46</field>
+        <field type="DateTimeField" name="action_time">2008-02-02 12:29:05</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
-        <field type="TextField" name="object_id">2</field>
-        <field type="CharField" name="object_repr">Blogger</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
-        <field type="TextField" name="change_message"></field>
-    </object>
-    <object pk="22" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:23:32</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
-        <field type="TextField" name="object_id">1</field>
-        <field type="CharField" name="object_repr">Admin</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
-        <field type="TextField" name="change_message"></field>
-    </object>
-    <object pk="21" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:05:59</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
-        <field type="TextField" name="object_id">3</field>
-        <field type="CharField" name="object_repr">Check In</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
-        <field type="TextField" name="change_message"></field>
-    </object>
-    <object pk="20" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:05:50</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
-        <field type="TextField" name="object_id">2</field>
+        <field type="TextField" name="object_id">6</field>
         <field type="CharField" name="object_repr">Usher</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="19" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:05:44</field>
+    <object pk="22" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:28:59</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
-        <field type="TextField" name="object_id">1</field>
-        <field type="CharField" name="object_repr">Room Manager</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
+        <field type="TextField" name="object_id">5</field>
+        <field type="CharField" name="object_repr">RoomManager</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
+    <object pk="21" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:28:49</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
+        <field type="TextField" name="object_id">4</field>
+        <field type="CharField" name="object_repr">Blooger</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
+    <object pk="20" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:28:43</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
+        <field type="TextField" name="object_id">3</field>
+        <field type="CharField" name="object_repr">Volunteer</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
+    <object pk="19" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:28:34</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">2</field>
+        <field type="TextField" name="object_id">2</field>
+        <field type="CharField" name="object_repr">Staff</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
     <object pk="18" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:05:21</field>
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:41</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
-        <field type="TextField" name="object_id">4</field>
-        <field type="CharField" name="object_repr">XL</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">2</field>
-        <field type="TextField" name="change_message">Changed name.</field>
-    </object>
-    <object pk="17" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:05:05</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
-        <field type="TextField" name="object_id">6</field>
-        <field type="CharField" name="object_repr">3XL</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">2</field>
-        <field type="TextField" name="change_message">Changed name.</field>
-    </object>
-    <object pk="16" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:55</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
-        <field type="TextField" name="object_id">7</field>
-        <field type="CharField" name="object_repr">4XL</field>
-        <field type="PositiveSmallIntegerField" name="action_flag">2</field>
-        <field type="TextField" name="change_message">Changed name.</field>
-    </object>
-    <object pk="15" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:44</field>
-        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">8</field>
         <field type="CharField" name="object_repr">5XL</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="14" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:38</field>
+    <object pk="17" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:37</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">7</field>
-        <field type="CharField" name="object_repr">4Xl</field>
+        <field type="CharField" name="object_repr">4XL</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="13" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:30</field>
+    <object pk="16" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:33</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">6</field>
-        <field type="CharField" name="object_repr">3Xl</field>
+        <field type="CharField" name="object_repr">3XL</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="12" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:24</field>
+    <object pk="15" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:30</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">5</field>
         <field type="CharField" name="object_repr">2XL</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="11" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:14</field>
+    <object pk="14" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:26</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">4</field>
-        <field type="CharField" name="object_repr">Xl</field>
+        <field type="CharField" name="object_repr">XL</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="10" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:08</field>
+    <object pk="13" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:23</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">3</field>
         <field type="CharField" name="object_repr">L</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="9" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:04:02</field>
+    <object pk="12" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:20</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">2</field>
         <field type="CharField" name="object_repr">M</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="8" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:03:57</field>
+    <object pk="11" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:20:17</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">14</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
         <field type="TextField" name="object_id">1</field>
         <field type="CharField" name="object_repr">S</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="7" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:02:34</field>
+    <object pk="10" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:19:16</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">9</field>
         <field type="TextField" name="object_id">4</field>
@@ -630,17 +627,17 @@ NGQ2MWMyYmYyZjdk</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="6" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:02:26</field>
+    <object pk="9" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:19:11</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">9</field>
         <field type="TextField" name="object_id">3</field>
-        <field type="CharField" name="object_repr">Education</field>
+        <field type="CharField" name="object_repr">Business</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="5" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:02:19</field>
+    <object pk="8" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:18:45</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">9</field>
         <field type="TextField" name="object_id">2</field>
@@ -648,50 +645,77 @@ NGQ2MWMyYmYyZjdk</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="4" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:02:10</field>
+    <object pk="7" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:17:52</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
         <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">9</field>
         <field type="TextField" name="object_id">1</field>
-        <field type="CharField" name="object_repr">Business</field>
+        <field type="CharField" name="object_repr">Education</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="3" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:01:39</field>
+    <object pk="6" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:17:35</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
         <field type="TextField" name="object_id">3</field>
         <field type="CharField" name="object_repr">Advanced</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="2" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:01:24</field>
+    <object pk="5" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:17:28</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
         <field type="TextField" name="object_id">2</field>
         <field type="CharField" name="object_repr">Intermediate</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
-    <object pk="1" model="admin.logentry">
-        <field type="DateTimeField" name="action_time">2008-02-02 07:01:12</field>
+    <object pk="4" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:17:23</field>
         <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
-        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">15</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">17</field>
         <field type="TextField" name="object_id">1</field>
         <field type="CharField" name="object_repr">Beginner</field>
         <field type="PositiveSmallIntegerField" name="action_flag">1</field>
         <field type="TextField" name="change_message"></field>
     </object>
+    <object pk="3" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:17:07</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">19</field>
+        <field type="TextField" name="object_id">3</field>
+        <field type="CharField" name="object_repr">Check-In</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
+    <object pk="2" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:16:59</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">19</field>
+        <field type="TextField" name="object_id">2</field>
+        <field type="CharField" name="object_repr">Usher</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
+    <object pk="1" model="admin.logentry">
+        <field type="DateTimeField" name="action_time">2008-02-02 12:16:53</field>
+        <field to="auth.user" name="user" rel="ManyToOneRel">1</field>
+        <field to="contenttypes.contenttype" name="content_type" rel="ManyToOneRel">19</field>
+        <field type="TextField" name="object_id">1</field>
+        <field type="CharField" name="object_repr">Room Manager</field>
+        <field type="PositiveSmallIntegerField" name="action_flag">1</field>
+        <field type="TextField" name="change_message"></field>
+    </object>
     <object pk="1" model="common.category">
-        <field type="CharField" name="name">Business</field>
+        <field type="CharField" name="name">Education</field>
     </object>
     <object pk="2" model="common.category">
         <field type="CharField" name="name">Technology</field>
     </object>
     <object pk="3" model="common.category">
-        <field type="CharField" name="name">Education</field>
+        <field type="CharField" name="name">Business</field>
     </object>
     <object pk="4" model="common.category">
         <field type="CharField" name="name">Community</field>
@@ -736,6 +760,6 @@ NGQ2MWMyYmYyZjdk</field>
         <field type="CharField" name="name">Usher</field>
     </object>
     <object pk="3" model="common.volunteerrole">
-        <field type="CharField" name="name">Check In</field>
+        <field type="CharField" name="name">Check-In</field>
     </object>
 </django-objects>

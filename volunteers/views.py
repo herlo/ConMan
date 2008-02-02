@@ -42,7 +42,7 @@ def index(request):
 def submitted(request, v_id):
     v = get_object_or_404(Volunteer, pk=v_id)
     u = User.objects.get(id=v_id)
-    m = Static.vol_email_msg
+    m = Static.VOL_EMAIL_MSG
     v.email_user(con_form.data['subject'], m, u.email)
     return render_to_response('volunteer_submitted.html', {'user': v.user})
 

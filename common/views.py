@@ -2,7 +2,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost
+from common.models import User,SpeakerProfile,VolunteerProfile,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost,Category, AudienceType
 from common.forms import *
 from common.config import Static
 from django.contrib.auth import authenticate, login
@@ -27,42 +27,42 @@ def save_user(request, form):
     luser.save()
     return user
 
-def save_speaker(request, form):
+def save_speaker(request, user, form):
     pres = Presentation.objects.create(
-        cat = form.cleaned_data['category'],
-        audience = form.cleaned_data['audience'],
-        abstract = form.cleaned_data['abstract'],
-        longabstract = form.cleaned_data['longabstract'],
-        status = form.cleaned_data['Pending'],
+        cat = Category(form.cleaned_data['category']),
+        audience = AudienceType(form.cleaned_data['audience']),
+        short_abstract = form.cleaned_data['short_abstract'],
+        #long_abstract = form.cleaned_data['longabstract'],
+        status = 'Pending',
         title = form.cleaned_data['title'],
 #        slides = form.clean_data(upload_to="slides",blank=True,null=True) 
     )
     pres.save()
 
-    return UserProfile.objects.create(user=user,
-      bio = pf.cleaned_data['bio'],
+    return SpeakerProfile.objects.create(user=user,
+      bio = form.cleaned_data['bio'],
       presentation=pres,
-      shirtsize=ShirtSize.objects.get(id=pf.cleaned_data['shirt_size']),
-      job_title=pf.cleaned_data['job_title'],
-      irc_nick=pf.cleaned_data['irc_nick'],
-      irc_server=pf.cleaned_data['irc_server'],
-      common_channels=pf.cleaned_data['irc_channels'])
+      shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
+      job_title=form.cleaned_data['job_title'],
+      irc_nick=form.cleaned_data['irc_nick'],
+      irc_server=form.cleaned_data['irc_server'],
+      common_channels=form.cleaned_data['irc_channels'])
 
-def save_volunteer(form):
+def save_volunteer(request, form):
     role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
-#    UserProfile.objects.create(request=role, comments=form.cleaned_data['comments']),)    
-
+    VolunteerProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
 def save_user_profile(request, user, form, type):
     try:
 	    profile = user.get_profile()
-    except :
+    except:
     	print 'No Profile Found'
 
     if (type == "volunteer"):
         profile = save_volunteer(request, form)
-
-    if (type == "speaker"):
-        profile = save_speaker(request, form)
+    elif (type == "speaker"):
+        profile = save_speaker(request, user, form)
+    else:
+        return render_to_response('error.html', {'error': 'No User Profile could be created'})
 
     userinfo = dict()
     userinfo['name']= profile.get_full_name()
@@ -72,12 +72,13 @@ def save_user_profile(request, user, form, type):
 
 def test(request):
     volunteer_form = VolunteerForm()
-    presenter_form = PresenterForm()
+    presenter_form = SpeakerForm()
     if request.method == 'POST':
-        presenter_form = PresenterForm(request.POST)
+        presenter_form = SpeakerForm(request.POST)
     if not presenter_form.is_valid():
         render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
+
 @login_required
 def index(request):
     posts = NewPost.objects.order_by('display_date')[:10]
@@ -134,7 +135,7 @@ def profile_show(request):
     #'sender': 'foo@example.com',
     #'cc_myself': True}
 
-    pf = PresenterForm()
+    pf = SpeakerForm()
     pf.audience = user_presentation.audience
     pf.bio = user_profile.bio
     pf.cat = user_presentation.cat
@@ -153,8 +154,6 @@ def profile_show(request):
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
         return render_to_response('edit_volunteers.html',{'user':request.user})
     return render_to_response('profile.html', None)
-    
-
 
 from common.models import CaptchaRequest
 from cStringIO import StringIO

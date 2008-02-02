@@ -157,8 +157,8 @@ class Presentation(models.Model):
     '''
     cat = models.ForeignKey(Category)
     audience = models.ForeignKey(AudienceType)
-    abstract = models.CharField(max_length=500)
-    longabstract = models.TextField()
+    short_abstract = models.CharField(max_length=500)
+    long_abstract = models.TextField()
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     title = models.CharField(max_length=150, db_index=True)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
@@ -168,7 +168,7 @@ class Presentation(models.Model):
         return " Presentation " + str(self.pk)
     class Admin:
         list_filter = ['cat','audience','status']
-	list_display = ('title','abstract', 'status')
+	list_display = ('title','short_abstract', 'long_abstract', 'status')
 	search_fields = ['@longabstract','status','@title','foreign_key__cat']
 
     
@@ -247,10 +247,9 @@ class UserProfile(models.Model):
 
     user = models.ForeignKey(User,unique=True)
     bio = models.TextField()
-    presentation = models.ForeignKey(Presentation, blank=True)
+    
     #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     shirtsize = models.ForeignKey(ShirtSize)
-    volunteerinfo = models.ForeignKey(Volunteer, blank=True)
     job_title = models.CharField(max_length=200, db_index=True)
     irc_nick = models.CharField(max_length=100, db_index=True)
     irc_server = models.CharField(max_length=150, db_index=True)
@@ -263,6 +262,12 @@ class UserProfile(models.Model):
     
     class Admin:
         search_fields = ['job_title','common_channels','@bio','site']
+
+class SpeakerProfile(UserProfile):
+    presentation = models.ForeignKey(Presentation, null=True, blank=True)
+
+class VolunteerProfile(UserProfile):
+    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True)
 
 class PostTag(models.Model):
     name = models.CharField(max_length=150,db_index=True)

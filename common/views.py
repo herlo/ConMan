@@ -66,8 +66,8 @@ def save_user_profile(request, user, form, type):
         return render_to_response('error.html', {'error': 'No User Profile could be created'})
 
     userinfo = dict()
-    userinfo['name']= profile.get_full_name()
-    userinfo['email']= profile.email
+    userinfo['name']= user.get_full_name()
+    userinfo['email']= user.email
     print "userinfo: " + str(profile) 
     return userinfo
 

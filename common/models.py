@@ -244,16 +244,16 @@ class UserProfile(models.Model):
 
     user = models.ForeignKey(User,unique=True)
     bio = models.TextField()
-    presentation = models.ForeignKey(Presentation,blank=True, null=True)
+    presentation = models.ForeignKey(Presentation, blank=True)
     #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     shirtsize = models.ForeignKey(ShirtSize)
-    volunteerinfo = models.ForeignKey(Volunteer,blank=True, null=True)
+    volunteerinfo = models.ForeignKey(Volunteer, blank=True)
     job_title = models.CharField(max_length=200, db_index=True)
     irc_nick = models.CharField(max_length=100, db_index=True)
     irc_server = models.CharField(max_length=150, db_index=True)
     common_channels = models.CharField(max_length=500, db_index=True)
-    user_photo = models.ImageField(width_field=500,height_field=500,upload_to='user_photos')
-    site = models.URLField(db_index=True, blank=True, null=True)
+    user_photo = models.ImageField(width_field=500,height_field=500,upload_to='user_photos',null=True,blank=True)
+    site = models.URLField(db_index=True, blank=True)
     
     def __unicode__(self):
         return str(self.user)  + "'s profile" 
@@ -352,7 +352,5 @@ class CaptchaRequest(models.Model):
 	    captcha = CaptchaRequest(text=text,request_path=request_path,answer=answer)
 	    captcha.save()
 	    return captcha
-	
-
 
 	

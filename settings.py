@@ -105,3 +105,6 @@ FONT_PATH = "/usr/share/fonts/truetype/ttf-bitstream-vera/VeraBd.ttf"
 FONT_SIZE = 16
 # Timeout in minutes
 TIMEOUT = 15
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/profile/'

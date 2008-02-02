@@ -1,4 +1,5 @@
 # Create your views here.
+from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost
@@ -26,13 +27,23 @@ def save_user(request, form):
 
     return user
 
-def save_volunteer(request):
-    volunteerinfo=Volunteer.objects.create(request=role, comments=form.cleaned_data['comments'])
-    return VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
+def save_speaker(form):
+   profile = UserProfile.objects.create(user=user,
+      bio = pf.cleaned_data['bio'],
+      presentation=presentation,
+      shirtsize=ShirtSize.objects.get(id=pf.cleaned_data['shirt_size']),
+      job_title=pf.cleaned_data['job_title'],
+      irc_nick=pf.cleaned_data['irc_nick'],
+      irc_server=pf.cleaned_data['irc_server'],
+      common_channels=pf.cleaned_data['irc_channels'])
+
+def save_volunteer(form):
+    role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
+#    UserProfile.objects.create(request=role, comments=form.cleaned_data['comments']),)    
 
 def save_user_profile(request, user, type):
     try:
-	profile = user.get_profile()
+	    profile = user.get_profile()
     except :
 	print 'No Profile Found'
 
@@ -112,7 +123,7 @@ def profile_show(request):
     user_data = request.user
     user_profile = request.user.get_profile()
     user_presentation = user_profile.presentation
-#data = {'audience': user_presentation.audience,
+    #data = {'audience': user_presentation.audience,
     #'message': 'Hi there',
     #'sender': 'foo@example.com',
     #'cc_myself': True}

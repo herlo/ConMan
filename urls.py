@@ -8,7 +8,8 @@ urlpatterns = patterns('',
     # Uncomment this for admin:
     #Login page
     #(r'^login/', 'common.views.login'),
-    (r'^login$', 'django.contrib.auth.views.login', {'template_name': 'registration/login.html'}),
+    (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'registration/login.html'}),
+
     (r'^logout$', 'django.contrib.auth.views.logout'),
     (r'^captcha/(?P<token_uid>\w+).jpg$','common.views.captcha_image'),
     (r'^admin/', include('django.contrib.admin.urls')),
@@ -17,7 +18,7 @@ urlpatterns = patterns('',
     (r'^volunteer$', 'volunteers.views.index'),
     (r'^profile$', 'common.views.profile_show'),
     (r'^speaker$', 'speakers.views.index'),
-       (r'^contact$', 'common.views.contact'),
+    (r'^contact$', 'common.views.contact'),
     (r'$', 'common.views.index'),
  
     #(r'^speaker/submitted/$', 'speakers.views.submitted'),

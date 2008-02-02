@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from common.models import Volunteer, UserProfile, VolunteerRole, ShirtSize
 from common.forms import VolunteerForm
+from common.config import Static
 from django.contrib.auth.models import User,UserManager
 from django.contrib.auth import authenticate,login
 
@@ -56,4 +57,9 @@ def index(request):
 
 def submitted(request, v_id):
     v = get_object_or_404(Volunteer, pk=v_id)
+    u = User.objects.get(id=v_id)
+    m = Static.vol_email_msg
+    v.email_user(con_form.data['subject'], m, u.email)
     return render_to_response('volunteer_submitted.html', {'user': v.user})
+
+

@@ -54,8 +54,6 @@ def contact(request):
 	con_form.data = {'captcha_uid':captcha.uid}
         return render_to_response('contactus.html',{'contactform':con_form, 'captcha':captcha})
     
-    
-
 from common.models import CaptchaRequest
 from cStringIO import StringIO
 import random

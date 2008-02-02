@@ -1,5 +1,6 @@
 from common.models import *
 from django import newforms as forms
+from django.newforms import ValidationError
 
 class VolunteerForm(forms.Form):
     vf_objects = list()
@@ -23,6 +24,7 @@ class VolunteerForm(forms.Form):
     #role = forms.ChoiceField(vf_objects)
     requested_role = forms.ChoiceField(vf_objects)
     comments = forms.CharField(widget=forms.Textarea,min_length=1,max_length=1000,required=False,help_text="Please let us know about any special requests or circumstances.")
+
     def clean(self):
         if self.cleaned_data.get('password') and self.cleaned_data.get('confirm_password') and self.cleaned_data['password'] != self.cleaned_data['confirm_password']:
             raise ValidationError(u'Please make sure your passwords match.')

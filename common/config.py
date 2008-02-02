@@ -2,7 +2,6 @@
 
 class Static:
   
-  vol_email_msg = "This is the confirmation email for the volunteer configuration"
-
+  VOL_EMAIL_MSG = "This is the confirmation email for the volunteer configuration"
 
 

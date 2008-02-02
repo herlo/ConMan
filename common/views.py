@@ -6,6 +6,7 @@ from common.forms import *
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 def save_user(request, form):
     if request.user.is_anonymous():
@@ -31,7 +32,6 @@ def save_volunteer(request):
 
 def save_user_profile(request, user, type):
     try:
-<<<<<<< HEAD:common/views.py
 	profile = user.get_profile()
     except :
 	print 'No Profile Found'
@@ -67,8 +67,24 @@ def test(request):
 
 def index(request):
     posts = NewPost.objects.order_by('display_date')[:10]
+    postlist = list()
+    for p in posts:
+	postdata = dict()
+	files = list()
+	for f in p.files.get_query_set():
+	    fileobj = dict()
+	    fileobj['name'] = f.display_name
+	    fileobj['fileurl'] = f.file.url
+	    files.append(f)
+	
+	postdata['title'] = p.title
+	postdata['content'] = p.content
+	postdata['tags'] = p.tags
+	postdata['created'] = p.created
+	postdata['files'] = files
+	postlist.append(postdata)
     
-    return render_to_response('index.html',{'posts':posts})
+    return render_to_response('index.html',{'posts':postlist,'context_instance':RequestContext(request)})
 
 def contact(request):
     con_form = ContactUsForm()

@@ -161,6 +161,9 @@ class Presentation(models.Model):
     longabstract = models.TextField()
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     title = models.CharField(max_length=150, db_index=True)
+    slides = models.FileField(upload_to="slides")
+
+    
     def __unicode__(self):
         return " Presentation " + str(self.pk)
     class Admin:
@@ -240,7 +243,7 @@ class UserProfile(models.Model):
     '''
 
     user = models.ForeignKey(User,unique=True)
-    bio = models.CharField(max_length=500)
+    bio = models.TextField()
     presentation = models.ForeignKey(Presentation,blank=True, null=True)
     #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     shirtsize = models.ForeignKey(ShirtSize)
@@ -249,6 +252,8 @@ class UserProfile(models.Model):
     irc_nick = models.CharField(max_length=100, db_index=True)
     irc_server = models.CharField(max_length=150, db_index=True)
     common_channels = models.CharField(max_length=500, db_index=True)
+    user_photo = models.ImageField(width_field=500,height_field=500,upload_to='user_photos')
+    site = models.URLField(db_index=True, blank=True, null=True)
     
     def __unicode__(self):
         return str(self.user)  + "'s profile" 
@@ -256,7 +261,34 @@ class UserProfile(models.Model):
     class Admin:
         pass
 
+class PostTag(models.Model):
+    name = models.CharField(max_length=150,db_index=True)
+    created = models.DateTimeField()
+    
+    class Admin:
+        pass
+    
+class PostFiles(models.Model):
+    display_name = models.CharField(max_length=300,db_index=True)
+    upload_date = models.DateTimeField()
+    uploader = models.ForeignKey(User)
+    posts = models.ManyToManyField('NewPost')
+    file = models.FileField(upload_to="post_files")
 
+    class Admin:
+        pass
+class NewPost(models.Model): 
+    poster = models.ForeignKey(User)
+    created = models.DateTimeField()
+    display_date = models.DateTimeField()
+    tags = models.ManyToOneRel(PostTag,'Tag',edit_inline=True)
+    files = models.ManyToManyField(PostFiles,blank=True, null=True)
+    content = models.TextField()
+    title = models.CharField(max_length=200,db_index=True)
+    class Admin:
+        pass
+
+    
 def future_datetime(**kw_args):
 	def on_call():
 		return datetime.now()+timedelta(**kw_args)
@@ -322,3 +354,5 @@ class CaptchaRequest(models.Model):
 	    return captcha
 	
 
+
+	

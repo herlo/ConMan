@@ -44,7 +44,8 @@ def index(request):
                                                      job_title=pf.cleaned_data['job_title'],
                                                      irc_nick=pf.cleaned_data['irc_nick'],
                                                      irc_server=pf.cleaned_data['irc_server'],
-                                                     common_channels=pf.cleaned_data['irc_channels'])
+                                                     common_channels=pf.cleaned_data['irc_channels'],
+                                                 user_photo=pf.cleaned_data['photo'])
             user2 =authenticate(username=pf.cleaned_data['username'],password=pf.cleaned_data['password'])
             userinfo = dict()
             userinfo['name']= user2.get_full_name()

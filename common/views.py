@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,UserProfile,Presentation,Category
+from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost
 from common.forms import *
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect,HttpResponse
@@ -31,9 +31,10 @@ def save_volunteer(request):
 
 def save_user_profile(request, user, type):
     try:
-        profile = user.get_profile()
-    except:
-        print 'No Profile Found'
+<<<<<<< HEAD:common/views.py
+	profile = user.get_profile()
+    except :
+	print 'No Profile Found'
 
     profile = UserProfile.objects.create(user=user,
             bio = '', 
@@ -65,7 +66,9 @@ def test(request):
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
 
 def index(request):
-    return render_to_response('index.html',None)
+    posts = NewPost.objects.order_by('display_date')[:10]
+    
+    return render_to_response('index.html',{'posts':posts})
 
 def contact(request):
     con_form = ContactUsForm()

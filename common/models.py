@@ -121,6 +121,7 @@ class Volunteer(models.Model):
         return self.role.name + " Volunteer " + str(self.pk)
     class Admin:
         list_filter = ['role','request']
+	search_fields = ['@comments']
 
 class Presentation(models.Model):
     '''

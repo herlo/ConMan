@@ -25,7 +25,7 @@ def save_user(request, form):
     luser.last_name = form.cleaned_data['last_name']
     luser.groups.add(Group.objects.get(id=2))
     luser.save()
-    return user
+    return luser
 
 def save_speaker(request, user, form):
     pres = Presentation.objects.create(
@@ -68,7 +68,9 @@ def save_user_profile(request, user, form, type):
     userinfo = dict()
     userinfo['name']= user.get_full_name()
     userinfo['email']= user.email
-    print "userinfo: " + str(profile) 
+    pw = request.POST['password']
+    email = userinfo['name'] + '\nUsername: ' + user.username + '\nPassword: ' + pw + '\n\n' + Static.SPKR_EMAIL_CONFIRM
+    user.email_user(Static.SPKR_EMAIL_SUBJECT,email,user.email)
     return userinfo
 
 def test(request):
@@ -113,7 +115,7 @@ def contact(request):
         CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
         admin = User.objects.filter(is_superuser__exact=True)
         for u in admin:
-            u.email_user(con_form.data['subject'],con_form.data['message'],'utosc@utosf.org')
+            u.email_user(con_form.data['subject'],con_form.data['message'],'conference@utos.org')
         print u.username
 
         return HttpResponseRedirect('/')

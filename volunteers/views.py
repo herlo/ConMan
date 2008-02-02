@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from common.models import Volunteer, UserProfile, VolunteerRole, ShirtSize
 from common.forms import VolunteerForm
 from common.config import Static
-from django.contrib.auth.models import User,UserManager
+from django.contrib.auth.models import User,UserManager,Group
 from django.contrib.auth import authenticate,login
 
 def index(request):
@@ -18,39 +18,41 @@ def index(request):
             return render_to_response('call_for_volunteers.html',{'volunteer_form':vf})
         else:
             if request.user.is_anonymous():
-                user = User.objects.create_user(vf.cleaned_data['username'], vf.cleaned_data['email'], password = vf.cleaned_data['password'])
-                isinstance(user, User)
+                try:
+                    user = User.objects.create_user(vf.cleaned_data['username'], vf.cleaned_data['email'], password = vf.cleaned_data['password'])
+                    isinstance(user, User)
+                except:
+                    return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
             else:
-                user = authenticate(username=request.user.username,password=request.user.password) 
+                user = request.user
+
             print request.user.is_anonymous()
             user.first_name = vf.cleaned_data['first_name']
             user.last_name = vf.cleaned_data['last_name']
-	    user.groups.add(Group.objects.get(id=2))
+            user.groups.add(Group.objects.get(id=2))
             user.save()
             profile = None
-    
+     
             try:
                 profile = user.get_profile()
             except :
                 print 'No Profile Found'
-
+     
             role=VolunteerRole.objects.get(id=vf.cleaned_data['requested_role'])
-    
+ 
             profile = UserProfile.objects.create(user=user,
-                    bio = '', 
+                        bio = '', 
                     shirtsize=ShirtSize.objects.get(id=vf.cleaned_data['shirt_size']),
                     job_title=vf.cleaned_data['job_title'],
                     irc_nick=vf.cleaned_data['irc_nick'], 
                     irc_server=vf.cleaned_data['irc_server'],
                     common_channels=vf.cleaned_data['irc_channels'],
                     volunteerinfo=Volunteer.objects.create(request=role, comments=vf.cleaned_data['comments']),)    
-            user2 =authenticate(username=vf.cleaned_data['username'],password=vf.cleaned_data['password'])
+            user2 = authenticate(username=vf.cleaned_data['username'],password=vf.cleaned_data['password'])
             userinfo = dict()
             userinfo['name']= user2.get_full_name()
             userinfo['email']= user2.email
-
-	    print "userinfo: " + str(profile) 
-    
+      	    print "userinfo: " + str(profile) 
             return render_to_response('volunteer_submitted.html', {'user': userinfo})
     else:
         print request.method

@@ -2,7 +2,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,SpeakerProfile,VolunteerProfile,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost,Category, AudienceType
+from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost,Category, AudienceType
 from common.forms import *
 from common.config import Static
 from django.contrib.auth import authenticate, login
@@ -39,7 +39,7 @@ def save_speaker(request, user, form):
     )
     pres.save()
 
-    return SpeakerProfile.objects.create(user=user,
+    return UserProfile.objects.create(user=user,
       bio = form.cleaned_data['bio'],
       presentation=pres,
       shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
@@ -50,7 +50,8 @@ def save_speaker(request, user, form):
 
 def save_volunteer(request, form):
     role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
-    VolunteerProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
+    UserProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
+
 def save_user_profile(request, user, form, type):
     try:
 	    profile = user.get_profile()

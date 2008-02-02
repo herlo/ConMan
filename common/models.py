@@ -241,19 +241,18 @@ class UserProfile(models.Model):
       >>> userProfile.common_channels
       '#crapology, #shitonomics'
 
-
-
     '''
 
+    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True)
+    presentation = models.ForeignKey(Presentation, null=True, blank=True)
     user = models.ForeignKey(User,unique=True)
-    bio = models.TextField()
+    bio = models.TextField(null=True, blank=True)
     
-    #shirtsize = models.CharField(max_length=200, db_index=True, choices=SHIRT_SIZES)
     shirtsize = models.ForeignKey(ShirtSize)
-    job_title = models.CharField(max_length=200, db_index=True)
-    irc_nick = models.CharField(max_length=100, db_index=True)
-    irc_server = models.CharField(max_length=150, db_index=True)
-    common_channels = models.CharField(max_length=500, db_index=True)
+    job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True)
+    irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True)
+    irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True)
+    common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True)
     user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True)
     site = models.URLField(db_index=True, blank=True, null=True)
     
@@ -262,12 +261,6 @@ class UserProfile(models.Model):
     
     class Admin:
         search_fields = ['job_title','common_channels','@bio','site']
-
-class SpeakerProfile(UserProfile):
-    presentation = models.ForeignKey(Presentation, null=True, blank=True)
-
-class VolunteerProfile(UserProfile):
-    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True)
 
 class PostTag(models.Model):
     name = models.CharField(max_length=150,db_index=True)

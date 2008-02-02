@@ -63,7 +63,7 @@ class PresenterForm(forms.Form):
     audience = forms.ChoiceField(audience_objects)
     presentation_title = forms.CharField()
     short_abstract = forms.CharField(widget=forms.Textarea(attrs={'class':'autoexpandbox'}),min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
-    photo = forms.FileField()
+    photo = forms.FileField(required=False)
     
     #long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=3000)
     def clean(self):

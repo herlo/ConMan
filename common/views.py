@@ -43,7 +43,7 @@ def save_volunteer(form):
 
 def save_user_profile(request, user, type):
     try:
-	    profile = user.get_profile()
+	profile = user.get_profile()
     except :
 	print 'No Profile Found'
 

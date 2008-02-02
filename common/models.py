@@ -161,13 +161,16 @@ class Presentation(models.Model):
     longabstract = models.TextField()
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     title = models.CharField(max_length=150, db_index=True)
-    slides = models.FileField(upload_to="slides")
+    slides = models.FileField(upload_to="slides",blank=True,null=True)
 
     
     def __unicode__(self):
         return " Presentation " + str(self.pk)
     class Admin:
         list_filter = ['cat','audience','status']
+	list_display = ('title','abstract', 'status')
+	search_fields = ['@longabstract','status','@title','foreign_key__cat']
+
     
 class UserProfile(models.Model):    
     '''
@@ -270,7 +273,7 @@ class PostTag(models.Model):
     
 class PostFiles(models.Model):
     display_name = models.CharField(max_length=300,db_index=True)
-    upload_date = models.DateTimeField()
+    upload_date = models.DateTimeField(db_index=True)
     uploader = models.ForeignKey(User)
     posts = models.ManyToManyField('NewPost')
     file = models.FileField(upload_to="post_files")
@@ -279,8 +282,8 @@ class PostFiles(models.Model):
         pass
 class NewPost(models.Model): 
     poster = models.ForeignKey(User)
-    created = models.DateTimeField()
-    display_date = models.DateTimeField()
+    created = models.DateTimeField(db_index=True)
+    display_date = models.DateTimeField(db_index=True)
     tags = models.ManyToOneRel(PostTag,'Tag',edit_inline=True)
     files = models.ManyToManyField(PostFiles,blank=True, null=True)
     content = models.TextField()

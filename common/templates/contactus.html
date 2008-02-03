@@ -23,7 +23,7 @@ $(document).ready(function(){
 					<tr>
 				    <td>{{ field.label_tag }}
 				    {%ifequal field.label "captcha_text" %}
-	<img src="http://127.0.0.1:8000/captcha/{{ captcha.uid }}.jpg"/> 
+	<img src="http://localhost:8080/captcha/{{ captcha.uid }}.jpg"/> 
 				{% endifequal %}				    
 				    </td>
 				    <td>{{ field }}</td>
@@ -35,7 +35,7 @@ $(document).ready(function(){
 				
 				
 			</table>
-			<img src="http://127.0.0.1:8000/captcha/{{ captcha.uid }}.jpg"/>
+			<img src="/captcha/{{ captcha.uid }}.jpg"/>
 			<input type="submit" value="Submit" />
 		</form>
 	

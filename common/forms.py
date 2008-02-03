@@ -63,9 +63,12 @@ class SpeakerForm(forms.Form):
     audience = forms.ChoiceField(audience_objects)
     title = forms.CharField()
     short_abstract = forms.CharField(widget=forms.Textarea(attrs={'class':'autoexpandbox'}),min_length=1,max_length=500,help_text="A short abstract less than 500 characters")
-    photo = forms.FileField(required=False)
+#    photo = forms.FileField(required=False)
     
   #  long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,required=False,max_length=3000)
+    captcha_uid = forms.CharField(label='',widget=forms.HiddenInput())
+    captcha_text = forms.CharField(label='Calculate the total above to prove you are human')
+
     def clean(self):
         if self.cleaned_data.get('password') and self.cleaned_data.get('confirm_password') and self.cleaned_data['password'] != self.cleaned_data['confirm_password']:
             raise ValidationError(u'Please make sure your passwords match.')

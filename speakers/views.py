@@ -17,8 +17,11 @@ def index(request):
         pf = SpeakerForm(request.POST)
         print request.POST
         if not pf.is_valid():
-            return render_to_response('call_for_papers.html',{'presenter_form':pf})
+            captcha = generate_sum_captcha()
+            con_form.data = {'captcha_uid':captcha.uid}
+            return render_to_response('call_for_papers.html',{'presenter_form':pf, 'captcha':captcha})
         else:
+            CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
             user = save_user(request, pf)
             try:
                 user = authenticate(username=pf.cleaned_data['username'],password=pf.cleaned_data['password'])

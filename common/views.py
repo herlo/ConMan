@@ -58,19 +58,19 @@ def save_user_profile(request, user, form, type):
     except:
     	print 'No Profile Found'
 
-    if (type == "volunteer"):
-        profile = save_volunteer(request, form)
-    elif (type == "speaker"):
-        profile = save_speaker(request, user, form)
-    else:
-        return render_to_response('error.html', {'error': 'No User Profile could be created'})
-
     userinfo = dict()
     userinfo['name']= user.get_full_name()
     userinfo['email']= user.email
     pw = request.POST['password']
-    email = userinfo['name'] + '\nUsername: ' + user.username + '\nPassword: ' + pw + '\n\n' + Static.SPKR_EMAIL_CONFIRM
-    user.email_user(Static.SPKR_EMAIL_SUBJECT,email,user.email)
+
+    if (type == "volunteer"):
+        profile = save_volunteer(request, form)
+    elif (type == "speaker"):
+        profile = save_speaker(request, user, form)
+        email_txt = userinfo['name'] + '\nUsername: ' + user.username + '\nPassword: ' + pw + '\n\n' + Static.SPKR_EMAIL_CONFIRM
+        user.email_user(Static.SPKR_EMAIL_SUBJECT,email_txt,user.email)
+    else:
+        return render_to_response('error.html', {'error': 'No User Profile could be created'})
     return userinfo
 
 def test(request):

@@ -100,7 +100,7 @@ EMAIL_HOST_USER = 'conman'
 EMAIL_HOST_PASSWORD = 'Advifnuc0'
 EMAIL_USE_TLS = True
 
-FONT_PATH = "/usr/share/fonts/truetype/ttf-bitstream-vera/VeraBd.ttf"
+FONT_PATH = "/home/clints/conman/static/fonts/LiberationMono-Regular.ttf"
 #FONT_PATH="arial.pil"
 FONT_SIZE = 16
 # Timeout in minutes

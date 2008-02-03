@@ -19,7 +19,7 @@ def index(request):
         if not pf.is_valid():
             captcha = generate_sum_captcha()
             con_form.data = {'captcha_uid':captcha.uid}
-            return render_to_response('call_for_papers.html',{'presenter_form':pf, 'captcha':captcha})
+            return render_to_response('call_for_papers.html',{'presenter_form':pf, 'captcha_uid':captcha.uid, 'captcha_text':captcha.text})
         else:
             CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
             user = save_user(request, pf)

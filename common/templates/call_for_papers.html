@@ -23,7 +23,7 @@ $(document).ready(function(){
 					<tr>
 				    <td>{{ field.label_tag }}
 				    {%ifequal field.label "captcha_text" %}
-	<img src="/captcha/{{ captcha.uid }}.jpg"/> 
+	<img src="http://localhost:8080/captcha/{{ captcha.uid }}.jpg"/> 
 				{% endifequal %}				    
 				    </td>
 				    <td>{{ field }}</td>

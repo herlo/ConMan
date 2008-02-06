@@ -8,3 +8,35 @@ Because of the lack of a *good* conference management system, we thought we'd ha
 
 Hopefully, conman will become *the* open source tool for running conferences.
 
+INSTALLATION REQUIREMENTS
+-------------------------
+
+Django SVN-pre-0.97
+python >= 2.4
+A lot of patience and command line skill
+
+To setup and install ConMan, because it is a Django project, one could consider using the manage.py and running the dev server for testing, or a better way, to use mod_python or fastcgi to deliver the code using apache on the back end.
+
+DEVELOPMENT SERVER (aka the quick-and-dirty-way)
+
+1)  unarchive the conman-<version>.tar.bz2
+2)  cd conman-<version>
+3)  python manage.py loaddata fixtures/initial_data.xml
+3)  python manage.py runserver <port>
+4)  open a web browser and point it at http://localhost:<port>
+
+PRODUCTION SERVER (aka the read-a-lot-of-mod-python-documentation-way)
+
+There are several good docs on how to setup mod_python or fastcgi.  Below are the ones used by us for our project:
+
+http://wiki.dreamhost.com/Django
+http://www.djangoproject.com/documentation/modpython/
+http://www.djangoproject.com/documentation/fastcgi/
+
+In addition to these helpful URLs, there are several setups you will want to add as well.  
+
+* The static/ location needs to be ignored by mod_python
+* The admin/ location also has css somewhere inside and needs to be ignored by mod_python
+* By default, the login/ location is available, but may or may not be desired
+
+As part of ConMan loaddata process, there is a default user added.  The username/password is: conman/utos, feel free to change it after you login to the admin section.

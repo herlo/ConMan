@@ -2,7 +2,7 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,NewPost,Category, AudienceType
+from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,BlogPost,Category, AudienceType
 from common.forms import *
 from common.config import Static
 from django.contrib.auth import authenticate, login
@@ -10,68 +10,40 @@ from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
+import pdb
 
 def save_user(request, form):
+    print "in save_user beginning"
     if request.user.is_anonymous():
         try:
-            luser = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], password = form.cleaned_data['password'])
-            isinstance(user, User)
+            luser = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+            print "created user"
+            if (isinstance(luser, User)):
+                print "is this an instance? "
         except:
             return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
     else:
-        luser = request.user
-    print luser.is_anonymous()
+        luser = User(request.user)
+
     luser.first_name = form.cleaned_data['first_name']
     luser.last_name = form.cleaned_data['last_name']
     luser.groups.add(Group.objects.get(id=2))
     luser.save()
+    #pdb.set_trace()
     return luser
 
-def save_speaker(request, user, form):
-    pres = Presentation.objects.create(
-        cat = Category(form.cleaned_data['category']),
-        audience = AudienceType(form.cleaned_data['audience']),
-        short_abstract = form.cleaned_data['short_abstract'],
-        #long_abstract = form.cleaned_data['longabstract'],
-        status = 'Pending',
-        title = form.cleaned_data['title'],
-#        slides = form.clean_data(upload_to="slides",blank=True,null=True) 
-    )
-    pres.save()
+from settings import SEND_EMAIL
 
-    return UserProfile.objects.create(user=user,
-      bio = form.cleaned_data['bio'],
-      presentation=pres,
-      shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
-      job_title=form.cleaned_data['job_title'],
-      irc_nick=form.cleaned_data['irc_nick'],
-      irc_server=form.cleaned_data['irc_server'],
-      common_channels=form.cleaned_data['irc_channels'])
+def send_email(user, email):
+    if SEND_EMAIL:
+        user.email_user(email['subject'],email['txt'],user.email)
+    else:
+        print "sent email"
 
 def save_volunteer(request, form):
     role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
     UserProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
 
-def save_user_profile(request, user, form, type):
-    try:
-	    profile = user.get_profile()
-    except:
-    	print 'No Profile Found'
-
-    userinfo = dict()
-    userinfo['name']= user.get_full_name()
-    userinfo['email']= user.email
-    pw = request.POST['password']
-
-    if (type == "volunteer"):
-        profile = save_volunteer(request, form)
-    elif (type == "speaker"):
-        profile = save_speaker(request, user, form)
-        email_txt = userinfo['name'] + '\nUsername: ' + user.username + '\nPassword: ' + pw + '\n\n' + Static.SPKR_EMAIL_CONFIRM
-        user.email_user(Static.SPKR_EMAIL_SUBJECT,email_txt,user.email)
-    else:
-        return render_to_response('error.html', {'error': 'No User Profile could be created'})
-    return userinfo
 
 def test(request):
     volunteer_form = VolunteerForm()
@@ -82,9 +54,9 @@ def test(request):
         render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
 
-@login_required
 def index(request):
-    posts = NewPost.objects.order_by('display_date')[:10]
+    links = LinkItems.objects.order_by('innertext')[:10]
+    posts = BlogPost.objects.order_by('-display_date')[:10]
     postlist = list()
     for p in posts:
 	postdata = dict()
@@ -100,8 +72,8 @@ def index(request):
 	postdata['tags'] = p.tags
 	postdata['created'] = p.created
 	postdata['files'] = files
-	postdata['pic'] = p.poster.get_profile().user_photo
-	postdata['username'] = p.poster.get_full_name()
+#	postdata['pic'] = p.poster.get_profile().user_photo
+	postdata['fullname'] = p.poster.get_full_name()
 	postdata['email'] = p.poster.email
 	postlist.append(postdata)
     

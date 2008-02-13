@@ -70,7 +70,7 @@ class ShirtSize(models.Model):
     '''
       >>> size = ShirtSize(name="XXL")
       >>> size.name
-      'XXL'
+      '3XL'
     '''
     name = models.CharField(max_length=150, db_index=True)
     def __unicode__(self):
@@ -111,8 +111,6 @@ class Volunteer(models.Model):
       >>> v.comments
       'This is my comment'
     '''
-    #role = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
-    #request = models.CharField(max_length=150, choices=VOLUNTEER_CHOICES,db_index=True)
     role = models.ForeignKey(VolunteerRole,related_name='role',blank=True, null=True)
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
@@ -157,18 +155,29 @@ class Presentation(models.Model):
     '''
     cat = models.ForeignKey(Category)
     audience = models.ForeignKey(AudienceType)
-    short_abstract = models.CharField(max_length=500)
-    long_abstract = models.TextField()
+    short_abstract = models.TextField(max_length=500)
+    long_abstract = models.TextField(blank=True,null=True)
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     title = models.CharField(max_length=150, db_index=True)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
 
     
     def __unicode__(self):
-        return " Presentation " + str(self.pk)
+        return " Presentation: " + str(self.pk)
+
     class Admin:
         list_filter = ['cat','audience','status']
-	list_display = ('title','short_abstract', 'long_abstract', 'status')
+        fields = (
+           (None, {
+               'fields': ('title', 'short_abstract', 'cat', 'audience', 'status')
+           }),
+           ('Extra Information', {
+               'classes': 'collapse',
+               'fields' : ('long_abstract', 'slides')
+           }),
+        )
+
+	list_display = ('title','short_abstract', 'status')
 	search_fields = ['@longabstract','status','@title','foreign_key__cat']
 
     
@@ -243,8 +252,8 @@ class UserProfile(models.Model):
 
     '''
     
-    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_in_admin=1)
-    presentation = models.ForeignKey(Presentation, null=True, blank=True,edit_inline=models.STACKED,num_in_admin=1)
+    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
+    presentation = models.ForeignKey(Presentation, null=True, blank=True,)
     user = models.ForeignKey(User,unique=True,core=True)
     bio = models.TextField(null=True, blank=True,core=True)
     
@@ -257,10 +266,31 @@ class UserProfile(models.Model):
     site = models.URLField(db_index=True, blank=True, null=True,core=True)
     
     def __unicode__(self):
-        return str(self.user)  + "'s profile" 
+        return "Profile for " + str(self.user) 
     
     class Admin:
         search_fields = ['job_title','common_channels','@bio','site']
+#        fields = (
+#            (None, {
+#                'fields': ('user', 'bio', 'job_title', 'site')
+#            }),
+#            ('Presentations', {
+#                'classes': 'collapse',
+#                'fields' : ('presentation')
+#            }),
+#            ('Volunteer Info', {
+#                'classes': 'collapse',
+#                'fields' : ('volunteer_info')
+#            }),
+#            ('Photo', {
+#                'classes': 'collapse',
+#                'fields' : ('user_photo')
+#            }),
+#            ('Misc Info', {
+#                'classes': 'collapse',
+#                'fields' : ('shirt_size', 'irc_nick', 'irc_server', 'common_channels')
+#            }),
+#        )
 
 class PostTag(models.Model):
     name = models.CharField(max_length=150,db_index=True)
@@ -268,21 +298,33 @@ class PostTag(models.Model):
     
     class Admin:
         pass
+
+class LinkItems(models.Model):
+    href = models.CharField(max_length=200)
+    innertext = models.CharField(max_length=100)
+
+    class Admin:
+        pass
+
+    class Meta:
+
+	  verbose_name_plural = "Link Items"
     
 class PostFiles(models.Model):
     display_name = models.CharField(max_length=300,db_index=True)
     upload_date = models.DateTimeField(db_index=True)
     uploader = models.ForeignKey(User)
-    posts = models.ManyToManyField('NewPost')
+    posts = models.ManyToManyField('BlogPost')
     file = models.FileField(upload_to="post_files")
 
     class Admin:
         pass
     
     class Meta:
-	verbose_name_plural = "Post Files"
+
+	  verbose_name_plural = "Post Files"
 	
-class NewPost(models.Model): 
+class BlogPost(models.Model): 
     poster = models.ForeignKey(User)
     created = models.DateTimeField(db_index=True)
     display_date = models.DateTimeField(db_index=True)
@@ -313,8 +355,8 @@ class CaptchaRequest(models.Model):
     valid_until = models.DateTimeField(default=future_datetime(minutes=TIMEOUT))
     answer = models.IntegerField()
     request_path = models.CharField(max_length=50,blank=True)
-    uid = models.CharField(max_length=40,blank=True)
-    text = models.CharField(max_length=10)
+    uid = models.CharField(max_length=40,null=True,blank=True)
+    text = models.CharField(max_length=10,null=True,blank=True)
 
     def save(self):
         shaobj = sha.new()

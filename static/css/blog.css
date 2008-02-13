@@ -25,8 +25,9 @@
 	max-height: 200px;
 }
 
-.blogUserName
+.blogFullName
 { 
+  align:  top;
 	font-size: 12pt;
 }
 

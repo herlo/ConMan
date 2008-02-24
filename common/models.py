@@ -114,6 +114,7 @@ class Volunteer(models.Model):
     role = models.ForeignKey(VolunteerRole,related_name='role',blank=True, null=True)
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
+
     
     def __unicode__(self):
         return self.role.name + " Volunteer " + str(self.pk)

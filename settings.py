@@ -99,6 +99,7 @@ EMAIL_HOST = 'mail.utos.org'
 EMAIL_HOST_USER = 'conman'
 EMAIL_HOST_PASSWORD = 'Advifnuc0'
 EMAIL_USE_TLS = True
+SEND_EMAIL = True
 
 FONT_PATH = "/home/clints/conman/static/fonts/LiberationMono-Regular.ttf"
 #FONT_PATH="arial.pil"

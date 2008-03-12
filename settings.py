@@ -4,10 +4,14 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Your Name', 'your_email@domain.com'),
+    ('Clint Savage', 'clint@utos.org'),
+    ('Kevin Kubasik','kevin@kubasik.net'),
+    ('Will Smith','undertakingyou@gmail.com'),
 )
 
-MANAGERS = ADMINS
+MANAGERS = (
+    ('Papers Managers', 'papers@utos.org'),
+)
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'testdatabase.db'             # Or path to database file if using sqlite3.
@@ -21,7 +25,7 @@ DATABASE_PORT = ''             # Set to empty string for default. Not used with 
 # although not all choices may be avilable on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Denver'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -73,6 +77,8 @@ ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     "common/templates",
+
+    
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -85,27 +91,34 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'common',
-    'planner',
-    'register',
+#    'planner',
     'speakers',
-    'sponsors',
-    'volunteers',
+#    'sponsors',
+#    'volunteers',
+    'registration',
     #'django.contrib.databrowse',
 )
 
 AUTH_PROFILE_MODULE = 'common.userprofile'
 
-EMAIL_HOST = 'mail.utos.org'
-EMAIL_HOST_USER = 'conman'
-EMAIL_HOST_PASSWORD = 'Advifnuc0'
-EMAIL_USE_TLS = True
-SEND_EMAIL = True
+HOST_NAME = 'http://localhost:8080'
 
-FONT_PATH = "/home/clints/conman/static/fonts/LiberationMono-Regular.ttf"
+DEFAULT_FROM_EMAIL = 'papers@utos.org'
+EMAIL_HOST = 'localhost.localdomain'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = True
+EMAIL_SUBJECT_PREFIX = '[conman-papers]'
+SERVER_EMAIL = 'admin@utos.org'
+
+FONT_PATH = "static/fonts/DejaVuLGCSerifCondensed.ttf"
 #FONT_PATH="arial.pil"
-FONT_SIZE = 16
+FONT_SIZE = 14
 # Timeout in minutes
 TIMEOUT = 15
+SEND_EMAIL = False
 
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
+ACCOUNT_ACTIVATION_DAYS = 3

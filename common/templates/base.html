@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>UTOSF ConMan - {% block title %}{% endblock title %}</title>
+		<title>UTOSC 2008 | HOWTO - {% block title %}{% endblock title %}</title>
 		<meta name="keywords" content="" />
 		<meta name="description" content="" />
 		<link href="/static/css/default.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,8 @@
 				<img src="/static/img/conman_large.png" alt="ConMan rocks!" />
 			</div>
 			<div id="appName">		
-				<h1><a href="#">UTOSF ConMan</a></h1>
+				<h1><a href="/">Utah Open Source Conference 2008</a></h1>
+				<h1>August 28 - 30, 2008 - HowTo...</h1>
 			 </div>	
 
 		</div>
@@ -31,18 +32,39 @@
 				{% if user.is_authenticated %}
 				    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
 				{% else %}
-				    {{user.username}}<p>Welcome. <a href="/login/">Please log in.</a></p>
+				    <a href="/accounts/login/">Please log in.</a></p>
 				{% endif %}
 			</div>
+<!--      
 			<div id="menu">
 				<ul>
 					<li class="first"><a href="/" accesskey="1" title="">Home</a></li>
-					<li><a href="/speaker" accesskey="2" title="">Call for Papers</a></li>
-					<li><a href="/volunteer" accesskey="3" title="">Call for Volunteers</a></li>
-					<li><a href="/contact" accesskey="5" title="">Contact Us</a></li>
+					<li><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
+					<li><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
+					<li><a href="/accounts/register/" accesskey="2" title="">Register</a></li>
+					<li><a href="/speaker/" accesskey="2" title="">Call for Papers</a></li>
+					<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
+					<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
 				</ul>
 			</div>
+-->      
 		</div>
+<!--This should be looped over using the  for statement  in Django -->
+<div class="linkEntries" >
+<!--
+{% for ll in left_links %}
+  <li><a href='{{ ll.href }}'>{{ ll.innertext }}</a></li>
+{% endfor %}
+-->
+<ul>
+  <li><a href='/accounts/login/'>Login</a></li>
+  <li><a href='/accounts/logout/'>Logout</a></li>
+  <li><a href='/speaker/'>Call for Papers</a></li>
+  <li><a href='/accounts/profile/'>Edit/Update Profile</a></li>
+  <li><a href='/accounts/register/'>Register an Account</a></li>
+</ul>
+</div>
+
 	<div id="content">
 		<!--<div id="rightMenu">
 		{% block rightMenu %}
@@ -66,5 +88,17 @@
 		<p>Copyright &copy; 2008 UTOSF</a></p>
 	</div>
 </div>
+
+<!-- Start of StatCounter Code 
+<script type="text/javascript">
+var sc_project=2875999; 
+var sc_invisible=1; 
+var sc_partition=29; 
+var sc_security="9a3312a4"; 
+</script>
+
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter_xhtml.js"></script><noscript><div class="statcounter"><a href="http://www.statcounter.com/free_hit_counter.html" target="_blank"><img class="statcounter" src="http://c30.statcounter.com/2875999/0/9a3312a4/1/" alt="counter" ></a></div></noscript>
+ End of StatCounter Code -->
+
 </body>
 </html>

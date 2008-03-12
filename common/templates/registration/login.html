@@ -1,20 +1,27 @@
 {% extends "base_forms.html" %}
 
-{% block title %}Login{% endblock title%}
+{% block title %}Log in{% endblock %}
 
-{% block primaryContent %}
+{% block primaryContent %}Log into your account below.<br />  
+If you do not have an account, please <a href='/accounts/register/'>click here</a> 
+to signup. <br />  You must be registered to use this site.
+<br /><br />
 
-  <h2>Please Login with you username and password</h2>
-  {% block formsWrapper %}
-  <form method="post" action=".">
-      <table id="loginForm">
-          <tr><td><label for="id_username">Username:</label></td><td>{{ form.username }}</td></tr>
-          <tr><td><label for="id_password">Password:</label></td><td>{{ form.password }}</td></tr>
-      </table>
+{% block formsWrapper %}
 
-      <input type="submit" value="Sign In" />
-  </form>
-  {% endblock formsWrapper %}
+{% if form.errors %}
+<p class="error">Please correct the errors below:</p>
+{% endif %}
 
+<form method="post" action="{% if next %}?next={{ next }}{% endif %}">
+<dl>
+<dt><label for="id_username">Username:</label>{% if form.username.errors %} <span class="error">{{ form.username.errors|join:", " }}</span>{% endif %}</dt>
+<dd>{{ form.username }}</dd>
+<dt><label for="id_password">Password:</label>{% if form.password.errors %} <span class="error">{{ form.password.errors|join:", " }}</span>{% endif %}</dt>
+<dd>{{ form.password }}</dd>
+<dt><input type="submit" value="Log in" /></dt>
+</dl>
+</form>
 
-{% endblock primaryContent %}
+{% endblock %}
+{% endblock %}

@@ -4,19 +4,6 @@
 {% block additionalCSS %}		<link href="/static/css/blog.css" rel="stylesheet" type="text/css" />{% endblock additionalCSS %}
 
 {% block primaryContent %}
-<h2>Welcome to the Utah Open Source Conference 2008</h2>
-<p></p>
-
-<!--This should be looped over using the  for statement  in Django -->
-<div class="linkEntries" >
-<ul>
-{% for ll in left_links %}
-  <li><a href='{{ ll.href }}'>{{ ll.innertext }}</a></li>
-{% endfor %}
-</ul>
-</div>
-
-{% for p in posts %}
 
 <div class="blogEntry" >
 	<div> 
@@ -27,16 +14,39 @@
 				<div class="blogUserEmail">{{ p.email }}</div> -->
 
 		</div>
-		
-		<span class="blogEntryTitle">{{ p.title }} </span> <span class="blogCreatedDate"> written on {{ p.created }} </span>	
-		<span class="blogTags"> <!-- Should be looping here over each object in the tags <a>One Fish</a>, <a>Two Fish</a> --> </span>
-		
-		<div class="blogText">{{ p.content }}</div>
+<!--		
+		<span class="blogEntryTitle"><a href='/post/{{p.id}}/'>{{ p.title }}</a> </span> <span class="blogCreatedDate"> written on {{ p.created }} </span>	
+-->		
+		<div class="blogText">
+      <h3 style="margin-top: -10px">Utah Open Source Conference 2008</h3>
+      <h4 style="margin-top: 7px">This Year's Theme: HOWTO...</h4>
+
+<p>The idea is that within the technology, education, community and business tracks, there will be plenty to talk about.</p>
+<ul>
+	<li>HOWTOs will help others get started</li>
+	<li>HOWTOs will help families use open source together</li>
+	<li>HOWTOs will provide a stepping stone along the road to technology mastery</li>
+	<li>HOWTOs will let those that are masters get together and make the products better.</li>
+</ul>
+<p>There are many more things that the theme <strong>HOWTO</strong> will accomplish during the Utah Open Source Conference (UTOSC) 2008.</p>
+
+<p>Because 2007 was such a grand success, we've made some minor changes and improvements to help with a smoother conference. This year's conference has moved location and added a full day on Thursday.</p>
+
+<p><strong>The Utah Open Source Conference 2008 will be held at the Salt Lake Community College, Redwood Road campus from August 28 - 30, 2008.</strong></p>
+
+<p>The Salt Lake Community College Computer Science department is excited to be a sponsor of the 2008 conference and will be using it to improve students' awareness and understanding of open source software.</p>
+
+<p>The Utah Open Source Foundation is also rededicating itself to ensure the pricing structure remains reasonable for those who'd like to come and are on a budget. The pricing structure right now is tentative, but no <strong>major </strong>increases in the fees are planned for attendees.We currently have a tentative plan on our wiki, feel free to have a look. If you have suggestions, please feel free to join the chat at #utos on irc.freenode.net or email clints at utos dot org with your comments.</p>
+
+<p>See you all in August.</p>
+
+<p>Clint Savage<br />
+Founder, Utah Open Source Foundation</p>
+    </div>
 		
 		<span class="blogIncludedFiles"> <!--Should be looping here over each object in the files getting the urls and making links out of them --> </span>
 	</div>
 </div>
-{% endfor %}
 <!--This should be looped over using the for statement  in Django -->
 
 {% endblock primaryContent%}

@@ -1,31 +1,37 @@
 {% extends "base_forms.html" %}
 
-{% block title %}Call for Volunteers{% endblock title%}
+{% block title %}User Profile - Edit{% endblock title%}
 
 
 {% block primaryContent %}
-<h2>Call for Volunteers</h2>
+<h2>Update/Edit Profile</h2>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#id_password').pstrength();
-	$('#id_comments').autogrow();
+	$('#id_short_abstract').autogrow();
 	$('#id_bio').autogrow();
 	});
 </script>
+
 {% block formsWrapper %}
 
+<div id='error_text'>{{ error }}</div>
 	
-		<form method="post" action="/volunteer">
+		<form method="post" action="">
 			<table> 
-				{% for field in volunteers_form %}
 					<tr>
-				    <td>{{ field.label_tag }}</td>
+				    <td>Profile for:</td><td><b>{{ user.username }}</b></td>
+				  </tr>
+				{% for field in form %}
+					<tr>
+				    <td>{{ field.label_tag }}
+				    </td>
 				    <td>{{ field }}</td>
 				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
 				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
 				   </tr>
 				{% endfor %}
-			
+				
 			</table>
 			<input type="submit" value="Submit" />
 		</form>
@@ -34,4 +40,4 @@ $(document).ready(function(){
 {% endblock formsWrapper %}
 
 {% endblock primaryContent%}
-<h1> </h1>
+

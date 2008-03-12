@@ -1,144 +1,115 @@
 # Create your views here.
 from django.shortcuts import render_to_response
-from common.models import *
-from common.forms import *
-from common.views import *
+from django.template import RequestContext
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.utils.datastructures import SortedDict
 from django.contrib.auth.models import User,UserManager,Group
 from django.contrib.auth import authenticate,login
-import pdb
+from django.template.loader import render_to_string
+from django.core.mail import *
+from django.utils.safestring import mark_safe
 
-#def save_speaker(request, form):
-#    #user = save_user(request, form)
-#    if request.user.is_anonymous():
-#        try:
-#            user = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
-#        except:
-#            return render_to_response('call_for_papers.html', {'error': 'Username ' + form.cleaned_data['username'] + ' already chosen, please try again'})
-#        
-#        print "created user"
-#        if (isinstance(user, User)):
-#            print "this is an instance? "
-#        else:
-#            return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
-#    else:
-#        user = User(request.user)
-#
-#    user.first_name = form.cleaned_data['first_name']
-#    user.last_name = form.cleaned_data['last_name']
-#    user.groups.add(Group.objects.get(name__exact='Speaker'))
-#    user.save()
-#    print "FullName: " + user.get_full_name()
-#    #pdb.set_trace()
-#    pres = Presentation.objects.create(
-#        cat = Category(form.cleaned_data['category']),
-#        audience = AudienceType(form.cleaned_data['audience']),
-#        short_abstract = form.cleaned_data['short_abstract'],
-#        #long_abstract = form.cleaned_data['longabstract'],
-#        status = 'Pending',
-#        title = form.cleaned_data['title'],
-##        slides = form.clean_data(upload_to="slides",blank=True,null=True) 
-#    )
-#    pres.save()
-#
-#    up = UserProfile.objects.create(user=user,
-#      bio = form.cleaned_data['bio'],
-#      presentation=pres,
-#      shirtsize=ShirtSize.objects.get(id=form.cleaned_data['shirt_size']),
-#      job_title=form.cleaned_data['job_title'],
-#      irc_nick=form.cleaned_data['irc_nick'],
-#      irc_server=form.cleaned_data['irc_server'],
-#      common_channels=form.cleaned_data['irc_channels'])
-#    up.save()
-#
-#    #user = authenticate(username=pf.cleaned_data['username'],password=pf.cleaned_data['password'])
-#
-##    pdb.set_trace()
-#    usrinfo = dict()
-#    usrinfo['name']= user.get_full_name()
-#    usrinfo['email']= user.email
-#    pw = request.POST['password']
-#
-#    email = dict()
-#    email['subject'] = Static.ABSTR_EMAIL_SUBJECT
-#    email['txt'] = 'Name: ' + userinfo['name'] + '\nUsername: ' + user.username + '\nPassword: ' + pw + '\n\n' + Static.ABSTR_EMAIL_CONFIRM
-#    send_email(user, email)
-#    return user
+from cStringIO import StringIO
+import pdb,random
+import Image,ImageDraw,ImageFont
 
+from common.models import *
+from common.forms import *
+from common.views import *
+
+def save_presentation(request, form, user):
+
+    pres = Presentation.objects.create(
+        presenter=user,
+        cat = Category(form.cleaned_data['category']),
+#        audience = audience
+        short_abstract = form.cleaned_data['short_abstract'],
+        #long_abstract = form.cleaned_data['longabstract'],
+        status = 'Pending',
+        title = form.cleaned_data['title'],
+#        slides = form.cleaned_data(upload_to="slides",blank=True,null=True) 
+    )
+
+    print "audiences: " 
+    auds = form.cleaned_data['audience']
+    for aud in auds:
+        print aud
+        pres.audiences.add(aud)
+
+    pres.save()
+    
+
+    user.groups.add(Group.objects.get(id=5))
+    up = user.get_profile()
+
+    #print "up: " + str(up)
+    up.presentation_set.add(pres)
+    up.save()
+
+    #send the email here (note we could probably do this in one place later on)
+    current_site = settings.HOST_NAME
+    
+    p = dict()
+#    p['cat'] = mark_safe(str(Category.objects.get(id=form.cleaned_data['category'])))
+    p['title'] = mark_safe(form.cleaned_data['title'])
+#    p['audience'] = mark_safe(str(AudienceType.objects.get(id=form.cleaned_data['audience'])))
+    p['abstract'] = mark_safe(form.cleaned_data['short_abstract'])
+    p['name'] = mark_safe(user.first_name + ' ' + user.last_name)
+    
+    subject = render_to_string('presentation_confirm_subject.txt')
+    # Email subject *must not* contain newlines
+    subject = ''.join(subject.splitlines())
+    
+    message = render_to_string('presentation_confirm.txt',
+                               { 'pres': p })
+    
+    if settings.SEND_EMAIL:
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
+        mail_managers(subject, message, fail_silently=True)
+    else:
+        print "Subject: " + subject
+        print "Message: " + message
+        print "Sent to: " + user.email
+
+#        return render_to_response('error.html', {'error': Static.USER_ALREADY_EXISTS})
+
+@login_required
 def index(request):
     isinstance(request,HttpRequest)
-#    pdb.set_trace()
-    user = User()
+    #save_user_profile(request, user, pf, "speaker")
+    user = User.objects.get(id=request.session.get('_auth_user_id'))
+    print "User is: " + str(user)
+    userinfo = dict()
+    userinfo['name']= user.get_full_name()
+    userinfo['email']= user.email
+
     pf = SpeakerForm()
     if request.method == 'POST':
         pf = SpeakerForm(request.POST)
-        #print request.POST
+#        print request.POST
         if not pf.is_valid():
-            #captcha = generate_sum_captcha()
-            #pf.data = {'captcha_uid':captcha.uid}
-            return render_to_response('call_for_papers.html',{'presenter_form':pf})
+            print "pf isn't valid"
+#            captcha = generate_sum_captcha()
+#            return render_to_response('call_for_papers.html',{'presenter_form':pf, 'captcha_uid':captcha.uid, 'captcha_text':captcha.text})
+            return render_to_response('call_for_papers.html',{'presenter_form':pf},
+                context_instance=RequestContext(request))
         else:
-            #CaptchaRequest.validate(pf.data['captcha_uid'],pf.data['captcha_text'])
-            #user = save_speaker(request, pf)
-            if request.user.is_anonymous():
-                user = User.objects.create_user(pf.cleaned_data['username'], pf.cleaned_data['email'], pf.cleaned_data['password'])
-                user.save()
-                if not isinstance(user, User):
-                    return render_to_response('call_for_papers.html', {'presenter_form':pf,'error': Static.USER_ALREADY_EXISTS})
-            else:
-                user = User(request.user)
-        
-            user.first_name = pf.cleaned_data['first_name']
-            user.last_name = pf.cleaned_data['last_name']
-            user.groups.add(Group.objects.get(name__exact='Speaker'))
-            user.save()
-            print "saved user"
-            print user.get_full_name()
-            #pdb.set_trace()
-            pres = Presentation.objects.create(
-                cat = Category(pf.cleaned_data['category']),
-                audience = AudienceType(pf.cleaned_data['audience']),
-                short_abstract = pf.cleaned_data['short_abstract'],
-                #long_abstract = pf.cleaned_data['longabstract'],
-                status = 'Pending',
-                title = pf.cleaned_data['title'],
-        #        slides = pf.clean_data(upload_to="slides",blank=True,null=True) 
-            )
-            pres.save()
-            print "saved presentation"
-        
-            up = UserProfile.objects.create(user=user,
-              bio = pf.cleaned_data['bio'],
-              presentation=pres,
-              shirtsize=ShirtSize.objects.get(id=pf.cleaned_data['shirt_size']),
-              job_title=pf.cleaned_data['job_title'],
-              irc_nick=pf.cleaned_data['irc_nick'],
-              irc_server=pf.cleaned_data['irc_server'],
-              common_channels=pf.cleaned_data['irc_channels'])
-            up.save()
-        
-            #user.groups.add(Group.objects.get(id=4))
-            #user = authenticate(username=pf.cleaned_data['username'],password=pf.cleaned_data['password'])
-            #login(request, user)
+#            is_valid_captcha = CaptchaRequest.validate(pf.data['captcha_uid'],pf.data['captcha_text'])
+#            if is_valid_captcha != 1:
+#                captcha = generate_sum_captcha()
+#                return render_to_response('call_for_papers.html',{'presenter_form':pf})
+#                return render_to_response('call_for_papers.html',{'presenter_form':pf, 'captcha_uid':captcha.uid, 'captcha_text':captcha.text})
 
-        #    pdb.set_trace()
-            usrinfo = dict()
-            usrinfo['name']= user.get_full_name()
-            usrinfo['email']= user.email
-            pw = request.POST['password']
-        
-            email = dict()
-            email['subject'] = Static.ABSTR_EMAIL_SUBJECT
-            email['txt'] = usrinfo['name'] + '\nUsername: ' + user.username + '\nPassword: ' + pw + '\n\n' + Static.ABSTR_EMAIL_CONFIRM
-            send_email(user, email)
+#            pdb.set_trace()
+            print "session: " 
+            print request.session.items()
+            save_presentation(request, pf, user)
 
-            return render_to_response('paper_submitted.html',{'user':user})
+            return render_to_response('paper_submitted.html', {'user': user},
+                context_instance=RequestContext(request))
     else:
-        if request.user.is_authenticated():
-            isinstance(pf.fields, SortedDict)
-            #pf.fields.pop('username')
-            #pf.fields.pop('password')
-            #pf.fields.pop('confirm_password')
-        return render_to_response('call_for_papers.html',{'presenter_form':pf})
+        return render_to_response('call_for_papers.html',{'presenter_form':pf},
+            context_instance=RequestContext(request))
 
+        #captcha = generate_sum_captcha()
+#        return render_to_response('call_for_papers.html',{'presenter_form':pf, 'captcha_uid':captcha.uid, 'captcha_text':captcha.text, 'user': userinfo})

@@ -4,7 +4,7 @@
 
 
 {% block primaryContent %}
-<h2>Call for Papers</h2>
+<h2>Submit Presentation Proposal</h2>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#id_password').pstrength();
@@ -19,21 +19,28 @@ $(document).ready(function(){
 	
 		<form method="post" action="">
 			<table> 
+					<tr>
+	 			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
+				  </tr>
 				{% for field in presenter_form %}
-					{% ifnotequal field.label "captcha_uid" %}
+					{% ifnotequal field.label "captcha_uid" %} 
 					<tr>
 				    <td>{{ field.label_tag }}
-				    {%ifequal field.label "captcha_text" %}
-	<img src="http://localhost:8080/captcha/{{ captcha.uid }}.jpg"/> 
-				{% endifequal %}				    
 				    </td>
 				    <td>{{ field }}</td>
 				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
 				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
 				   </tr>
-				   {% endifnotequal %}
+					{% else %} 
+					<tr>
+				    <td><input type="hidden" name="captcha_uid" id="id_captcha_uid" value='{{ captcha_uid }}' /></td><td valign='bottom'>
+	<img src="/captcha/{{ captcha_uid }}.jpg"/> 
+				    </td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+            {% endifnotequal %}
 				{% endfor %}
-			
 				
 			</table>
 			<input type="submit" value="Submit" />

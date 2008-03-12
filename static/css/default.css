@@ -69,6 +69,7 @@ a:hover
 #header h2
 {
 	position: absolute;
+  left: 300px;
 	font-size: 0.8em;
 	top: 8em;
 	color: #E0E8EF;
@@ -239,6 +240,7 @@ a:hover
 
 #primaryContentContainer
 {
+  
 	background-color: #fff;
 	float: right;
 	margin: 0em 10% 0em 10%;
@@ -247,6 +249,8 @@ a:hover
 
 #primaryContent
 {
+  position: relative;
+  left: 50px;
 	margin: 1.5em 8em 0em 17.25em;
 	padding: 1.5em 2em 1.5em 2em;
 }
@@ -328,4 +332,10 @@ a:hover
 	text-align: right;
 }
 
-
+.linkEntries{
+	background: #cccccc top left repeat-x;
+	position: absolute;
+	left: 1em;
+  width: 200px;
+  top: 190px;
+}

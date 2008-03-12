@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from common.config import Static
 from datetime import datetime,timedelta
 from random import random
 import sha
@@ -16,7 +17,7 @@ VOLUNTEER_CHOICES = (
     ('RMGR', 'Room Manager'),
     ('USH', 'Usher'),
     ('GRT', 'Greeter'),
-    ('HRT', 'Heartsbane'),
+    ('HRT', 'Heartsbane'),   # Kevin WTH is this?
     ('TEK', 'Technician'),
 )
 
@@ -74,9 +75,10 @@ class ShirtSize(models.Model):
     '''
     name = models.CharField(max_length=150, db_index=True)
     def __unicode__(self):
-        return self.name
+        return str(self.id)
+        
     class Admin:
-        pass
+	      list_display = ('id', 'name',)
 
 class VolunteerRole(models.Model):
     '''
@@ -114,7 +116,7 @@ class Volunteer(models.Model):
     role = models.ForeignKey(VolunteerRole,related_name='role',blank=True, null=True)
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
-
+    volunteer = models.ForeignKey('UserProfile')
     
     def __unicode__(self):
         return self.role.name + " Volunteer " + str(self.pk)
@@ -155,22 +157,22 @@ class Presentation(models.Model):
       'Come listen to crap'
     '''
     cat = models.ForeignKey(Category)
-    audience = models.ForeignKey(AudienceType)
+    audiences = models.ManyToManyField(AudienceType)
     short_abstract = models.TextField(max_length=500)
     long_abstract = models.TextField(blank=True,null=True)
     status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
     title = models.CharField(max_length=150, db_index=True)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
-
+    presenter = models.ForeignKey('UserProfile')
     
     def __unicode__(self):
-        return " Presentation: " + str(self.pk)
+        return self.title
 
     class Admin:
-        list_filter = ['cat','audience','status']
+        list_filter = ['presenter', 'cat','audiences','status']
         fields = (
            (None, {
-               'fields': ('title', 'short_abstract', 'cat', 'audience', 'status')
+               'fields': ('presenter', 'title', 'short_abstract', 'cat', 'audiences', 'status')
            }),
            ('Extra Information', {
                'classes': 'collapse',
@@ -178,7 +180,7 @@ class Presentation(models.Model):
            }),
         )
 
-	list_display = ('title','short_abstract', 'status')
+	list_display = ('presenter', 'title','short_abstract', 'status')
 	search_fields = ['@longabstract','status','@title','foreign_key__cat']
 
     
@@ -253,12 +255,12 @@ class UserProfile(models.Model):
 
     '''
     
-    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
-    presentation = models.ForeignKey(Presentation, null=True, blank=True,)
+#    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
+    #presentation = models.ForeignKey(Presentation, null=True, blank=True,)
     user = models.ForeignKey(User,unique=True,core=True)
     bio = models.TextField(null=True, blank=True,core=True)
     
-    shirtsize = models.ForeignKey(ShirtSize,core=True)
+    shirtsize = models.ForeignKey(ShirtSize,core=True, null=True,blank=True)
     job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
     irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,core=True)
     irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,core=True)
@@ -267,10 +269,11 @@ class UserProfile(models.Model):
     site = models.URLField(db_index=True, blank=True, null=True,core=True)
     
     def __unicode__(self):
-        return "Profile for " + str(self.user) 
+        return self.user.first_name + ' ' + self.user.last_name
     
     class Admin:
         search_fields = ['job_title','common_channels','@bio','site']
+        list_display = ('user', 'irc_nick', 'common_channels')
 #        fields = (
 #            (None, {
 #                'fields': ('user', 'bio', 'job_title', 'site')
@@ -303,9 +306,12 @@ class PostTag(models.Model):
 class LinkItems(models.Model):
     href = models.CharField(max_length=200)
     innertext = models.CharField(max_length=100)
+    order = models.IntegerField()
 
     class Admin:
-        pass
+        search_fields = ['innertext']
+        list_filter = ['href', 'innertext']
+        list_display = ('order', 'href', 'innertext')
 
     class Meta:
 
@@ -326,16 +332,27 @@ class PostFiles(models.Model):
 	  verbose_name_plural = "Post Files"
 	
 class BlogPost(models.Model): 
-    poster = models.ForeignKey(User)
+    poster = models.ForeignKey(User, core=True)
     created = models.DateTimeField(db_index=True)
     display_date = models.DateTimeField(db_index=True)
-    tags = models.ManyToOneRel(PostTag,'Tag',edit_inline=True)
+    tags = models.ForeignKey(PostTag,edit_inline=True,blank=True,null=True)
     files = models.ManyToManyField(PostFiles,blank=True, null=True)
     content = models.TextField()
     title = models.CharField(max_length=200,db_index=True)
+
     class Admin:
         search_fields = ['title','@content']
-
+        list_filter = ['poster', 'created','display_date', 'title']
+        list_display = ('title', 'poster', 'created', 'display_date')
+        fields = (
+           (None, {
+               'fields': ('poster', 'title', 'content', 'created', 'display_date', 'tags')
+           }),
+           ('Extra Content', {
+               'classes': 'collapse',
+               'fields': ('files',)
+           }),
+        )
     
 def future_datetime(**kw_args):
 	def on_call():
@@ -381,12 +398,14 @@ class CaptchaRequest(models.Model):
         result = None
         if len(result_list)>0:
             result = result_list[0]
+            print "result: " + str(result.answer)
+            print "given answer: " + given_answer
         if not result:
             return CAPTCHA_UID_NOT_FOUND
         if result.valid_until<datetime.now():
             result.delete()
             return CAPTCHA_REQUEST_EXPIRED 
-        if result.answer!=given_answer:
+        if int(result.answer)!=int(given_answer):
             result.delete()
             return CAPTCHA_WRONG_ANSWER
         result.delete()
@@ -401,4 +420,16 @@ class CaptchaRequest(models.Model):
 	    captcha.save()
 	    return captcha
 
-	
+from django.contrib.syndication.feeds import Feed
+
+class LatestEntries(Feed):
+    print "Inside LatestEntries"
+    title = "Latest News from The Utah Open Source Conference 2008 "
+    link = "/"
+    description = "Watch this rss feed to keep up on all that's going on prior and during the Utah Open Source Conference 2008.  Feel free to sign up at 2008.utosc.com"
+
+    def items(self):
+        return BlogPost.objects.order_by('-display_date')[:10]
+
+    def item_link(self, item):
+        return Static.HOST_NAME + '/post/' + str(item.id) + '/'

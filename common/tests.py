@@ -1,5 +1,5 @@
 import unittest
-from common.models import *
+from models import *
 
 class CategoryTestCase(unittest.TestCase):
     def setUp(self):

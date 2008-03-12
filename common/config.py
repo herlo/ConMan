@@ -12,3 +12,4 @@ class Static:
   CALL_DEADLINE = ""
   COMMUNITY_TOPIC_TOOLTIP = "Discuss Community topic"
   SPEAKER_GROUP_ID=5
+  HOST_NAME = 'http://localhost:8080'

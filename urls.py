@@ -1,5 +1,12 @@
-from django.conf.urls.defaults import *
 from django.contrib import databrowse
+from django.conf.urls.defaults import *
+from common.models import LatestEntries #, LatestEntriesByCategory
+
+feeds = {
+    'latest': LatestEntries,
+#    'categories': LatestEntriesByCategory,
+#    'author': LatestEntriesByAuthor,
+}
 
 urlpatterns = patterns('',
     # Example:
@@ -8,22 +15,23 @@ urlpatterns = patterns('',
     # Uncomment this for admin:
     #Login page
     #(r'^login/', 'common.views.login'),
-    (r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'registration/login.html'}),
-
-    (r'^logout$', 'django.contrib.auth.views.logout'),
+    #(r'^login$', 'django.contrib.auth.views.login', {'template_name': 'registration/login.html'}),
+    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^accounts/', include('registration.urls')),
+    (r'^logout/$', 'django.contrib.auth.views.logout'),
     (r'^captcha/(?P<token_uid>\w+).jpg$','common.views.captcha_image'),
     (r'^admin/', include('django.contrib.admin.urls')),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
-    (r'^testtemplate', 'common.views.test'),
-    (r'^volunteer$', 'volunteers.views.index'),
-    (r'^profile$', 'common.views.profile_show'),
-    (r'^speaker$', 'speakers.views.index'),
-    (r'^contact$', 'common.views.contact'),
+    (r'^testtemplate/$', 'common.views.test'),
+    (r'^volunteer/$', 'volunteers.views.index'),
+    (r'^post/(?P<post_id>\d+)/$', 'common.views.single_blog_post'),
+    (r'^profile/$', 'common.views.profile_show'),
+    (r'^speaker/$', 'speakers.views.index'),
+    (r'^contact/$', 'common.views.contact'),
+    (r'/blog/$', 'common.views.index'),
     (r'$', 'common.views.index'),
- 
-    #(r'^speaker/submitted/$', 'speakers.views.submitted'),
-    
 )
+
 #from django.contrib import databrowse
 #from common.models import *
 

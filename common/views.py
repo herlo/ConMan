@@ -1,8 +1,9 @@
 # Create your views here.
 from django.template import RequestContext
+from django.conf import settings
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,BlogPost,Category, AudienceType
+from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,BlogPost,Category, AudienceType,LinkItems
 from common.forms import *
 from common.config import Static
 from django.contrib.auth import authenticate, login
@@ -12,39 +13,36 @@ from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
 import pdb
 
-def save_user(request, form):
-    print "in save_user beginning"
-    if request.user.is_anonymous():
-        try:
-            luser = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
-            print "created user"
-            if (isinstance(luser, User)):
-                print "is this an instance? "
-        except:
-            return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
-    else:
-        luser = User(request.user)
+#def save_user(request, form):
+#    print "in save_user beginning"
+#    if request.user.is_anonymous():
+#        try:
+#            luser = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
+#        except:
+#            return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
+#    else:
+#        luser = User(request.user)
+#
+#    print "Luser info: " + str(luser.username)
+#
+#    luser.first_name = form.cleaned_data['first_name']
+#    luser.last_name = form.cleaned_data['last_name']
+##    luser.groups.add(Group.objects.get(id=5))
+#    luser.save()
+#    #pdb.set_trace()
+#    return luser
 
-    luser.first_name = form.cleaned_data['first_name']
-    luser.last_name = form.cleaned_data['last_name']
-    luser.groups.add(Group.objects.get(id=2))
-    luser.save()
-    #pdb.set_trace()
-    return luser
-
-from settings import SEND_EMAIL
-
-def send_email(user, email):
-    if SEND_EMAIL:
-        user.email_user(email['subject'],email['txt'],user.email)
-    else:
-        print "sent email"
+#from settings import SEND_EMAIL
+#
+#def send_email(user, email):
+#    if SEND_EMAIL:
+#        user.email_user(email['subject'],email['txt'],user.email)
+#    else:
+#        print "sent email"
 
 def save_volunteer(request, form):
     role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
     UserProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
-
-
 def test(request):
     volunteer_form = VolunteerForm()
     presenter_form = SpeakerForm()
@@ -55,53 +53,64 @@ def test(request):
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
 
 def index(request):
+    links = LinkItems.objects.order_by('order')
+    return render_to_response('index.html', {'left_links': links})
+
+def blog(request):
     links = LinkItems.objects.order_by('innertext')[:10]
     posts = BlogPost.objects.order_by('-display_date')[:10]
     postlist = list()
     for p in posts:
-	postdata = dict()
-	files = list()
-	for f in p.files.get_query_set():
-	    fileobj = dict()
-	    fileobj['name'] = f.display_name
-	    fileobj['fileurl'] = f.file.url
-	    files.append(f)
-	
-	postdata['title'] = p.title
-	postdata['content'] = p.content
-	postdata['tags'] = p.tags
-	postdata['created'] = p.created
-	postdata['files'] = files
-#	postdata['pic'] = p.poster.get_profile().user_photo
-	postdata['fullname'] = p.poster.get_full_name()
-	postdata['email'] = p.poster.email
-	postlist.append(postdata)
+      	postdata = dict()
+      	files = list()
+      	for f in p.files.get_query_set():
+      	    fileobj = dict()
+      	    fileobj['name'] = f.display_name
+      	    fileobj['fileurl'] = f.file.url
+      	    files.append(f)
+  	
+        postdata['id'] = p.id
+      	postdata['title'] = p.title
+      	postdata['content'] = p.content
+      	postdata['tags'] = p.tags
+      	postdata['created'] = p.created
+      	postdata['files'] = files
+      #	postdata['pic'] = p.poster.get_profile().user_photo
+      	postdata['fullname'] = p.poster.get_full_name()
+      	postdata['email'] = p.poster.email
+      	postlist.append(postdata)
     
-    return render_to_response('index.html',{'posts':postlist,'context_instance':RequestContext(request)})
+    links = LinkItems.objects.order_by('order')
+    return render_to_response('blog.html',{'posts':postlist, 'left_links':links}, context_instance=RequestContext(request))
+
+def single_blog_post(request, post_id):
+    post = BlogPost.objects.get(id=post_id)
+    return render_to_response('single_post.html',{'p': post})
 
 def contact(request):
     con_form = ContactUsForm()
     if request.method == 'POST':
         con_form = ContactUsForm(request.POST)
-    if con_form.is_valid:
-        CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
-        admin = User.objects.filter(is_superuser__exact=True)
-        for u in admin:
-            u.email_user(con_form.data['subject'],con_form.data['message'],'conference@utos.org')
-        print u.username
-
-        return HttpResponseRedirect('/')
+        if con_form.is_valid:
+            CaptchaRequest.validate(con_form.data['captcha_uid'],con_form.data['captcha_text'])
+            admin = User.objects.filter(is_superuser__exact=True)
+            for u in admin:
+                u.email_user(con_form.data['subject'],con_form.data['message'],'conference@utos.org')
+            print u.username
+    
+            return HttpResponseRedirect('/')
     else:
-        captcha = generate_sum_captcha()
+#        captcha = generate_sum_captcha()
         con_form.data = {'captcha_uid':captcha.uid}
-        return render_to_response('contactus.html',{'contactform':con_form, 'captcha':captcha})
+        return render_to_response('contactus.html',{'contactform':con_form})
 
 @login_required
 def profile_show(request):
+    links = LinkItems.objects.order_by('order')
     if request.user.groups.get_query_set().get(id=1) == 'Presenters':
-        return render_to_response('profile_papers.html',{'user':request.user})
+        return render_to_response('profile_papers.html',{'user':request.user, 'left_links':links})
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
-        return render_to_response('profile_volunteers.html',{'user':request.user})
+        return render_to_response('profile_volunteers.html',{'user':request.user, 'left_links':links})
     user_data = request.user
     user_profile = request.user.get_profile()
     user_presentation = user_profile.presentation
@@ -123,11 +132,14 @@ def profile_show(request):
     pf.job_title = user_profile.job_title
     pf.presentation_title = user_presentation.title
     pf.ss = user_profile.shirtsize
+
     
     if request.user.groups.get_query_set().get(id=1) == 'Presenters':
-        return render_to_response('edit_papers.html',{'pf':pf})
+        return render_to_response('edit_papers.html',{'pf':pf, 'left_links':links}, 
+          context_instance=RequestContext(request))
     elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
-        return render_to_response('edit_volunteers.html',{'user':request.user})
+        return render_to_response('edit_volunteers.html',{'user':request.user, 
+          'left_links':links}, context_instance=RequestContext(request))
     return render_to_response('profile.html', None)
 
 from common.models import CaptchaRequest

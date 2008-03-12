@@ -30,11 +30,11 @@ def index(request):
             userinfo['email']= user.email
             return render_to_response('volunteer_submitted.html', {'user': userinfo})
     else:
-        if request.user.is_authenticated():
-            isinstance(vf.fields,dict)
-            vf.fields.pop('username')
-            vf.fields.pop('password')
-            vf.fields.pop('confirm_password')
+        #if request.user.is_authenticated():
+            #isinstance(vf.fields,dict)
+            #vf.fields.pop('username')
+            #vf.fields.pop('password')
+            #vf.fields.pop('confirm_password')
 
         print request.method
         return render_to_response('call_for_volunteers.html', {'volunteers_form': vf} )

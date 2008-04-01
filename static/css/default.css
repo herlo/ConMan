@@ -302,13 +302,17 @@ a:hover
 
 #footer
 {
-	position: relative;
-	z-index: 1;
-	border-top: dashed 2px #dfdfdf;
-	padding: 2em 0em 2em 0em;
-	margin: 2em 2em 0em 2em;
-	text-align: center;
+	position: fixed;
+    text-align: center;
+    left: 150px;
+    bottom: -10px;
+    width: 80%;
+    z-index: 1;
+    border-top: dashed 2px #dfdfdf;
+	padding: 1em 0em 1em 0em;
+	margin: 1em 1em 0em 1em;
 }
+
 
 .clear
 {

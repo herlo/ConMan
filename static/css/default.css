@@ -48,7 +48,7 @@ a:hover
 #header
 {
 	position: relative;
-	background: #004778 url('images/a5.gif') bottom left repeat-x;
+	background: #004778 bottom left repeat-x;
 	height: 10em;
 	padding-left: 2em;
 }
@@ -188,7 +188,7 @@ a:hover
 	margin-bottom: 1.5em;
 	padding: 0.75em 0.75em 0.75em 1.5em;
 	border-left: solid 0.75em #005082;
-	background: #FDFDFD url('images/a7.gif') top left repeat-x;
+	background: #FDFDFD top left repeat-x;
 }
 
 #content blockquote p
@@ -218,20 +218,20 @@ a:hover
 #content table tr.rowH
 {
 	color: #fff;
-	background: #006192 url('images/a8.gif') top left repeat-x;
+	background: #006192 top left repeat-x;
 	border-right: solid 1px #fff;
 }
 
 #content table tr.rowA
 {
-	background: #F8F8F8 url('images/a6.gif') top left repeat-x;
+	background: #F8F8F8 top left repeat-x;
 	border-top: solid 1px #fff;
 	color: inherit;
 }
 
 #content table tr.rowB
 {
-	background: #FDFDFD url('images/a7.gif') top left repeat-x;
+	background: #FDFDFD top left repeat-x;
 	border-top: solid 1px #fff;
 	color: inherit;
 }
@@ -263,7 +263,7 @@ a:hover
 	float: left;
 	width: 3%;
 	padding: 3em 2em 1.5em 2em;
-	background: #fff url('images/a1.gif') top right repeat-y;
+	background: #fff top right repeat-y;
 }
 
 #leftMenu .xbg
@@ -271,7 +271,7 @@ a:hover
 	position: absolute;
 	right: 0em;
 	bottom: -64px;
-	background: #fff url('images/a3.gif') top right no-repeat;
+	background: #fff top right no-repeat;
 	height: 64px;
 	width: ;
 }
@@ -285,7 +285,7 @@ a:hover
 	height: 100%;
 	width: 15em;
 	padding: 3em 2em 1.5em 2em;
-	background: #fff url('images/a2.gif') top left repeat-y;
+	background: #fff top left repeat-y;
 }
 
 #rightMenu .xbg
@@ -293,7 +293,7 @@ a:hover
 	position: absolute;
 	left: 0em;
 	bottom: -64px;
-	background: #fff url('images/a4.gif') top left no-repeat;
+	background: #fff top left no-repeat;
 	height: 64px;
 	width: 128px;
 }

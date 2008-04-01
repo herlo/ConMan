@@ -101,14 +101,14 @@ a:hover
 }
 
 #login a{ 
-	color:white;
+	color:fff;
 }
 
 #menu
 {
 	position: absolute;
-	top: 7em;
-	right: 3em;
+	top: 10em;
+	left: 1em;
 }
 
 #menu ul
@@ -133,7 +133,7 @@ a:hover
 
 #menu li a
 {
-	color: #fff;
+	color: #000;
 	padding: 0.1em;
     font-size: large;
     font: bold;

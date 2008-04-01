@@ -1,12 +1,11 @@
 .blogEntry
 {
-  position: relative;
-  left: 50px;
+  position: absolute;
+  left: 0px;
 	border-top: dashed 1px #dfdfdf;
 	border-right:  dashed 1px #dfdfdf;
 	border-left: dashed 1px #dfdfdf;
 	border-bottom: dashed 1px #dfdfdf;
-	max-width: 450px;
 	padding-top: 1em;
 	padding-right: 1em;
 	padding-bottom: 1em;

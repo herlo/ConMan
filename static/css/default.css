@@ -249,8 +249,8 @@ a:hover
 
 #primaryContent
 {
-  position: relative;
-  left: 50px;
+#  position: relative;
+#  left: 0px;
 	margin: 1.5em 8em 0em 17.25em;
 	padding: 1.5em 2em 1.5em 2em;
 }
@@ -261,7 +261,7 @@ a:hover
 {
 	position: relative;
 	float: left;
-	width: 10%;
+	width: 3%;
 	padding: 3em 2em 1.5em 2em;
 	background: #fff url('images/a1.gif') top right repeat-y;
 }

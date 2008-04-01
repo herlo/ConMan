@@ -38,18 +38,22 @@
 			<div id="menu">
 				<ul>
 					<li class="first"><a href="/" accesskey="1" title="">Home</a></li>
-					<li><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
+				{% if user.is_authenticated %}
 					<li><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
+				{% else %}
+					<li><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
 					<li><a href="/accounts/register/" accesskey="2" title="">Register</a></li>
+				{% endif %}
 					<li><a href="/speaker/" accesskey="2" title="">Call for Papers</a></li>
-					<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
+<!--					<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
 					<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
+-->
 				</ul>
 			</div>
 		</div>
 <!--This should be looped over using the  for statement  in Django -->
-<div class="linkEntries" >
 <!--
+<div class="linkEntries" >
 {% for ll in left_links %}
   <li><a href='{{ ll.href }}'>{{ ll.innertext }}</a></li>
 {% endfor %}
@@ -60,30 +64,32 @@
   <li><a href='/accounts/profile/'>Edit/Update Profile</a></li>
   <li><a href='/accounts/register/'>Register an Account</a></li>
 </ul>
--->
 </div>
-
+-->
+<!--
+		<div id="leftMenu">
+			{% block leftMenu %}
+			{% endblock leftMenu %}
+			<div class="xbg"></div>
+		</div>
+-->
 	<div id="content">
-		<!--<div id="rightMenu">
-		{% block rightMenu %}
-		{% endblock rightMenu %}
-		<div class="xbg"></div>
-		</div> -->
 		<div id="primaryContentContainer">
 			<div id="primaryContent">
 				{% block primaryContent %}				
 				{% endblock primaryContent %}
 			</div>
 		</div>
-		<div id="leftMenu">
-			{% block leftMenu %}
-			{% endblock leftMenu %}
+<!--	<div id="rightMenu">
+			{% block rightMenu %}
+			{% endblock rightMenu %}
 			<div class="xbg"></div>
-		</div>
-		<div class="clear"></div>
+		</div> 
+-->
+	<div class="clear"></div>
 	</div>
 	<div id="footer">
-		<p>Copyright &copy; 2008 UTOSF</a></p>
+		<p>Copyright &copy; 2008 Utah Open Source Foundation</a></p>
 	</div>
 </div>
 

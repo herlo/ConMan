@@ -22,7 +22,7 @@ $(document).ready(function(){
 					<tr>
 	 			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
 				  </tr>
-				{% for field in presenter_form %}
+:e				{% for field in presenter_form %}
 					{% ifnotequal field.label "captcha_uid" %} 
 					<tr>
 				    <td>{{ field.label_tag }}

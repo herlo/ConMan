@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     (r'^speaker/$', 'speakers.views.index'),
     (r'^contact/$', 'common.views.contact'),
     (r'/blog/$', 'common.views.index'),
-    (r'$', 'common.views.index'),
+#    (r'$', 'common.views.index'),
 )
 
 #from django.contrib import databrowse

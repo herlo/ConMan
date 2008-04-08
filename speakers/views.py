@@ -7,7 +7,7 @@ from django.contrib.auth.models import User,UserManager,Group
 from django.contrib.auth import authenticate,login
 from django.template.loader import render_to_string
 from django.core.mail import *
-from django.utils.safestring import mark_safe
+#from django.utils.safestring import mark_safe
 
 from cStringIO import StringIO
 import pdb,random

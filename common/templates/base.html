@@ -35,13 +35,20 @@
 				    <a href="/accounts/login/">Please log in.</a></p>
 				{% endif %}
 			</div>
-			<div id="menu">
+			<div id="lmenu">
 				<ul>
 					<li class="first"><a href="/" accesskey="1" title="">Home</a></li>
+				{% for fp in flat_pages %}
+					<li><a href='{{ fp.href }}'>{{ fp.title }}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+			<div id="menu">
+				<ul>
 				{% if user.is_authenticated %}
-					<li><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
+					<li class="first"><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
 				{% else %}
-					<li><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
+					<li class="first"><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
 					<li><a href="/accounts/register/" accesskey="2" title="">Register</a></li>
 				{% endif %}
 					<li><a href="/speaker/" accesskey="2" title="">Call for Papers</a></li>
@@ -88,9 +95,9 @@
 -->
 	<div class="clear"></div>
 	</div>
-	<div id="footer">
+<!--	<div id="footer"> 
 		<p>Copyright &copy; 2008 Utah Open Source Foundation</a></p>
-	</div>
+ 	</div> -->
 </div>
 
 <!-- Start of StatCounter Code 

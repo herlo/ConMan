@@ -70,6 +70,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
     #'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.gzip.GZipMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 
 )
 
@@ -77,7 +78,6 @@ ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     "common/templates",
-
     
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
@@ -85,6 +85,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'django.contrib.flatpages',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',

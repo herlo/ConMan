@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,UserProfile,Presentation,Category,PostFiles,PostTag,BlogPost,Category, AudienceType,LinkItems
+from common.models import User,UserProfile,PostFiles,PostTag,BlogPost,LinkItems
 from common.forms import *
 from common.config import Static
 from django.contrib.auth import authenticate, login
@@ -40,9 +40,6 @@ import pdb
 #    else:
 #        print "sent email"
 
-def save_volunteer(request, form):
-    role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
-    UserProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
 def test(request):
     volunteer_form = VolunteerForm()
     presenter_form = SpeakerForm()
@@ -54,7 +51,7 @@ def test(request):
 
 def index(request):
     links = LinkItems.objects.order_by('order')
-    return render_to_response('index.html', {'left_links': links})
+    return render_to_response('index.html', {'left_links': links}, context_instance=RequestContext(request))
 
 def blog(request):
     links = LinkItems.objects.order_by('innertext')[:10]

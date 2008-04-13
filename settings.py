@@ -92,11 +92,11 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'common',
-#    'planner',
-    'speakers',
-#    'sponsors',
-#    'volunteers',
     'registration',
+    'speakers',
+    'volunteers',
+#    'sponsors',
+#    'planner',
     #'django.contrib.databrowse',
 )
 

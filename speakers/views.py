@@ -3,9 +3,11 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.utils.datastructures import SortedDict
+from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User,UserManager,Group
 from django.contrib.auth import authenticate,login
 from django.template.loader import render_to_string
+from django.contrib.auth.decorators import login_required
 from django.core.mail import *
 #from django.utils.safestring import mark_safe
 
@@ -13,9 +15,8 @@ from cStringIO import StringIO
 import pdb,random
 import Image,ImageDraw,ImageFont
 
-from common.models import *
-from common.forms import *
-from common.views import *
+from common.models import ShirtSize
+from speakers.forms import *
 
 def save_presentation(request, form, user):
 
@@ -78,7 +79,7 @@ def index(request):
     isinstance(request,HttpRequest)
     #save_user_profile(request, user, pf, "speaker")
     user = User.objects.get(id=request.session.get('_auth_user_id'))
-    print "User is: " + str(user)
+#    print "User is: " + str(user)
     userinfo = dict()
     userinfo['name']= user.get_full_name()
     userinfo['email']= user.email

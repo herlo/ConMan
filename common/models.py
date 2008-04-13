@@ -7,20 +7,6 @@ import sha
 
 from settings import TIMEOUT
 
-AUDIENCE_CHOICES = (
-    ('BUS', 'Business'),
-    ('TEK', 'Technical'),
-    ('EDU', 'Educational'),
-)
-
-VOLUNTEER_CHOICES = (
-    ('RMGR', 'Room Manager'),
-    ('USH', 'Usher'),
-    ('GRT', 'Greeter'),
-    ('HRT', 'Heartsbane'),   # Kevin WTH is this?
-    ('TEK', 'Technician'),
-)
-
 SHIRT_SIZES = (
     ('S', 'Small'),
     ('XS', 'Extra-Small'),
@@ -29,161 +15,23 @@ SHIRT_SIZES = (
     ('XL', 'Extra Large'),
     ('2XL', 'XX Large'),
     ('3XL', 'XXX Large'),
+    ('4XL', 'IV Large'),
+    ('5XL', 'V Large'),
 )
 
-STATUS_CHOICES = (
-    ('Pending', 'Pending'),
-    ('Denied', 'Denied'),
-    ('Alternate', 'Alternate'),
-    ('Approved', 'Approved'),
-)
-
-# Create your models here.    
-class Category(models.Model):
-    '''
-    >>> c = Category(name="hot_or_not")
-    >>> c.name
-    'hot_or_not'
-    '''
-    name = models.CharField(max_length=150,db_index=True)
-    def __unicode__(self):
-        return self.name
-    
-    class Admin:
-        pass
-    
-    class Meta:
-        verbose_name_plural = "Categories"
-    
-class AudienceType(models.Model):
-    '''
-    >>> a = AudienceType(name="Legendary")
-    >>> a.name
-    'Legendary'
-    '''
-    name = models.CharField(max_length=150, db_index=True)
-    def __unicode__(self):
-        return self.name
-    class Admin:
-        pass
-    
 class ShirtSize(models.Model):
     '''
-      >>> size = ShirtSize(name="XXL")
-      >>> size.name
-      '3XL'
+      >>> size = ShirtSize(name="2XL")
+      >>> size.get_name_display()
+      'XX Large'
     '''
-    name = models.CharField(max_length=150, db_index=True)
+    name = models.CharField(max_length=50, choices=SHIRT_SIZES)
     def __unicode__(self):
-        return str(self.id)
+        return str(self.name)
         
     class Admin:
 	      list_display = ('id', 'name',)
 
-class VolunteerRole(models.Model):
-    '''
-    >>> v = VolunteerRole(name = "killa")
-    >>> v.name
-    'killa'
-    '''
-    name = models.CharField(max_length=150, db_index=True)
-    def __unicode__(self):
-        return self.name
-    class Admin:
-        pass
-
-class Volunteer(models.Model):
-    '''
-    Create a VolunteerRole for the user
-      >>> VolunteerRole.objects.create(name="Fun Sucker")
-      <VolunteerRole: Fun Sucker>
-
-    Create a volunteer with the first default role value
-      >>> v = Volunteer.objects.create(
-      ... role=VolunteerRole.objects.get(id=1),
-      ... request=VolunteerRole.objects.get(id=1),
-      ... comments="This is my comment")
-
-      >>> v
-      <Volunteer: Fun Sucker Volunteer 2>
-      >>> v.role
-      <VolunteerRole: Fun Sucker>
-      >>> v.request
-      <VolunteerRole: Fun Sucker>
-      >>> v.comments
-      'This is my comment'
-    '''
-    role = models.ForeignKey(VolunteerRole,related_name='role',blank=True, null=True)
-    request = models.ForeignKey(VolunteerRole, related_name='request')
-    comments = models.TextField()
-    volunteer = models.ForeignKey('UserProfile')
-    
-    def __unicode__(self):
-        return self.role.name + " Volunteer " + str(self.pk)
-    class Admin:
-        list_filter = ['role','request']
-	search_fields = ['@comments']
-
-class Presentation(models.Model):
-    '''
-    Create the category and audience for the presentation
-      >>> Category.objects.create(name="Crapology")
-      <Category: Crapology>
-      >>> AudienceType.objects.create(name="For Experts Only")
-      <AudienceType: For Experts Only>
-
-      >>> p = Presentation.objects.create(
-      ... cat=Category.objects.get(id=1),
-      ... audience=AudienceType.objects.get(id=1),
-      ... abstract="crapology in a nutshell",
-      ... longabstract="To enlighten on the subject of crap",
-      ... status='pending',
-      ... title='Come listen to crap'
-      ... )
-
-      >>> p
-      <Presentation:  Presentation 1>
-      >>> p.cat
-      <Category: Crapology>
-      >>> p.audience
-      <AudienceType: For Experts Only>
-      >>> p.abstract
-      'crapology in a nutshell'
-      >>> p.longabstract
-      'To enlighten on the subject of crap'
-      >>> p.status
-      'pending'
-      >>> p.title
-      'Come listen to crap'
-    '''
-    cat = models.ForeignKey(Category)
-    audiences = models.ManyToManyField(AudienceType)
-    short_abstract = models.TextField(max_length=500)
-    long_abstract = models.TextField(blank=True,null=True)
-    status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
-    title = models.CharField(max_length=150, db_index=True)
-    slides = models.FileField(upload_to="slides",blank=True,null=True)
-    presenter = models.ForeignKey('UserProfile')
-    
-    def __unicode__(self):
-        return self.title
-
-    class Admin:
-        list_filter = ['presenter', 'cat','audiences','status']
-        fields = (
-           (None, {
-               'fields': ('presenter', 'title', 'short_abstract', 'cat', 'audiences', 'status')
-           }),
-           ('Extra Information', {
-               'classes': 'collapse',
-               'fields' : ('long_abstract', 'slides')
-           }),
-        )
-
-	list_display = ('presenter', 'title','short_abstract', 'status')
-	search_fields = ['@longabstract','status','@title','foreign_key__cat']
-
-    
 class UserProfile(models.Model):    
     '''
     

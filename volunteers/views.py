@@ -1,13 +1,15 @@
 # Create your views here.
-from django.http import HttpResponseRedirect, Http404, HttpRequest, HttpResponse
-from django.core.urlresolvers import reverse 
-from django.shortcuts import render_to_response
-from common.models import Volunteer, UserProfile, VolunteerRole, ShirtSize
-from common.forms import VolunteerForm
-from common.views import *
-from common.config import Static
 from django.contrib.auth.models import User,UserManager,Group
+from django.http import HttpResponseRedirect, Http404, HttpRequest, HttpResponse
 from django.contrib.auth import authenticate,login
+from django.shortcuts import render_to_response
+from django.core.urlresolvers import reverse 
+
+from common.models import ShirtSize, UserProfile
+from common.config import Static
+
+from volunteers.models import Volunteer, VolunteerRole
+from volunteers.forms import VolunteerForm
 
 def index(request):
     isinstance(request,HttpRequest)
@@ -38,6 +40,10 @@ def index(request):
 
         print request.method
         return render_to_response('call_for_volunteers.html', {'volunteers_form': vf} )
+
+def save_volunteer(request, form):
+    role = VolunteerRole.objects.get(id=form.cleaned_data['requested_role'])
+    UserProfile.objects.create(request=role, comments=form.cleaned_data['comments'])    
 
 def submitted(request, v_id):
     v = get_object_or_404(Volunteer, pk=v_id)

@@ -20,10 +20,9 @@ $(document).ready(function(){
 		<form method="post" action="">
 			<table> 
 					<tr>
-	 			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
+ 			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
 				  </tr>
-:e				{% for field in presenter_form %}
-					{% ifnotequal field.label "captcha_uid" %} 
+				{% for field in presenter_form %}
 					<tr>
 				    <td>{{ field.label_tag }}
 				    </td>
@@ -31,15 +30,6 @@ $(document).ready(function(){
 				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
 				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
 				   </tr>
-					{% else %} 
-					<tr>
-				    <td><input type="hidden" name="captcha_uid" id="id_captcha_uid" value='{{ captcha_uid }}' /></td><td valign='bottom'>
-	<img src="/captcha/{{ captcha_uid }}.jpg"/> 
-				    </td>
-				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
-				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
-				   </tr>
-            {% endifnotequal %}
 				{% endfor %}
 				
 			</table>

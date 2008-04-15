@@ -21,32 +21,31 @@ from speakers.models import Category,Status
 from speakers.forms import *
 
 
-def send_mail(user):
-    pass
+def send_confirm_email(user, form):
     #send the email here (note we could probably do this in one place later on)
-#    current_site = settings.HOST_NAME
+    current_site = settings.HOST_NAME
     
-#    p = dict()
-##    p['cat'] = mark_safe(str(Category.objects.get(id=form.cleaned_data['category'])))
-#    p['title'] = mark_safe(form.cleaned_data['title'])
-##    p['audience'] = mark_safe(str(AudienceType.objects.get(id=form.cleaned_data['audience'])))
-#    p['abstract'] = mark_safe(form.cleaned_data['short_abstract'])
-#    p['name'] = mark_safe(user.first_name + ' ' + user.last_name)
-#    
-#    subject = render_to_string('presentation_confirm_subject.txt')
-#    # Email subject *must not* contain newlines
-#    subject = ''.join(subject.splitlines())
-#    
-#    message = render_to_string('presentation_confirm.txt',
-#                               { 'pres': p })
-#    
-#    if settings.SEND_EMAIL:
-#        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
-#        mail_managers(subject, message, fail_silently=True)
-#    else:
-#        print "Subject: " + subject
-#        print "Message: " + message
-#        print "Sent to: " + user.email
+    p = dict()
+#    p['cat'] = mark_safe(str(Category.objects.get(id=form.cleaned_data['category'])))
+    p['title'] = mark_safe(form.cleaned_data['title'])
+#    p['audience'] = mark_safe(str(AudienceType.objects.get(id=form.cleaned_data['audience'])))
+    p['abstract'] = mark_safe(form.cleaned_data['short_abstract'])
+    p['name'] = mark_safe(user.first_name + ' ' + user.last_name)
+    
+    subject = render_to_string('presentation_confirm_subject.txt')
+    # Email subject *must not* contain newlines
+    subject = ''.join(subject.splitlines())
+    
+    message = render_to_string('presentation_confirm.txt',
+                               { 'pres': p })
+    
+    if settings.SEND_EMAIL:
+        send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
+        mail_managers(subject, message, fail_silently=True)
+    else:
+        print "Subject: " + subject
+        print "Message: " + message
+        print "Sent to: " + user.email
 
 @login_required
 def abstract(request, abs_id=None):
@@ -67,13 +66,13 @@ def abstract(request, abs_id=None):
 
 
     if request.method == 'POST':
-
         pf = PresentationForm(request.POST, instance=instance)
         if not pf.is_valid():
             return render_to_response('call_for_papers.html',{'presenter_form':pf},
                 context_instance=RequestContext(request))
         else:
             pf.save()
+            send_confirm_email(user, pf)
             if presentation_exists:
                 return render_to_response('paper_updated.html', {'host': settings.HOST_NAME}, context_instance=RequestContext(request))
             else:
@@ -85,7 +84,9 @@ def abstract(request, abs_id=None):
         'abstract_list':abstracts}, context_instance=RequestContext(request))
 
 
-
+@login_required
+def delete_abstract(request, abs_id=None):
+    pass
 
 
 

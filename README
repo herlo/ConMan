@@ -22,8 +22,10 @@ DEVELOPMENT SERVER (aka the quick-and-dirty-way)
 1)  svn co svn checkout http://utos-conman.googlecode.com/svn/trunk/ utos-conman-ro
 2)  cd utos-conman-ro
 3)  python manage.py loaddata fixtures/initial_data.xml (this step may not work.  Skip if not)
-3)  python manage.py runserver <port>
-4)  open a web browser and point it at http://localhost:<port>
+    3a) if step 3 did not work, this will mean a fair amount of data needs to be added 
+        in the admin section.  Hop to it!
+4)  python manage.py runserver <port>
+5)  open a web browser and point it at http://localhost:<port>
 
 PRODUCTION SERVER (aka the read-a-lot-of-mod-python-documentation-way)
 

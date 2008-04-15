@@ -10,7 +10,7 @@ from django.contrib.auth import authenticate,login
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.core.mail import *
-#from django.utils.safestring import mark_safe
+from django.conf import settings
 
 from cStringIO import StringIO
 import pdb,random
@@ -21,6 +21,8 @@ from speakers.models import Category,Status
 from speakers.forms import *
 
 
+def send_mail(user):
+    pass
     #send the email here (note we could probably do this in one place later on)
 #    current_site = settings.HOST_NAME
     
@@ -55,8 +57,11 @@ def abstract(request, abs_id=None):
     userinfo['name']= user.get_full_name()
     userinfo['email']= user.email
 
+    presentation_exists = False
+
     if abs_id:
         instance = get_object_or_404(Presentation, id=abs_id)
+        presentation_exists = True
     else:
         instance = Presentation(presenter=request.user.get_profile(), status=Status('Pending'))
 
@@ -68,10 +73,11 @@ def abstract(request, abs_id=None):
             return render_to_response('call_for_papers.html',{'presenter_form':pf},
                 context_instance=RequestContext(request))
         else:
-            print "saving presentation"
             pf.save()
-            return render_to_response('paper_submitted.html', {'user': userinfo},
-                context_instance=RequestContext(request))
+            if presentation_exists:
+                return render_to_response('paper_updated.html', {'host': settings.HOST_NAME}, context_instance=RequestContext(request))
+            else:
+                return render_to_response('paper_submitted.html', {'host': settings.HOST_NAME}, context_instance=RequestContext(request))
     else:
         pf = PresentationForm(instance=instance)
         abstracts = Presentation.objects.filter(presenter=user.get_profile())

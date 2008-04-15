@@ -36,11 +36,10 @@ $(document).ready(function(){
 			</table>
 			<input type="submit" value="Submit" />
 		</form>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form medthod="post" action="/speaker/papers/delete/>
 	</div>
 {% endblock formsWrapper %}
-
-
-{% endblock primaryContent%}
 
 {% block rightMenu %}
 <h2>Submitted Abstracts</h2>
@@ -50,4 +49,7 @@ $(document).ready(function(){
 	{% endfor %}
 	</ul>
 {% endblock rightMenu%}
+
+{% endblock primaryContent%}
+
 

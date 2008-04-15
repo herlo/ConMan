@@ -19,9 +19,9 @@ To setup and install ConMan, because it is a Django project, one could consider 
 
 DEVELOPMENT SERVER (aka the quick-and-dirty-way)
 
-1)  unarchive the conman-<version>.tar.bz2
-2)  cd conman-<version>
-3)  python manage.py loaddata fixtures/initial_data.xml
+1)  svn co svn checkout http://utos-conman.googlecode.com/svn/trunk/ utos-conman-ro
+2)  cd utos-conman-ro
+3)  python manage.py loaddata fixtures/initial_data.xml (this step may not work.  Skip if not)
 3)  python manage.py runserver <port>
 4)  open a web browser and point it at http://localhost:<port>
 

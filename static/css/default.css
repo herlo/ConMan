@@ -323,15 +323,16 @@ a:hover
 
 #rightMenu
 {
-	position: relative;
-	float: right;
-	width: 15em;
+	position: absolute;
+	right: 0.5em;
+    bottom: 1em;
+	width: 20em;
 	padding: 1em 1em 1.5em 2em;
 	background: #fff top left repeat-y;
 }
+
 #rightMenu h2
 {
-    position: relative;
 	color: #545454;
     font-size: 12pt;
 	border-bottom: dashed 1px #dfdfdf;
@@ -351,7 +352,7 @@ a:hover
 	margin-left: 0.5em;
 	background: #eee top left no-repeat;
 	#border-left: solid 1px #0008EF;
-	list-style: none;
+	list-style: square;
 }
 
 #rightMenu .xbg

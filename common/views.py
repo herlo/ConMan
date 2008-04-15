@@ -100,38 +100,6 @@ def contact(request):
         con_form.data = {'captcha_uid':captcha.uid}
         return render_to_response('contactus.html',{'contactform':con_form})
 
-@login_required
-def profile_show(request):
-    links = LinkItems.objects.order_by('order')
-    if request.user.groups.get_query_set().get(id=1) == 'Presenters':
-        return render_to_response('profile_papers.html',{'user':request.user, 'left_links':links})
-    elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
-        return render_to_response('profile_volunteers.html',{'user':request.user, 'left_links':links})
-    user_data = request.user
-    user_profile = request.user.get_profile()
-    user_presentation = user_profile.presentation
-    #data = {'audience': user_presentation.audience,
-    #'message': 'Hi there',
-    #'sender': 'foo@example.com',
-    #'cc_myself': True}
-
-    pf = SpeakerForm()
-    pf.audience = user_presentation.audience
-    pf.bio = user_profile.bio
-    pf.cat = user_presentation.cat
-    pf.email = user_data.email
-    pf.first_name = user_data.first_name
-    pf.last_name = user_data.last_name
-    pf.irc_channels = user_profile.common_channels
-    pf.irc_nick = user_profile.irc_nick
-    pf.irc_server = user_profile.irc_server
-    pf.job_title = user_profile.job_title
-    pf.presentation_title = user_presentation.title
-    pf.ss = user_profile.shirt_size
-
-    
-    return render_to_response('profile.html', None)
-
 from common.models import CaptchaRequest
 from cStringIO import StringIO
 import random

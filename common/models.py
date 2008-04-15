@@ -27,7 +27,7 @@ class ShirtSize(models.Model):
     '''
     name = models.CharField(max_length=50, choices=SHIRT_SIZES)
     def __unicode__(self):
-        return str(self.name)
+        return self.get_name_display()
         
     class Admin:
 	      list_display = ('id', 'name',)
@@ -108,7 +108,7 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User,unique=True,core=True)
     bio = models.TextField(null=True, blank=True,core=True)
     
-    shirtsize = models.ForeignKey(ShirtSize,core=True, null=True,blank=True)
+    shirt_size = models.ForeignKey(ShirtSize,core=True, null=True,blank=True)
     job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
     irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,core=True)
     irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,core=True)
@@ -271,7 +271,7 @@ class CaptchaRequest(models.Model):
 from django.contrib.syndication.feeds import Feed
 
 class LatestEntries(Feed):
-    print "Inside LatestEntries"
+#    print "Inside LatestEntries"
     title = "Latest News from The Utah Open Source Conference 2008 "
     link = "/"
     description = "Watch this rss feed to keep up on all that's going on prior and during the Utah Open Source Conference 2008.  Feel free to sign up at 2008.utosc.com"

@@ -10,7 +10,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.template import RequestContext
 import pdb
 
 #def save_user(request, form):
@@ -128,15 +127,9 @@ def profile_show(request):
     pf.irc_server = user_profile.irc_server
     pf.job_title = user_profile.job_title
     pf.presentation_title = user_presentation.title
-    pf.ss = user_profile.shirtsize
+    pf.ss = user_profile.shirt_size
 
     
-    if request.user.groups.get_query_set().get(id=1) == 'Presenters':
-        return render_to_response('edit_papers.html',{'pf':pf, 'left_links':links}, 
-          context_instance=RequestContext(request))
-    elif request.user.groups.get_query_set().get(id=1) == 'Volunteers':
-        return render_to_response('edit_volunteers.html',{'user':request.user, 
-          'left_links':links}, context_instance=RequestContext(request))
     return render_to_response('profile.html', None)
 
 from common.models import CaptchaRequest

@@ -52,10 +52,7 @@
 					<li class="first"><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
 					<li><a href="/accounts/register/" accesskey="2" title="">Register</a></li>
 				{% endif %}
-					<li><a href="/speaker/" accesskey="2" title="">Call for Papers</a></li>
-				{% if user.is_authenticated %}
-					<li><a href="/speaker/papers" accesskey="2" title="">Abstract List</a></li>
-				{% endif %}
+					<li><a href="/speaker/papers/" accesskey="2" title="">Call for Papers</a></li>
 <!--					<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
 					<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
 -->
@@ -91,14 +88,13 @@
 				{% endblock primaryContent %}
 			</div>
 		</div>
-<!--	<div id="rightMenu">
+	</div>
+	<div id="rightMenu">
 			{% block rightMenu %}
 			{% endblock rightMenu %}
-			<div class="xbg"></div>
+<!--		<div class="xbg"></div>  -->
 		</div> 
--->
 	<div class="clear"></div>
-	</div>
 <!--	<div id="footer"> 
 		<p>Copyright &copy; 2008 Utah Open Source Foundation</a></p>
  	</div> -->

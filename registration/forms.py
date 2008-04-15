@@ -166,7 +166,7 @@ class ProfileForm(forms.Form):
     job_title = forms.CharField(required=False)
     bio = forms.CharField(label="Short Bio",required=False,widget=forms.Textarea(attrs={}))
     web_site = forms.CharField(required=False)
-    shirt_size = forms.ChoiceField(shirt_objects)
+    shirt_size = forms.ModelChoiceField(ShirtSize.objects.all())
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)

@@ -17,6 +17,7 @@ $(document).ready(function(){
 
 <div id='error_text'>{{ error }}</div>
 	
+	<div id='form'>
 		<form method="post" action="">
 			<table> 
 					<tr>
@@ -35,9 +36,18 @@ $(document).ready(function(){
 			</table>
 			<input type="submit" value="Submit" />
 		</form>
-	
-	
+	</div>
 {% endblock formsWrapper %}
 
+
 {% endblock primaryContent%}
+
+{% block rightMenu %}
+<h2>Submitted Abstracts</h2>
+	<ul>
+	{% for abs in abstract_list %}
+		<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title}}</a></li>
+	{% endfor %}
+	</ul>
+{% endblock rightMenu%}
 

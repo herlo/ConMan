@@ -61,7 +61,8 @@ def update_profile(user, form):
     
     user.first_name = form.cleaned_data['first_name']
     user.last_name = form.cleaned_data['last_name']
-    up.shirtsize = ShirtSize(form.cleaned_data['shirt_size'])
+    up.shirt_size = form.cleaned_data['shirt_size']
+    print form.cleaned_data['shirt_size']
     up.job_title = form.cleaned_data['job_title']
     up.irc_nick = form.cleaned_data['irc_nick']
     up.irc_server = form.cleaned_data['irc_server']
@@ -71,7 +72,7 @@ def update_profile(user, form):
     user.save()
 
 @login_required
-def profile(request, success_url='/speaker/', 
+def profile(request, success_url='/speaker/papers/', 
               form_class=ProfileForm, profile_callback=update_profile, 
               template_name='registration/profile_form.html'):
     links = LinkItems.objects.order_by('order')
@@ -89,19 +90,19 @@ def profile(request, success_url='/speaker/',
         if user.first_name:
     
             up = dict()
-    
+            xp = dict()
+
             up['username'] = user.username
             up['first_name'] = user.first_name
             up['last_name'] = user.last_name
             up['job_title'] = usp.job_title
             up['bio'] = usp.bio
             up['web_site'] = usp.site
-    #        up['shirt_size'] = str(ShirtSize.objects.get(name=usp.shirtsize))
-            up['shirt_size'] = str(ShirtSize(usp.shirtsize))
+            up['shirt_size'] = usp.shirt_size.id
+
             up['irc_nick'] = usp.irc_nick
             up['irc_server'] = usp.irc_server
             up['irc_channels'] = usp.common_channels
-    
             form = form_class(up)
     return render_to_response(template_name,
                               { 'form': form, 'left_links':links },

@@ -41,6 +41,22 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
 
+class Status(models.Model):
+    '''
+    >>> c = Status(name="hot_or_not")
+    >>> c.name
+    'hot_or_not'
+    '''
+    name = models.CharField(max_length=70,choices=STATUS_CHOICES, db_index=True)
+    def __unicode__(self):
+        return self.name
+    
+    class Admin:
+        pass
+    
+    class Meta:
+        verbose_name_plural = "Statuses"
+
 class AudienceType(models.Model):
     '''
     >>> a = AudienceType(name="Legendary")
@@ -87,10 +103,10 @@ class Presentation(models.Model):
     '''
     cat = models.ForeignKey(Category)
     audiences = models.ManyToManyField(AudienceType)
+    title = models.CharField(max_length=150, db_index=True)
     short_abstract = models.TextField(max_length=500)
     long_abstract = models.TextField(blank=True,null=True)
-    status = models.CharField(max_length=70,choices=STATUS_CHOICES,db_index=True)
-    title = models.CharField(max_length=150, db_index=True)
+    status = models.ForeignKey(Status)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
     presenter = models.ForeignKey(UserProfile)
     score = models.IntegerField(blank=True, null=True)
@@ -99,7 +115,7 @@ class Presentation(models.Model):
         return self.title
 
     class Admin:
-        list_filter = ['presenter', 'cat','audiences','status']
+        list_filter = ['presenter', 'cat', 'audiences','status']
         fields = (
            (None, {
                'fields': ('presenter', 'title', 'short_abstract', 'cat', 'audiences', 'score', 'status')
@@ -109,6 +125,6 @@ class Presentation(models.Model):
                'fields' : ('long_abstract', 'slides')
            }),
         )
-
+#
 	list_display = ('presenter', 'title','short_abstract', 'status')
 	search_fields = ['@longabstract','status','@title','foreign_key__cat']

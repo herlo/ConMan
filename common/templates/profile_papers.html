@@ -4,7 +4,7 @@
 
 
 {% block primaryContent %}
-<h2>Call for Papers</h2>
+<h2>View/Edit Profile</h2>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#id_password').pstrength();
@@ -14,7 +14,7 @@ $(document).ready(function(){
 </script>
 
 {% block profileWrapper %}
-
+<p>This profile will be used to represent you during the conference.  The information below will appear in the program, on the website, etc.</p>
 	
 		<h2>Speaker Profile</h2>
 			<table> 
@@ -29,12 +29,7 @@ $(document).ready(function(){
 					<td>Bio: </td> <td> {{ user.bio }}</td>				
 				</tr>				
 				
-				
-				
 			</table>
-
-		
-	
 	
 {% endblock profileWrapper %}
 

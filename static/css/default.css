@@ -325,10 +325,33 @@ a:hover
 {
 	position: relative;
 	float: right;
-	height: 100%;
 	width: 15em;
-	padding: 3em 2em 1.5em 2em;
+	padding: 1em 1em 1.5em 2em;
 	background: #fff top left repeat-y;
+}
+#rightMenu h2
+{
+    position: relative;
+	color: #545454;
+    font-size: 12pt;
+	border-bottom: dashed 1px #dfdfdf;
+	padding-bottom: 0.3em;
+}
+
+#rightMenu ul
+{
+	list-style: none;
+}
+
+#rightMenu li
+{
+    text-align: left;
+	#display: inline;
+	padding: .25em .25em 0em 0em;
+	margin-left: 0.5em;
+	background: #eee top left no-repeat;
+	#border-left: solid 1px #0008EF;
+	list-style: none;
 }
 
 #rightMenu .xbg

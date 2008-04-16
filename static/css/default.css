@@ -87,6 +87,8 @@ a:hover
 {	
 	padding: 1em;
 	float: left;
+	text-decoration: none;
+    border: 0;
 }
 
 

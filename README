@@ -11,21 +11,31 @@ Hopefully, conman will become *the* open source tool for running conferences.
 INSTALLATION REQUIREMENTS
 -------------------------
 
-Django SVN-pre-0.97
+Django SVN-pre-0.97 (this is the current svn tree)
 python >= 2.4
+python imaging library (PIL) >= 2.5
+sqlite > 3 (development version)
+mysql >= 5 (production version)
+postgresql  (production version) 
 A lot of patience and command line skill
+
+For the production version, settings.py will need to be adjusted to run either postgresql or mysql.
+
 
 To setup and install ConMan, because it is a Django project, one could consider using the manage.py and running the dev server for testing, or a better way, to use mod_python or fastcgi to deliver the code using apache on the back end.
 
 DEVELOPMENT SERVER (aka the quick-and-dirty-way)
 
-1)  svn co svn checkout http://utos-conman.googlecode.com/svn/trunk/ utos-conman-ro
+1)  svn co http://utos-conman.googlecode.com/svn/trunk/ utos-conman-ro
 2)  cd utos-conman-ro
-3)  python manage.py loaddata fixtures/initial_data.xml (this step may not work.  Skip if not)
-    3a) if step 3 did not work, this will mean a fair amount of data needs to be added 
+3)  rm testdatabase.db
+4)  python manage.py syncdb 
+    4a) do not choose to add a admin user
+5)  python manage.py loaddata fixtures/initial_data.xml (this step may not work.  Skip if not)
+    5a) if step 3 did not work, this will mean a fair amount of data needs to be added 
         in the admin section.  Hop to it!
-4)  python manage.py runserver <port>
-5)  open a web browser and point it at http://localhost:<port>
+6)  python manage.py runserver <port>
+7)  open a web browser and point it at http://localhost:<port>
 
 PRODUCTION SERVER (aka the read-a-lot-of-mod-python-documentation-way)
 

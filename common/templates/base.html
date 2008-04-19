@@ -39,10 +39,11 @@
 			<div id="lmenu">
 				<ul>
 					<li class="first"><a href="/" accesskey="1" title="">Home</a></li>
-				{% for fp in flat_pages %}
-					<li><a href='{{ fp.href }}'>{{ fp.title }}</a></li>
-				{% endfor %}
 				</ul>
+			</div>
+			<div id="smenu">
+				{% load flatpages_links %}
+				{% show_flatpages %}
 			</div>
 			<div id="menu">
 				<ul>

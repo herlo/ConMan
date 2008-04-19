@@ -30,9 +30,10 @@ urlpatterns = patterns('',
     (r'^volunteer/$', 'volunteers.views.index'),
     (r'^speaker/papers/(?P<abs_id>\d+)?/?$', 'speakers.views.abstract'),
     (r'^speaker/papers/delete/(?P<abs_id>\d+)/$', 'speakers.views.delete_abstract'),
+#    (r'^pages/(?P<fp_id>\d+)/$', 'common.views.show_flatpage'),
 #    (r'^speaker/$', 'speakers.views.index'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
-    (r'$', 'common.views.index'),
+    (r'^$', 'common.views.index'),
 )
 
 #from django.contrib import databrowse

@@ -32,7 +32,7 @@ DEVELOPMENT SERVER (aka the quick-and-dirty-way)
 4)  python manage.py syncdb 
     4a) do not choose to add a admin user
 5)  python manage.py loaddata fixtures/initial_data.xml (this step may not work.  Skip if not)
-    5a) if step 3 did not work, this will mean a fair amount of data needs to be added 
+    5a) if step 5 did not work, this will mean a fair amount of data needs to be added 
         in the admin section.  Hop to it!
 6)  python manage.py runserver <port>
 7)  open a web browser and point it at http://localhost:<port>

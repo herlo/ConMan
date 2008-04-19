@@ -190,6 +190,42 @@ a:hover
 	text-decoration: underline;
 }
 
+
+#smenu
+{
+	position: absolute;
+	top: 10em;
+	left: 15.5em;
+}
+
+#smenu ul
+{
+	list-style: none;
+}
+
+#smenu li
+{
+    text-align: right;
+	display: inline;
+	padding-right: .5em;
+	margin-right: 0.5em;
+	border-right: solid 1px #0008EF;
+}
+
+#smenu li a
+{
+	color: #000;
+	padding: 0.1em;
+    font-size: large;
+    font: bold;
+	text-decoration: none;
+}
+
+#smenu li a:hover
+{
+	text-decoration: underline;
+}
+
 /* Content */
 
 #content

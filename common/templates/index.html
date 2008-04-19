@@ -1,25 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}Home{% endblock title%}
-{% block additionalCSS %}		<link href="/static/css/blog.css" rel="stylesheet" type="text/css" />{% endblock additionalCSS %}
 
 {% block primaryContent %}
-
-<div class="blogEntry" >
-	<div> 
-		<div class="blogUserProfile">
-
-				<div class="blogFullName">{{ p.fullname }}</div>
-<!--				<img class="blogUserImage" src="/static/{{ p.pic }}" />
-				<div class="blogUserEmail">{{ p.email }}</div> -->
-
-		</div>
-<!--		
-		<span class="blogEntryTitle"><a href='/post/{{p.id}}/'>{{ p.title }}</a> </span> <span class="blogCreatedDate"> written on {{ p.created }} </span>	
--->		
-		<div class="blogText">
-      <h3 style="margin-top: -10px">Utah Open Source Conference 2008</h3>
-      <h4 style="margin-top: 7px">This Year's Theme: HOWTO...</h4>
+      <h2 style="margin-top: -10px">Utah Open Source Conference 2008</h3>
+      <h3 style="margin-top: 7px">This Year's Theme: HOWTO...</h4>
 
 <p>The idea is that within the technology, education, community and business tracks, there will be plenty to talk about.</p>
 <ul>
@@ -42,12 +27,6 @@
 
 <p>Clint Savage<br />
 Founder, Utah Open Source Foundation</p>
-    </div>
-		
-		<span class="blogIncludedFiles"> <!--Should be looping here over each object in the files getting the urls and making links out of them --> </span>
-	</div>
-</div>
-<!--This should be looped over using the for statement  in Django -->
 
 {% endblock primaryContent%}
 

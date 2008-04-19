@@ -50,7 +50,6 @@ a:hover
 	position: relative;
 	background: #004778 bottom left repeat-x;
 	height: 10em;
-	padding-left: 2em;
 }
 
 
@@ -85,7 +84,7 @@ a:hover
 
 #logo
 {	
-	padding: 1em;
+	padding: 0.75em;
 	float: left;
 	text-decoration: none;
     border: 0;
@@ -152,7 +151,7 @@ a:hover
 {
 	position: absolute;
 	top: 10em;
-	left: 1em;
+	left: 8.25em;
 }
 
 #lmenu ul
@@ -190,41 +189,6 @@ a:hover
 	text-decoration: underline;
 }
 
-
-#smenu
-{
-	position: absolute;
-	top: 10em;
-	left: 15.5em;
-}
-
-#smenu ul
-{
-	list-style: none;
-}
-
-#smenu li
-{
-    text-align: right;
-	display: inline;
-	padding-right: .5em;
-	margin-right: 0.5em;
-	border-right: solid 1px #0008EF;
-}
-
-#smenu li a
-{
-	color: #000;
-	padding: 0.1em;
-    font-size: large;
-    font: bold;
-	text-decoration: none;
-}
-
-#smenu li a:hover
-{
-	text-decoration: underline;
-}
 
 /* Content */
 

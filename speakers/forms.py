@@ -6,7 +6,10 @@ class PresentationForm(forms.ModelForm):
     cat = forms.ModelChoiceField(Category.objects.all(),label=u'Category')
     audiences = forms.ModelMultipleChoiceField(AudienceType.objects.all())
     title = forms.CharField()
-    short_abstract = forms.CharField(widget=forms.Textarea,min_length=1,max_length=5000,help_text="A short abstract less than 500 words")
+    short_abstract = forms.CharField(widget=forms.Textarea,
+                                     min_length=1,
+                                     max_length=5000,
+                                     help_text="A short abstract less than 5000 characters")
 
     class Meta:
         model = Presentation

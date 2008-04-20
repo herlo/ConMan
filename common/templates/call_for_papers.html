@@ -16,6 +16,7 @@ $(document).ready(function(){
 {% block formsWrapper %}
 
 <div id='error_text'>{{ error }}</div>
+<div id='deleted_text'>{{ deleted }}</div>
 	
 	<div id='form'>
 		<form method="post" action="" enctype="multipart/form-data" >
@@ -41,7 +42,10 @@ $(document).ready(function(){
 	</div>
 {% endblock formsWrapper %}
 
+{% endblock primaryContent%}
+
 {% block rightMenu %}
+
 <h2>Submitted Abstracts</h2>
 	<ul>
 	{% for abs in abstract_list %}
@@ -49,7 +53,4 @@ $(document).ready(function(){
 	{% endfor %}
 	</ul>
 {% endblock rightMenu%}
-
-{% endblock primaryContent%}
-
 

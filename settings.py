@@ -124,3 +124,5 @@ LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/accounts/profile/'
 
 ACCOUNT_ACTIVATION_DAYS = 3
+
+PRESENTATION_DELETED='The presentation has been deleted.'

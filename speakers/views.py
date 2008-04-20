@@ -11,11 +11,14 @@ from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from django.core.mail import *
 from django.conf import settings
+from django.core.urlresolvers import reverse
+
 
 from cStringIO import StringIO
 import pdb,random
 import Image,ImageDraw,ImageFont
 
+import settings
 from common.models import ShirtSize
 from speakers.models import Category,Status
 from speakers.forms import *
@@ -83,6 +86,15 @@ def abstract(request, abs_id=None):
         'abstract_list':abstracts}, context_instance=RequestContext(request))
 
 @login_required
-def delete_abstract(request, abs_id=None):
+def delete_abstract(request, abs_id):
+    instance = get_object_or_404(Presentation, id=abs_id)
+    instance.delete()
+    pf = PresentationForm()
+    deletedText = settings.PRESENTATION_DELETED
+    return render_to_response('call_for_papers.html', {'presentation_form': pf, 'deleted': deletedText })
+
+def show_speakers(request):
     pass
+
+
 

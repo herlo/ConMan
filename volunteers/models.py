@@ -48,10 +48,10 @@ class Volunteer(models.Model):
     request = models.ForeignKey(VolunteerRole, related_name='request')
     comments = models.TextField()
     volunteer = models.ForeignKey(UserProfile)
-    
+
     def __unicode__(self):
         return self.role.name + " Volunteer " + str(self.pk)
     class Admin:
         list_filter = ['role','request']
-	search_fields = ['@comments']
+        search_fields = ['@comments']
 

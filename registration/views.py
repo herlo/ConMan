@@ -54,7 +54,7 @@ def make_basic_profile(user=None):
     up.user = user
     up.save();
 
-def update_profile(user, form):
+def update_profile(user, form, photo):
     isinstance(user,User)
     up = user.get_profile()
     up.bio = form.cleaned_data['bio']
@@ -68,6 +68,7 @@ def update_profile(user, form):
     up.irc_server = form.cleaned_data['irc_server']
     up.common_channels = form.cleaned_data['irc_channels']
     up.site = form.cleaned_data['web_site']
+    up.save_user_photo_file(user.username+'.'+photo['filename'].split('.')[len(photo['filename'].split('.'))-1] ,photo['content'])
     up.save()
     user.save()
 
@@ -78,10 +79,13 @@ def profile(request, success_url='/speaker/papers/',
     links = LinkItems.objects.order_by('order')
     form = form_class()
     if request.method == 'POST':
-        form = form_class(request.POST)
+        pdata = request.POST.copy()
+        pdata.update(request.FILES)
+        form = form_class(pdata)
         if form.is_valid():
             user = User.objects.get(id=request.session.get('_auth_user_id'))
-            update_profile(user, form)
+            #user.get_profile().save_photo_file(request.FILES['photo']['filename'],request.FILES['photo']['content'])
+            update_profile(user, form, request.FILES['photo'])
             return HttpResponseRedirect(success_url)
     else:
         user = User.objects.get(id=request.session.get('_auth_user_id'))
@@ -103,6 +107,7 @@ def profile(request, success_url='/speaker/papers/',
             up['irc_nick'] = usp.irc_nick
             up['irc_server'] = usp.irc_server
             up['irc_channels'] = usp.common_channels
+            up['photo'] = usp.user_photo
             form = form_class(up)
     return render_to_response(template_name,
                               { 'form': form, 'left_links':links },

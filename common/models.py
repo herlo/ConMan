@@ -28,15 +28,15 @@ class ShirtSize(models.Model):
     name = models.CharField(max_length=50, choices=SHIRT_SIZES)
     def __unicode__(self):
         return self.get_name_display()
-        
+
     class Admin:
         list_display = ('id', 'name',)
 
 class UserProfile(models.Model):    
     '''
-    
+
       >>> from django.contrib.auth.models import User
-    
+
     Create a User
       >>> userMan = User.objects.create_user('Janx', 'lennon@thebeatles.com')
 
@@ -79,7 +79,7 @@ class UserProfile(models.Model):
       ... irc_server="FreeNode",
       ... common_channels="#crapology, #shitonomics")
 
-      
+
       >>> userProfile
       <UserProfile: Janx's profile>
       >>> userProfile.user
@@ -102,12 +102,12 @@ class UserProfile(models.Model):
       '#crapology, #shitonomics'
 
     '''
-    
+
 #    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
     #presentation = models.ForeignKey(Presentation, null=True, blank=True,)
     user = models.ForeignKey(User,unique=True,core=True)
     bio = models.TextField(null=True, blank=True,core=True)
-    
+
     shirt_size = models.ForeignKey(ShirtSize,core=True, null=True,blank=True)
     job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
     irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,core=True)
@@ -115,10 +115,10 @@ class UserProfile(models.Model):
     common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,core=True)
     user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True,core=True)
     site = models.URLField(db_index=True, blank=True, null=True,core=True)
-    
+
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
-    
+
     class Admin:
         search_fields = ['job_title','common_channels','@bio','site']
         list_display = ('user', 'irc_nick', 'common_channels')
@@ -147,7 +147,7 @@ class UserProfile(models.Model):
 class PostTag(models.Model):
     name = models.CharField(max_length=150,db_index=True)
     created = models.DateTimeField()
-    
+
     class Admin:
         pass
 
@@ -163,7 +163,7 @@ class LinkItems(models.Model):
 
     class Meta:
         verbose_name_plural = "Link Items"
-    
+
 class PostFiles(models.Model):
     display_name = models.CharField(max_length=300,db_index=True)
     upload_date = models.DateTimeField(db_index=True)
@@ -173,10 +173,10 @@ class PostFiles(models.Model):
 
     class Admin:
         pass
-    
+
     class Meta:
         verbose_name_plural = "Post Files"
-    
+
 class BlogPost(models.Model): 
     poster = models.ForeignKey(User, core=True)
     created = models.DateTimeField(db_index=True)
@@ -191,20 +191,20 @@ class BlogPost(models.Model):
         list_filter = ['poster', 'created','display_date', 'title']
         list_display = ('title', 'poster', 'created', 'display_date')
         fields = (
-           (None, {
-               'fields': ('poster', 'title', 'content', 'created', 'display_date', 'tags')
-           }),
-           ('Extra Content', {
-               'classes': 'collapse',
-               'fields': ('files',)
-           }),
-        )
-    
+            (None, {
+                'fields': ('poster', 'title', 'content', 'created', 'display_date', 'tags')
+                }),
+                ('Extra Content', {
+                    'classes': 'collapse',
+                    'fields': ('files',)
+                    }),
+                )
+
 def future_datetime(**kw_args):
-	def on_call():
-		return datetime.now()+timedelta(**kw_args)
-	return on_call
-	
+    def on_call():
+        return datetime.now()+timedelta(**kw_args)
+    return on_call
+
 CAPTCHA_ANSWER_OK = 1 
 CAPTCHA_UID_NOT_FOUND = -1
 CAPTCHA_REQUEST_EXPIRED = -2
@@ -215,7 +215,7 @@ class CaptchaRequest(models.Model):
     A Captcha request, used to avoid spamming in comments and such
     Each request is valid for 15 minutes (you can change the value in the valid_until field)
     """
-    
+
     valid_until = models.DateTimeField(default=future_datetime(minutes=TIMEOUT))
     answer = models.IntegerField()
     request_path = models.CharField(max_length=50,blank=True)
@@ -256,7 +256,7 @@ class CaptchaRequest(models.Model):
             return CAPTCHA_WRONG_ANSWER
         result.delete()
         return CAPTCHA_ANSWER_OK
-    
+
     @staticmethod
     def generate_request(text,answer,request_path='any'):
         """

@@ -57,25 +57,25 @@ def blog(request):
     posts = BlogPost.objects.order_by('-display_date')[:10]
     postlist = list()
     for p in posts:
-      	postdata = dict()
-      	files = list()
-      	for f in p.files.get_query_set():
-      	    fileobj = dict()
-      	    fileobj['name'] = f.display_name
-      	    fileobj['fileurl'] = f.file.url
-      	    files.append(f)
-  	
+        postdata = dict()
+        files = list()
+        for f in p.files.get_query_set():
+            fileobj = dict()
+            fileobj['name'] = f.display_name
+            fileobj['fileurl'] = f.file.url
+            files.append(f)
+
         postdata['id'] = p.id
-      	postdata['title'] = p.title
-      	postdata['content'] = p.content
-      	postdata['tags'] = p.tags
-      	postdata['created'] = p.created
-      	postdata['files'] = files
-      #	postdata['pic'] = p.poster.get_profile().user_photo
-      	postdata['fullname'] = p.poster.get_full_name()
-      	postdata['email'] = p.poster.email
-      	postlist.append(postdata)
-    
+        postdata['title'] = p.title
+        postdata['content'] = p.content
+        postdata['tags'] = p.tags
+        postdata['created'] = p.created
+        postdata['files'] = files
+    #	postdata['pic'] = p.poster.get_profile().user_photo
+        postdata['fullname'] = p.poster.get_full_name()
+        postdata['email'] = p.poster.email
+        postlist.append(postdata)
+
     links = LinkItems.objects.order_by('order')
     return render_to_response('blog.html',{'posts':postlist, 'left_links':links}, context_instance=RequestContext(request))
 
@@ -93,7 +93,7 @@ def contact(request):
             for u in admin:
                 u.email_user(con_form.data['subject'],con_form.data['message'],'conference@utos.org')
             print u.username
-    
+
             return HttpResponseRedirect('/')
     else:
 #        captcha = generate_sum_captcha()

@@ -94,7 +94,36 @@ def delete_abstract(request, abs_id):
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
 
 def show_speakers(request):
-    pass
+    group = Group.objects.get(name='Speaker')
+    status = Status.objects.get(name='Approved')
+
+    users = group.user_set.all().order_by('last_name')
+    
+    speaker_list = list()
+
+    for user in users:
+        print "user: " + str(user)
+        presentations = list()
+        profile = user.get_profile()
+        presentation_list = profile.presentation_set.filter(status=status)[:3]
+        
+        print presentation_list
+        
+        for p in presentation_list:
+            presentations.append({'id': p.id, 'title': p.title})
+
+        speaker_list.append({ 'name': user.get_full_name(), 'company': profile.company,
+        'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
+        profile.irc_server, 'job_title': profile.job_title, 'web_site':
+        profile.site, 'photo': profile.user_photo, 'presentations': presentations})
+
+
+    return render_to_response('show_speakers.html', {'speakers': speaker_list
+    }, context_instance=RequestContext(request))
+
+
+
+
 
 
 

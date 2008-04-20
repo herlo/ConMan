@@ -164,6 +164,7 @@ class ProfileForm(forms.Form):
     first_name = forms.CharField()
     last_name = forms.CharField()
     job_title = forms.CharField(required=False)
+    company = forms.CharField(required=False)
     bio = forms.CharField(label="Short Bio",required=False,widget=forms.Textarea(attrs={}))
     web_site = forms.CharField(required=False)
     shirt_size = forms.ModelChoiceField(ShirtSize.objects.all())
@@ -171,4 +172,5 @@ class ProfileForm(forms.Form):
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)
     photo = forms.ImageField(required=False, label="Photo")
-#    photo = forms.FileField(required=False)
+
+

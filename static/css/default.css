@@ -432,3 +432,8 @@ a:hover
 	width: 200px;
 	top: 190px;
 }
+
+#speaker{
+   border-bottom: solid 2px #dfdfdf;
+	padding: .25em .25em 0em 0em;
+}

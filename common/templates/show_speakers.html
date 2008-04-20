@@ -1,0 +1,33 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Call for Papers{% endblock title%}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Speakers</h2>
+<p>New speakers are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2008 program.</p>
+		{% for spkr in speakers %}
+	<div id='speaker'> 
+		    <p><b>{{ spkr.name }} <font size='-3'><i>({{ spkr.company }})</i></b></font>
+			<br />
+				{% for pres in spkr.presentations %}
+					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>
+				{% if not pres.last %}
+				<br />
+				{% endif %}
+				{% endfor %}
+			</p>
+			<p>{{ spkr.bio }}</p>
+	</div>
+		{% endfor %}
+
+{% endblock primaryContent%}
+

@@ -54,7 +54,7 @@ def make_basic_profile(user=None):
     up.user = user
     up.save();
 
-def update_profile(user, form, photo):
+def update_profile(user, form, photo=None):
     isinstance(user,User)
     up = user.get_profile()
     up.bio = form.cleaned_data['bio']
@@ -64,11 +64,13 @@ def update_profile(user, form, photo):
     up.shirt_size = form.cleaned_data['shirt_size']
     print form.cleaned_data['shirt_size']
     up.job_title = form.cleaned_data['job_title']
+    up.company = form.cleaned_data['company']
     up.irc_nick = form.cleaned_data['irc_nick']
     up.irc_server = form.cleaned_data['irc_server']
     up.common_channels = form.cleaned_data['irc_channels']
     up.site = form.cleaned_data['web_site']
-    up.save_user_photo_file(user.username+'.'+photo['filename'].split('.')[len(photo['filename'].split('.'))-1] ,photo['content'])
+    if (photo):
+        up.save_user_photo_file(user.username+'.'+photo['filename'].split('.')[len(photo['filename'].split('.'))-1] ,photo['content'])
     up.save()
     user.save()
 
@@ -85,7 +87,10 @@ def profile(request, success_url='/speaker/papers/',
         if form.is_valid():
             user = User.objects.get(id=request.session.get('_auth_user_id'))
             #user.get_profile().save_photo_file(request.FILES['photo']['filename'],request.FILES['photo']['content'])
-            update_profile(user, form, request.FILES['photo'])
+            try:
+                update_profile(user, form, request.FILES['photo'])
+            except:
+                update_profile(user, form)
             return HttpResponseRedirect(success_url)
     else:
         user = User.objects.get(id=request.session.get('_auth_user_id'))
@@ -103,7 +108,7 @@ def profile(request, success_url='/speaker/papers/',
             up['bio'] = usp.bio
             up['web_site'] = usp.site
             up['shirt_size'] = usp.shirt_size.id
-
+            up['company'] = usp.company
             up['irc_nick'] = usp.irc_nick
             up['irc_server'] = usp.irc_server
             up['irc_channels'] = usp.common_channels
@@ -112,7 +117,6 @@ def profile(request, success_url='/speaker/papers/',
     return render_to_response(template_name,
                               { 'form': form, 'left_links':links },
                               context_instance=RequestContext(request))
-    
 
 def register(request, success_url='/accounts/register/complete/',
              form_class=RegistrationForm, profile_callback=make_basic_profile,

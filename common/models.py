@@ -110,6 +110,7 @@ class UserProfile(models.Model):
 
     shirt_size = models.ForeignKey(ShirtSize,core=True, null=True,blank=True)
     job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
+    company = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
     irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,core=True)
     irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,core=True)
     common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,core=True)

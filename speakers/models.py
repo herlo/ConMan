@@ -109,7 +109,7 @@ class Presentation(models.Model):
     cat = models.ForeignKey(Category)
     audiences = models.ManyToManyField(AudienceType)
     title = models.CharField(max_length=150, db_index=True)
-    short_abstract = models.TextField(max_length=500)
+    short_abstract = models.TextField(max_length=5000)
     long_abstract = models.TextField(blank=True,null=True)
     # the default here is a hack, it should really be
     # default=Status('Pending').id or something

@@ -54,7 +54,7 @@ def send_confirm_email(user, form):
 def abstract(request, abs_id=None):
     isinstance(request,HttpRequest)
     user = User.objects.get(id=request.session.get('_auth_user_id'))
-    print "User is: " + str(user)
+#    print "User is: " + str(user)
     userinfo = dict()
     userinfo['name']= user.get_full_name()
     userinfo['email']= user.email
@@ -102,28 +102,42 @@ def show_speakers(request):
     speaker_list = list()
 
     for user in users:
-        print "user: " + str(user)
+#        print "user: " + str(user)
         presentations = list()
         profile = user.get_profile()
         presentation_list = profile.presentation_set.filter(status=status)[:3]
         
-        print presentation_list
-        
-        for p in presentation_list:
-            presentations.append({'id': p.id, 'title': p.title})
-
-        speaker_list.append({ 'name': user.get_full_name(), 'company': profile.company,
-        'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
-        profile.irc_server, 'job_title': profile.job_title, 'web_site':
-        profile.site, 'photo': profile.user_photo, 'presentations': presentations})
+        if (len(presentation_list)):
+            for p in presentation_list:
+                presentations.append({'id': p.id, 'title': p.title})
+    
+            speaker_list.append({ 'id': user.id, 'name': user.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
+            profile.irc_server, 'job_title': profile.job_title, 'web_site':
+            profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 
 
     return render_to_response('show_speakers.html', {'speakers': speaker_list
     }, context_instance=RequestContext(request))
 
+def show_presentation(request, p_id):
+    p = get_object_or_404(Presentation, id=p_id)
+    presentation = dict()
 
+    spkr = p.presenter
+    spkr_id = spkr.user.id
+#    print "spkr id: " +str(spkr.id)
+    spkr_name = spkr.user.get_full_name()
 
+    return render_to_response('show_presentation.html', {'presentation':
+    p, 'spkr': spkr, 'spkr_name': spkr_name, 'spkr_id': spkr_id})
 
+def speaker_info(request, s_id):
+    status = Status.objects.get(name='Approved')
+    spkr = get_object_or_404(User, id=s_id)
 
+    profile = spkr.get_profile()
+    pres_list = profile.presentation_set.filter(status=status)
 
+    return render_to_response('show_speaker.html', {'spkr': spkr, 'profile':
+    profile, 'presentations': pres_list})
 

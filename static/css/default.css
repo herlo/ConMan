@@ -437,3 +437,9 @@ a:hover
    border-bottom: solid 2px #dfdfdf;
 	padding: .25em .25em 0em 0em;
 }
+
+#speakerImg{
+    position: relative;
+    top: 0.25em;
+}
+

@@ -30,7 +30,7 @@ class ShirtSize(models.Model):
         return self.get_name_display()
         
     class Admin:
-	      list_display = ('id', 'name',)
+        list_display = ('id', 'name',)
 
 class UserProfile(models.Model):    
     '''
@@ -162,8 +162,7 @@ class LinkItems(models.Model):
         list_display = ('order', 'href', 'innertext')
 
     class Meta:
-
-	  verbose_name_plural = "Link Items"
+        verbose_name_plural = "Link Items"
     
 class PostFiles(models.Model):
     display_name = models.CharField(max_length=300,db_index=True)
@@ -176,9 +175,8 @@ class PostFiles(models.Model):
         pass
     
     class Meta:
-
-	  verbose_name_plural = "Post Files"
-	
+        verbose_name_plural = "Post Files"
+    
 class BlogPost(models.Model): 
     poster = models.ForeignKey(User, core=True)
     created = models.DateTimeField(db_index=True)
@@ -261,12 +259,12 @@ class CaptchaRequest(models.Model):
     
     @staticmethod
     def generate_request(text,answer,request_path='any'):
-	    """
-	    Generate a new captcha request. This creates 
-	    """
-	    captcha = CaptchaRequest(text=text,request_path=request_path,answer=answer)
-	    captcha.save()
-	    return captcha
+        """
+        Generate a new captcha request. This creates 
+        """
+        captcha = CaptchaRequest(text=text,request_path=request_path,answer=answer)
+        captcha.save()
+        return captcha
 
 from django.contrib.syndication.feeds import Feed
 

@@ -56,7 +56,6 @@ a:hover
 #header h1
 {
 	position: relative;
-
 }
 
 #header h1 a
@@ -68,26 +67,26 @@ a:hover
 #header h2
 {
 	position: absolute;
-    left: 300px;
-	font-size: 0.8em;
-	top: 8em;
-	color: #E0E8EF;
+   left: 225px;
+	font-size: 1.25em;
+	top: 4em;
+	color: #E0E8EF;	
 }
 
 #appName 
 {
-	padding-top: 2.5em;
+	padding-top: 2em;
 	padding-left: 1em;
 	font-size: 1.25em;
-	
 }
 
 #logo
 {	
-	padding: 0.75em;
+	padding-top: 0.25em;	
+	padding: 0.25em;
 	float: left;
 	text-decoration: none;
-    border: 0;
+   border: 0;
 }
 
 
@@ -105,53 +104,58 @@ a:hover
 	color:fff;
 }
 
-#menu
+#actionsMenu
 {
 	position: absolute;
-	top: 10em;
+	top: 9em;
 	right: 1em;
+	color: #fff;
+	font-weight: bold;
+	font-size: small;
 }
 
-#menu ul
+#actionsMenu ul
 {
 	list-style: none;
 }
 
-#menu li
+#actionsMenu li
 {
-    text-align: right;
+	color: #fff;	
+   text-align: right;
 	display: inline;
 	padding-left: .5em;
 	margin-left: 0.5em;
-	border-left: solid 1px #0008EF;
+	border-left: solid 1px #fff;
+	color: #fff;
 }
 
-#menu li.first
+#actionsMenu li.first
 {
 	border: 0em;
 	margin-left: 0em;
 	padding-left: 0em;
 }
 
-#menu li a
+#actionsMenu li a
 {
-	color: #000;
+	color: #fff;
 	padding: 0.1em;
-    font-size: large;
-    font: bold;
 	text-decoration: none;
 }
 
-#menu li a:hover
+#actionsMenu li a:hover
 {
 	text-decoration: underline;
 }
 
 #lmenu
 {
-	position: absolute;
-	top: 10em;
-	left: 8.25em;
+	position: relative;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	border-bottom: dashed 2px #dfdfdf;
+	width: 100%;
 }
 
 #lmenu ul
@@ -161,7 +165,7 @@ a:hover
 
 #lmenu li
 {
-    text-align: right;
+   text-align: right;
 	display: inline;
 	padding-left: .5em;
 	margin-left: 0.5em;
@@ -177,16 +181,17 @@ a:hover
 
 #lmenu li a
 {
-	color: #000;
+	color: #004778;
 	padding: 0.1em;
-    font-size: large;
-    font: bold;
+   font-size: large;
+   font: bold;
 	text-decoration: none;
 }
 
 #lmenu li a:hover
 {
 	text-decoration: underline;
+	color: #000;
 }
 
 
@@ -223,7 +228,7 @@ a:hover
 
 #content ul
 {
-	margin-bottom: 1.5em;
+	margin-bottom: 0.5em;
 	padding-left: 1em;
 	list-style: square;
 }
@@ -285,19 +290,18 @@ a:hover
 
 #primaryContentContainer
 {
-  
 	background-color: #fff;
 	float: right;
-	margin: 0em 10% 0em 10%;
+	margin: 0em 10em 0em 0em;
 	width: 100%;
 }
 
 #primaryContent
 {
-#  position: relative;
-#  left: 0px;
-	margin: 1.5em 8em 0em 17.25em;
-	padding: 1.5em 2em 1.5em 2em;
+   position: relative;
+   left: 0px;
+	margin: 0em 10em 0em 21.5em;
+	padding: 0em 0em 1.5em 0em;
 }
 
 /* Left Menu */
@@ -326,9 +330,11 @@ a:hover
 #rightMenu
 {
 	position: absolute;
+	top: 14em;
 	right: 0.5em;
-    bottom: 1em;
-	width: 20em;
+   bottom: 1em;
+	width: 15em;
+	height: 100%;
 	padding: 1em 1em 1.5em 2em;
 	background: #fff top left repeat-y;
 }
@@ -336,7 +342,7 @@ a:hover
 #rightMenu h2
 {
 	color: #545454;
-    font-size: 12pt;
+   font-size: 12pt;
 	border-bottom: dashed 1px #dfdfdf;
 	padding-bottom: 0.3em;
 }
@@ -371,15 +377,18 @@ a:hover
 
 #footer
 {
-	position: absolute;
-    text-align: center;
-    left: 150px;
-    bottom: -200px;
-    width: 80%;
-    z-index: 1;
-    border-top: dashed 2px #dfdfdf;
+	position: relative;
+   text-align: center;
+   width: 100%;
+   z-index: 1;
+   border-top: dashed 2px #dfdfdf;
 	padding: 1em 0em 1em 0em;
 	margin: 1em 1em 0em 1em;
+}
+
+#poweredBy
+{
+	 text-align: center;
 }
 
 

@@ -18,66 +18,46 @@
 	<body>
 	<div id="outer">
 		<div id="header">
-			<div id="logo"> 
+			<div id="logo">
 				<img src="/static/img/utosc_howto_large.png" alt="ConMan rocks!" />
-				<a href='http://code.google.com/p/utos-conman/' target='_base'><img align="top" src="/static/img/conman.png"  border='0' alt="ConMan rocks!" /></a>
 			</div>
 			<div id="appName">		
 				<h1><a href="/">Utah Open Source Conference 2008</a></h1>
-				<h2>August 28 - 30, 2008 - HowTo...</h2>
+				<h2>HOWTO... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; August 28 - 30, 2008</h2>
 			 </div>	
-		</div>
-		<div>
-			<div id="login">
-				{% if user.is_authenticated %}
-				    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
-				{% else %}
-				    <a href="/accounts/login/">Please log in.</a></p>
-				{% endif %}
-			</div>
-			<div id="lmenu">
-				{% load flatpages_links %}
-				{% show_flatpages %}
-			</div>
-			<div id="menu">
+			 <div id="actionsMenu">
 				<ul>
 				{% if user.is_authenticated %}
-					<li class="first"><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
-					<li><a href="/accounts/profile/" accesskey="2" title="">Profile</a></li>
+					<li class="first"> Welcome, {{ user.username }} </li>
+					<li> <a href="/accounts/profile/" accesskey="2" title="">Profile</a></li>
 				{% else %}
 					<li class="first"><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
 					<li><a href="/accounts/register/" accesskey="2" title="">Create Account</a></li>
 				{% endif %}
 					<li><a href="/speaker/papers/" accesskey="2" title="">Call for Papers</a></li>
-<!--					<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
+<!--				<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
 					<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
 -->
+				{% if user.is_authenticated %}
+					<li><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
+				{% endif %}
 				</ul>
 			</div>
 		</div>
-<!--This should be looped over using the  for statement  in Django -->
-<!--
-<div class="linkEntries" >
-{% for ll in left_links %}
-  <li><a href='{{ ll.href }}'>{{ ll.innertext }}</a></li>
-{% endfor %}
-<ul>
-  <li><a href='/accounts/login/'>Login</a></li>
-  <li><a href='/accounts/logout/'>Logout</a></li>
-  <li><a href='/speaker/'>Call for Papers</a></li>
-  <li><a href='/accounts/profile/'>Edit/Update Profile</a></li>
-  <li><a href='/accounts/register/'>Register an Account</a></li>
-</ul>
-</div>
--->
+
 <!--
 		<div id="leftMenu">
 			{% block leftMenu %}
 			{% endblock leftMenu %}
-			<div class="xbg"></div>
 		</div>
 -->
 	<div id="content">
+		<div>
+			<div id="lmenu">
+				{% load flatpages_links %}
+				{% show_flatpages %}
+			</div>
+		</div>
 		<div id="primaryContentContainer">
 			<div id="primaryContent">
 				{% block primaryContent %}				
@@ -85,15 +65,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="clear"></div>
+	<div class="clear"></div> <!-- Can this get destroyed??? JPW-->
 	<div id="rightMenu">
 			{% block rightMenu %}
 			{% endblock rightMenu %}
-<!--		<div class="xbg"></div>  -->
-		</div> 
-<!--	<div id="footer"> 
-		<p>Copyright &copy; 2008 Utah Open Source Foundation</a></p>
- 	</div> -->
+	</div> 
+	<div id="footer"> 
+		<div id="poweredBy"> 
+				<a href='http://code.google.com/p/utos-conman/' target='_base'>
+					<img align="top" src="/static/img/conman.png"  border='0' alt="ConMan rocks!" />
+				</a>
+		</div>
+		Powered by ConMan
+ 	</div>  
 </div>
 
 <!-- Start of StatCounter Code 

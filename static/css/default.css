@@ -153,9 +153,9 @@ a:hover
 {
 	position: relative;
 	margin-top: 1em;
-	margin-bottom: 1em;
 	border-bottom: dashed 2px #dfdfdf;
 	width: 100%;
+
 }
 
 #lmenu ul
@@ -177,6 +177,7 @@ a:hover
 	border: 0em;
 	margin-left: 0em;
 	padding-left: 0em;
+	text-transform: uppercase;
 }
 
 #lmenu li a
@@ -186,11 +187,13 @@ a:hover
    font-size: large;
    font: bold;
 	text-decoration: none;
+	text-transform: uppercase;
 }
 
 #lmenu li a:hover
 {
 	text-decoration: underline;
+	text-transform: uppercase;
 	color: #000;
 }
 
@@ -228,7 +231,7 @@ a:hover
 
 #content ul
 {
-	margin-bottom: 0.5em;
+	margin-bottom: 0.25em;
 	padding-left: 1em;
 	list-style: square;
 }
@@ -290,7 +293,7 @@ a:hover
 
 #primaryContentContainer
 {
-	background-color: #fff;
+	background-color: #EFF0DF;
 	float: right;
 	margin: 0em 10em 0em 0em;
 	width: 100%;
@@ -301,7 +304,9 @@ a:hover
    position: relative;
    left: 0px;
 	margin: 0em 10em 0em 21.5em;
-	padding: 0em 0em 1.5em 0em;
+	padding: 1em 1em 1em 1em;
+	background-color: #DAE8F7;
+	color: #43484C;
 }
 
 /* Left Menu */
@@ -383,12 +388,18 @@ a:hover
    z-index: 1;
    border-top: dashed 2px #dfdfdf;
 	padding: 1em 0em 1em 0em;
-	margin: 1em 1em 0em 1em;
+	margin: 0em 1em 0em 0em;
 }
 
 #poweredBy
 {
 	 text-align: center;
+	 text-decoration: none;
+}
+
+#poweredBy a
+{
+	 text-decoration: none;
 }
 
 
@@ -418,6 +429,6 @@ a:hover
 	background: #cccccc top left repeat-x;
 	position: absolute;
 	left: 1em;
-  width: 200px;
-  top: 190px;
+	width: 200px;
+	top: 190px;
 }

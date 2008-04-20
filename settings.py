@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'registration',
     'speakers',
     'volunteers',
+    'voting',
 #    'sponsors',
 #    'planner',
     #'django.contrib.databrowse',

@@ -62,8 +62,7 @@ def abstract(request, abs_id=None):
         instance = get_object_or_404(Presentation, id=abs_id)
         presentation_exists = True
     else:
-        instance = Presentation(presenter=request.user.get_profile(), status=Status('Pending'))
-
+        instance = Presentation(presenter=request.user.get_profile())
 
     if request.method == 'POST':
         pf = PresentationForm(request.POST, instance=instance)
@@ -83,10 +82,7 @@ def abstract(request, abs_id=None):
         return render_to_response('call_for_papers.html',{'presenter_form':pf,
         'abstract_list':abstracts}, context_instance=RequestContext(request))
 
-
 @login_required
 def delete_abstract(request, abs_id=None):
     pass
-
-
 

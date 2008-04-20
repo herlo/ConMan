@@ -32,10 +32,12 @@ class Category(models.Model):
     'hot_or_not'
     '''
     name = models.CharField(max_length=150,choices=CATEGORY_CHOICES, db_index=True)
+
     def __unicode__(self):
         return self.name
     
     class Admin:
+        list_display = ('name',)
         pass
     
     class Meta:
@@ -48,10 +50,12 @@ class Status(models.Model):
     'hot_or_not'
     '''
     name = models.CharField(max_length=70,choices=STATUS_CHOICES, db_index=True)
+
     def __unicode__(self):
         return self.name
     
     class Admin:
+
         pass
     
     class Meta:
@@ -64,6 +68,7 @@ class AudienceType(models.Model):
     'Legendary'
     '''
     name = models.CharField(max_length=150, choices=AUDIENCE_CHOICES, db_index=True)
+
     def __unicode__(self):
         return self.name
     class Admin:
@@ -106,7 +111,7 @@ class Presentation(models.Model):
     title = models.CharField(max_length=150, db_index=True)
     short_abstract = models.TextField(max_length=500)
     long_abstract = models.TextField(blank=True,null=True)
-    status = models.ForeignKey(Status)
+    status = models.ForeignKey(Status, default=1)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
     presenter = models.ForeignKey(UserProfile)
     score = models.IntegerField(blank=True, null=True)
@@ -125,6 +130,6 @@ class Presentation(models.Model):
                'fields' : ('long_abstract', 'slides')
            }),
         )
+        list_display = ('presenter', 'title', 'short_abstract', 'status')
+        search_fields = ['@longabstract','status','@title','foreign_key__cat']
 #
-	list_display = ('presenter', 'title','short_abstract', 'status')
-	search_fields = ['@longabstract','status','@title','foreign_key__cat']

@@ -19,7 +19,7 @@ $(document).ready(function(){
 <div id='deleted_text'>{{ deleted }}</div>
 	
 	<div id='form'>
-		<form method="post" action="" enctype="multipart/form-data" >
+		<form method="post" action="/speaker/papers/" enctype="multipart/form-data" >
 			<table> 
 					<tr>
  			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
@@ -38,7 +38,11 @@ $(document).ready(function(){
 			<input type="submit" value="Submit" />
 		</form>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<form method="post" action="/speaker/papers/delete/">
+		{% if presentation_exists %}
+		<form method="post" action="/speaker/papers/{{ abs_id }}/delete/">
+			<input type='submit' value='Delete This Post' />
+		</form>
+		{% endif %}
 	</div>
 {% endblock formsWrapper %}
 

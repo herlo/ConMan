@@ -83,7 +83,7 @@ def abstract(request, abs_id=None):
         pf = PresentationForm(instance=instance)
         abstracts = Presentation.objects.filter(presenter=user.get_profile())
         return render_to_response('call_for_papers.html',{'presenter_form':pf,
-        'abstract_list':abstracts}, context_instance=RequestContext(request))
+        'abstract_list':abstracts, 'abs_id': abs_id, 'presentation_exists': presentation_exists}, context_instance=RequestContext(request))
 
 @login_required
 def delete_abstract(request, abs_id):
@@ -91,7 +91,7 @@ def delete_abstract(request, abs_id):
     instance.delete()
     pf = PresentationForm()
     deletedText = settings.PRESENTATION_DELETED
-    return render_to_response('call_for_papers.html', {'presentation_form': pf, 'deleted': deletedText })
+    return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
 
 def show_speakers(request):
     pass

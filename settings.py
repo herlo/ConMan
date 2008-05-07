@@ -92,7 +92,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'common',
-    'registration',
+    'accounts',
     'speakers',
     'volunteers',
     'voting',

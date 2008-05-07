@@ -18,7 +18,7 @@ import pdb
 #        try:
 #            luser = User.objects.create_user(form.cleaned_data['username'], form.cleaned_data['email'], form.cleaned_data['password'])
 #        except:
-#            return render_to_response('registration/login.html', {'error': Static.USER_ALREADY_EXISTS})
+#            return render_to_response('accounts/login.html', {'error': Static.USER_ALREADY_EXISTS})
 #    else:
 #        luser = User(request.user)
 #

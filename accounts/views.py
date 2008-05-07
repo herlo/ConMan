@@ -11,11 +11,11 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from common.models import *
 
-from registration.forms import RegistrationForm, ProfileForm
-from registration.models import RegistrationProfile
+from accounts.forms import RegistrationForm, ProfileForm
+from accounts.models import RegistrationProfile
 
 
-def activate(request, activation_key, template_name='registration/activate.html'):
+def activate(request, activation_key, template_name='accounts/activate.html'):
     """
     Activates a ``User``'s account, if their key is valid and hasn't
     expired.
@@ -77,7 +77,7 @@ def update_profile(user, form, photo=None):
 @login_required
 def profile(request, success_url='/pages/home/', 
               form_class=ProfileForm, profile_callback=update_profile, 
-              template_name='registration/profile_form.html'):
+              template_name='accounts/profile_form.html'):
     links = LinkItems.objects.order_by('order')
     form = form_class()
     if request.method == 'POST':
@@ -120,7 +120,7 @@ def profile(request, success_url='/pages/home/',
 
 def register(request, success_url='/accounts/register/complete/',
              form_class=RegistrationForm, profile_callback=make_basic_profile,
-             template_name='registration/registration_form.html'):
+             template_name='accounts/registration_form.html'):
     """
     Allows a new user to register an account.
     

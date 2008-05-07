@@ -12,7 +12,7 @@ from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.contrib.auth import views as auth_views
 
-from registration.views import activate, register, profile
+from accounts.views import activate, register, profile
 
 from common.models import LinkItems
 
@@ -28,7 +28,7 @@ urlpatterns = patterns('',
     # confusing 404.
     url(r'^activate/(?P<activation_key>\w+)/$', activate, name='registration_activate'),
     url(r'^login/$', auth_views.login,
-        {'template_name': 'registration/login.html'}, name='auth_login'),
+        {'template_name': 'accounts/login.html'}, name='auth_login'),
     url(r'^logout/$', auth_views.logout,
         {'template_name': 'index.html'}, name='auth_logout'),
     url(r'^password/change/$', auth_views.password_change, name='auth_password_change'),
@@ -39,6 +39,6 @@ urlpatterns = patterns('',
         name='auth_password_reset_done'),
     url(r'^register/$', register, name='register'),
     url(r'^register/complete/$', direct_to_template,
-        {'template': 'registration/registration_complete.html'}, name='registration_complete'),
+        {'template': 'accounts/registration_complete.html'}, name='registration_complete'),
     url(r'^profile/$', profile, name='profile_form'),
     )

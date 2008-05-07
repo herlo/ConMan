@@ -9,7 +9,7 @@ from django.core.validators import alnum_re
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from common.models import ShirtSize
-from registration.models import RegistrationProfile
+from accounts.models import RegistrationProfile
 
 
 # I put this on all required fields, because it's easier to pick up

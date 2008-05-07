@@ -75,7 +75,7 @@ def update_profile(user, form, photo=None):
     user.save()
 
 @login_required
-def profile(request, success_url='/speaker/papers/', 
+def profile(request, success_url='/pages/home/', 
               form_class=ProfileForm, profile_callback=update_profile, 
               template_name='registration/profile_form.html'):
     links = LinkItems.objects.order_by('order')

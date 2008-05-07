@@ -29,10 +29,12 @@ $(document).ready(function(){
 {% endif %}
 
 <h3>Presentations</h3>
+<ul>
 {% for pres in presentations %}
-<h4><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></h4>
-<p>{{ pres.short_abstract }}</p>
+<li><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></li>
+<!-- <p>{{ pres.short_abstract }}</p> -->
 {% endfor %}
+</ul>
 
 
 {% endblock primaryContent%}

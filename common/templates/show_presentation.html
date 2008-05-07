@@ -12,11 +12,11 @@ $(document).ready(function(){
 	});
 </script>
 
-<p><font size='+2'>{{ presentation.title }}</font><br />
-<a href='/speaker/{{ spkr_id }}/'><font size='-3' color='#43484C'>{{ spkr_name }}</font></a> <font size='-3'><i>({{ spkr.company }})</i></font></p>
+<p><font size='+2'>{{ presentation.title }}</font></p>
 <p>{{ presentation.short_abstract }}</p>
 	<div id='speaker'> 
-		    About {{ spkr_name }}
+		    <h4>About {{ spkr_name }}</h4>
+<h5><a href='/speaker/{{ spkr_id }}/'><font size='-3' color='#43484C'>{{ spkr_name }}</font></a> <font size='-3'><i>({{ spkr.company }})</i></font></h3>
 			<div id='speakerImg'> <img src='/static/{{ spkr.user_photo }}'></div>
 			<p>{{ spkr.bio }}</p>
 	</div>

@@ -132,5 +132,5 @@ class Presentation(models.Model):
                'fields' : ('long_abstract', 'slides')
            }),
         )
-        list_display = ('presenter', 'title', 'short_abstract', 'status')
+        list_display = ('presenter', 'title', 'score', 'short_abstract', 'status')
         search_fields = ['@longabstract','status','@title','foreign_key__cat']

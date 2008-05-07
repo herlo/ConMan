@@ -139,6 +139,3 @@ def index(request, vol_id=None):
 @login_required
 def delete_abstract(request, abs_id=None):
     pass
-
-
-

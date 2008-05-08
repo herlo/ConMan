@@ -119,6 +119,38 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
+    
+    def save(self):
+        # We use PIL's Image object
+        # Docs: http://www.pythonware.com/library/pil/handbook/image.htm
+        from PIL import Image
+   
+        # Set our max image size in a tuple (max width, max height)
+        MAX_IMAGE_SIZE = (150, 150)
+   
+        # Save image so we can get the filename
+        # it appears this is no longer necessary
+        # self.save_user_photo_file(self.get_user_photo_filename(), '', save=False)
+   
+        # Open image in order to resize
+        image = Image.open(self.get_user_photo_filename())
+   
+        # Convert to RGB if necessary
+        # Thanks to Limodou on DjangoSnippets.org
+        # http://www.djangosnippets.org/snippets/20/
+        if image.mode not in ('L', 'RGB'):
+            image = image.convert('RGB')
+   
+        # We use our PIL Image object to resize
+        # Additionally, we use Image.ANTIALIAS to make the image look better.
+        # Without antialiasing the image pattern artifacts may result.
+        image.thumbnail(MAX_IMAGE_SIZE, Image.ANTIALIAS)
+ 
+        # Save the thumbnail
+        image.save(self.get_user_photo_filename())
+          
+        # Save this photo instance
+        super(UserProfile, self).save()
 
     class Admin:
         search_fields = ['job_title','common_channels','@bio','site']

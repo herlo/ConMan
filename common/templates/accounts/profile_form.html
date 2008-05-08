@@ -11,13 +11,14 @@ $(document).ready(function(){
 	$('#id_short_abstract').autogrow();
 	$('#id_bio').autogrow();
 	});
+
 </script>
 
 {% block formsWrapper %}
 
 <div id='error_text'>{{ error }}</div>
 	
-		<form enctype="multipart/form-data" method="post" action="">
+		<form name="profile_form" enctype="multipart/form-data" method="post" action="">
 			<table> 
 					<tr>
 				    <td>Profile for:</td><td><b>{{ user.username }}</b></td>
@@ -32,8 +33,17 @@ $(document).ready(function(){
 				   </tr>
 				{% endfor %}
 				
+				{% if photo_url %}
+				   <tr>
+				   <td>&nbsp;</td><td><img src='{{ photo_url }}' /></td>
+				   </tr>
+				{% endif %}
 			</table>
-			<input type="submit" value="Submit" />
+			{% if  user %}
+			<input type="submit" value="Submit" onclick="check_photo_size()"/>
+			{% else %}
+			<input type="submit" value="Update Profile" onclick="check_photo_size()"/>
+			{% endif %}
 		</form>
 	
 	

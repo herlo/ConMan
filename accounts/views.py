@@ -114,8 +114,9 @@ def profile(request, success_url='/pages/home/',
             up['irc_channels'] = usp.common_channels
             up['photo'] = usp.user_photo
             form = form_class(up)
+            photo_url =  settings.HOST_NAME + settings.MEDIA_URL + str(usp.user_photo)
     return render_to_response(template_name,
-                              { 'form': form, 'left_links':links },
+                              { 'form': form, 'photo_url': photo_url, 'left_links':links },
                               context_instance=RequestContext(request))
 
 def register(request, success_url='/accounts/register/complete/',

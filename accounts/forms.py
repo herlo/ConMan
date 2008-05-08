@@ -171,6 +171,6 @@ class ProfileForm(forms.Form):
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)
-    photo = forms.ImageField(required=False, label="Photo")
+    photo = forms.ImageField(help_text="Max: 150x150 - Image shown below (if uploaded)", required=False, label="Photo")
 
 

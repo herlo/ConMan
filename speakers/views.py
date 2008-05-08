@@ -61,10 +61,15 @@ def abstract(request, abs_id=None):
 
     presentation_exists = False
 
+    print "Abs id: " + str(abs_id)
+
     if abs_id:
         instance = get_object_or_404(Presentation, id=abs_id)
         presentation_exists = True
     else:
+        group = Group.objects.get(name='Speaker')
+        user.groups.add(group)
+        user.save()
         instance = Presentation(presenter=request.user.get_profile())
 
     if request.method == 'POST':
@@ -81,7 +86,7 @@ def abstract(request, abs_id=None):
                 return render_to_response('paper_submitted.html', {'host': settings.HOST_NAME}, context_instance=RequestContext(request))
     else:
         pf = PresentationForm(instance=instance)
-        abstracts = Presentation.objects.filter(presenter=user.get_profile())
+        abstracts = Presentation.objects.filter(presenter=user.get_profile()).exclude(status__name='Approved')
         return render_to_response('call_for_papers.html',{'presenter_form':pf,
         'abstract_list':abstracts, 'abs_id': abs_id, 'presentation_exists': presentation_exists}, context_instance=RequestContext(request))
 
@@ -95,8 +100,6 @@ def delete_abstract(request, abs_id):
 
 def show_speakers(request):
     group = Group.objects.get(name='Speaker')
-    status = Status.objects.get(name='Approved')
-
     users = group.user_set.all().order_by('last_name')
     
     speaker_list = list()
@@ -105,8 +108,8 @@ def show_speakers(request):
 #        print "user: " + str(user)
         presentations = list()
         profile = user.get_profile()
-        presentation_list = profile.presentation_set.filter(status=status)[:3]
-        
+        presentation_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved'))[:3]
+
         if (len(presentation_list)):
             for p in presentation_list:
                 presentations.append({'id': p.id, 'title': p.title})

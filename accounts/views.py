@@ -62,7 +62,7 @@ def update_profile(user, form, photo=None):
     user.first_name = form.cleaned_data['first_name']
     user.last_name = form.cleaned_data['last_name']
     up.shirt_size = form.cleaned_data['shirt_size']
-    print form.cleaned_data['shirt_size']
+    #print form.cleaned_data['shirt_size']
     up.job_title = form.cleaned_data['job_title']
     up.company = form.cleaned_data['company']
     up.irc_nick = form.cleaned_data['irc_nick']

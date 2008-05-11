@@ -15,7 +15,7 @@ $(document).ready(function(){
 <p><font size='+2'>{{ spkr.first_name }} {{ spkr.last_name }}</font><br />
 <font size='-3'>({{ profile.job_title }}, {{ profile.company}})</font><br />
 <a href='{{ profile.site }}' target='_blank'><font size='-2'>{{ profile.site }}</font></a></p>
-<div id='speakerImg'> <img src='/static/{{ profile.user_photo }}'></div>
+<div id='speakerImg'> <img src='/static/{{ profile.user_photo }}' /></div>
 <p>{{ profile.bio }}</p>
 
 {% if profile.irc_nick %}

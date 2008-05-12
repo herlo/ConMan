@@ -132,7 +132,8 @@ def show_presentation(request, p_id):
     spkr_name = spkr.user.get_full_name()
 
     return render_to_response('show_presentation.html', {'presentation':
-    p, 'spkr': spkr, 'spkr_name': spkr_name, 'spkr_id': spkr_id})
+    p, 'spkr': spkr, 'spkr_name': spkr_name, 'spkr_id': spkr_id},
+    context_instance=RequestContext(request))
 
 def speaker_info(request, s_id):
     status = Status.objects.get(name='Approved')

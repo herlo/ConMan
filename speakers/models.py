@@ -134,3 +134,7 @@ class Presentation(models.Model):
         )
         list_display = ('presenter', 'title', 'score', 'short_abstract', 'status')
         search_fields = ['@longabstract','status','@title','foreign_key__cat']
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('speakers.views.show_presentation', [str(self.id)])

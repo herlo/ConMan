@@ -1,15 +1,21 @@
 {% extends "base_forms.html" %}
+{% load voting_tags %}
 
 {% block title %}{{ presentation.title }}{% endblock title %}
 
+{% block additionalCSS %}
+{{ block.super }}
+<style type="text/css">
+    form.voting { display: inline; }
+</style>
+{% endblock %}
 
 {% block primaryContent %}
 <script type="text/javascript">
-$(document).ready(function(){
-	$('#id_password').pstrength();
-	$('#id_short_abstract').autogrow();
-	$('#id_bio').autogrow();
-});
+    $(document).ready(function(){
+        $('#id_password').pstrength();
+        $('#id_short_abstract').autogrow();
+        $('#id_bio').autogrow();
 </script>
 
 <p style="font-size: x-large;">{{ presentation.title }}</p>
@@ -24,6 +30,24 @@ $(document).ready(function(){
 
     <div id='speakerImg'> <img src='/static/{{ spkr.user_photo }}'></div>
     <p>{{ spkr.bio }}</p>
+
+    {% if perms.voting.can_vote %}
+    <div id="presentation-voting">
+        {% vote_by_user user on presentation as vote %}
+        {% if vote %}
+        <p>You voted <em>{{ vote|vote_display:"for,against" }}</em> this presentation.</p>
+        {% else %}
+        <p>Vote on this presentation.</p>
+        {% endif %}
+        <form action="./upvote/" method="post" class="voting">
+            <button type="submit">+</button>
+        </form>
+        <form action="./downvote/" method="post" class="voting">
+            <button type="submit">-</button>
+        </form>
+    </div>
+    {% endif %}
+
 </div>
 
 {% endblock primaryContent %}

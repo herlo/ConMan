@@ -1,6 +1,6 @@
 {% extends "base_forms.html" %}
 
-{% block title %}{{ presentation.title }}{% endblock title%}
+{% block title %}{{ presentation.title }}{% endblock title %}
 
 
 {% block primaryContent %}
@@ -9,17 +9,21 @@ $(document).ready(function(){
 	$('#id_password').pstrength();
 	$('#id_short_abstract').autogrow();
 	$('#id_bio').autogrow();
-	});
+});
 </script>
 
-<p><font size='+2'>{{ presentation.title }}</font></p>
+<p style="font-size: x-large;">{{ presentation.title }}</p>
 <p>{{ presentation.short_abstract }}</p>
-	<div id='speaker'> 
-		    <h4>About {{ spkr_name }}</h4>
-<h5><a href='/speaker/{{ spkr_id }}/'><font size='-3' color='#43484C'>{{ spkr_name }}</font></a> <font size='-3'><i>({{ spkr.company }})</i></font></h3>
-			<div id='speakerImg'> <img src='/static/{{ spkr.user_photo }}'></div>
-			<p>{{ spkr.bio }}</p>
-	</div>
+<div id='speaker'> 
+    <h4>About {{ spkr_name }}</h4>
 
-{% endblock primaryContent%}
+    <h5 style="font-size: x-small">
+        <a href='/speaker/{{ spkr_id }}/' style="color: #43484C">{{ spkr_name }}</a>
+        <em>({{ spkr.company }})</em>
+    </h5>
 
+    <div id='speakerImg'> <img src='/static/{{ spkr.user_photo }}'></div>
+    <p>{{ spkr.bio }}</p>
+</div>
+
+{% endblock primaryContent %}

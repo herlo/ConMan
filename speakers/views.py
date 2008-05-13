@@ -100,21 +100,28 @@ def delete_abstract(request, abs_id):
 
 def show_speakers(request):
     group = Group.objects.get(name='Speaker')
-    users = group.user_set.all().order_by('last_name')
-    
+    speakers = group.user_set.all().order_by('last_name')
+    try:
+        user = User.objects.get(id=request.session.get('_auth_user_id'))
+    except:
+        user = None
+        
     speaker_list = list()
 
-    for user in users:
+    for speaker in speakers:
 #        print "user: " + str(user)
         presentations = list()
-        profile = user.get_profile()
-        presentation_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved'))[:3]
+        profile = speaker.get_profile()
+        if isinstance(user,User) and user.has_perm('can_vote'):
+            presentation_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
+        else:
+            presentation_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved'))
 
         if (len(presentation_list)):
             for p in presentation_list:
                 presentations.append({'id': p.id, 'title': p.title})
     
-            speaker_list.append({ 'id': user.id, 'name': user.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
+            speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
             profile.irc_server, 'job_title': profile.job_title, 'web_site':
             profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 

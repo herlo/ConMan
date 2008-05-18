@@ -19,7 +19,8 @@ $(document).ready(function(){
 		    <p><b><a href='/speaker/{{ spkr.id }}/'>{{ spkr.name }}</a> <font size='-3'><i>({{ spkr.company }})</i></b></font>
 			<br />
 				{% for pres in spkr.presentations %}
-					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>
+					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>{% if perms.voting.can_vote %} <font size='-1'>({{ pres.status }})</font> {% endif %}
+    
 				{% if not pres.last %}
 				<br />
 				{% endif %}

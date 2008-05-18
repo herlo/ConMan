@@ -43,6 +43,19 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
 
+class Room(models.Model):
+    name = models.CharField(max_length=70)
+    # this is for the 'you are here' section on a map.
+    # could be coordinates, but I think it'll be an image for now
+    here = models.ImageField(upload_to='here',blank=True,null=True)
+
+    def __unicode__(self):
+        return self.name
+    
+    class Admin:
+
+        pass
+
 class Status(models.Model):
     '''
     >>> c = Status(name="hot_or_not")
@@ -117,6 +130,10 @@ class Presentation(models.Model):
     slides = models.FileField(upload_to="slides",blank=True,null=True)
     presenter = models.ForeignKey(UserProfile)
     score = models.IntegerField(blank=True, null=True)
+    # allows for scheduling of the presentation once its approved
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+    location = models.ForeignKey(Room)
     
     def __unicode__(self):
         return self.title
@@ -129,7 +146,7 @@ class Presentation(models.Model):
            }),
            ('Extra Information', {
                'classes': 'collapse',
-               'fields' : ('long_abstract', 'slides')
+               'fields' : ('long_abstract', 'slides', 'start', 'end', 'location')
            }),
         )
         list_display = ('presenter', 'title', 'score', 'short_abstract', 'status')

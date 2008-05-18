@@ -40,13 +40,13 @@
         <p>Vote on this presentation.</p>
         {% endif %}
         <form action="./upvote/" method="post" class="voting">
-            <button type="submit">+</button>
+            <button type="submit">+1</button>
         </form>
         <form action="./clearvote/" method="post" class="voting">
-            <button type="submit">clear</button>
+            <button type="submit">reset</button>
         </form>
         <form action="./downvote/" method="post" class="voting">
-            <button type="submit">-</button>
+            <button type="submit">-1</button>
         </form>
     </div>
     {% endif %}

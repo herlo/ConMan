@@ -131,9 +131,9 @@ class Presentation(models.Model):
     presenter = models.ForeignKey(UserProfile)
     score = models.IntegerField(blank=True, null=True)
     # allows for scheduling of the presentation once its approved
-    start = models.DateTimeField()
-    end = models.DateTimeField()
-    location = models.ForeignKey(Room)
+    start = models.DateTimeField(blank=True, null=True)
+    end = models.DateTimeField(blank=True, null=True)
+    location = models.ForeignKey(Room,blank=True, null=True)
     
     def __unicode__(self):
         return self.title

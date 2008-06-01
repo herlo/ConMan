@@ -134,9 +134,9 @@ class NullStream(object):
     writeline = write
     writelines = write
 
-RESTRUCTUREDTEXT_FILTER_SETTINGS = {
-    'initial_header_level': 3,
-    'warning_stream': NullStream(),
-    'raw_enabled': False,
-    'doctitle_xform': False,
-}
+#RESTRUCTUREDTEXT_FILTER_SETTINGS = {
+#    'initial_header_level': 3,
+#    'warning_stream': NullStream(),
+#    'raw_enabled': False,
+#    'doctitle_xform': False,
+#}

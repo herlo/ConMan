@@ -133,23 +133,26 @@ class UserProfile(models.Model):
         # self.save_user_photo_file(self.get_user_photo_filename(), '', save=False)
    
         # Open image in order to resize
-        image = Image.open(self.get_user_photo_filename())
+        if (self.get_user_photo_filename()):
+            image = Image.open(self.get_user_photo_filename())
    
-        # Convert to RGB if necessary
-        # Thanks to Limodou on DjangoSnippets.org
-        # http://www.djangosnippets.org/snippets/20/
-        if image.mode not in ('L', 'RGB'):
-            image = image.convert('RGB')
-   
-        # We use our PIL Image object to resize
-        # Additionally, we use Image.ANTIALIAS to make the image look better.
-        # Without antialiasing the image pattern artifacts may result.
-        image.thumbnail(MAX_IMAGE_SIZE, Image.ANTIALIAS)
- 
-        # Save the thumbnail
-        image.save(self.get_user_photo_filename())
-          
-        # Save this photo instance
+            # Convert to RGB if necessary
+            # Thanks to Limodou on DjangoSnippets.org
+            # http://www.djangosnippets.org/snippets/20/
+            if image.mode not in ('L', 'RGB'):
+                image = image.convert('RGB')
+       
+            # We use our PIL Image object to resize
+            # Additionally, we use Image.ANTIALIAS to make the image look better.
+            # Without antialiasing the image pattern artifacts may result.
+            image.thumbnail(MAX_IMAGE_SIZE, Image.ANTIALIAS)
+     
+            # Save the thumbnail
+            try:
+                image.save(self.get_user_photo_filename())
+            except KeyError:
+                pass
+            # Save this photo instance
         super(UserProfile, self).save()
 
     class Admin:

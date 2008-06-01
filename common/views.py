@@ -39,13 +39,16 @@ import pdb
 #    else:
 #        print "sent email"
 
+def show_tos(request):
+    return render_to_response('tos.html')
+	
 def test(request):
     volunteer_form = VolunteerForm()
     presenter_form = SpeakerForm()
     if request.method == 'POST':
         presenter_form = SpeakerForm(request.POST)
     if not presenter_form.is_valid():
-        render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
+        return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
     return render_to_response('test_template.html',{'volunteer_form':volunteer_form, 'presenter_form':presenter_form})
 
 def index(request):

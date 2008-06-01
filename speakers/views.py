@@ -108,21 +108,21 @@ def show_speakers(request):
         
     speaker_list = list()
 
-    for speaker in speakers:
-        presentations = list()
-        profile = speaker.get_profile()
-        if isinstance(user,User) and user.has_perm('can_vote'):
+    if isinstance(user,User) and user.has_perm('can_vote'):
+        for speaker in speakers:
+            presentations = list()
+            profile = speaker.get_profile()
             pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
+            for p in pending_list:
+                presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
+
         approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved'))
 
         if (len(approved_list)):
             for p in approved_list:
                 presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
-        if (len(pending_list)):
-            for p in pending_list:
-                presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
     
-            speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
+        speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
             profile.irc_server, 'job_title': profile.job_title, 'web_site':
             profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 

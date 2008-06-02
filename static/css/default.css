@@ -38,6 +38,7 @@ a:hover
 
 #outer
 {
+    overflow: auto; /* for floats */
 	padding: 0em;
 	margin: 0em;
 	width: 100%;
@@ -64,29 +65,30 @@ a:hover
 	text-decoration: none;
 }
 
-#header h2
-{
-	position: absolute;
-   left: 225px;
-	font-size: 1.25em;
-	top: 4em;
-	color: #E0E8EF;	
-}
-
 #appName 
 {
+	margin-left: 150px;
 	padding-top: 2em;
-	padding-left: 1em;
 	font-size: 1.25em;
+}
+
+#appName h2
+{
+    margin-top: 0.5em;
+    margin-left: 4em;
+	font-size: 1.25em;
+	color: #E0E8EF;	
 }
 
 #logo
 {	
+    position: absolute;
+    top: 0;
+    left: 0;
 	padding-top: 0.25em;	
 	padding: 0.25em;
-	float: left;
 	text-decoration: none;
-   border: 0;
+    border: 0;
 }
 
 
@@ -152,7 +154,7 @@ a:hover
 #lmenu
 {
 	position: relative;
-	margin-top: 1em;
+	margin: 1em 0;
 	border-bottom: dashed 2px #dfdfdf;
 	width: 100%;
 
@@ -202,8 +204,10 @@ a:hover
 
 #content
 {
-	line-height: 1.5em;
     overflow: auto; /* for floats */
+    margin-left: 150px;
+    margin-right: 350px;
+	line-height: 1.5em;
 }
 
 
@@ -295,16 +299,12 @@ a:hover
 #primaryContentContainer
 {
 	background-color: #EFF0DF;
-	float: right;
-	margin: 0em 10em 0em 0em;
-	width: 100%;
 }
 
 #primaryContent
 {
-   position: relative;
-   left: 0px;
-	margin: 0em 10em 0em 21.5em;
+    position: relative;
+    left: 0px;
 	padding: 1em 1em 1em 1em;
 	background-color: #DAE8F7;
 	color: #43484C;
@@ -335,12 +335,11 @@ a:hover
 
 #rightMenu
 {
-	position: absolute;
-	top: 14em;
-	right: 0.5em;
-   bottom: 1em;
-	width: 15em;
-	height: 100%;
+    position: absolute;
+    top: 10em;
+    right: 0;
+	width: 300px;
+    margin-top: 4em;
 	padding: 1em 1em 1.5em 2em;
 	background: #fff top left repeat-y;
 }
@@ -348,7 +347,7 @@ a:hover
 #rightMenu h2
 {
 	color: #545454;
-   font-size: 12pt;
+    font-size: 12pt;
 	border-bottom: dashed 1px #dfdfdf;
 	padding-bottom: 0.3em;
 }
@@ -361,11 +360,11 @@ a:hover
 #rightMenu li
 {
     text-align: left;
-	#display: inline;
+	display: inline;
 	padding: .25em .25em 0em 0em;
 	margin-left: 0.5em;
 	background: #eee top left no-repeat;
-	#border-left: solid 1px #0008EF;
+	border-left: solid 1px #0008EF;
 	list-style: square;
 }
 
@@ -383,13 +382,12 @@ a:hover
 
 #footer
 {
-	position: relative;
-   text-align: center;
-   width: 100%;
-   z-index: 1;
-   border-top: dashed 2px #dfdfdf;
-	padding: 1em 0em 1em 0em;
-	margin: 0em 1em 0em 0em;
+    clear: both;
+    text-align: center;
+    width: 100%;
+    border-top: dashed 2px #dfdfdf;
+    padding: 1em 0em 1em 0em;
+    margin: 0em 1em 0em 0em;
 }
 
 #poweredBy

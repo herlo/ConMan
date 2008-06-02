@@ -203,6 +203,7 @@ a:hover
 #content
 {
 	line-height: 1.5em;
+    overflow: auto; /* for floats */
 }
 
 

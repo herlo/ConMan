@@ -91,7 +91,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'django.contrib.markup',
     'common',
     'accounts',
     'speakers',
@@ -127,16 +126,3 @@ LOGIN_REDIRECT_URL = '/accounts/profile/'
 ACCOUNT_ACTIVATION_DAYS = 3
 
 PRESENTATION_DELETED='The presentation has been deleted.'
-
-class NullStream(object):
-    def write(*args, **kwdargs):
-        pass
-    writeline = write
-    writelines = write
-
-#RESTRUCTUREDTEXT_FILTER_SETTINGS = {
-#    'initial_header_level': 3,
-#    'warning_stream': NullStream(),
-#    'raw_enabled': False,
-#    'doctitle_xform': False,
-#}

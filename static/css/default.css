@@ -67,9 +67,22 @@ a:hover
 
 #appName 
 {
+	position: absolute;
+    left: 225px;
 	margin-left: 150px;
 	padding-top: 2em;
-	font-size: 1.25em;
+	top: 3.75em;
+	color: #E0E8EF;	
+}
+
+#header h3
+{
+	position: absolute;
+    left: 325px;
+	font-size: 1em;
+	top: 6.5em;
+	color: #E0E8EF;	
+	border-bottom: none;
 }
 
 #appName h2
@@ -79,6 +92,8 @@ a:hover
 	font-size: 1.25em;
 	color: #E0E8EF;	
 }
+
+
 
 #logo
 {	

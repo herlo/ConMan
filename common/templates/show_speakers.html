@@ -16,7 +16,7 @@ $(document).ready(function(){
 <p>New speakers are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2008 program.</p>
 		{% for spkr in speakers %}
 	<div id='speaker'> 
-		    <p><b><a href='/speaker/{{ spkr.id }}/'>{{ spkr.name }}</a> <font size='-3'><i>({{ spkr.company }})</i></b></font>
+		    <p><b><a href='/speaker/{{ spkr.id }}/'>{{ spkr.name }}</a> {% if spkr.company %}<font size='-3'><i>({{ spkr.company }})</i></font>{% endif %}</b>
 			<br />
 				{% for pres in spkr.presentations %}
 					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>{% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %} <font size='-1'>&nbsp; ({{ pres.status }})</font> {% endif %}
@@ -26,7 +26,7 @@ $(document).ready(function(){
 				{% endif %}
 				{% endfor %}
 			</p>
-			<p>{{ spkr.bio }}</p>
+			{% if spkr.web_site %}<p>Speaker Website: <a href='{{ spkr.web_site }}' target='_new'>{{ spkr.web_site }}</a></p> {% endif %}
 	</div>
 		{% endfor %}
 

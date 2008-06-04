@@ -363,18 +363,18 @@ a:hover
 
 #rightMenu ul
 {
-	list-style: none;
+	list-style: none; 
 }
 
 #rightMenu li
-{
+
     text-align: left;
 	display: inline;
 	padding: .25em .25em 0em 0em;
 	margin-left: 0.5em;
 	background: #eee top left no-repeat;
 	border-left: solid 1px #0008EF;
-	list-style: square;
+/*	list-style: square; */
 }
 
 #rightMenu .xbg

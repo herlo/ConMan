@@ -16,7 +16,7 @@ presentation_dict = {
     'template_object_name': 'presentation',
     'allow_xmlhttprequest': True,
 }
-can_vote = user_passes_test(lambda u: u.has_perm('can_vote'))
+can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='/admin/')
 
 urlpatterns = patterns('',
     (r'^admin/', include('django.contrib.admin.urls')),

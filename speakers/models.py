@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from common.models import UserProfile
 
+from voting.models import Vote
+
 STATUS_CHOICES = (
     ('Pending', 'Pending'),
     ('Denied', 'Denied'),
@@ -149,9 +151,17 @@ class Presentation(models.Model):
                'fields' : ('long_abstract', 'slides', 'start', 'end', 'location')
            }),
         )
-        list_display = ('presenter', 'title', 'score', 'short_abstract', 'status')
+        list_display = ('presenter', 'title', 'get_score', 'short_abstract', 'status')
         search_fields = ['@longabstract','status','@title','foreign_key__cat']
 
     @models.permalink
     def get_absolute_url(self):
         return ('speakers.views.show_presentation', [str(self.id)])
+
+    def get_score(self):
+        """Returns the aggregate score for this presentation from the
+        django-voting app.
+
+        """
+        return Vote.objects.get_score(self)['num_votes']
+    get_score.short_description = "Voting score"

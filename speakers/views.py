@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.mail import *
 from django.conf import settings
 from django.core.urlresolvers import reverse
-
+from django.contrib.auth.decorators import user_passes_test
 
 from cStringIO import StringIO
 import pdb,random
@@ -157,3 +157,10 @@ def speaker_info(request, s_id):
     return render_to_response('show_speaker.html', {'spkr': spkr, 'profile':
     profile, 'presentations': pres_list})
 
+@user_passes_test(lambda u: u.is_staff)
+def voting_results(request):
+    """Report on the django-voting results for all presentations."""
+    return render_to_response(
+            'admin/speakers/presentation/voting_results.html',
+            {'object_list': Presentation.objects.all()},
+            context_instance=RequestContext(request))

@@ -1,0 +1,31 @@
+{% extends "base_forms.html" %}
+
+{% block title %}2008 Sponsors{% endblock title%}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+<h2>2008 Sponsors</h2>
+	<table border='0' cellmargin='2' width='95%'>
+	{% for sponsor in sponsors %}
+		{% ifchanged sponsor.level %}
+		<tr border='0'>
+			<th colspan='2'>{{ sponsor.level }}</th>
+		</tr>
+		{% endifchanged %}
+		<tr border='0'>
+			<td valign='top' align='left' width='30%'>
+			<a href='{{ sponsor.url }}' target='_new'><img border='0' src='{{ sponsor.lg_logo }}' /></a></td>
+			<td>{{ sponsor.about }}</td>
+			</tr>
+	{% endfor %}
+	</table>
+
+{% endblock primaryContent%}
+

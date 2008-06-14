@@ -5,8 +5,6 @@ register = template.Library()
 
 def show_sponsors():
     sponsors = Sponsor.objects.all().order_by('-level__order')
-    print "Sponsors: "
-    print sponsors
     return {'sponsors': sponsors}
 
 # register tags 	

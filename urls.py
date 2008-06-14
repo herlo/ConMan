@@ -33,7 +33,7 @@ urlpatterns = patterns('',
     (r'^speaker/(?P<s_id>\d+)/$', 'speakers.views.speaker_info'),
     (r'^presentation/(?P<p_id>\d+)/$', 'speakers.views.show_presentation'),
     (r'^presentation/(?P<object_id>\d+)/(?P<direction>up|down|clear)vote/?$', can_vote(vote_on_object), presentation_dict),
-    (r'^sponsor/$', 'sponsors.views.index'),
+    (r'^sponsor/list/$', 'sponsors.views.index'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
     (r'^$', 'common.views.index'),
 )

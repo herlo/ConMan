@@ -127,7 +127,7 @@ class Presentation(models.Model):
     short_abstract = models.TextField(max_length=5000)
     long_abstract = models.TextField(blank=True,null=True)
     # the default here is a hack, it should really be
-    status = models.ForeignKey(Status, default=Status.objects.get(name='Pending'))
+    status = models.ForeignKey(Status, default=Status(name='Pending'))
     slides = models.FileField(upload_to="slides",blank=True,null=True)
     presenter = models.ForeignKey(UserProfile)
     score = models.IntegerField(blank=True, null=True)

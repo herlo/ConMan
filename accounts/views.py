@@ -79,6 +79,7 @@ def profile(request, success_url='/pages/home/',
               form_class=ProfileForm, profile_callback=update_profile, 
               template_name='accounts/profile_form.html'):
     links = LinkItems.objects.order_by('order')
+    photo_url = ''
     form = form_class()
     if request.method == 'POST':
         pdata = request.POST.copy()

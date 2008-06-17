@@ -7,7 +7,7 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#voting-results').tablesorter({
-                sortList: [[1,1], [2,1]],
+                sortList: [[1,0], [2,0]],
                 cssAsc: "ascending",
                 cssDesc: "descending",
                 cssHeader: "sorted"
@@ -47,7 +47,7 @@
             {% dict_entry_for_item obj from scores as score %}
             <tr>
                 <td><a href="../{{ obj.id }}/">{{ obj }}</a></td>
-                <td>{{ score.score }}</td>
+                <td>{{ score.score|stringformat:"+d" }}</td>
                 <td>{{ score.num_votes }}</td>
             </tr>
             {% endfor %}

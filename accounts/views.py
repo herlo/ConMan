@@ -56,7 +56,11 @@ def make_basic_profile(user=None):
 
 def update_profile(user, form, photo=None):
     isinstance(user,User)
-    up = user.get_profile()
+    try:
+        up = user.get_profile()
+    except UserProfile.DoesNotExist:
+        up = UserProfile.objects.create(user=user)
+
     up.bio = form.cleaned_data['bio']
     
     user.first_name = form.cleaned_data['first_name']
@@ -86,39 +90,34 @@ def profile(request, success_url='/pages/home/',
         pdata.update(request.FILES)
         form = form_class(pdata)
         if form.is_valid():
-            user = User.objects.get(id=request.session.get('_auth_user_id'))
             #user.get_profile().save_photo_file(request.FILES['photo']['filename'],request.FILES['photo']['content'])
-            try:
-                update_profile(user, form, request.FILES['photo'])
-            except:
-                update_profile(user, form)
+            update_profile(request.user, form, request.FILES.get('photo', None))
             return HttpResponseRedirect(success_url)
     else:
-        user = User.objects.get(id=request.session.get('_auth_user_id'))
-        usp = user.get_profile()
+        try:
+            usp = request.user.get_profile()
+        except UserProfile.DoesNotExist:
+            usp = UserProfile.objects.create(user=request.user)
 
-        if user.first_name:
-    
-            up = dict()
-            xp = dict()
+        # make a dict from the UserProfile and User objects for initial data for ProfileForm
+        initial_dict = dict(request.user.__dict__, **usp.__dict__)
+        # explicit mappings for UserProfile fields that don't match the ProfileForm field names
+        initial_dict['irc_channels'] = usp.common_channels
+        initial_dict['web_site'] = usp.site
+        initial_dict['photo'] = usp.user_photo
+        # somehow some UserProfiles are missing shirt_size, possibly from a db migration
+        try:
+            initial_dict['shirt_size'] = usp.shirt_size.id
+        except AttributeError:
+            pass
 
-            up['username'] = user.username
-            up['first_name'] = user.first_name
-            up['last_name'] = user.last_name
-            up['job_title'] = usp.job_title
-            up['bio'] = usp.bio
-            up['web_site'] = usp.site
-            up['shirt_size'] = usp.shirt_size.id
-            up['company'] = usp.company
-            up['irc_nick'] = usp.irc_nick
-            up['irc_server'] = usp.irc_server
-            up['irc_channels'] = usp.common_channels
-            up['photo'] = usp.user_photo
-            form = form_class(up)
+        if request.user.first_name:
+            form = form_class(initial=initial_dict)
             photo_url =  settings.HOST_NAME + settings.MEDIA_URL + str(usp.user_photo)
+
     return render_to_response(template_name,
-                              { 'form': form, 'photo_url': photo_url, 'left_links':links },
-                              context_instance=RequestContext(request))
+            {'form': form, 'photo_url': photo_url, 'left_links':links},
+            context_instance=RequestContext(request))
 
 def register(request, success_url='/accounts/register/complete/',
              form_class=RegistrationForm, profile_callback=make_basic_profile,

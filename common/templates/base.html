@@ -61,9 +61,21 @@
 		</div>
 	</div>
 	<div id="rightMenu">
+			{% ifequal request.path "/speaker/papers/" %}
+				{% block rightMenu %}
+					<h2>Submitted Abstracts</h2>
+						<ul>
+						{% for abs in abstract_list %}
+							<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title}}</a></li>
+						{% endfor %}
+						</ul>
+				{% endblock rightMenu %}
+			{% endifequal %}
+			{% ifnotequal request.path "/speaker/papers/" %}
 			<h2>UTOSC 2008 Sponsors</h2>
 			{% load sponsor_list %}
 			{% show_sponsors %}
+			{% endifnotequal %}
 	</div> 
 	<div id="footer"> 
 		<div id="poweredBy"> 

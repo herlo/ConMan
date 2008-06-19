@@ -76,6 +76,9 @@ class Status(models.Model):
     class Meta:
         verbose_name_plural = "Statuses"
 
+def get_status():
+ 	    return Status.objects.get(name='Pending')
+
 class AudienceType(models.Model):
     '''
     >>> a = AudienceType(name="Legendary")
@@ -127,7 +130,7 @@ class Presentation(models.Model):
     short_abstract = models.TextField(max_length=5000)
     long_abstract = models.TextField(blank=True,null=True)
     # the default here is a hack, it should really be
-    status = models.ForeignKey(Status, default=Status(name='Pending'))
+    status = models.ForeignKey(Status, default=get_status)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
     presenter = models.ForeignKey(UserProfile)
     score = models.IntegerField(blank=True, null=True)

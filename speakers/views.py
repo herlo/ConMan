@@ -41,7 +41,6 @@ def send_confirm_email(user, form):
     
     message = render_to_string('presentation_confirm.txt',
                                { 'pres': p })
-    
     if settings.SEND_EMAIL:
         send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [user.email])
         mail_managers(subject, message, fail_silently=True)

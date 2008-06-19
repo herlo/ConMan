@@ -101,6 +101,16 @@ INSTALLED_APPS = (
     #'django.contrib.databrowse',
 )
 
+###########NEW CHANGE TO ADD###########
+TEMPLATE_CONTEXT_PROCESSORS = (
+'django.core.context_processors.auth',
+'django.core.context_processors.debug',
+'django.core.context_processors.i18n',
+'django.core.context_processors.media',
+'django.core.context_processors.request'
+)
+######################################
+
 AUTH_PROFILE_MODULE = 'common.userprofile'
 
 HOST_NAME = 'http://localhost:8080'

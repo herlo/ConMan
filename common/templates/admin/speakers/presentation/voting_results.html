@@ -47,8 +47,8 @@
             {% dict_entry_for_item obj from scores as score %}
             <tr>
                 <td><a href="../{{ obj.id }}/">{{ obj }}</a></td>
-                <td>{{ score.score|stringformat:"+d" }}</td>
-                <td>{{ score.num_votes }}</td>
+                <td>{{ score.score|stringformat:"+d"|default:"0" }}</td>
+                <td>{{ score.num_votes|default:"0" }}</td>
             </tr>
             {% endfor %}
         </tbody>

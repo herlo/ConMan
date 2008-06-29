@@ -48,7 +48,13 @@ $(document).ready(function(){
 
 {% endblock primaryContent%}
 
-{% block rightMenu %}
+				{% block rightMenu %}
+					<h2>Submitted Abstracts</h2>
+						<ul>
+						{% for abs in abstract_list %}
+							<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title}}</a></li>
+						{% endfor %}
+						</ul>
+				{% endblock rightMenu %}
 
-{% endblock rightMenu%}
 

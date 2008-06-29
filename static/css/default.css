@@ -325,10 +325,15 @@ a:hover
 {
 	position: relative;
 	float: left;
-	width: 3%;
-	padding: 3em 2em 1.5em 2em;
+	width: 145px;
+    margin-top: 40px;
+	padding: 0.5em;
 	background: #fff top right repeat-y;
 }
+
+#leftMenu p { margin-top: 1em; }
+#leftMenu ul { list-style-type: none; margin-left: 0; }
+#leftMenu li { margin: 0.5em 0; }
 
 #leftMenu .xbg
 {

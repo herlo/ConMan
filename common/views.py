@@ -41,7 +41,7 @@ from django.contrib.auth.decorators import login_required
 def show_tos(request):
     return render_to_response('tos.html')
 
-def mass_email(request):
+def mass_email(request, users):
     if request.method == 'POST':
         for selected in request.POST.getlist('users'):
             # send email here
@@ -49,7 +49,7 @@ def mass_email(request):
             user.email_user(request.POST['subject'],
                 request.POST['email'], settings.DEFAULT_FROM_EMAIL) 
 
-    return render_to_response('mass_email.html', {'users': User.objects.all()}, context_instance=RequestContext(request))
+    return render_to_response('mass_email.html', {'users': users}, context_instance=RequestContext(request))
 
 def test(request):
     volunteer_form = VolunteerForm()

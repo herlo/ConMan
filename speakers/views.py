@@ -154,7 +154,7 @@ def speaker_info(request, s_id):
     pres_list = profile.presentation_set.filter(status=status)
 
     return render_to_response('show_speaker.html', {'spkr': spkr, 'profile':
-    profile, 'presentations': pres_list})
+    profile, 'presentations': pres_list}, context_instance=RequestContext(request))
 
 @user_passes_test(lambda u: u.is_staff)
 def voting_results(request):

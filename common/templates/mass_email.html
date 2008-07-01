@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title%}
+
+{% block primaryContent %}
+<FORM ACTION="." METHOD="POST">
+	Subject: <input type="text" name="subject"></input><br />
+	Body:
+	<TEXTAREA cols="30" ROWS="15" name="email"></TEXTAREA><br />
+	<select name="users" MULTIPLE size="10">
+		{% for u in users %}
+			<option value="{{ u.id }}">{{ u.username}}</option>
+		{% endfor %}
+	</select>
+    <INPUT TYPE="submit" NAME="submit" Value="Submit" />
+</FORM>
+
+{% endblock primaryContent%}

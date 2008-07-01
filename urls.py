@@ -20,6 +20,7 @@ can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='
 
 urlpatterns = patterns('',
     (r'^admin/speakers/presentation/voting-results/$', 'speakers.views.voting_results'),
+    (r'^admin/mass_email/$', 'common.views.mass_email'),
     (r'^admin/', include('django.contrib.admin.urls')),
 #    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('accounts.urls')),

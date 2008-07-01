@@ -10,7 +10,6 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import Group
 from django.http import HttpResponseRedirect,HttpResponse
 from django.contrib.auth.decorators import login_required
-import pdb
 
 #def save_user(request, form):
 #    print "in save_user beginning"
@@ -41,7 +40,17 @@ import pdb
 
 def show_tos(request):
     return render_to_response('tos.html')
-	
+
+def mass_email(request):
+    if request.method == 'POST':
+        for selected in request.POST.getlist('users'):
+            # send email here
+            user = User.objects.get(pk=selected)
+            user.email_user(request.POST['subject'],
+                request.POST['email'], settings.DEFAULT_FROM_EMAIL) 
+
+    return render_to_response('mass_email.html', {'users': User.objects.all()}, context_instance=RequestContext(request))
+
 def test(request):
     volunteer_form = VolunteerForm()
     presenter_form = SpeakerForm()

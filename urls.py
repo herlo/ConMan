@@ -4,7 +4,7 @@ from voting.views import vote_on_object
 from django.contrib.auth.decorators import user_passes_test
 from common.models import LatestEntries #, LatestEntriesByCategory
 from speakers.models import Presentation
-from common.models import User
+from django.contrib.auth.models import User,Group
 
 #feeds = {
 #    'latest': LatestEntries,
@@ -21,7 +21,8 @@ can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='
 
 urlpatterns = patterns('',
     (r'^admin/speakers/presentation/voting-results/$', 'speakers.views.voting_results'),
-    (r'^admin/mass_email/$', 'common.views.mass_email', {'users': User.objects.all() }),
+    (r'^admin/speakers/show/$', 'speakers.views.show_speakers_admin'),
+#    (r'^admin/speakers/mass_email/$', 'common.views.mass_email', {'users': User.objects.all() }),
     (r'^admin/', include('django.contrib.admin.urls')),
 #    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('accounts.urls')),

@@ -1,0 +1,58 @@
+{% extends "admin/change_list.html" %}
+{% load voting_tags %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="/static/js/jquery-1.2.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#voting-results').tablesorter({
+                sortList: [[1,1], [2,1]],
+                cssAsc: "ascending",
+                cssDesc: "descending",
+                cssHeader: "sorted"
+            });
+        });
+    </script>
+    <style type="text/css">
+        #voting-results th { cursor: pointer; }
+    </style>
+{% endblock %}
+
+{% block title %}Speakers List{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="../../../">Home</a> ›
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Potential Speaker Email</h1>
+
+<form action="." method="post">
+	Subject: <input type="text" name="subject"></input><br />
+	Body:
+	<textarea cols="30" ROWS="15" name="email"></textarea><br />
+    <input TYPE="submit" NAME="submit" Value="Submit" />
+</form>
+<br /><br />
+<table id="voting-results">
+    <thead>
+        <tr>
+            <th><a href="#">{{ description }}</a></th>
+            <th><a href="#">Email</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in object_list %}
+        <tr>
+            <td>"{{ obj.first_name }} {{ obj.last_name }}"</td>
+            <td>&lt;{{ obj.email }}&gt;<td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+{% endblock %}

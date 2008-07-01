@@ -98,7 +98,7 @@ def delete_abstract(request, abs_id):
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
 
 def show_speakers(request):
-    print "in show_speakers"
+    #print "in show_speakers"
     group = Group.objects.get(name='Speaker')
     speakers = group.user_set.all().order_by('last_name')
 
@@ -163,3 +163,48 @@ def voting_results(request):
             'admin/speakers/presentation/voting_results.html',
             {'object_list': Presentation.objects.all()},
             context_instance=RequestContext(request))
+
+@user_passes_test(lambda u: u.is_staff)
+def show_speakers_admin(request):
+    """Display a list of users who are in the speakers group"""
+
+    users = User.objects.all()
+
+#    perms = users.get_all_permissions()
+#
+#    print "Perms: " + str(perms)
+    speakers = list()
+
+    for user in users:
+        if user.has_perm('speakers.add_presentation'):
+            speakers.append(user)
+
+            if request.method == 'POST':
+    
+                if settings.SEND_EMAIL:
+                    # send email here
+                    speakers.email_user(request.POST['subject'],
+                        request.POST['email'], settings.DEFAULT_FROM_EMAIL) 
+                else:
+                    print "To: " + user.first_name + "\nFrom: " + settings.DEFAULT_FROM_EMAIL + "\nSubject: " + request.POST['subject'] + "\nEmail: " + request.POST['email'] + "\n\nCheers,\n\nClint Savage\n\nhttp://utosc.com \| http://utos.org"
+
+
+    return render_to_response(
+            'admin/speakers/show_speakers.html', 
+            {'object_list': speakers, 'description': "Speaker Name"  },
+            context_instance=RequestContext(request))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -48,43 +48,7 @@
 
     <div id="leftMenu">
         {% block leftMenu %}
-        <p><strong>OS Based User Groups:</strong></p>
-        <ul>
-            <li><a target="_blank" href="http://plug.org/" title="Provo Linux Users Group (PLUG)">Provo Linux Users Group (PLUG)</a></li>
-            <li><a href="http://uvlug.org/" title="Utah Valley Linux Users Group in Orem (UVSC)">Utah Valley Linux Users Group (UVLUG)</a></li>
-            <li><a target="_blank" href="http://www.sllug.org/" title="Salt Lake Linux Users Group (SLLUG) in SLC">Salt Lake Linux Users Group (SLLUG)</a></li>
-            <li><a target="_blank" href="http://www.oalug.com/" title="Ogden Area Linux Users Group">Ogden Area Linux User Group (OALUG)</a></li>
-            <li><a target="_blank" href="http://www.su3g.org">Southern Utah Unix Users Group (SU3G)</a></li>
-            <li><a target="_blank" href="http://fslc.usu.edu/" title="USU Free Software and Linux CLub (USU FSLC)">USU Free Software and Linux Club (USU FSLC)</a></li>
-            <li><a target="_blank" href="http://uug.byu.edu/" title="BYU Unix Users Group">BYU Unix Users Group (BYU UUG)</a></li>
-            <li><a target="_blank" href="http://gubug.org/" title="Greater Utah BSD Users Group">Greater Utah BSD Users Group (GUBUG)</a></li>
-            <li><a target="_blank" href="http://utah.ubuntu-us.org/" title="Ubuntu Linux Utah">Ubuntu Utah</a></li>
-            <li>Utah Gentoo (defunct)</li>
-        </ul>
-        <p><strong>Programming Language</strong> <strong>Groups</strong>:</p>
-        <ul>
-            <li><a target="_blank" href="http://www.ujug.org/" title="Utah Java Users Group">Utah Java Users Group (UJUG)</a></li>
-            <li><a target="_blank" href="http://uphpu.org/" title="Utah PHP Users Group (UPHPU)">Utah PHP Users Group (UPHPU)</a></li>
-            <li><a target="_blank" href="http://urug.org/" title="Utah Ruby Users Group">Utah Ruby Users Group (URUG)</a></li>
-            <li><a target="_blank" href="http://utahpython.org/" title="Utah Python Users Group">Utah Python Users Group (UPyUG)</a></li>
-            <li><a target="_blank" href="http://nupm.org/mailman/listinfo/nupm" title="Northern Utah Perl Mongers (NUPM)">Northern Utah Perl Mongers (NUPM)</a></li>
-            <li><a target="_blank" href="http://www.ucnug.org/" title="Utah County .NET Users Group (UCNUG)">Utah County .Net Users Group (UCNUG)</a></li>
-            <li><a target="_blank" href="http://utahdnug.org/" title="Utah's Professional .Net User Group (UDNUG)">Utah .Net Users Group (UDNUG)</a></li>
-            <li><a target="_blank" href="http://www.nunug.org" title="Northern Utah .NET User Group (NUNUG)">Northern Utah .Net User Group (NUNUG)</a></li>
-        </ul>
-        <p><strong>Business Associations:</strong></p>
-        <ul>
-            <li><a target="_blank" href="http://www.uita.org/" title="Utah Technology Council (UTC formerly UITA)">Utah Technology Council (UTC - formerly UITA and ULSA)</a></li>
-            <li><a target="_blank" href="http://www.windley.com/cto_forum" title="Utah CTO Breakfasts">CTO Breakfasts</a></li>
-        </ul>
-        <p><strong>Conferences:</strong></p>
-        <ul>
-            <li><a target="_blank" href="http://utos.org/" title="Utah Open Source Conference (UTOS)">Utah Open Source Conference (UTOSC)</a></li>
-            <li><a target="_blank" href="http://utcodecamp.com/">Utah Code Camp</a></li>
-            <li><a target="_blank" href="http://riadevshed.com/">RIA Dev Shed</a></li>
-            <li><a target="_blank" href="http://mtnwestruby.org/">MountainWest RubyConf</a></li>
-            <li><a target="_blank" href="http://bforbconference.com/">Blogging for Business Conference</a></li>
-        </ul>
+		{% include "leftmenu.html" %}
         {% endblock %}
     </div>
 

@@ -1,0 +1,27 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Current Presenters{% endblock title%}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Speakers</h2>
+<h3>{{ day|date:"l, F d" }}</h3>
+			
+		{% for pres in presentations %}
+	<div id='presentation'> 
+		    <font size="+1"><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</font></a><br />
+			<a href="/speaker/{{ pres.presenter.id }}/"><font size="-2">{{ pres.presenter }}</font></a> {% if pres.presenter.company %}<font size='-3'><i>({{ pres.presenter.company }})</i></font>{% endif %}</b> <font size="-3">{{ pres.start|date:"g:i a" }}</font><br />
+			<br />
+	</div>
+		{% endfor %}
+
+{% endblock primaryContent%}
+

@@ -32,7 +32,7 @@ $(document).ready(function(){
 <ul>
 {% for pres in presentations %}
 <li><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></li>
-<!-- <p>{{ pres.short_abstract }}</p> -->
+<p><font size="-1">Time: {{ pres.start|date:"M d, g:i" }}</font></p>
 {% endfor %}
 </ul>
 

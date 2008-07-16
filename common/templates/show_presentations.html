@@ -1,0 +1,30 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Current Presenters{% endblock title%}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Speakers</h2>
+New speakers are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2008 program.
+
+		{% for pres in presentations %}
+	<div id='presentation'> 
+			{% ifchanged pres.start %}
+			<br />
+			<b><font size="3">{{pres.start|date:"M d, g:i a"}}</font></b><br />
+			{% endifchanged %}
+		    <font size="-1"><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</font></a> <font size="-1">by</font> <a href="/speaker/{{ pres.presenter.id }}/"><font size="-1">{{ pres.presenter }}</font></a> {% if pres.presenter.company %}<font size='-1'><i> of {{ pres.presenter.company }}</i></font>{% endif %}</b>
+			<br />
+	</div>
+		{% endfor %}
+
+{% endblock primaryContent%}
+

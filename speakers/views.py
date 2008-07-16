@@ -3,6 +3,7 @@ from django.shortcuts import render_to_response,get_object_or_404
 from django.template import RequestContext
 from django import newforms as forms
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
+from datetime import datetime
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User,UserManager,Group
@@ -96,6 +97,22 @@ def delete_abstract(request, abs_id):
     pf = PresentationForm()
     deletedText = settings.PRESENTATION_DELETED
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
+    
+def show_presentation_schedule(request, day="1970-01-01"):
+#    print "Day: " + day
+    date = datetime(1970, 01, 01)
+    if day:
+        d = day.rsplit("-")
+    #    print "Date: " + str(d)
+        date = datetime(int(d[0]), int(d[1]), int(d[2]))
+        presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(start__month=date.month).filter(start__day=date.day).order_by('start')
+        template = 'show_presentation_day.html'
+    else:
+        presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
+        #print "Presentation: " + p.title + " " + str(p.start)
+        template = 'show_presentations.html'
+        
+    return render_to_response(template, {'day': date, 'presentations': presentations }, context_instance=RequestContext(request))
 
 def show_speakers(request):
     #print "in show_speakers"
@@ -118,20 +135,21 @@ def show_speakers(request):
             for p in pending_list:
                 presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
 
-        approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved'))
+        approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved')).order_by('start')
 
         if (len(approved_list)):
             for p in approved_list:
-                presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
-    
+                presentations.append({'id': p.id, 'title': p.title, 'status': p.status, 'start': p.start})
+                print "Presentation: " + p.title + " " + str(p.start)
+
         if (presentations):
             speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
             profile.irc_server, 'job_title': profile.job_title, 'web_site':
             profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 
 
-    return render_to_response('show_speakers.html', {'speakers': speaker_list
-    }, context_instance=RequestContext(request))
+    return render_to_response('show_speakers.html', {'speakers': speaker_list }, context_instance=RequestContext(request))
+
 
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)

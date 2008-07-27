@@ -50,22 +50,25 @@ def send_confirm_email(user, form):
         print "Message: " + message
         print "Sent to: " + user.email
 
+# helper method for uploading files
+def handle_uploaded_file(file, path):
+    filename = path
+    print "Filename: " + filename
+    destination = open(filename, 'wb+')
+    for chunk in file.chunks():
+        destination.write(chunk)
+
 @login_required
 def abstract(request, abs_id=None):
+    # Get or create the Presentation instance for the forms
     isinstance(request,HttpRequest)
     user = User.objects.get(id=request.session.get('_auth_user_id'))
-#    print "User is: " + str(user)
-    userinfo = dict()
-    userinfo['name']= user.get_full_name()
-    userinfo['email']= user.email
 
+    approved_status = Status.objects.get(name='Approved')
     presentation_exists = False
 
-    print "Abs id: " + str(abs_id)
-
     if abs_id:
-        instance = get_object_or_404(Presentation, id=abs_id)
-        presentation_exists = True
+        instance = get_object_or_404(Presentation, id=abs_id, presenter=user.get_profile())
     else:
         group = Group.objects.get(name='Speaker')
         user.groups.add(group)
@@ -73,22 +76,44 @@ def abstract(request, abs_id=None):
         instance = Presentation(presenter=request.user.get_profile())
 
     if request.method == 'POST':
-        pf = PresentationForm(request.POST, instance=instance)
-        if not pf.is_valid():
-            return render_to_response('call_for_papers.html',{'presenter_form':pf},
-                context_instance=RequestContext(request))
-        else:
-            pf.save()
-            send_confirm_email(user, pf)
-            if presentation_exists:
-                return render_to_response('paper_updated.html', {'host': settings.HOST_NAME}, context_instance=RequestContext(request))
-            else:
-                return render_to_response('paper_submitted.html', {'host': settings.HOST_NAME}, context_instance=RequestContext(request))
-    else:
+        if instance.status.name != 'Approved':
+            pf = PresentationForm(request.POST, request.FILES, instance=instance)
+            if pf.is_valid():
+#                handle_uploaded_file(request.FILES['slides'])
+                pf.save()
+                send_confirm_email(user, pf)
+
+                if abs_id:
+                    return render_to_response('paper_updated.html',
+                        {'host': settings.HOST_NAME},
+                        context_instance=RequestContext(request))
+                else:
+                    return render_to_response('paper_submitted.html',
+                        {'host': settings.HOST_NAME},
+                        context_instance=RequestContext(request))
+        else: # Presentation is approved
+            sf = PresentationSlidesForm(request.POST, request.FILES, instance=instance)
+            if sf.is_valid():
+                print "Filename sent: " + instance.get_slides_filename()
+                handle_uploaded_file(request.FILES['slides'], instance.get_slides_filename())
+                sf.save()
+                return render_to_response('paper_updated.html',
+                    {'host': settings.HOST_NAME},
+                    context_instance=RequestContext(request))
+
+    else: # GET
         pf = PresentationForm(instance=instance)
-        abstracts = Presentation.objects.filter(presenter=user.get_profile()).exclude(status__name='Approved')
-        return render_to_response('call_for_papers.html',{'presenter_form':pf,
-        'abstract_list':abstracts, 'abs_id': abs_id, 'presentation_exists': presentation_exists}, context_instance=RequestContext(request))
+        sf = PresentationSlidesForm(instance=instance)
+        abstracts = Presentation.objects.filter(presenter=user.get_profile())
+
+    return render_to_response('call_for_papers.html', {
+                'presenter_form': pf,
+                'slides_form': sf,
+                'abstract_list':abstracts,
+                'abs_id': abs_id,
+                'approved_status': approved_status,
+                'presentation_exists': bool(abs_id)
+            }, context_instance=RequestContext(request))
 
 @login_required
 def delete_abstract(request, abs_id):

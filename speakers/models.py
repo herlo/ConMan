@@ -124,12 +124,11 @@ class Presentation(models.Model):
       >>> p.title
       'Come listen to crap'
     '''
-    cat = models.ForeignKey(Category)
+    cat = models.ForeignKey(Category,blank=True)
     audiences = models.ManyToManyField(AudienceType)
     title = models.CharField(max_length=150, db_index=True)
     short_abstract = models.TextField(max_length=5000)
     long_abstract = models.TextField(blank=True,null=True)
-    # the default here is a hack, it should really be
     status = models.ForeignKey(Status, default=get_status)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
     presenter = models.ForeignKey(UserProfile)
@@ -140,21 +139,27 @@ class Presentation(models.Model):
     location = models.ForeignKey(Room, blank=True, null=True)
     
     def __unicode__(self):
-        return self.title
+        return self.title + " " + str(self.cat.name) + " " + str(self.title) + " " + str(self.status.name)
 
     class Admin:
         list_filter = ['presenter', 'cat', 'audiences','status']
         fields = (
            (None, {
-               'fields': ('presenter', 'title', 'short_abstract', 'cat', 'audiences', 'score', 'status')
+               'fields': ('title', 'presenter', 'short_abstract', 'cat', 'audiences', 'score', 'status')
            }),
            ('Extra Information', {
                'classes': 'collapse',
                'fields' : ('long_abstract', 'slides', 'start', 'end', 'location')
            }),
         )
-        list_display = ('presenter', 'title', 'get_score', 'short_abstract', 'status')
+        list_display = ('title', 'presenter', 'get_score', 'short_abstract', 'status')
         search_fields = ['@longabstract','status','@title','foreign_key__cat']
+
+    def _save_FIELD_file(self, field, filename, raw_contents, save=True):
+        original_upload_to = field.upload_to
+        field.upload_to = '%s/%s' % (field.upload_to, self.presenter.user.username)
+        super(Presentation, self)._save_FIELD_file(field, filename, raw_contents, save)
+        field.upload_to = original_upload_to
 
     @models.permalink
     def get_absolute_url(self):
@@ -166,4 +171,5 @@ class Presentation(models.Model):
 
         """
         return Vote.objects.get_score(self)['num_votes']
+
     get_score.short_description = "Voting score"

@@ -24,7 +24,18 @@ $(document).ready(function(){
 					<tr>
  			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
 				  </tr>
-				{% for field in presenter_form %}
+					{% for field in presenter_form %}
+					{% ifequal field.name "slides" %}
+					<tr>
+				    <td valign='top'>{{ field.label_tag }}
+				    </td>
+				    <td>{{ field }}<br />
+						<a href="{{ slides_form.instance.get_slides_url }}" target="__new">View Slides</a>
+					</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				   {% else %}
 					<tr>
 				    <td>{{ field.label_tag }}
 				    </td>
@@ -32,17 +43,17 @@ $(document).ready(function(){
 				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
 				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
 				   </tr>
+				   {% endifequal %}
 				{% endfor %}
-				
 			</table>
 			<input type="submit" value="Submit" />
 		</form>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		{% if presentation_exists %}
+		{% ifnotequal presenter_form.instance.status.pk approved_status.pk %}
 		<form method="post" action="/speaker/papers/{{ abs_id }}/delete/">
-			<input type='submit' value='Delete This Post' />
+			<input type='submit' value='Delete This Abstract' />
 		</form>
-		{% endif %}
+		{% endifnotequal %}
 	</div>
 {% endblock formsWrapper %}
 
@@ -52,7 +63,7 @@ $(document).ready(function(){
 					<h2>Submitted Abstracts</h2>
 						<ul>
 						{% for abs in abstract_list %}
-							<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title}}</a></li>
+							<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title }}</a></li>
 						{% endfor %}
 						</ul>
 				{% endblock rightMenu %}

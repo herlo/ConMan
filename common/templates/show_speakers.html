@@ -19,7 +19,7 @@ $(document).ready(function(){
 		    <p><b><a href='/speaker/{{ spkr.id }}/'>{{ spkr.name }}</a> {% if spkr.company %}<font size='-3'><i>({{ spkr.company }})</i></font>{% endif %}</b>
 			<br />
 				{% for pres in spkr.presentations %}
-					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>{% if pres.start %}<font size="-1"> - Presentation begins at {{pres.start|date:"M d, g:i"}}</font>{% endif %}{% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %} <font size='-1'>&nbsp; ({{ pres.status }})</font> {% endif %}
+					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>{% if pres.start %}<font size="-1"> - Presentation begins at {{pres.start|date:"M d, g:i"}}</font>{% endif %}{% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %} <font size='-1'>&nbsp; ({{ pres.status }})</font> {% endif %} 
     
 				{% if not pres.last %}
 				<br />

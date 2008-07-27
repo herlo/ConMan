@@ -1,0 +1,34 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Call for Papers{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>Update Approved Presentations</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+{% block formsWrapper %}
+<h3>Abstract Submission Closed</h3>
+<p>Presentation abstracts were accepted through July 1, 2008.  Please check back next year.<br />
+If your presentation was submitted before the deadline, you will find it to the right hand side of this page.<br />
+Feel free to update your presentations at will.</p>
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+
+				{% block rightMenu %}
+					<h2>Submitted Abstracts</h2>
+						<ul>
+						{% for abs in abstract_list %}
+							<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title }}</a></li>
+						{% endfor %}
+						</ul>
+				{% endblock rightMenu %}
+
+

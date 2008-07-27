@@ -139,7 +139,7 @@ class Presentation(models.Model):
     location = models.ForeignKey(Room, blank=True, null=True)
     
     def __unicode__(self):
-        return self.title + " " + str(self.cat.name) + " " + str(self.title) + " " + str(self.status.name)
+        return self.title + " " + str(self.cat.name) + " " + str(self.status.name)
 
     class Admin:
         list_filter = ['presenter', 'cat', 'audiences','status']

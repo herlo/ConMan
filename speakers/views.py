@@ -53,7 +53,7 @@ def send_confirm_email(user, form):
 # helper method for uploading files
 def handle_uploaded_file(file, path):
     filename = path
-    print "Filename: " + filename
+#    print "Filename: " + filename
     destination = open(filename, 'wb+')
     for chunk in file.chunks():
         destination.write(chunk)
@@ -69,7 +69,9 @@ def abstract(request, abs_id=None):
 
     if abs_id:
         instance = get_object_or_404(Presentation, id=abs_id, presenter=user.get_profile())
+        page_to_render = 'call_for_papers.html'
     else:
+        page_to_render = 'update_abstract.html'
         group = Group.objects.get(name='Speaker')
         user.groups.add(group)
         user.save()
@@ -94,7 +96,7 @@ def abstract(request, abs_id=None):
         else: # Presentation is approved
             sf = PresentationSlidesForm(request.POST, request.FILES, instance=instance)
             if sf.is_valid():
-                print "Filename sent: " + instance.get_slides_filename()
+#                print "Filename sent: " + instance.get_slides_filename()
                 handle_uploaded_file(request.FILES['slides'], instance.get_slides_filename())
                 sf.save()
                 return render_to_response('paper_updated.html',
@@ -106,7 +108,7 @@ def abstract(request, abs_id=None):
         sf = PresentationSlidesForm(instance=instance)
         abstracts = Presentation.objects.filter(presenter=user.get_profile())
 
-    return render_to_response('call_for_papers.html', {
+    return render_to_response(page_to_render, {
                 'presenter_form': pf,
                 'slides_form': sf,
                 'abstract_list':abstracts,
@@ -165,20 +167,20 @@ def show_speakers(request):
         if (len(approved_list)):
             for p in approved_list:
                 presentations.append({'id': p.id, 'title': p.title, 'status': p.status, 'start': p.start})
-                print "Presentation: " + p.title + " " + str(p.start)
+#                print "Presentation: " + p.title + " " + str(p.start)
 
         if (presentations):
             speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
             profile.irc_server, 'job_title': profile.job_title, 'web_site':
             profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 
-
     return render_to_response('show_speakers.html', {'speakers': speaker_list }, context_instance=RequestContext(request))
 
 
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
-    presentation = dict()
+    print "P: " + str(p)
+    print "Slides: " + p.slides
 
     spkr = p.presenter
     spkr_id = spkr.user.id

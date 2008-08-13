@@ -46,12 +46,7 @@
 			</div>
 		</div>
 
-    <div id="leftMenu">
-        {% block leftMenu %}
-		{% include "leftmenu.html" %}
-        {% endblock %}
-    </div>
-
+    <div id="content-container">
 	<div id="content">
 		<div>
 			<div id="lmenu">
@@ -66,6 +61,13 @@
 			</div>
 		</div>
 	</div>
+
+    <div id="leftMenu">
+        {% block leftMenu %}
+		{% include "leftmenu.html" %}
+        {% endblock %}
+    </div>
+
 	<div id="rightMenu">
 			{% block rightMenu %}
 			<h2>UTOSC 2008 Sponsors</h2>
@@ -73,6 +75,7 @@
 			{% show_sponsors %}
 			{% endblock rightMenu %}
 	</div> 
+    </div>
 	<div id="footer"> 
 		<div id="poweredBy"> 
 				<a href='http://code.google.com/p/utos-conman/' target='_base'>

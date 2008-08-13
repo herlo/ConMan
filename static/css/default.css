@@ -211,11 +211,18 @@ a:hover
 
 /* Content */
 
+#content-container
+{
+    padding-left: 150px;
+    padding-right: 310px;
+}
+
 #content
 {
     overflow: hidden; /* for floats */
     float: left;
-    width: 60%;
+    position: relative;
+    width: 100%;
 	line-height: 1.5em;
 }
 
@@ -326,9 +333,14 @@ a:hover
 	position: relative;
 	float: left;
 	width: 145px;
-    margin-top: 40px;
-	padding: 0.5em;
-	background: #fff top right repeat-y;
+    right: 145px;
+    margin-left: -100%;
+    margin-top: 4em;
+}
+
+/*** IE6 Fix ***/
+* html #leftMenu {
+    left: 320px;
 }
 
 #leftMenu p { margin-top: 1em; }
@@ -349,11 +361,12 @@ a:hover
 
 #rightMenu
 {
-    float: left;
-	width: 300px;
+	position: relative;
+	float: left;
+	width: 290px;
+    padding-left: 10px;
+    margin-right: -300px;
     margin-top: 4em;
-	padding: 1em 1em 1.5em 2em;
-	background: #fff top left repeat-y;
 }
 
 #rightMenu h2

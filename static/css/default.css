@@ -163,12 +163,12 @@ a:hover
 #lmenu
 {
 	position: relative;
-	text-align: center;
-	margin-top: 1em;
-	margin-bottom: 1em;
-    margin-left: 4em;
+//	text-align: center;
+//	margin-top: 1em;
+//	margin-bottom: 1em;
+	margin: 1em auto;
 	border-bottom: dashed 2px #dfdfdf;
-	width: 90%;
+	width: 85%;
 
 }
 
@@ -338,7 +338,6 @@ a:hover
 	width: 145px;
     right: 145px;
     margin-left: -100%;
-    margin-top: 4em;
 }
 
 /* Fix for IE7 */
@@ -351,7 +350,7 @@ a:hover
     left: 320px;
 }
 
-#leftMenu p { margin-top: 1em; }
+#leftMenu p { //margin-top: 1em; }
 #leftMenu ul { list-style-type: none; margin-left: 0; }
 #leftMenu li { margin: 0.5em 0; }
 
@@ -370,11 +369,12 @@ a:hover
 #rightMenu
 {
 	position: relative;
+	text-align: center;
 	float: left;
-	width: 290px;
-    padding-left: 10px;
+	width: 250px;
+    padding-left: 5px;
     margin-right: -300px;
-    margin-top: 4em;
+//    margin-top: 4em;
 }
 
 #rightMenu h2

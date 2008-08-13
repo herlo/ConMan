@@ -62,7 +62,7 @@ def test(request):
 
 def index(request):
     links = LinkItems.objects.order_by('order')
-    return render_to_response('index.html', {'left_links': links}, context_instance=RequestContext(request))
+    return HttpResponseRedirect('/pages/home/')
 
 def blog(request):
     links = LinkItems.objects.order_by('innertext')[:10]

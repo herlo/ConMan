@@ -18,13 +18,17 @@
         $('#id_bio').autogrow();
 </script>
 
-<p style="font-size: x-large;">{{ presentation.title }}<br />{% if presentation.slides %}<font size="-1"><a href="/static/{{ presentation.slides }}" target="__new">slides</a></font>{% endif %}
+<p style="font-size: x-large;">{{ presentation.title }}<br />
 {% if presentation.start %}
 <br /><font size="-1">Time: {{ presentation.start|date:"M d, g:i a" }}</font>
 {% endif %}
 {% if presentation.location.name %}
 <br /><font size="-1">Location: <a href="http://dl.utosc.com/08/misc/slcc-map2.png" target="__map">{{ presentation.location.name }}</a></font>
 {% endif %}
+{% if presentation.slides %}
+<br /><font size="-1"><a href="/static/{{ presentation.slides }}">slides</a></font>
+{% endif %}
+
 </p>
 
 <p>{{ presentation.short_abstract }}</p>

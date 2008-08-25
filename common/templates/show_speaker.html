@@ -31,7 +31,7 @@ $(document).ready(function(){
 <h3>Presentations</h3>
 {% for pres in presentations %}
 <b><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></b><br />
-<p><font size="-1"><a href="/static/{{ pres.slides }}" target="__new">slides</a>
+<p><font size="-1"><a href="/static/{{ pres.slides }}" target="__new">Presentation Download(s)</a>
 <br />Time: {{ pres.start|date:"M d, g:i a" }}</font></p>
 <br />
 {% endfor %}

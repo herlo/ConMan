@@ -136,6 +136,18 @@ def show_presentation_schedule(request, day="1970-01-01"):
         template = 'show_presentation_day.html'
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
+
+        import vobject
+
+        cal = vobject.iCalendar()
+        print "test"
+        for p in presentations:
+            cal.add('vevent')
+            cal.vevent.add('summary').value = p.title
+            cal.vevent.add('dtstart').value = p.start
+
+        print cal
+
         #print "Presentation: " + p.title + " " + str(p.start)
         template = 'show_presentations.html'
         
@@ -181,6 +193,7 @@ def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
     print "P: " + str(p)
     print "Slides: " + p.slides
+    print "Room: " + str(p.location)
 
     spkr = p.presenter
     spkr_id = spkr.user.id

@@ -105,17 +105,17 @@ class UserProfile(models.Model):
 
 #    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
     #presentation = models.ForeignKey(Presentation, null=True, blank=True,)
-    user = models.ForeignKey(User,unique=True,core=True)
-    bio = models.TextField(null=True, blank=True,core=True)
+    user = models.ForeignKey(User,unique=True)
+    bio = models.TextField(null=True, blank=True)
 
-    shirt_size = models.ForeignKey(ShirtSize,core=True, null=True,blank=True)
-    job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
-    company = models.CharField(max_length=200, null=True, blank=True, db_index=True,core=True)
-    irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,core=True)
-    irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,core=True)
-    common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,core=True)
-    user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True,core=True)
-    site = models.URLField(db_index=True, blank=True, null=True,core=True)
+    shirt_size = models.ForeignKey(ShirtSize, null=True,blank=True)
+    job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,)
+    company = models.CharField(max_length=200, null=True, blank=True, db_index=True,)
+    irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,)
+    irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,)
+    common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,)
+    user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True,)
+    site = models.URLField(db_index=True, blank=True, null=True,)
 
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
@@ -180,138 +180,3 @@ class UserProfile(models.Model):
 #            }),
 #        )
 
-class PostTag(models.Model):
-    name = models.CharField(max_length=150,db_index=True)
-    created = models.DateTimeField()
-
-    class Admin:
-        pass
-
-class LinkItems(models.Model):
-    href = models.CharField(max_length=200)
-    innertext = models.CharField(max_length=100)
-    order = models.IntegerField()
-
-    class Admin:
-        search_fields = ['innertext']
-        list_filter = ['href', 'innertext']
-        list_display = ('order', 'href', 'innertext')
-
-    class Meta:
-        verbose_name_plural = "Link Items"
-
-class PostFiles(models.Model):
-    display_name = models.CharField(max_length=300,db_index=True)
-    upload_date = models.DateTimeField(db_index=True)
-    uploader = models.ForeignKey(User)
-    posts = models.ManyToManyField('BlogPost')
-    file = models.FileField(upload_to="post_files")
-
-    class Admin:
-        pass
-
-    class Meta:
-        verbose_name_plural = "Post Files"
-
-class BlogPost(models.Model): 
-    poster = models.ForeignKey(User, core=True)
-    created = models.DateTimeField(db_index=True)
-    display_date = models.DateTimeField(db_index=True)
-    tags = models.ForeignKey(PostTag,edit_inline=True,blank=True,null=True)
-    files = models.ManyToManyField(PostFiles,blank=True, null=True)
-    content = models.TextField()
-    title = models.CharField(max_length=200,db_index=True)
-
-    class Admin:
-        search_fields = ['title','@content']
-        list_filter = ['poster', 'created','display_date', 'title']
-        list_display = ('title', 'poster', 'created', 'display_date')
-        fields = (
-            (None, {
-                'fields': ('poster', 'title', 'content', 'created', 'display_date', 'tags')
-                }),
-                ('Extra Content', {
-                    'classes': 'collapse',
-                    'fields': ('files',)
-                    }),
-                )
-
-def future_datetime(**kw_args):
-    def on_call():
-        return datetime.now()+timedelta(**kw_args)
-    return on_call
-
-CAPTCHA_ANSWER_OK = 1 
-CAPTCHA_UID_NOT_FOUND = -1
-CAPTCHA_REQUEST_EXPIRED = -2
-CAPTCHA_WRONG_ANSWER = -3
-
-class CaptchaRequest(models.Model):
-    """"
-    A Captcha request, used to avoid spamming in comments and such
-    Each request is valid for 15 minutes (you can change the value in the valid_until field)
-    """
-
-    valid_until = models.DateTimeField(default=future_datetime(minutes=TIMEOUT))
-    answer = models.IntegerField()
-    request_path = models.CharField(max_length=50,blank=True)
-    uid = models.CharField(max_length=40,null=True,blank=True)
-    text = models.CharField(max_length=10,null=True,blank=True)
-
-    def save(self):
-        shaobj = sha.new()
-        # You can add anything you want here, if you're *really* serious
-        # about an UID. This should be enough though
-        shaobj.update(self.request_path)
-        shaobj.update(str(random()))
-        shaobj.update(str(datetime.now()))
-        shaobj.update(str(self.valid_until))
-        shaobj.update(str(self.answer))
-        self.uid = shaobj.hexdigest()
-        super(CaptchaRequest,self).save()
-
-    @staticmethod
-    def clean_expired():
-        [x.delete() for x in CaptchaRequest.objects.filter(valid_until__lt=datetime.now())]
-
-    @staticmethod
-    def validate(request_uid,given_answer):
-        result_list = CaptchaRequest.objects.filter(uid=request_uid)
-        result = None
-        if len(result_list)>0:
-            result = result_list[0]
-            print "result: " + str(result.answer)
-            print "given answer: " + given_answer
-        if not result:
-            return CAPTCHA_UID_NOT_FOUND
-        if result.valid_until<datetime.now():
-            result.delete()
-            return CAPTCHA_REQUEST_EXPIRED 
-        if int(result.answer)!=int(given_answer):
-            result.delete()
-            return CAPTCHA_WRONG_ANSWER
-        result.delete()
-        return CAPTCHA_ANSWER_OK
-
-    @staticmethod
-    def generate_request(text,answer,request_path='any'):
-        """
-        Generate a new captcha request. This creates 
-        """
-        captcha = CaptchaRequest(text=text,request_path=request_path,answer=answer)
-        captcha.save()
-        return captcha
-
-from django.contrib.syndication.feeds import Feed
-
-class LatestEntries(Feed):
-#    print "Inside LatestEntries"
-    title = "Latest News from The Utah Open Source Conference 2008 "
-    link = "/"
-    description = "Watch this rss feed to keep up on all that's going on prior and during the Utah Open Source Conference 2008.  Feel free to sign up at 2008.utosc.com"
-
-    def items(self):
-        return BlogPost.objects.order_by('-display_date')[:10]
-
-    def item_link(self, item):
-        return Static.HOST_NAME + '/post/' + str(item.id) + '/'

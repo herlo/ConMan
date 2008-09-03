@@ -52,8 +52,8 @@ def send_confirm_email(user, form):
 
 # helper method for uploading files
 def handle_uploaded_file(file, path):
-    filename = path
-#    print "Filename: " + filename
+    filename = str(file.name)
+    print "Filename: " + filename
     destination = open(filename, 'wb+')
     for chunk in file.chunks():
         destination.write(chunk)
@@ -75,13 +75,12 @@ def abstract(request, abs_id=None):
         group = Group.objects.get(name='Speaker')
         user.groups.add(group)
         user.save()
-        instance = Presentation(presenter=request.user.get_profile())
+        instance = Presentation(presenter=user.get_profile())
 
     if request.method == 'POST':
         if instance.status.name != 'Approved':
             pf = PresentationForm(request.POST, request.FILES, instance=instance)
             if pf.is_valid():
-#                handle_uploaded_file(request.FILES['slides'])
                 pf.save()
                 send_confirm_email(user, pf)
 
@@ -96,8 +95,7 @@ def abstract(request, abs_id=None):
         else: # Presentation is approved
             sf = PresentationSlidesForm(request.POST, request.FILES, instance=instance)
             if sf.is_valid():
-#                print "Filename sent: " + instance.get_slides_filename()
-                handle_uploaded_file(request.FILES['slides'], instance.get_slides_filename())
+                handle_uploaded_file(request.FILES['slides'], user.username)
                 sf.save()
                 return render_to_response('paper_updated.html',
                     {'host': settings.HOST_NAME},
@@ -192,7 +190,7 @@ def show_speakers(request):
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
     print "P: " + str(p)
-    print "Slides: " + p.slides
+    print "Slides: " + str(p.slides)
     print "Room: " + str(p.location)
 
     spkr = p.presenter

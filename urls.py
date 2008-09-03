@@ -2,7 +2,6 @@ from django.contrib import databrowse
 from django.conf.urls.defaults import *
 from voting.views import vote_on_object
 from django.contrib.auth.decorators import user_passes_test
-from common.models import LatestEntries #, LatestEntriesByCategory
 from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
 

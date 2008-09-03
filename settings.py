@@ -136,3 +136,9 @@ LOGIN_REDIRECT_URL = '/accounts/profile/'
 ACCOUNT_ACTIVATION_DAYS = 3
 
 PRESENTATION_DELETED='The presentation has been deleted.'
+
+#memcached detail
+#CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+
+#increase the file upload size to 10MB
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10

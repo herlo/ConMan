@@ -37,7 +37,7 @@
 
     <h5 style="font-size: x-small">
         <a href='/speaker/{{ spkr_id }}/' style="color: #43484C">{{ spkr_name }}</a>
-        <em>({{ spkr.company }})</em>
+		{% if spkr.company %}<em>({{ spkr.company }})</em>{% endif %}
     </h5>
 
     <div id='speakerImg'> <img src='/static/{{ spkr.user_photo }}'></div>

@@ -52,7 +52,8 @@ def send_confirm_email(user, form):
 
 # helper method for uploading files
 def handle_uploaded_file(file, path):
-    filename = str(file.name)
+    
+    filename = settings.MEDIA_ROOT + str(file.name)
     print "Filename: " + filename
     destination = open(filename, 'wb+')
     for chunk in file.chunks():

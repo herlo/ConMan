@@ -18,11 +18,16 @@ presentation_dict = {
 }
 can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='/admin/')
 
+from django.contrib import admin
+admin.autodiscover()
+
 urlpatterns = patterns('',
     (r'^admin/speakers/presentation/voting-results/$', 'speakers.views.voting_results'),
     (r'^admin/speakers/show/$', 'speakers.views.show_speakers_admin'),
 #    (r'^admin/speakers/mass_email/$', 'common.views.mass_email', {'users': User.objects.all() }),
-    (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^admin/(.*)', admin.site.root),
+
+#    (r'^admin/', include('django.contrib.admin.urls')),
 #    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('accounts.urls')),
     (r'^about/tos/$', 'common.views.show_tos'),

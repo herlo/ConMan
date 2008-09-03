@@ -14,13 +14,6 @@ from django.contrib.auth import views as auth_views
 
 from accounts.views import activate, register, profile
 
-from common.models import LinkItems
-
-
-#links = dict()
-#for link in LinkItems.objects.all().order_by('order'):
-#  links[link.href] = link.innertext
-  
 urlpatterns = patterns('',
     # Activation keys get matched by \w+ instead of the more specific
     # [a-fA-F0-9]{40} because a bad activation key should still get to the view;

@@ -1,6 +1,6 @@
 from speakers.models import *
-from django import newforms as forms
-from django.newforms import ValidationError
+from django import forms
+from django.forms import ValidationError
 
 class PresentationForm(forms.ModelForm):
     cat = forms.ModelChoiceField(Category.objects.all(),label=u'Category')

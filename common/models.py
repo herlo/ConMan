@@ -29,8 +29,8 @@ class ShirtSize(models.Model):
     def __unicode__(self):
         return self.get_name_display()
 
-    class Admin:
-        list_display = ('id', 'name',)
+#    class Admin:
+#        list_display = ('id', 'name',)
 
 class UserProfile(models.Model):    
     '''
@@ -155,9 +155,9 @@ class UserProfile(models.Model):
             # Save this photo instance
         super(UserProfile, self).save()
 
-    class Admin:
-        search_fields = ['job_title','common_channels','@bio','site']
-        list_display = ('user', 'irc_nick', 'common_channels')
+#    class Admin:
+#        search_fields = ['job_title','common_channels','@bio','site']
+#        list_display = ('user', 'irc_nick', 'common_channels')
 #        fields = (
 #            (None, {
 #                'fields': ('user', 'bio', 'job_title', 'site')

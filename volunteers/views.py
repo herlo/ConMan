@@ -56,7 +56,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response,get_object_or_404
 from django.template import RequestContext
-from django import newforms as forms
+from django import forms
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe

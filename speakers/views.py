@@ -1,7 +1,7 @@
 # Create your views here.
 from django.shortcuts import render_to_response,get_object_or_404
 from django.template import RequestContext
-from django import newforms as forms
+from django import forms as forms
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from datetime import datetime
 from django.utils.datastructures import SortedDict
@@ -136,17 +136,17 @@ def show_presentation_schedule(request, day="1970-01-01"):
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
 
-        import vobject
-
-        cal = vobject.iCalendar()
-        print "test"
-        for p in presentations:
-            cal.add('vevent')
-            cal.vevent.add('summary').value = p.title
-            cal.vevent.add('dtstart').value = p.start
-
-        print cal
-
+#        import vobject
+#
+#        cal = vobject.iCalendar()
+#        print "test"
+#        for p in presentations:
+#            cal.add('vevent')
+#            cal.vevent.add('summary').value = p.title
+#            cal.vevent.add('dtstart').value = p.start
+#
+#        print cal
+#
         #print "Presentation: " + p.title + " " + str(p.start)
         template = 'show_presentations.html'
         

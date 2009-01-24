@@ -4,6 +4,7 @@ from voting.views import vote_on_object
 from django.contrib.auth.decorators import user_passes_test
 from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
+from common import admin
 
 #feeds = {
 #    'latest': LatestEntries,
@@ -17,9 +18,6 @@ presentation_dict = {
     'allow_xmlhttprequest': True,
 }
 can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='/admin/')
-
-from django.contrib import admin
-admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^admin/speakers/presentation/voting-results/$', 'speakers.views.voting_results'),

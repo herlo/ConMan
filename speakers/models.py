@@ -38,9 +38,9 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
     
-    class Admin:
-        list_display = ('name',)
-        pass
+#    class Admin:
+#        list_display = ('name',)
+#        pass
     
     class Meta:
         verbose_name_plural = "Categories"
@@ -54,10 +54,6 @@ class Room(models.Model):
     def __unicode__(self):
         return self.name
     
-    class Admin:
-
-        pass
-
 class Status(models.Model):
     '''
     >>> c = Status(name="hot_or_not")
@@ -68,10 +64,6 @@ class Status(models.Model):
 
     def __unicode__(self):
         return self.name
-    
-    class Admin:
-
-        pass
     
     class Meta:
         verbose_name_plural = "Statuses"
@@ -89,8 +81,6 @@ class AudienceType(models.Model):
 
     def __unicode__(self):
         return self.name
-    class Admin:
-        pass
 
 class Presentation(models.Model):
     '''
@@ -141,19 +131,19 @@ class Presentation(models.Model):
     def __unicode__(self):
         return self.title + " " + str(self.cat.name) + " " + str(self.status.name)
 
-    class Admin:
-        list_filter = ['presenter', 'cat', 'audiences','status']
-        fields = (
-           (None, {
-               'fields': ('title', 'presenter', 'short_abstract', 'cat', 'audiences', 'score', 'status')
-           }),
-           ('Extra Information', {
-               'classes': 'collapse',
-               'fields' : ('long_abstract', 'slides', 'start', 'end', 'location')
-           }),
-        )
-        list_display = ('title', 'presenter', 'get_score', 'short_abstract', 'status')
-        search_fields = ['@longabstract','status','@title','foreign_key__cat']
+#    class Admin:
+#        list_filter = ['presenter', 'cat', 'audiences','status']
+#        fields = (
+#           (None, {
+#               'fields': ('title', 'presenter', 'short_abstract', 'cat', 'audiences', 'score', 'status')
+#           }),
+#           ('Extra Information', {
+#               'classes': 'collapse',
+#               'fields' : ('long_abstract', 'slides', 'start', 'end', 'location')
+#           }),
+#        )
+#        list_display = ('title', 'presenter', 'get_score', 'short_abstract', 'status')
+#        search_fields = ['@longabstract','status','@title','foreign_key__cat']
 
     def _save_FIELD_file(self, field, filename, raw_contents, save=True):
         original_upload_to = field.upload_to

@@ -82,7 +82,6 @@ def update_profile(user, form, photo=None):
 def profile(request, success_url='/pages/home/', 
               form_class=ProfileForm, profile_callback=update_profile, 
               template_name='accounts/profile_form.html'):
-    links = LinkItems.objects.order_by('order')
     photo_url = ''
     form = form_class()
     if request.method == 'POST':
@@ -164,7 +163,6 @@ def register(request, success_url='/accounts/register/complete/',
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()
-    links = LinkItems.objects.order_by('order')
     return render_to_response(template_name,
-                              { 'form': form, 'left_links':links },
+                              { 'form': form},
                               context_instance=RequestContext(request))

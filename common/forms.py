@@ -1,6 +1,6 @@
 from common.models import *
-from django import newforms as forms
-from django.newforms import ValidationError
+from django import forms
+from django.forms import ValidationError
 
 class LoginForm(forms.Form):
     username = forms.CharField()

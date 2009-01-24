@@ -120,7 +120,7 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
     
-    def save(self):
+    def save(self, *args, **kwargs):
         # We use PIL's Image object
         # Docs: http://www.pythonware.com/library/pil/handbook/image.htm
         from PIL import Image
@@ -133,8 +133,8 @@ class UserProfile(models.Model):
         # self.save_user_photo_file(self.get_user_photo_filename(), '', save=False)
    
         # Open image in order to resize
-        if (self.get_user_photo_filename()):
-            image = Image.open(self.get_user_photo_filename())
+        if (self.user_photo.name):
+            image = Image.open(self.user_photo.name)
    
             # Convert to RGB if necessary
             # Thanks to Limodou on DjangoSnippets.org
@@ -153,7 +153,7 @@ class UserProfile(models.Model):
             except KeyError:
                 pass
             # Save this photo instance
-        super(UserProfile, self).save()
+        super(UserProfile, self).save(*args, **kwargs)
 
 #    class Admin:
 #        search_fields = ['job_title','common_channels','@bio','site']

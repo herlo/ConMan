@@ -25,5 +25,6 @@ class ShirtSizeAdmin(admin.ModelAdmin):
 site = admin.AdminSite()
 site.register(ShirtSize, ShirtSizeAdmin)
 site.register(User, MyUserAdmin)
+site.register(UserProfile)
 site.register(Group)
 site.register(Site)

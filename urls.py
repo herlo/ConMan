@@ -4,13 +4,16 @@ from voting.views import vote_on_object
 from django.contrib.auth.decorators import user_passes_test
 from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
-from common import admin
+from django.contrib import admin
+#from common import admin
 
 #feeds = {
 #    'latest': LatestEntries,
 #    'categories': LatestEntriesByCategory,
 #    'author': LatestEntriesByAuthor,
 #}
+
+admin.autodiscover()
 
 presentation_dict = {
     'model': Presentation,

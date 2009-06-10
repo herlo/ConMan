@@ -1,6 +1,6 @@
 {% extends "base_forms.html" %}
 
-{% block title %}2008 Sponsors{% endblock title%}
+{% block title %}2009 Sponsors{% endblock title%}
 
 
 {% block primaryContent %}
@@ -21,7 +21,8 @@ $(document).ready(function(){
 		{% endifchanged %}
 		<tr border='0'>
 			<td valign='top' align='left' width='30%'>
-			<a href='{{ sponsor.url }}' target='_new'><img border='0' src='{{ sponsor.lg_logo }}' /></a></td>
+			<p>Here</p>
+			<a href="{{ sponsor.url }}" target="_new"><img border="0" src="{{ sponsor.lg_logo }}" alt="" /></a></td>
 			<td>{{ sponsor.about }}</td>
 			</tr>
 	{% endfor %}

@@ -4,6 +4,11 @@ from sponsors.models import Sponsor,Level
 
 site = admin.AdminSite()
 
-
 admin.site.register(Level)
-admin.site.register(Sponsor)
+
+
+class SponsorAdmin(admin.ModelAdmin):
+	#fields = ['company','contact','level']
+	list_display = ('company','contact','level')
+
+admin.site.register(Sponsor, SponsorAdmin)

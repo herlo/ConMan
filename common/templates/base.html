@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
-	Moded out by John P. Weis
+	Modded out by Adam Barrett <admin@utahcon.com>
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
@@ -16,77 +16,74 @@
 		<script type="text/javascript" src="/static/js/jquery-autoexpand.1.02.js"></script>
 	</head>
 	<body>
-	<div id="outer">
-		<div id="header">
-			<div id="logo">
-				<img src="/static/img/utosc_howto_large.png" alt="ConMan rocks!" />
-			</div>
-			<div id="appName">		
-				<h1><a href="/pages/home/">Utah Open Source Conference 2008</a></h1>
-				<h2>HOWTO... &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; August 28 - 30, 2008</h2>
-				<h3>Salt Lake Community College</h3>
-			 </div>	
-			 <div id="actionsMenu">
-				<ul>
-				{% if user.is_authenticated %}
-					<li class="first"> Welcome, {{ user.username }} </li>
-					<li> <a href="/accounts/profile/" accesskey="2" title="">Profile</a></li>
-				{% else %}
-					<li class="first"><a href="/accounts/login/" accesskey="2" title="">Login</a></li>
-					<li><a href="/accounts/register/" accesskey="2" title="">Create Account</a></li>
-				{% endif %}
-					<li><a href="/speaker/papers/" accesskey="2" title="">Submit Paper</a></li>
-<!--				<li><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></li>
-					<li><a href="/contact/" accesskey="5" title="">Contact Us</a></li>
--->
-				{% if user.is_authenticated %}
-					<li><a href="/accounts/logout/" accesskey="2" title="">Logout</a></li>
-				{% endif %}
-				</ul>
-			</div>
-		</div>
 
-		<div>
-			<div id="lmenu">
-				{% load flatpages_links %}
-				{% show_flatpages %}
-			</div>
+<div class="bigpicture">
+	<div class="masthead">
+		<img style="float:right;" src="/static/img/utosLogo.png" alt="UTOS logo" />
+		<div class="titlebar">
+			<img src="/static/img/utosTitle.png" alt="Utah Open Source" />
 		</div>
-    <div id="content-container">
-	<div id="content">
-		<div id="primaryContentContainer">
-			<div id="primaryContent">
-				{% block primaryContent %}				
-				{% endblock primaryContent %}
-			</div>
+		<div class="menubar">
+		<!--
+			<div class="menubutton"><a href="/contact">Contact Us</a></div>
+			<div class="menubutton"><a href="/lodging">Lodging</a></div>
+			<div class="menubutton"><a href="/venue">Venue</a></div>
+			<div class="menubutton"><a href="/dining">Dining</a></div>
+			<div class="menubutton"><a href="/events">Events</a></div>
+			<div class="menubutton"><a href="/register">Register</a></div>
+			<div class="menubutton"><a href="/sponsors">Sponsors</a></div>
+			<div class="menubutton"><a href="/schedule">Schedule</a></div>
+		-->
+			<div class="menubutton"><a href="http://blog.utos.org/about/">About</a></div>
+			<div class="menubutton"><a href="/">Home</a></div>
+	</div>
+	<!-- eo:masthead -->
+	
+	<br class="clearboth" />
+
+	<div class="bigbluebox">
+		<div class="bbbleft">
+			<img src="/static/img/utosc2009_2-150x117.png">
+		</div>
+		<div class="bbbmiddle">
+			<img src="/static/img/2009-activities-250x117.png">
+		</div>
+		<div class="bbbright">
+			Hosted by:<br />
+			<img src="/static/img/slcc_logo_4clr_75x200.jpg"><br />
+			Miller Free Enterprise Center (MFEC)<br />
+			Sandy, Utah
 		</div>
 	</div>
+	<!-- eo: bigbluebox -->
 
-    <div id="leftMenu">
-        {% block leftMenu %}
-		{% include "leftmenu.html" %}
-        {% endblock %}
-    </div>
-
-	<div id="rightMenu">
+	<div class="contentbox">
+		<div class="rightcontent">
 			{% block rightMenu %}
-			<h2>UTOSC 2008 Sponsors</h2>
+			<h2>Sponsors</h2>
 			{% load sponsor_list %}
 			{% show_sponsors %}
 			{% endblock rightMenu %}
-	</div> 
-    </div>
-	<div id="footer"> 
-		<div id="poweredBy"> 
-				<a href='http://code.google.com/p/utos-conman/' target='_base'>
-					<img align="top" src="/static/img/conman.png"  border='0' alt="ConMan rocks!" />
-				</a>
-				<br />
-				<a href='http://code.google.com/p/utos-conman/' target='_base'> Powered by ConMan </a>
 		</div>
- 	</div>  
-</div>
+		<!-- eo: rightcontent -->
+		<div class="centercontent">
+			{% block primaryContent %}
+			{% endblock primaryContent %}
+		</div>
+		<!-- eo: centercontent -->
 
+<!--
+		<div class="footer">
+			footer text info
+		</div>
+-->
+		<!-- eo: footer -->
+	
+		<div class="leftcontent">
+		</div>
+	</div>
+</div>
+<!-- eo:bigpicture -->
 
 </body>
 </html>

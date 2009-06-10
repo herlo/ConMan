@@ -24,18 +24,8 @@
 			<img src="/static/img/utosTitle.png" alt="Utah Open Source" />
 		</div>
 		<div class="menubar">
-		<!--
-			<div class="menubutton"><a href="/contact">Contact Us</a></div>
-			<div class="menubutton"><a href="/lodging">Lodging</a></div>
-			<div class="menubutton"><a href="/venue">Venue</a></div>
-			<div class="menubutton"><a href="/dining">Dining</a></div>
-			<div class="menubutton"><a href="/events">Events</a></div>
-			<div class="menubutton"><a href="/register">Register</a></div>
-			<div class="menubutton"><a href="/sponsors">Sponsors</a></div>
-			<div class="menubutton"><a href="/schedule">Schedule</a></div>
-		-->
-			<div class="menubutton"><a href="http://blog.utos.org/about/">About</a></div>
-			<div class="menubutton"><a href="/">Home</a></div>
+			{% load flatpages_links %}
+			{% show_flatpages %}
 		</div>
 	</div>
 	<!-- eo:masthead -->

@@ -21,7 +21,7 @@ img { border: none;}
 .clearboth {clear:both;}
 .contentbox {width:900px; margin-top:5px;}
 .leftcontent {width:130px; margin-right:5px; float:left; min-height:400px; background: url(/static/img/colBKGRN.jpg) repeat top left;}
-.rightcontent {width:160px; float:right; min-height:400px; background: url(/static/img/colBKGRN.jpg) repeat top left;}
+.rightcontent {width:160px; float:right; text-align:center;  min-height:400px; background: url(/static/img/colBKGRN.jpg) repeat top left;}
 .centercontent {width:600px; margin-right:5px; float:right; background-color:#CCCCCC; color: #5181b3; min-height: 400px;}
 .centercontent h1 { text-align: center;} 
 .centercontent h2 { text-align: center;} 

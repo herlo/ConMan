@@ -12,21 +12,19 @@ $(document).ready(function(){
 	});
 </script>
 <h2>2008 Sponsors</h2>
-	<table border='0' cellmargin='2' width='95%'>
 	{% for sponsor in sponsors %}
+        <div id="showSponsors">
 		{% ifchanged sponsor.level %}
-		<tr border='0'>
-			<th colspan='2'>{{ sponsor.level }}</th>
-		</tr>
+                <h3>{{ sponsor.level }}</h3>
 		{% endifchanged %}
-		<tr border='0'>
-			<td valign='top' align='left' width='30%'>
-			<p>Here</p>
-			<a href="{{ sponsor.url }}" target="_new"><img border="0" src="{{ sponsor.lg_logo }}" alt="" /></a></td>
-			<td>{{ sponsor.about }}</td>
-			</tr>
+                <div id="sponsor_{{ sponsor.level }}">
+                    <a href="{{ sponsor.url }}" target="_new"><img
+                        border="0" src="/static/{{ sponsor.lg_logo }}" 
+                        alt="{{ sponsor.company }}" style="float: left;padding:
+                        3px;"/></a>a
+                    <span><pre>{{ sponsor.about }}</pre></span>
+                </div>
+        </div>
 	{% endfor %}
-	</table>
-
 {% endblock primaryContent%}
 

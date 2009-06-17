@@ -106,8 +106,8 @@ class UserProfile(models.Model):
 #    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
     #presentation = models.ForeignKey(Presentation, null=True, blank=True,)
     user = models.ForeignKey(User,unique=True)
-    bio = models.TextField(null=True, blank=True)
 
+    bio = models.TextField(null=True, blank=True)
     shirt_size = models.ForeignKey(ShirtSize, null=True,blank=True)
     job_title = models.CharField(max_length=200, null=True, blank=True, db_index=True,)
     company = models.CharField(max_length=200, null=True, blank=True, db_index=True,)

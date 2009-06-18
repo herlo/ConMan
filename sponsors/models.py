@@ -20,8 +20,8 @@ class Level(models.Model):
     def __unicode__(self):
         return self.name
 
-    class Admin:
-        list_display = ('name', 'order')
+#    class Admin:
+#        list_display = ('name', 'order')
 
 class Sponsor(models.Model):
     company = models.CharField(max_length=150)
@@ -33,21 +33,22 @@ class Sponsor(models.Model):
     sm_logo = models.ImageField(upload_to='img/sponsors')
     lg_logo = models.ImageField(upload_to='img/sponsors')
 
-    class Admin:
-        list_display = ('company', 'contact', 'level')
+#    class Admin:
+#        list_display = ('company', 'contact', 'level')
 
     def save(self):
         
         if self.sm_logo:
             newImage = Image.open(self.sm_logo.path)
             newHeight = (smallImageWidth * newImage.size[1])/ newImage.size[0]
-            newImage.thumbnail((smallImageWidth,newHeight))
+            #newImage.thumbnail((smallImageWidth,newHeight))
+            newImage.thumbnail((smallImageWidth,newHeight), Image.ANTIALIAS)
             newImage.save(self.sm_logo.path);
 
         if self.lg_logo:
             newImage = Image.open(self.lg_logo.path)
             newHeight = (largeImageWidth * newImage.size[1])/ newImage.size[0]
-            newImage.thumbnail((largeImageWidth,newHeight))
+            newImage.thumbnail((largeImageWidth,newHeight), Image.ANTIALIAS)
             newImage.save(self.lg_logo.path);
 
         super(Sponsor, self).save()

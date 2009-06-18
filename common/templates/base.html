@@ -22,9 +22,26 @@
 		<div class="titlebar">
 			<img src="/static/img/utosTitle.png" alt="Utah Open Source" />
 		</div>
-		<div class="menubar">
+		<div class="menubar_right">
 			{% load flatpages_links %}
 			{% show_flatpages %}
+		</div>
+		<div class="menubar_left">
+			{% if user.is_authenticated %}
+				<div class="menubutton_left"><a href="/accounts/logout/" accesskey="2" title="">Logout</a></div>
+				<div class="menubutton_left"><a href="/speaker/papers/" accesskey="2" title="">Submit Paper</a></div>
+			{% endif %}
+<!--	
+				<div class="menubutton_left"><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></div>
+				<div class="menubutton_left"><a href="/contact/" accesskey="5" title="">Contact Us</a></div>
+-->
+			{% if not user.is_authenticated %}
+			  <div class="menubutton_left"><a href="/accounts/login/" accesskey="2" title="">Login</a></div>
+			  <div class="menubutton_left"><a href="/accounts/register/" accesskey="2" title="">Create Account</a></div>
+			{% else %}
+			  <div class="menubutton_left"><a href="/accounts/profile/" accesskey="2" title="">Profile</a></div>
+			  <div class="user_left"> Welcome, {{ user.username }} </div>
+			{% endif %}
 		</div>
 	</div>
 	<!-- eo:masthead -->

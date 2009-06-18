@@ -33,7 +33,7 @@ class Category(models.Model):
     >>> c.name
     'hot_or_not'
     '''
-    name = models.CharField(max_length=150,choices=CATEGORY_CHOICES, db_index=True)
+    name = models.CharField(max_length=150, db_index=True)
 
     def __unicode__(self):
         return self.name
@@ -77,7 +77,7 @@ class AudienceType(models.Model):
     >>> a.name
     'Legendary'
     '''
-    name = models.CharField(max_length=150, choices=AUDIENCE_CHOICES, db_index=True)
+    name = models.CharField(max_length=150, db_index=True)
 
     def __unicode__(self):
         return self.name

@@ -70,9 +70,9 @@ def abstract(request, abs_id=None):
 
     if abs_id:
         instance = get_object_or_404(Presentation, id=abs_id, presenter=user.get_profile())
-        page_to_render = 'call_for_papers.html'
-    else:
         page_to_render = 'update_abstract.html'
+    else:
+        page_to_render = 'call_for_papers.html'
         group = Group.objects.get(name='Speaker')
         user.groups.add(group)
         user.save()

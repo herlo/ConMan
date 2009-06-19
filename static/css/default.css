@@ -35,5 +35,7 @@ img { border: none;}
 .leftcontent li { list-style: none; margin-left: -25px; line-height: 20px;} 
 .rightcontent h2 { margin-left: 5px; margin-top: -1px; } 
 .rightcontent li { list-style: none; margin-left: -25px; line-height: 20px;} 
+
+.error { color: #aa0000; font-weight: bold; }
 .footer { text-align: center; color: #000000; min-height: 30px; border-top: 5px solid #000000;background-color:#CCC;clear:both; }
 

@@ -4,7 +4,7 @@
 
 
 {% block primaryContent %}
-<h2>Update Approved Presentations</h2>
+<h2>Submit Presentation Proposal</h2>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#id_password').pstrength();
@@ -14,21 +14,59 @@ $(document).ready(function(){
 </script>
 
 {% block formsWrapper %}
-<h3>Abstract Submission Closed</h3>
-<p>Presentation abstracts were accepted through July 1, 2008.  Please check back next year.<br />
-If your presentation was submitted before the deadline, you will find it to the right hand side of this page.<br />
-Feel free to update your presentations at will.</p>
+
+<div id='error_text'>{{ error }}</div>
+<div id='deleted_text'>{{ deleted }}</div>
+	
+	<div id='form'>
+		<form method="post" action="/speaker/papers/{% if abs_id %}{{ abs_id }}/{% endif %}" enctype="multipart/form-data" >
+			<table> 
+					<tr>
+ 			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
+				  </tr>
+					{% for field in presenter_form %}
+					{% ifequal field.name "slides" %}
+					<tr>
+				    <td valign='top'>{{ field.label_tag }}
+				    </td>
+				    <td>{{ field }}<br />
+						<a href="{{ slides_form.instance.get_slides_url }}" target="__new">View Slides</a>
+					</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				   {% else %}
+					<tr>
+				    <td>{{ field.label_tag }}
+				    </td>
+				    <td>{{ field }}</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				   {% endifequal %}
+				{% endfor %}
+			</table>
+			<input type="submit" value="Submit" />
+		</form>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{% ifnotequal presenter_form.instance.status.pk approved_status.pk %}
+		<form method="post" action="/speaker/papers/{{ abs_id }}/delete/">
+			<input type='submit' value='Delete This Abstract' />
+		</form>
+		{% endifnotequal %}
+	</div>
 {% endblock formsWrapper %}
 
 {% endblock primaryContent%}
 
-				{% block rightMenu %}
-					<h2>Submitted Abstracts</h2>
-						<ul>
-						{% for abs in abstract_list %}
-							<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title }}</a></li>
-						{% endfor %}
-						</ul>
-				{% endblock rightMenu %}
+{% block rightMenu %}
+	<h2>Submitted Abstracts</h2>
+		<ul>
+		{% for abs in abstract_list %}
+			<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title }}</a></li>
+		{% endfor %}
+		</ul>
+{% endblock rightMenu %}
+
 
 

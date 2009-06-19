@@ -41,7 +41,6 @@ class Sponsor(models.Model):
         if self.sm_logo:
             newImage = Image.open(self.sm_logo.path)
             newHeight = (smallImageWidth * newImage.size[1])/ newImage.size[0]
-            #newImage.thumbnail((smallImageWidth,newHeight))
             newImage.thumbnail((smallImageWidth,newHeight), Image.ANTIALIAS)
             newImage.save(self.sm_logo.path);
 

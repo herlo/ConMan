@@ -114,7 +114,7 @@ class UserProfile(models.Model):
     irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,)
     irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,)
     common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,)
-    user_photo = models.ImageField(upload_to='user_photos',null=True,blank=True,)
+    user_photo = models.ImageField(upload_to='img/user_photos',null=True,blank=True,)
     site = models.URLField(db_index=True, blank=True, null=True,)
 
     def __unicode__(self):
@@ -126,32 +126,20 @@ class UserProfile(models.Model):
         from PIL import Image
    
         # Set our max image size in a tuple (max width, max height)
-        MAX_IMAGE_SIZE = (150, 150)
+        imageWidth = 100;
    
         # Save image so we can get the filename
         # it appears this is no longer necessary
         # self.save_user_photo_file(self.get_user_photo_filename(), '', save=False)
    
         # Open image in order to resize
-        if (self.user_photo.name):
-            image = Image.open(self.user_photo.name)
-   
-            # Convert to RGB if necessary
-            # Thanks to Limodou on DjangoSnippets.org
-            # http://www.djangosnippets.org/snippets/20/
-            if image.mode not in ('L', 'RGB'):
-                image = image.convert('RGB')
-       
-            # We use our PIL Image object to resize
-            # Additionally, we use Image.ANTIALIAS to make the image look better.
-            # Without antialiasing the image pattern artifacts may result.
-            image.thumbnail(MAX_IMAGE_SIZE, Image.ANTIALIAS)
-     
-            # Save the thumbnail
-            try:
-                image.save(self.get_user_photo_filename())
-            except KeyError:
-                pass
+#        if self.user_photo:
+#            print "Photo: " + self.user_photo
+#            newImage = Image.open(self.user_photo)
+#            newHeight = (imageWidth * newImage.size[1]) / newImage.size[0]
+#            newImage.thumbnail((imageWidth,newHeight), Image.ANTIALIAS)
+#            newImage.save(self.user_photo.path);
+
             # Save this photo instance
         super(UserProfile, self).save(*args, **kwargs)
 

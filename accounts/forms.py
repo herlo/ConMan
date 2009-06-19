@@ -33,15 +33,15 @@ class RegistrationForm(forms.Form):
     ``RegistrationProfile.objects.create_inactive_user()``.
     
     """
-    username = forms.CharField(max_length=30,
+    username = forms.RegexField(r'^[a-zA-Z0-9]{2,20}', max_length=20, 
                                widget=forms.TextInput(attrs=attrs_dict),
-                               label=_(u'username'),min_length=5)
+                               label=_(u'username'),min_length=5, help_text='between 2 and 20 characters')
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),
                              label=_(u'email address'))
     password1 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
                                 label=_(u'password'),min_length=5)
-    password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False),
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs=attrs_dict, render_value=False), help_text='type again to catch any typos',
                                 label=_(u'password (again)'),min_length=5)
     
     def clean_username(self):
@@ -50,8 +50,6 @@ class RegistrationForm(forms.Form):
         in use.
         
         """
-        if not alnum_re.search(self.cleaned_data['username']):
-            raise forms.ValidationError(_(u'Usernames can only contain letters, numbers and underscores'))
         try:
             user = User.objects.get(username__exact=self.cleaned_data['username'])
         except User.DoesNotExist:
@@ -171,6 +169,6 @@ class ProfileForm(forms.Form):
     irc_nick = forms.CharField(label="IRC Nickname", required=False)
     irc_server = forms.CharField(label="IRC Server", required=False)
     irc_channels = forms.CharField(label="IRC Channels", required=False)
-    photo = forms.ImageField(help_text="Max: 150x150 - Image shown below (if uploaded)", required=False, label="Photo")
+#    photo = forms.ImageField(help_text="Max: 150x150 - Image shown below (if uploaded)", required=False, label="Photo")
 
 

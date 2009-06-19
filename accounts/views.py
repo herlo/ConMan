@@ -14,7 +14,6 @@ from common.models import *
 from accounts.forms import RegistrationForm, ProfileForm
 from accounts.models import RegistrationProfile
 
-
 def activate(request, activation_key, template_name='accounts/activate.html'):
     """
     Activates a ``User``'s account, if their key is valid and hasn't
@@ -73,13 +72,14 @@ def update_profile(user, form, photo=None):
     up.irc_server = form.cleaned_data['irc_server']
     up.common_channels = form.cleaned_data['irc_channels']
     up.site = form.cleaned_data['web_site']
-    if (photo):
-        up.save_user_photo_file(user.username+'.'+photo['filename'].split('.')[len(photo['filename'].split('.'))-1] ,photo['content'])
+    up.user_photo = photo
+#    if (photo):
+#        up.save_user_photo_file(user.username+'.'+photo['filename'].split('.')[len(photo['filename'].split('.'))-1] ,photo['content'])
     up.save()
     user.save()
 
 @login_required
-def profile(request, success_url='/pages/home/', 
+def profile(request, success_url='/accounts/profile/', 
               form_class=ProfileForm, profile_callback=update_profile, 
               template_name='accounts/profile_form.html'):
     photo_url = ''
@@ -87,6 +87,7 @@ def profile(request, success_url='/pages/home/',
     if request.method == 'POST':
         pdata = request.POST.copy()
         pdata.update(request.FILES)
+        print "Pdata: " + str(pdata)
         form = form_class(pdata)
         if form.is_valid():
             #user.get_profile().save_photo_file(request.FILES['photo']['filename'],request.FILES['photo']['content'])
@@ -104,7 +105,6 @@ def profile(request, success_url='/pages/home/',
         initial_dict['irc_channels'] = usp.common_channels
         initial_dict['web_site'] = usp.site
         initial_dict['photo'] = usp.user_photo
-        # somehow some UserProfiles are missing shirt_size, possibly from a db migration
         try:
             initial_dict['shirt_size'] = usp.shirt_size.id
         except AttributeError:
@@ -113,6 +113,7 @@ def profile(request, success_url='/pages/home/',
         if request.user.first_name:
             form = form_class(initial=initial_dict)
             photo_url =  settings.HOST_NAME + settings.MEDIA_URL + str(usp.user_photo)
+            print "Photo url: " + photo_url
 
     return render_to_response(template_name,
             {'form': form, 'photo_url': photo_url, 'left_links':None},

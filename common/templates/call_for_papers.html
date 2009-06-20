@@ -30,7 +30,7 @@ $(document).ready(function(){
 				    </td>
 				    <td>{{ field }}</td>
 				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
-				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				    {% if field.errors %}<td class="error">{{ field.errors }}</td>{% endif %}
 				   </tr>
 				{% endfor %}
 			</table>

@@ -81,6 +81,8 @@ def abstract(request, abs_id=None):
     if request.method == 'POST':
         if instance.status.name != 'Approved':
             pf = PresentationForm(request.POST, request.FILES, instance=instance)
+            sf = PresentationSlidesForm(instance=instance)
+            abstracts = None
             if pf.is_valid():
                 pf.save()
                 send_confirm_email(user, pf)

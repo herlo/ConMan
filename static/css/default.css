@@ -40,4 +40,4 @@ img { border: none;}
 .footer { text-align: center; color: #000000; min-height: 30px; border-top: 5px solid #000000;background-color:#CCC;clear:both; }
 
 #wrapper-left { background-image: url('/static/img/130px.png'); background-repeat: repeat-y; }
-#wrapper-right { style="background-image: url('/static/img/160px.png'); background-repeat: repeat-y; background-position: right; }
+#wrapper-right { background-image: url('/static/img/160px.png'); background-repeat: repeat-y; background-position: right; }

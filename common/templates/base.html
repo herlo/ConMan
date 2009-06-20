@@ -66,33 +66,37 @@
 
 	<div class="contentbox">
 
-		<div class="rightcontent">
-			{% block rightMenu %}
-			<h2>Sponsors</h2>
-			{% load sponsor_list %}
-			{% show_sponsors %}
-			{% endblock rightMenu %}
-		</div>
+		<div id="wrapper-left">
+			<div id="wrapper-right">
+				<div class="rightcontent">
+					{% block rightMenu %}
+					<h2>Sponsors</h2>
+					{% load sponsor_list %}
+					{% show_sponsors %}
+					{% endblock rightMenu %}
+				</div>
 		<!-- eo: rightcontent -->
 
-		<div class="centercontent">
-			{% block primaryContent %}
-			{% endblock primaryContent %}
+				<div class="centercontent">
+					{% block primaryContent %}
+					{% endblock primaryContent %}
+				</div>
+				<!-- eo: centercontent -->
+		
+				<div class="leftcontent">
+				</div>
+			</div>
+		
+			<div class="footer">
+					<a href='http://code.google.com/p/utos-conman/' target='_base'>
+						<img align="top" src="/static/img/conman.png"  border='0' alt="ConMan rocks!" /></a>
+					<br />
+					<a href='http://code.google.com/p/utos-conman/' target='_base'> Powered by ConMan </a>
+			</div>
 		</div>
-		<!-- eo: centercontent -->
-
-		<div class="leftcontent">
-		</div>
-	</div>
-
-	<div class="footer">
-			<a href='http://code.google.com/p/utos-conman/' target='_base'>
-				<img align="top" src="/static/img/conman.png"  border='0' alt="ConMan rocks!" />
-			</a>
-			<br />
-			<a href='http://code.google.com/p/utos-conman/' target='_base'> Powered by ConMan </a>
 	</div>
 	<!-- eo: footer -->
+
 	
 </div>
 <!-- eo:bigpicture -->

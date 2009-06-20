@@ -152,7 +152,7 @@ def show_presentation_schedule(request, day="1970-01-01"):
         
     return render_to_response(template, {'day': date, 'presentations': presentations }, context_instance=RequestContext(request))
 
-def show_speakers(request):
+def show_speakers(request, status='all'):
     #print "in show_speakers"
     group = Group.objects.get(name='Speaker')
     speakers = group.user_set.all().order_by('last_name')
@@ -166,19 +166,24 @@ def show_speakers(request):
         presentations = list()
         profile = speaker.get_profile()
         
-        if isinstance(user,User) and (user.has_perm('voting.add_vote') or
-            user.has_perm('voting.change_vote') or
-            user.has_perm('voting.delete_vote')):
-            pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
-            for p in pending_list:
-                presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
-
-        approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved')).order_by('start')
-
-        if (len(approved_list)):
-            for p in approved_list:
-                presentations.append({'id': p.id, 'title': p.title, 'status': p.status, 'start': p.start})
+        if (status == 'all'):
+            pending_list = profile.presentation_set.all()
+            approved_list = None
+        else:
+            if isinstance(user,User) and (user.has_perm('voting.add_vote') or
+                user.has_perm('voting.change_vote') or
+                user.has_perm('voting.delete_vote')):
+                pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
+    
+            approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved')).order_by('start')
+    
+            if (len(approved_list)):
+                for p in approved_list:
+                    presentations.append({'id': p.id, 'title': p.title, 'status': p.status, 'start': p.start})
 #                print "Presentation: " + p.title + " " + str(p.start)
+
+        for p in pending_list:
+            presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
 
         if (presentations):
             speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':

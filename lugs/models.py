@@ -22,8 +22,8 @@ class LUG(models.Model):
     url = models.CharField(max_length=250)
     about = models.TextField(blank=True,null=True)
     type = models.ForeignKey(Type,blank=True,null=True)
-    sm_logo = models.ImageField(upload_to='img/sponsors',blank=True,null=True)
-    lg_logo = models.ImageField(upload_to='img/sponsors',blank=True,null=True)
+    sm_logo = models.ImageField(upload_to='img/groups',blank=True,null=True)
+    lg_logo = models.ImageField(upload_to='img/groups',blank=True,null=True)
 
 #    class Admin:
 #        list_display = ('company', 'contact', 'level')

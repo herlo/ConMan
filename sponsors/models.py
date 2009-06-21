@@ -14,7 +14,7 @@ LEVEL_CHOICES = (
 )
 
 class Level(models.Model):
-    name = models.CharField(max_length=150,choices=LEVEL_CHOICES, db_index=True)
+    name = models.CharField(max_length=150, db_index=True)
     order = models.IntegerField(default=10)
 
     def __unicode__(self):

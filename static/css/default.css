@@ -42,3 +42,9 @@ img { border: none;}
 
 #wrapper-left { background-image: url('/static/img/130px.png'); background-repeat: repeat-y; }
 #wrapper-right { background-image: url('/static/img/160px.png'); background-repeat: repeat-y; background-position: right; }
+
+#sponsorimg { margin: 10px; display: block; float: left; width: 255px; }
+#sponsortext { margin: 10px; display: block; float: right; width: 300px; }
+#showsponsors h2 { text-align: center; clear: both; padding-top: 15px; }
+
+

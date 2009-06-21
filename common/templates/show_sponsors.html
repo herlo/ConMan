@@ -13,24 +13,23 @@ $(document).ready(function(){
 </script>
 <h2>2009 Sponsors</h2>
 <h2>How to Sponsor the Utah Open Source Conference 2009</h2>
-<p>Sponsorships are being accepted through our sponsorship committee leader, Stephen Shaw.  He can be reached by email <a href="mailto:clint@utos.org">clint@utos.org</a>.  Feel free to peruse our sponsorship documents below:</p>
+<p>Sponsorships are being accepted through our sponsorship committee.  By email <a href="mailto:sponsorship@utos.org">sponsorship@utos.org</a>.  Feel free to peruse our sponsorship documents below:</p>
 <ul>
   <li><a href='http://files.getdropbox.com/u/149379/docs/utosc2009prospectus.pdf' target='_new'>UTOSC 2009 Prospectus</a></li>
   <li><a href='http://files.getdropbox.com/u/149379/docs/utosc2009sponsorships.pdf' target='_new'>UTOSC 2009 Sponsorships</a></li>
 </ul>
-	{% for sponsor in sponsors %}
-        <div id="showSponsors">
-		{% ifchanged sponsor.level %}
-                <h3>{{ sponsor.level }}</h3>
-		{% endifchanged %}
-                <div id="sponsor_{{ sponsor.level }}">
-                    <a href="{{ sponsor.url }}" target="_new"><img
-                        border="0" src="/static/{{ sponsor.lg_logo }}" 
-                        alt="{{ sponsor.company }}" style="float: left;padding:
-                        3px;"/></a>
-                    <span>{{ sponsor.about }}</span>
-                </div>
-        </div>
-	{% endfor %}
+{% for sponsor in sponsors %}
+<div id="showsponsors">
+	{% ifchanged sponsor.level %}
+        <h2>{{ sponsor.level }}</h2>
+	{% endifchanged %}
+    <div id="sponsorimg" id="sponsor{{ sponsor.level|lower }}">
+       <a href="{{ sponsor.url }}" target="_new"><img border="0" src="/static/{{ sponsor.lg_logo }}" alt="{{ sponsor.company }}" style="float: left; padding: 5px;"/></a>
+	</div>
+	<div id="sponsortext">
+       <span>{{ sponsor.about }}</span>
+    </div>
+</div>
+{% endfor %}
 {% endblock primaryContent%}
 

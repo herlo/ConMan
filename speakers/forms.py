@@ -4,7 +4,7 @@ from django.forms import ValidationError
 
 class PresentationForm(forms.ModelForm):
     cat = forms.ModelChoiceField(Category.objects.all(),label=u'Category', help_text='Choose the closest category')
-    audiences = forms.ModelMultipleChoiceField(AudienceType.objects.all(), widget=forms.SelectMultiple(attrs={'size': 4}))
+    audiences = forms.ModelMultipleChoiceField(AudienceType.objects.all(), widget=forms.SelectMultiple(attrs={'size': 4}), help_text='Choose one or more audience')
     title = forms.CharField()
     short_abstract = forms.CharField(widget=forms.Textarea,
                                      min_length=1,

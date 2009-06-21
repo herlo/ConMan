@@ -50,10 +50,10 @@
 
 	<div class="bigbluebox">
 		<div class="bbbleft">
-			<img src="/static/img/utosc2009_2-150x117.png" alt="" />
+			<img src="/static/img/utosc2009_2_sm.png" alt="" />
 		</div>
 		<div class="bbbmiddle">
-			<img src="/static/img/2009-activities-250x117.png" alt="" />
+			<p>Call for Papers is now open.</p><p>Submit your <a href="/speaker/papers/">abstracts!</a></p>
 		</div>
 		<div class="bbbright">
 			Hosted by:<br />
@@ -83,6 +83,15 @@
 				<!-- eo: centercontent -->
 		
 				<div class="leftcontent">
+					<h2>In The Past</h2>
+					<ul>
+						<li><a href="http://2008.utosc.com">UTOSC 2008</a></li>
+					</ul>
+					{% block leftMenu %}
+					<h2>Groups</h2>
+					{% load lug_list %}
+					{% show_lugs %}
+					{% endblock leftMenu %}
 				</div>
 			</div>
 		

@@ -82,8 +82,9 @@ def update_profile(user, form, photo=None):
 def profile(request, success_url='/accounts/profile/', 
               form_class=ProfileForm, profile_callback=update_profile, 
               template_name='accounts/profile_form.html'):
-    photo_url = ''
     form = form_class()
+    usp = UserProfile.objects.get_or_create(user=request.user)[0]
+
     if request.method == 'POST':
         pdata = request.POST.copy()
         pdata.update(request.FILES)
@@ -94,11 +95,6 @@ def profile(request, success_url='/accounts/profile/',
             update_profile(request.user, form, request.FILES.get('photo', None))
             return HttpResponseRedirect(success_url)
     else:
-        try:
-            usp = request.user.get_profile()
-        except UserProfile.DoesNotExist:
-            usp = UserProfile.objects.create(user=request.user)
-
         # make a dict from the UserProfile and User objects for initial data for ProfileForm
         initial_dict = dict(request.user.__dict__, **usp.__dict__)
         # explicit mappings for UserProfile fields that don't match the ProfileForm field names
@@ -110,13 +106,8 @@ def profile(request, success_url='/accounts/profile/',
         except AttributeError:
             pass
 
-        if request.user.first_name:
-            form = form_class(initial=initial_dict)
-            photo_url =  settings.HOST_NAME + settings.MEDIA_URL + str(usp.user_photo)
-            print "Photo url: " + photo_url
-
     return render_to_response(template_name,
-            {'form': form, 'photo_url': photo_url, 'left_links':None},
+            {'form': form, 'profile': usp, 'left_links':None},
             context_instance=RequestContext(request))
 
 def register(request, success_url='/accounts/register/complete/',

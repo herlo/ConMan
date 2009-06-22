@@ -119,29 +119,6 @@ class UserProfile(models.Model):
 
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
-    
-    def save(self, *args, **kwargs):
-        # We use PIL's Image object
-        # Docs: http://www.pythonware.com/library/pil/handbook/image.htm
-        from PIL import Image
-   
-        # Set our max image size in a tuple (max width, max height)
-        imageWidth = 100;
-   
-        # Save image so we can get the filename
-        # it appears this is no longer necessary
-        # self.save_user_photo_file(self.get_user_photo_filename(), '', save=False)
-   
-        # Open image in order to resize
-#        if self.user_photo:
-#            print "Photo: " + self.user_photo
-#            newImage = Image.open(self.user_photo)
-#            newHeight = (imageWidth * newImage.size[1]) / newImage.size[0]
-#            newImage.thumbnail((imageWidth,newHeight), Image.ANTIALIAS)
-#            newImage.save(self.user_photo.path);
-
-            # Save this photo instance
-        super(UserProfile, self).save(*args, **kwargs)
 
 #    class Admin:
 #        search_fields = ['job_title','common_channels','@bio','site']

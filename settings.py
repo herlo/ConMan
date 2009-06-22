@@ -99,6 +99,9 @@ INSTALLED_APPS = (
     'lugs',
 #    'planner',
     #'django.contrib.databrowse',
+
+    # third-party apps
+    'sorl.thumbnail', # svn co http://sorl-thumbnail.googlecode.com/svn/trunk/sorl
 )
 
 ###########NEW CHANGE TO ADD###########

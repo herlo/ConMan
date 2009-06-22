@@ -1,4 +1,5 @@
 {% extends "base_forms.html" %}
+{% load thumbnail %}
 
 {% block title %}{{ spkr.first_name }} {{ spkr.last_name }}{% endblock title%}
 
@@ -15,7 +16,7 @@ $(document).ready(function(){
 <p><font size='+2'>{{ spkr.first_name }} {{ spkr.last_name }}</font><br />
 <font size='-3'>({{ profile.job_title }}, {{ profile.company}})</font><br />
 <a href='{{ profile.site }}' target='_blank'><font size='-2'>{{ profile.site }}</font></a></p>
-<div id='speakerImg'> <img src='/static/{{ profile.user_photo }}' /></div>
+<div id='speakerImg'> <img src="{% thumbnail profile.user_photo 100x100 %}" /></div>
 <p>{{ profile.bio }}</p>
 
 {% if profile.irc_nick %}

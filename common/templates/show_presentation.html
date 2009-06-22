@@ -1,5 +1,6 @@
 {% extends "base_forms.html" %}
 {% load voting_tags %}
+{% load thumbnail %}
 
 {% block title %}{{ presentation.title }}{% endblock title %}
 
@@ -40,7 +41,7 @@
 		{% if spkr.company %}<em>({{ spkr.company }})</em>{% endif %}
     </h5>
 
-    <div id='speakerImg'> <img src='/static/{{ spkr.user_photo }}'></div>
+    <div id='speakerImg'> <img src="{% thumbnail profile.user_photo 100x100 %}" /></div>
     <p>{{ spkr.bio }}</p>
 
 	{% ifnotequal presentation.status.name 'Approved' %}

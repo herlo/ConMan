@@ -160,6 +160,7 @@ def show_speakers(request, status='all'):
     speakers = group.user_set.all().order_by('last_name')
 
     user = request.user
+    feed = False
 
     speaker_list = list()
     pending_list = list()
@@ -171,6 +172,7 @@ def show_speakers(request, status='all'):
         if (status == 'all'):
             pending_list = profile.presentation_set.all()
             approved_list = None
+            feed = True
         else:
             if isinstance(user,User) and (user.has_perm('voting.add_vote') or
                 user.has_perm('voting.change_vote') or
@@ -192,7 +194,10 @@ def show_speakers(request, status='all'):
             profile.irc_server, 'job_title': profile.job_title, 'web_site':
             profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 
-    return render_to_response('show_speakers.html', {'speakers': speaker_list }, context_instance=RequestContext(request))
+        print "Feed value: " + str(feed)
+        print "Status: " + str(status)
+
+        return render_to_response('show_speakers.html', {'speakers': speaker_list, 'feed': feed}, context_instance=RequestContext(request))
 
 
 def show_presentation(request, p_id):

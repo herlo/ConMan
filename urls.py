@@ -5,13 +5,15 @@ from django.contrib.auth.decorators import user_passes_test
 from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
 from django.contrib import admin
+from django.conf.urls.defaults import *
+from speakers.feeds import LatestEntries
+
 #from common import admin
 
-#feeds = {
-#    'latest': LatestEntries,
+feeds = {
+    'latest': LatestEntries,
 #    'categories': LatestEntriesByCategory,
-#    'author': LatestEntriesByAuthor,
-#}
+}
 
 admin.autodiscover()
 
@@ -29,7 +31,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
 #    (r'^admin/', include('django.contrib.admin.urls')),
-#    (r'^feeds/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^feeds/speaker/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('accounts.urls')),
     (r'^about/tos/$', 'common.views.show_tos'),
 #    (r'^profile/$', 'common.views.profile_show'),

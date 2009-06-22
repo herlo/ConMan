@@ -162,6 +162,10 @@ class UserForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)
 
+        if not self.instance:
+            raise Exception("UserForm must be instantiated with the instance"\
+                    "keyword containing an exisiting User model instance.")
+
 class ProfileForm(forms.ModelForm):
     """A form to allow a user to update his UserProfile."""
     class Meta:

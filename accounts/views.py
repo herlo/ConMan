@@ -53,12 +53,6 @@ def make_basic_profile(user=None):
     up.user = user
     up.save();
 
-def all(iterable):
-    for element in iterable:
-        if not element:
-            return False
-    return True
-
 @login_required
 def profile(request, success_url='/accounts/profile/', 
               form_class=ProfileForm,
@@ -70,7 +64,7 @@ def profile(request, success_url='/accounts/profile/',
         user_form = UserForm(request.POST, instance=request.user)
         forms = (form, user_form)
 
-        if all(forms):
+        if [True for i in forms if i.is_valid()]:
             for i in forms:
                 i.save()
 

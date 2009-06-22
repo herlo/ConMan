@@ -8,7 +8,7 @@ from django import forms
 #from django.core.validators import alnum_re
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
-from common.models import ShirtSize
+from common.models import ShirtSize, UserProfile
 from accounts.models import RegistrationProfile
 
 
@@ -153,20 +153,39 @@ class RegistrationFormNoFreeEmail(RegistrationForm):
             raise forms.ValidationError(_(u'Registration using free email addresses is prohibited. Please supply a different email address.'))
         return self.cleaned_data['email']
 
-class ProfileForm(forms.Form):
-    shirt_objects = list()
+class UserForm(forms.ModelForm):
+    """A form to allow a user to update his first and last names."""
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
 
-    for ss in ShirtSize.objects.all():
-        shirt_objects.append((ss.pk,ss.name))
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
 
-    first_name = forms.CharField()
-    last_name = forms.CharField()
-    job_title = forms.CharField(required=False)
-    company = forms.CharField(required=False)
-    bio = forms.CharField(label="Short Bio",required=False,widget=forms.Textarea(attrs={}))
-    web_site = forms.CharField(required=False)
-    shirt_size = forms.ModelChoiceField(ShirtSize.objects.all())
-    irc_nick = forms.CharField(label="IRC Nickname", required=False)
-    irc_server = forms.CharField(label="IRC Server", required=False)
-    irc_channels = forms.CharField(label="IRC Channels", required=False)
-    photo = forms.ImageField(help_text="Image shown below (if uploaded)", required=False, label="Photo")
+        if not self.instance:
+            raise Exception("UserForm must be instantiated with the instance"\
+                    "keyword containing an exisiting User model instance.")
+
+class ProfileForm(forms.ModelForm):
+    """A form to allow a user to update his UserProfile."""
+    class Meta:
+        model = UserProfile
+        fields = ('job_title', 'company', 'bio', 'site', 'shirt_size',
+                'irc_nick', 'irc_server', 'common_channels', 'user_photo')
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+
+        if not self.instance or not self.instance.user:
+            raise Exception("ProfileForm must be instantiated with the "\
+                    "instance keyword containing a UserProfile instance.")
+
+        self.fields['bio'].label = "Short bio"
+        self.fields['site'].label = "Web site"
+        self.fields['common_channels'].label = "IRC channels"
+        self.fields['user_photo'].label = "Photo"
+        self.fields['user_photo'].help_text = "Image shown below (if uploaded)"
+
+        self.fields.keyOrder = ['job_title', 'company', 'bio', 'site',
+                'shirt_size', 'irc_nick', 'irc_server', 'common_channels',
+                'user_photo']

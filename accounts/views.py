@@ -11,7 +11,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from common.models import *
 
-from accounts.forms import RegistrationForm, ProfileForm
+from accounts.forms import RegistrationForm, ProfileForm, UserForm
 from accounts.models import RegistrationProfile
 
 def activate(request, activation_key, template_name='accounts/activate.html'):
@@ -53,62 +53,30 @@ def make_basic_profile(user=None):
     up.user = user
     up.save();
 
-def update_profile(user, form, photo=None):
-    isinstance(user,User)
-    try:
-        up = user.get_profile()
-    except UserProfile.DoesNotExist:
-        up = UserProfile.objects.create(user=user)
-
-    up.bio = form.cleaned_data['bio']
-    
-    user.first_name = form.cleaned_data['first_name']
-    user.last_name = form.cleaned_data['last_name']
-    up.shirt_size = form.cleaned_data['shirt_size']
-    #print form.cleaned_data['shirt_size']
-    up.job_title = form.cleaned_data['job_title']
-    up.company = form.cleaned_data['company']
-    up.irc_nick = form.cleaned_data['irc_nick']
-    up.irc_server = form.cleaned_data['irc_server']
-    up.common_channels = form.cleaned_data['irc_channels']
-    up.site = form.cleaned_data['web_site']
-    up.user_photo = photo
-#    if (photo):
-#        up.save_user_photo_file(user.username+'.'+photo['filename'].split('.')[len(photo['filename'].split('.'))-1] ,photo['content'])
-    up.save()
-    user.save()
-
 @login_required
 def profile(request, success_url='/accounts/profile/', 
-              form_class=ProfileForm, profile_callback=update_profile, 
+              form_class=ProfileForm,
               template_name='accounts/profile_form.html'):
-    form = form_class()
     usp = UserProfile.objects.get_or_create(user=request.user)[0]
 
     if request.method == 'POST':
-        pdata = request.POST.copy()
-        pdata.update(request.FILES)
-        print "Pdata: " + str(pdata)
-        form = form_class(pdata)
-        if form.is_valid():
-            #user.get_profile().save_photo_file(request.FILES['photo']['filename'],request.FILES['photo']['content'])
-            update_profile(request.user, form, request.FILES.get('photo', None))
+        form = form_class(request.POST, request.FILES, instance=usp)
+        user_form = UserForm(request.POST, instance=request.user)
+        forms = (form, user_form)
+
+        if all(forms):
+            for i in forms:
+                i.save()
+
             return HttpResponseRedirect(success_url)
     else:
-        # make a dict from the UserProfile and User objects for initial data for ProfileForm
-        initial_dict = dict(request.user.__dict__, **usp.__dict__)
-        # explicit mappings for UserProfile fields that don't match the ProfileForm field names
-        initial_dict['irc_channels'] = usp.common_channels
-        initial_dict['web_site'] = usp.site
-        initial_dict['photo'] = usp.user_photo
-        try:
-            initial_dict['shirt_size'] = usp.shirt_size.id
-        except AttributeError:
-            pass
+        form = form_class(instance=usp)
+        user_form = UserForm(instance=request.user)
 
-    return render_to_response(template_name,
-            {'form': form, 'profile': usp, 'left_links':None},
-            context_instance=RequestContext(request))
+    return render_to_response(template_name, {
+        'form': form, 'user_form': user_form, 'profile': usp,
+        'left_links':None
+        }, context_instance=RequestContext(request))
 
 def register(request, success_url='/accounts/register/complete/',
              form_class=RegistrationForm, profile_callback=make_basic_profile,

@@ -64,7 +64,7 @@ def profile(request, success_url='/accounts/profile/',
         user_form = UserForm(request.POST, instance=request.user)
         forms = (form, user_form)
 
-        if [True for i in forms if i.is_valid()]:
+        if not False in [i.is_valid() for i in forms]:
             for i in forms:
                 i.save()
 

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
 from common.config import Static
 from datetime import datetime,timedelta
 from random import random
@@ -18,6 +19,18 @@ SHIRT_SIZES = (
     ('4XL', 'IV Large'),
     ('5XL', 'V Large'),
 )
+
+def normalize_photo_name(instance, filename):
+    """Renames avatar image to match the username."""
+    return u'img/user_photos/%s_avatar.%s' % (
+            instance.user.username, filename.split('.')[-1])
+
+class OverwriteStorage(FileSystemStorage):
+    def get_available_name(self, name):
+        """Overwrite an existing file on the filesystem."""
+        if self.exists(name):
+            self.delete(name) 
+        return name
 
 class ShirtSize(models.Model):
     '''
@@ -114,7 +127,7 @@ class UserProfile(models.Model):
     irc_nick = models.CharField(max_length=100, null=True, blank=True, db_index=True,)
     irc_server = models.CharField(max_length=150, null=True, blank=True, db_index=True,)
     common_channels = models.CharField(max_length=500, null=True, blank=True, db_index=True,)
-    user_photo = models.ImageField(upload_to='img/user_photos',null=True,blank=True,)
+    user_photo = models.ImageField(upload_to=normalize_photo_name, storage=OverwriteStorage(), null=True, blank=True,)
     site = models.URLField(db_index=True, blank=True, null=True,)
 
     def __unicode__(self):

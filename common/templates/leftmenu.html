@@ -4,11 +4,7 @@
 		<h3>{{ lug.type }}</h3>
 		<ul>
 	{% endifchanged %}
-		<li><a href='{{ lug.url }}'
-                target='_new'><img
-                title="{{ lug.name }}"
-                alt="{{ lug.name }}" border='0'
-				src='/static/{{ lug.sm_logo}}' /></a></li>
+	<li><a href='{{ lug.url }}' target='_new'>{% if lug.sm_logo %}<img title="{{ lug.name }}" alt="{{ lug.name }}" border='0' src='/static/{{ lug.sm_logo}}' />{% else %}{{ lug.name }}{% endif %}</a></li>
 <br />
 {% endfor %}
 

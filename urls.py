@@ -32,6 +32,7 @@ urlpatterns = patterns('',
 
 #    (r'^admin/', include('django.contrib.admin.urls')),
     (r'^feeds/speaker/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^rss/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds, 'url': 'latest'}),
     (r'^accounts/', include('accounts.urls')),
     (r'^about/tos/$', 'common.views.show_tos'),
 #    (r'^profile/$', 'common.views.profile_show'),

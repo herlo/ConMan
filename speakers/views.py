@@ -21,7 +21,7 @@ import Image,ImageDraw,ImageFont
 
 import settings
 from common.models import ShirtSize
-from speakers.models import Category,Status
+from speakers.models import Category,Status,Presentation
 from speakers.forms import *
 
 
@@ -155,7 +155,6 @@ def show_presentation_schedule(request, day="1970-01-01"):
     return render_to_response(template, {'day': date, 'presentations': presentations }, context_instance=RequestContext(request))
 
 def show_speakers(request, status='all'):
-    #print "in show_speakers"
     group = Group.objects.get(name='Speaker')
     speakers = group.user_set.all().order_by('last_name')
 
@@ -163,41 +162,35 @@ def show_speakers(request, status='all'):
     feed = False
 
     speaker_list = list()
-    pending_list = list()
 
     for speaker in speakers:
         presentations = list()
         profile = speaker.get_profile()
         
         if (status == 'all'):
-            pending_list = profile.presentation_set.all()
+            pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
             approved_list = None
             feed = True
         else:
-            if isinstance(user,User) and (user.has_perm('voting.add_vote') or
-                user.has_perm('voting.change_vote') or
-                user.has_perm('voting.delete_vote')):
+            if isinstance(user,User) and (user.has_perm('voting.add_vote') 
+                    or user.has_perm('voting.change_vote') or user.has_perm('voting.delete_vote')):
                 pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
-    
+
             approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved')).order_by('start')
     
             if (len(approved_list)):
                 for p in approved_list:
                     presentations.append({'id': p.id, 'title': p.title, 'status': p.status, 'start': p.start})
-#                print "Presentation: " + p.title + " " + str(p.start)
 
         for p in pending_list:
             presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
 
+        print "Presentations: " + str(presentations)
         if (presentations):
-            speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server':
-            profile.irc_server, 'job_title': profile.job_title, 'web_site':
-            profile.site, 'photo': profile.user_photo, 'presentations': presentations})
+            speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server': profile.irc_server, 'job_title': profile.job_title, 'web_site': profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 
-        print "Feed value: " + str(feed)
-        print "Status: " + str(status)
-
-        return render_to_response('show_speakers.html', {'speakers': speaker_list, 'feed': feed}, context_instance=RequestContext(request))
+    #keep this indented here, don't move it unless you want things to not work!
+    return render_to_response('show_speakers.html', {'speakers': speaker_list, 'feed': feed}, context_instance=RequestContext(request))
 
 
 def show_presentation(request, p_id):

@@ -12,6 +12,7 @@ from django.db import models
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 
 from settings import SEND_EMAIL
 
@@ -89,17 +90,19 @@ class RegistrationManager(models.Manager):
         
         if send_email:
             from django.core.mail import send_mail
-            current_site = settings.HOST_NAME
+
+            site = Site.objects.get_current()
+            domain = site.domain
             
             subject = render_to_string('accounts/activation_email_subject.txt',
-                                       { 'site': current_site })
+                                       { 'site': domain })
             # Email subject *must not* contain newlines
             subject = ''.join(subject.splitlines())
             
             message = render_to_string('accounts/activation_email.txt',
                                        { 'activation_key': registration_profile.activation_key,
                                          'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS,
-                                         'site': current_site })
+                                         'site': domain })
             
             if SEND_EMAIL:
                 send_mail(subject, message, settings.DEFAULT_FROM_EMAIL, [new_user.email])

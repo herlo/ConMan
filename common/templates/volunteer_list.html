@@ -1,0 +1,32 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Manage Volunteers{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>Manage Volunteer -- {{ volunteer.volunteer.user.get_full_name }}</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_comments').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+
+{% block formsWrapper %}
+
+  <blockquote>
+  <table>
+  {% for volunteer in volunteer_list %}
+    <tr>
+      <td><a href="/volunteer/{{ volunteer.id }}/">{{ volunteer.volunteer.user.get_full_name }}</a></td>
+    </tr>
+  {% endfor %}
+  </table>
+  </blockquote>
+	
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+<h1> </h1>

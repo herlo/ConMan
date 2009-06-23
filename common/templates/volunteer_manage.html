@@ -1,10 +1,10 @@
 {% extends "base_forms.html" %}
 
-{% block title %}Call for Volunteers{% endblock title%}
+{% block title %}Manage Volunteer -- {{ volunteer.volunteer.user.get_full_name }}{% endblock title%}
 
 
 {% block primaryContent %}
-<h2>Call for Volunteers</h2>
+<h2>Manage Volunteer -- {{ volunteer.volunteer.user.get_full_name }}</h2>
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#id_password').pstrength();
@@ -15,7 +15,7 @@ $(document).ready(function(){
 {% block formsWrapper %}
 
 	
-		<form method="post" action="/volunteer/">
+		<form method="post" action="/volunteer/{{ volunteer.id }}/">
 			<table> 
 				{% for field in volunteers_form %}
 					<tr>

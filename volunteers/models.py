@@ -3,14 +3,6 @@ from django.contrib.auth.models import User
 from common.models import UserProfile
 
 # Create your models here.
-VOLUNTEER_CHOICES = (
-    ('RMGR', 'Room Manager'),
-    ('USH', 'Usher'),
-    ('GRT', 'Greeter'),
-    ('HRT', 'Heartsbane'),   # Kevin WTH is this?
-    ('TEK', 'Technician'),
-)
-
 class VolunteerRole(models.Model):
     '''
     >>> v = VolunteerRole(name = "killa")
@@ -20,38 +12,62 @@ class VolunteerRole(models.Model):
     name = models.CharField(max_length=150, db_index=True)
     def __unicode__(self):
         return self.name
-    class Admin:
-        pass
+    class Meta:
+        verbose_name = "Volunteer Role"
+        verbose_name_plural = "Volunteer Roles"
+
 
 class Volunteer(models.Model):
-    '''
+    """
+    A registrant may wish to volunteer to help with the conference.  This
+    objects represents a user who has signed up to volunteer.  A User object
+    is required to have an accompanying UserProfile object to have a
+    Volunteer object associated with it.  This should be the case for user's
+    registered through the normal site registration.
+
+    Create a User
+    >>> u = User.objects.create(username='testuser', first_name='Test',
+    ...                         last_name='User', password="utos")
+
+    Create a UserProfile attached to the user
+    >>> p = UserProfile.objects.create(user=User.objects.get(id=u.id))
+
     Create a VolunteerRole for the user
-      >>> VolunteerRole.objects.create(name="Fun Sucker")
-      <VolunteerRole: Fun Sucker>
+    >>> vr = VolunteerRole.objects.get(name="Room Manager")
+    >>> vr
+    <VolunteerRole: Room Manager>
 
     Create a volunteer with the first default role value
-      >>> v = Volunteer.objects.create(
-      ... role=VolunteerRole.objects.get(id=1),
-      ... request=VolunteerRole.objects.get(id=1),
-      ... comments="This is my comment")
-
-      >>> v
-      <Volunteer: Fun Sucker Volunteer 2>
-      >>> v.role
-      <VolunteerRole: Fun Sucker>
-      >>> v.request
-      <VolunteerRole: Fun Sucker>
-      >>> v.comments
-      'This is my comment'
-    '''
-    role = models.ForeignKey(VolunteerRole,related_name='role',blank=True, null=True)
-    request = models.ForeignKey(VolunteerRole, related_name='request')
+    >>> v = Volunteer.objects.create(
+    ... role=VolunteerRole.objects.get(id=vr.id),
+    ... requested=VolunteerRole.objects.get(id=vr.id),
+    ... comments="This is my comment",
+    ... volunteer=UserProfile.objects.get(id=u.id))
+    >>> v
+    <Volunteer: Test User>
+    >>> v.role
+    <VolunteerRole: Room Manager>
+    >>> v.requested
+    <VolunteerRole: Room Manager>
+    >>> v.comments
+    'This is my comment'
+    """
+    role = models.ForeignKey(VolunteerRole, related_name='role', blank=True,
+                             null=True)
+    requested = models.ForeignKey(VolunteerRole, related_name='requested')
     comments = models.TextField()
-    volunteer = models.ForeignKey(UserProfile)
+    volunteer = models.ForeignKey(UserProfile, unique=True)
 
     def __unicode__(self):
-        return self.role.name + " Volunteer " + str(self.pk)
-    class Admin:
-        list_filter = ['role','request']
-        search_fields = ['@comments']
-
+        role = "(" + self.requested.name + ")"
+        if self.role is not None:
+            role = " -- " + self.role.name
+        return self.volunteer.user.get_full_name()
+    class Meta:
+        permissions = (
+            ("can_drive", "Can drive"),
+            ("can_vote", "Can vote in elections"),
+            ("can_drink", "Can drink alcohol"),
+        )
+        verbose_name = "Volunteer"
+        verbose_name_plural = "Volunteers"

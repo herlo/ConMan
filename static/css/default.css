@@ -1,7 +1,7 @@
 /*----------------------------------------------------
 PROPERTY OF Utah Open Source
 CREATED:	April 20, 2009 VMV
-MODIFIED:	
+MODIFIED:
 -----------------------------------------------------*/
 
 /*BODY ELEMENTS*/
@@ -9,34 +9,34 @@ body {background: url(/static/img/repeatSM.gif) repeat top left; color: #ffffff;
 img { border: none;}
 
 .bigpicture {width: 900px; margin-left:auto; margin-right:auto; margin-top:20px; margin-bottom: 10px;}
-.masthead {width: 900px; height:125px;}
-.titlebar {width: 900px; height:40px;font-size: 35px; line-height: 40px; color:#a7c3e0; float:right; margin-top: -30px;}
-.menubar_right {width: 900px; height:30px; float:right; font-size: 10px;}
-.menubar_left {width: 900px; height:30px; border-top: 1px solid #5181b3; float:left; font-size: 10px;}
+.masthead {width: 900px; overflow:hidden}
+.titlebar {width: 900px; height:40px;font-size: 35px; line-height: 40px; color:#a7c3e0; margin-top: -30px;}
+.menubar_right {width: 900px; float:right; font-size: 10px;}
+.menubar_left {width: 900px; height:30px; border-top: 1px solid #5181b3; font-size: 10px;}
 .menubutton_right {height:20px; margin-left:2px; background-color:#29425c; float:right; padding:0 4px;}
 .menubutton_left {height:20px; background-color:#5181b3; margin-left:2px; float:left; padding:0 4px;}
 .user {height:25px; margin-left:2px; float:right; padding:0 4px;}
-.menubutton_right a { text-decoration: none; color: #ffffff;display:block;width:100%;height:100%;text-transform: uppercase; } 
-.menubutton_left a { text-decoration: none; color: #ffffff;display:block;width:100%;height:100%;text-transform: uppercase; } 
-.bigbluebox {height:160px; width:900px; background-color:#d5e5fa; margin-top: -10px; color: #000000;}
-.bigbluebox .bbbleft {height:150px; float: left; clear: left; display: inline; width: 200px; vertical-align: middle; padding-top: 15px; padding-left: 50px;}
-.bigbluebox .bbbmiddle {height: 150px; width: 300px; margin: auto; float: left; text-align: center; padding-left: 50px; padding-top: 15px; display: inline; float: center; font-weight: bold; font-size: 20px; }
-.bigbluebox .bbbright {height: 150px; display: block; float: right; padding-top: 15px; width: 250px; }
+.menubutton_right a { text-decoration: none; color: #ffffff;height:100%;text-transform: uppercase; }
+.menubutton_left a { text-decoration: none; color: #ffffff;height:100%;text-transform: uppercase; }
+.bigbluebox {height:150px; width:900px; background-color:#d5e5fa; color: #000000; padding-top: 15px;}
+.bigbluebox .bbbleft { float: left; width: 200px; vertical-align: middle; padding-left: 50px;}
+.bigbluebox .bbbmiddle { width: 300px; margin: auto; float: left; text-align: center; padding-left: 50px; float: left; font-weight: bold; font-size: 20px; }
+.bigbluebox .bbbright { float: left; width: 250px; }
 .clearboth {clear:both;}
 .contentbox {width:900px; margin-top:5px;}
-.leftcontent {width:130px; margin-right:5px; float:left; min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; margin-top: -10px;}
-.rightcontent {width:160px; float:right; text-align:center;   min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; margin-top: -10px;}
-.centercontent {width:600px; margin-right:5px; float:right; background-color:#CCCCCC; color: #5181b3; min-height: 400px; margin-top: -10px;}
-.centercontent h1 { text-align: center;} 
-.centercontent h2 { text-align: center;} 
-.centercontent h3 { text-align: left; margin: 7px;} 
+.leftcontent {width:130px; margin-right:5px; float:left; min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; }
+.rightcontent {width:160px; float:right; text-align:center; min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; }
+.centercontent {width:600px; margin-right:5px; float:right; background-color:#CCCCCC; color: #5181b3; min-height: 400px; }
+.centercontent h1 { text-align: center;}
+.centercontent h2 { text-align: center;}
+.centercontent h3 { text-align: left; margin: 7px;}
 .centercontent p { margin: 10px; padding: 10px;}
-.leftcontent h2 { margin-left: 7px; margin-top: 5px;} 
-.leftcontent h3 { margin-left: 10px; margin-top: -1px; font-size: 12px; color: #29425c; } 
+.leftcontent h2 { margin-left: 7px; margin-top: 5px;}
+.leftcontent h3 { margin-left: 10px; margin-top: -1px; font-size: 12px; color: #29425c; }
 .leftcontent li { list-style: none; margin-left: -25px; line-height: 1.15; font-size: 10px; }
 .lugList { margin-bottom: 5px; }
-.rightcontent h2 { margin-left: 5px; margin-top: -1px; } 
-.rightcontent li { list-style: none; margin-left: -25px; line-height: 20px;} 
+.rightcontent h2 { margin-left: 5px; margin-top: -1px; }
+.rightcontent li { list-style: none; margin-left: -25px; line-height: 20px;}
 
 .error { color: #aa0000; font-weight: bold; }
 .footer { text-align: center; color: #000000; min-height: 30px; border-top: 5px solid #000000;background-color:#CCC;clear:both; }

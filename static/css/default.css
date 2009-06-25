@@ -48,4 +48,6 @@ img { border: none;}
 #sponsortext { margin: 10px; display: block; float: right; width: 300px; }
 #showsponsors h2 { text-align: center; clear: both; padding-top: 15px; }
 
-
+/* fixes for konqueror and safari */
+h1 { font-size: 24px; }
+h2 { font-size: 16px; }

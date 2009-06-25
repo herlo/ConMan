@@ -9,7 +9,7 @@
 
 {% with user.user_profile as user %}
 		<h3>Thank you {{user.first_name}}!</h3>
-		<p>Your abstract has been updated with your changes.  A confirmation email has been sent to {{user.email}} for verification of the details of your paper submission.  If this is in error, please feel free to visit  <a href="{{ site }}/">our site</a> and update the submission until June 1.</p>
+		<p>Your abstract has been updated with your changes.  A confirmation email has been sent to {{user.email}} for verification of the details of your paper submission.  If this is in error, please feel free to visit  <a href="{{ site }}/">our site</a> and update the submission until the deadline. {{ cfp_deadline }}</p>
 	 
 {% endwith %}
 	

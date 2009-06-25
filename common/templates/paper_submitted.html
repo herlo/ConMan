@@ -9,7 +9,7 @@
 
 {% with user.user_profile as user %}
 		<h3>Congratulations {{user.first_name}}!</h3>
-		<p>Your account has been created and your presentation saved. A confirmation email has been sent to {{user.email}} for verification of the details of your paper submission.  If this is in error, please feel free to visit <a href="{{ site }}/">our site</a> and update the submission until June 1.</p>
+		<p>Your account has been created and your presentation saved. A confirmation email has been sent to {{user.email}} for verification of the details of your paper submission.  If this is in error, please feel free to visit <a href="{{ site }}/">our site</a> and update the submission until the Call for Papers Deadline. {{ cfp_deadline }}</p>
 	 
 {% endwith %}
 	

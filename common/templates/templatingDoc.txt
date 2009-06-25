@@ -6,7 +6,6 @@ everything here cascades...
 			call_for_papers.html
 			call_for_volunteers.html
 			contactus.html
-		index.html
 		login.html
 		
 		

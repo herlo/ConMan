@@ -21,7 +21,7 @@ import Image,ImageDraw,ImageFont
 
 import settings
 from common.models import ShirtSize
-from speakers.models import Category,Status,Presentation
+from speakers.models import Category,Status,Presentation,AudienceType
 from speakers.forms import *
 
 
@@ -192,7 +192,6 @@ def show_speakers(request, status='all'):
     #keep this indented here, don't move it unless you want things to not work!
     return render_to_response('show_speakers.html', {'speakers': speaker_list, 'feed': feed}, context_instance=RequestContext(request))
 
-
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
     print "P: " + str(p)
@@ -217,6 +216,18 @@ def speaker_info(request, s_id):
 
     return render_to_response('show_speaker.html', {'spkr': spkr, 'profile':
     profile, 'presentations': pres_list}, context_instance=RequestContext(request))
+
+def list_audiences(request):
+    items = AudienceType.objects.all()
+    page_info = { 'title': 'Audiences', 'item_name_heading': 'Audience Type', 'item_value_heading': 'Description' }
+
+    return render_to_response('generic_list.html', {'items': items, 'page_info': page_info }, context_instance=RequestContext(request))
+
+def list_categories(request):
+    items = Category.objects.all()
+    page_info = { 'title': 'Categories', 'item_name_heading': 'Category Name', 'item_value_heading': 'Description' }
+
+    return render_to_response('generic_list.html', {'items': items, 'page_info': page_info }, context_instance=RequestContext(request))
 
 @user_passes_test(lambda u: u.is_staff)
 def voting_results(request):

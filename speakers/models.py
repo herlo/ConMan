@@ -34,6 +34,7 @@ class Category(models.Model):
     'hot_or_not'
     '''
     name = models.CharField(max_length=150, db_index=True)
+    description = models.TextField(max_length=1000,blank=True,null=True)
 
     def __unicode__(self):
         return self.name
@@ -78,6 +79,7 @@ class AudienceType(models.Model):
     'Legendary'
     '''
     name = models.CharField(max_length=150, db_index=True)
+    description = models.TextField(max_length=1000,blank=True,null=True)
 
     def __unicode__(self):
         return self.name

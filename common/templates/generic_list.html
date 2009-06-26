@@ -1,0 +1,25 @@
+<!-- this is a generic view for audiences and categories -->
+{% extends "base.html" %}
+
+{% block title %}{{ page_info.title }}{% endblock title%}
+
+{% block primaryContent %}
+
+<h2>{{ page_info.title }}</h2>
+
+<table style="margin-left: 10px;" border="none" width="95%" >
+	<tr>
+		<th width="30%">{{ page_info.item_name_heading }}</th>
+		<th>{{ page_info.item_value_heading }}</th>
+	</tr>
+			
+	{% for item in items %}
+	<tr>
+		<td>{{ item.name }}</td>
+		<td>{{ item.description }}</td>
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock primaryContent%}
+

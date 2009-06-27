@@ -98,8 +98,8 @@ INSTALLED_APPS = (
     'voting',
     'sponsors',
     'lugs',
-    'locations',
-#    'planner',
+    'updates',
+    #'locations',
     #'django.contrib.databrowse',
 
     # third-party apps

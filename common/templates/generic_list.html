@@ -11,12 +11,18 @@
 	<tr>
 		<th width="30%">{{ page_info.item_name_heading }}</th>
 		<th>{{ page_info.item_value_heading }}</th>
+		{% if page_info.updated_heading %}
+		<th>{{ page_info.updated_heading }}
+		{% endif %}
 	</tr>
 			
 	{% for item in items %}
 	<tr>
 		<td>{{ item.name }}</td>
-		<td>{{ item.description }}</td>
+		<td>{{ item.description|safe }}</td>
+		{% if item.updated %}
+		<td>{{ item.updated }}</td>
+		{% endif %}
 	</tr>
 	{% endfor %}
 </table>

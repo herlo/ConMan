@@ -22,6 +22,7 @@ presentation_dict = {
     'template_object_name': 'presentation',
     'allow_xmlhttprequest': True,
 }
+
 can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='/admin/')
 
 urlpatterns = patterns('',
@@ -47,6 +48,7 @@ urlpatterns = patterns('',
     (r'^presentation/(?P<p_id>\d+)/$', 'speakers.views.show_presentation'),
     (r'^presentation/(?P<object_id>\d+)/(?P<direction>up|down|clear)vote/?$', can_vote(vote_on_object), presentation_dict),
     (r'^sponsor/list/$', 'sponsors.views.index'),
+    (r'^updates/history/$', 'updates.views.history'),
     (r'^lug/list/$', 'lugs.views.index'),
 # volunteer stuff
     (r'^volunteer/$', 'volunteers.views.index'),

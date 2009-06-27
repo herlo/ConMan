@@ -21,7 +21,7 @@ img { border: none;}
 .bigbluebox {height:150px; width:900px; background-color:#d5e5fa; color: #000000; padding-top: 15px;}
 .bigbluebox .bbbleft { float: left; width: 200px; vertical-align: middle; padding-left: 50px;}
 .bigbluebox .bbbmiddle { width: 300px; margin: auto; float: left; text-align: center; padding-left: 50px; float: left; font-weight: bold; font-size: 20px; }
-.bigbluebox .bbbright { float: left; width: 250px; }
+.bigbluebox .bbbright { float: right; width: 250px; }
 .clearboth {clear:both;}
 .contentbox {width:900px; margin-top:5px;}
 .leftcontent {width:130px; margin-right:5px; float:left; min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; }

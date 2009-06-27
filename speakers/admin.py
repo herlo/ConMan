@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.sites.models import Site
 from speakers.models import Category,Room,Status,AudienceType,Presentation
 
-site = admin.AdminSite()
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     

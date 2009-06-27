@@ -98,6 +98,7 @@ INSTALLED_APPS = (
     'voting',
     'sponsors',
     'lugs',
+    'locations',
 #    'planner',
     #'django.contrib.databrowse',
 
@@ -146,3 +147,6 @@ PRESENTATION_DELETED='The presentation has been deleted.'
 
 #increase the file upload size to 10MB
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10
+
+# Google API Key
+GOOGLE_API_KEY = 'ABQIAAAAijiXc0gXuV9OSToAhQ6vfxTSDpTFJAVlOsTRzC7LuycYmlY3rxQ8Ytzr1XMe_od7B3qvBPb0JFGKtQ'

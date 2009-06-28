@@ -12,16 +12,18 @@
 		<th width="30%">{{ page_info.item_name_heading }}</th>
 		<th>{{ page_info.item_value_heading }}</th>
 		{% if page_info.updated_heading %}
-		<th>{{ page_info.updated_heading }}
+		<th width="14%">{{ page_info.updated_heading }}
 		{% endif %}
 	</tr>
 			
 	{% for item in items %}
 	<tr>
 		<td>{{ item.name }}</td>
-		<td>{{ item.description|safe }}</td>
+		{% autoescape off %}
+		<td>{{ item.description }}</td>
+		{% endautoescape %}
 		{% if item.updated %}
-		<td>{{ item.updated }}</td>
+		<td>{{ item.updated|date:"M d, Y H:i" }}</td>
 		{% endif %}
 	</tr>
 	{% endfor %}

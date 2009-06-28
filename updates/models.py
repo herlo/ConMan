@@ -9,7 +9,7 @@ import datetime
 class Update(models.Model):
 
     name = models.CharField(max_length=150, db_index=True)
-    description = models.TextField(max_length=1000,blank=True,null=True)
+    description = models.TextField(max_length=140,blank=True,null=True)
     created = models.DateTimeField(editable=False)
     updated = models.DateTimeField(editable=False)
     author = models.ForeignKey(User)

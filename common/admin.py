@@ -22,10 +22,7 @@ class ShirtSizeAdmin(admin.ModelAdmin):
     list_display = ('name', 'id')
 
 
-#site = admin.AdminSite()
+#admin.site.unregister(User)
+#admin.site.unregister(ShirtSize)
 admin.site.register(ShirtSize, ShirtSizeAdmin)
-admin.site.unregister(User)
 admin.site.register(User, MyUserAdmin)
-#admin.site.register(UserProfile)
-#admin.site.register(Group)
-#admin.site.register(Site)

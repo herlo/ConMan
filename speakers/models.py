@@ -116,14 +116,14 @@ class Presentation(models.Model):
       >>> p.title
       'Come listen to crap'
     '''
-    cat = models.ForeignKey(Category,blank=True)
+    cat = models.ForeignKey(Category,blank=True,null=True)
     audiences = models.ManyToManyField(AudienceType)
     title = models.CharField(max_length=150, db_index=True)
     short_abstract = models.TextField(max_length=5000)
     long_abstract = models.TextField(blank=True,null=True)
     status = models.ForeignKey(Status, default=get_status)
     slides = models.FileField(upload_to="slides",blank=True,null=True)
-    presenter = models.ForeignKey(UserProfile)
+    presenter = models.ManyToManyField(UserProfile)
     score = models.IntegerField(blank=True, null=True)
     # allows for scheduling of the presentation once its approved
     start = models.DateTimeField(blank=True, null=True)

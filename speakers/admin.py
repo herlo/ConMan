@@ -9,8 +9,8 @@ class CategoryAdmin(admin.ModelAdmin):
         verbose_name_plural = "Categories"
 
 class PresentationAdmin(admin.ModelAdmin):
-    list_filter = ('presenter', 'cat', 'audiences','status')
-    list_display = ('title', 'presenter', 'get_score', 'short_abstract', 'status')
+#    list_filter = ('presenter', 'cat', 'audiences','status')
+#    list_display = ('title', 'presenter', 'get_score', 'short_abstract', 'status')
     search_fields = ('@longabstract','status','@title','foreign_key__cat')
 
 

@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
+import twitter
+import settings
 
 # Create your models here.
 # Used to update what's going on before / during / after the conference.
@@ -17,6 +19,10 @@ class Update(models.Model):
     def save(self):
         if not self.id:
             self.created = datetime.date.today()
+            # add twitter code here (soon ping.fm)
+            # we want it to succeed, but if it doesn't, oh well!
+            twit = twitter.Api(username=settings.TWITTER_USERNAME, password=settings.TWITTER_PASSWORD)
+            twit.PostUpdate(self.description)
         self.updated = datetime.datetime.today()
         super(Update, self).save()
 

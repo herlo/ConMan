@@ -34,15 +34,15 @@
 
 <p>{{ presentation.short_abstract|linebreaks }}</p>
 <div id='speaker'> 
-    <h4>About {{ spkr_name }}</h4>
-
-    <h5 style="font-size: x-small">
-        <a href='/speaker/{{ spkr_id }}/' style="color: #43484C">{{ spkr_name }}</a>
-		{% if spkr.company %}<em>({{ spkr.company }})</em>{% endif %}
+	<h3>About the presenter{% if multiple %}s{% endif %}
+{% for s in spkr %}
+    <h5 style="margin-left: 25px; font-size: x-small">
+        <a href='/speaker/{{ s.id }}/' style="color: #43484C">{{ s.name }}</a>
+		{% if s.spkr.company %}<em>({{ s.spkr.company }})</em>{% endif %}
     </h5>
 
-    <div id='speakerImg'> <img src="{% thumbnail profile.user_photo 100x100 %}" /></div>
-    <p>{{ spkr.bio }}</p>
+    <p style="margin-left: 30px;">{{ s.spkr.bio }}</p>
+{% endfor %}
 
 	{% ifnotequal presentation.status.name 'Approved' %}
     {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}

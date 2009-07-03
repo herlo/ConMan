@@ -1,9 +1,9 @@
 # Create your views here.
+from django import forms as forms
 from django.shortcuts import render_to_response,get_object_or_404
 from django.template import RequestContext
-from django import forms as forms
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
-from datetime import datetime
+from django.utils import simplejson
 from django.utils.datastructures import SortedDict
 from django.utils.safestring import mark_safe
 from django.contrib.auth.models import User,UserManager,Group
@@ -14,8 +14,10 @@ from django.core.mail import *
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import user_passes_test
+from django.db.models import Q
 
 from cStringIO import StringIO
+from datetime import datetime
 import pdb,random
 import Image,ImageDraw,ImageFont
 
@@ -76,7 +78,10 @@ def abstract(request, abs_id=None):
         group = Group.objects.get(name='Speaker')
         user.groups.add(group)
         user.save()
-        instance = Presentation(presenter=user.get_profile())
+        p=user.get_profile()
+        instance = Presentation()
+        instance.save()
+        instance.presenter.add(p)
 
     if request.method == 'POST':
         if instance.status.name != 'Approved':
@@ -194,17 +199,21 @@ def show_speakers(request, status='all'):
 
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
-    print "P: " + str(p)
-    print "Slides: " + str(p.slides)
-    print "Room: " + str(p.location)
 
-    spkr = p.presenter
-    spkr_id = spkr.user.id
-#    print "spkr id: " +str(spkr.id)
-    spkr_name = spkr.user.get_full_name()
+    speakers = p.presenter.all()
+    spkr_list = list()
+    count = 0
+    multiple = False
+    for s in speakers:
+        spkr_id = s.user.id
+        spkr_name = s.user.get_full_name()
+        spkr_list.append({'spkr': s, 'name': spkr_name, 'id': spkr_id})
+        count = count + 1
 
-    return render_to_response('show_presentation.html', {'presentation':
-    p, 'spkr': spkr, 'spkr_name': spkr_name, 'spkr_id': spkr_id},
+    if count > 1:
+        multiple = True
+
+    return render_to_response('show_presentation.html', {'presentation': p, 'spkr': spkr_list, 'multiple': multiple  },
     context_instance=RequestContext(request))
 
 def speaker_info(request, s_id):
@@ -216,6 +225,27 @@ def speaker_info(request, s_id):
 
     return render_to_response('show_speaker.html', {'spkr': spkr, 'profile':
     profile, 'presentations': pres_list}, context_instance=RequestContext(request))
+
+def find_speakers(request, search=None):
+    if request.method == 'POST':
+        if search:
+            user_list = User.objects.filter(Q(username__contains=search) | Q(first_name__contains=search) | Q(last_name__contains=search))
+    
+            users = list()
+            for user in user_list:
+                profile = user.get_profile()
+                users.append({ 'id': user.id, 'name': user.get_full_name(), 
+                    'company': profile.company,  'job_title': profile.job_title})
+    
+            json = simplejson.dumps(users)
+            return HttpResponse(json, mimetype='application/json')
+    #        return render_to_response('find_speakers.html', {'speakers': user_list }, context_instance=RequestContext(request))
+        else:
+            pass
+                #show the search form with errors
+    else:
+        return render_to_response('find_speakers.html', context_instance=RequestContext(request))
+
 
 def list_audiences(request):
     items = AudienceType.objects.all()
@@ -266,18 +296,3 @@ def show_speakers_admin(request):
             'admin/speakers/show_speakers.html', 
             {'object_list': speakers, 'description': "Speaker Name"  },
             context_instance=RequestContext(request))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

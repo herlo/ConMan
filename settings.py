@@ -72,7 +72,6 @@ MIDDLEWARE_CLASSES = (
     #'django.middleware.http.ConditionalGetMiddleware',
     'django.middleware.gzip.GZipMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-
 )
 
 ROOT_URLCONF = 'urls'
@@ -120,6 +119,14 @@ AUTH_PROFILE_MODULE = 'common.userprofile'
 
 HOST_NAME = 'http://localhost:8080'
 
+# UTOS-ConMan specific settings
+# for sending mail to speakers.
+
+# if you want to actually send mail, set this to True
+# otherwise, just look in the output of the django
+# manage.py runserver command
+
+SEND_EMAIL = False
 DEFAULT_FROM_EMAIL = 'papers@utos.org'
 EMAIL_HOST = 'localhost.localdomain'
 EMAIL_HOST_USER = ''
@@ -133,7 +140,6 @@ FONT_PATH = "static/fonts/DejaVuLGCSerifCondensed.ttf"
 FONT_SIZE = 14
 # Timeout in minutes
 TIMEOUT = 15
-SEND_EMAIL = False
 
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/accounts/profile/'
@@ -141,6 +147,17 @@ LOGIN_REDIRECT_URL = '/accounts/profile/'
 ACCOUNT_ACTIVATION_DAYS = 3
 
 PRESENTATION_DELETED='The presentation has been deleted.'
+
+# social media is pretty important these days.  
+# including settings for twitter for now
+# facebook, identi.ca and others to come.
+# this depends on the the python-twitter 
+# set of libraries.  They can be checked out at
+# http://python-twitter.googlecode.com/svn/trunk/
+
+TWITTER_USERNAME = 'utostest'
+TWITTER_PASSWORD = 'utostest'
+
 
 #memcached detail
 #CACHE_BACKEND = 'memcached://127.0.0.1:11211/'

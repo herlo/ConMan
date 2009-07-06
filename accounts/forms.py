@@ -35,7 +35,8 @@ class RegistrationForm(forms.Form):
     """
     username = forms.RegexField(r'^[a-zA-Z0-9]{2,20}', max_length=20, 
                                widget=forms.TextInput(attrs=attrs_dict),
-                               label=_(u'username'),min_length=5, help_text='between 2 and 20 characters')
+                               label=_(u'username'),min_length=5,
+                               help_text='between 5 and 20 characters')
     email = forms.EmailField(widget=forms.TextInput(attrs=dict(attrs_dict,
                                                                maxlength=75)),
                              label=_(u'email address'))

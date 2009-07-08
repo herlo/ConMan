@@ -2,6 +2,36 @@
 
 {% block title %}Call for Papers{% endblock title%}
 
+{% block additionalJS %}
+<script type="text/javascript">
+function load_presenter_search() {
+	$("#presenter_results").hide();
+	$("#presenter_results").html("");
+	$("#presenter_search").show();
+}
+
+function find_presenters() {
+	var presenter = $("#presenter_name").val();
+	$.getJSON("/speaker/find/" + presenter + "/", function(json){
+			show_presenters(json)});
+	}
+
+function show_presenters(json) {
+	$("#presenter_search").hide();
+	for (var i = 0; i < json.length; i++) {
+		var old = $("#presenter_results").html();
+		$("#presenter_results").html(old + "<br /><a href=\"javascript:void(0);\" onclick=\"add_presenter(" + json[i]['id'] + ", '" + json[i]['name'] + "');\">" + json[i]['name'] + "</a>");
+	}
+	$("#presenter_results").show();
+}
+
+function add_presenter(id, name) {
+	var old = $("#id_presenter").html();
+	$("#id_presenter").html(old + "<option selected value=\"" + id + "\">" + name + "</option>");
+
+}
+</script>
+{% endblock additionalJS %}
 
 {% block primaryContent %}
 <h2>Submit Presentation Proposal</h2>
@@ -21,12 +51,24 @@
 					<tr>
 				    <td>{{ field.label_tag }}
 				    </td>
-					<td>{{ field }}
+					<td>
+						{% ifequal field.name "presenter" %}
+							{% if field.presenter %}
+								{{ field }}
+							{% else %}
+							<select multiple name="presenter" id="id_presenter" size="4">
+								<option value="{{user.id}}" selected>{{user.first_name}} {{user.last_name}}</option>
+							</select>
+								<br /><a href="javascript:void(0);" onclick="load_presenter_search();">Add additional Presenters</a>
+							{% endif %}
+						{% else %}
+						{{ field }}
 						{% ifequal field.name "cat" %}
 							<br /><a target="_new" href="/speaker/categories/">Category Descriptions</a> (opens in new window)
 						{% endifequal %}
 						{% ifequal field.name "audiences" %}
 							<br /><a target="_new" href="/speaker/audiences/">Audience Descriptions</a> (opens in new window)
+						{% endifequal %}
 						{% endifequal %}
 					</td>
 				    {% if field.help_text %}<td valign="middle">{{ field.help_text }}</td>{% endif %}
@@ -35,6 +77,11 @@
 				{% endfor %}
 			</table>
 			<input type="submit" value="Submit" />
+			<div id="presenter_search" style="display: none; background-color: gold;">
+				Presenter Name: <input id="presenter_name" name="presenter_name" type="text" /> 
+				<input type="button" value="Search" onclick="find_presenters();" />
+			</div>
+			<div id="presenter_results" style="display: hidden;"></div>
 		</form>
 	</div>
 {% endblock formsWrapper %}

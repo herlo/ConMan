@@ -71,26 +71,39 @@ def abstract(request, abs_id=None):
     presentation_exists = False
 
     if abs_id:
-        instance = get_object_or_404(Presentation, id=abs_id, presenter=user.get_profile())
+        instance = get_object_or_404(Presentation, id=abs_id)
         page_to_render = 'update_abstract.html'
     else:
         page_to_render = 'call_for_papers.html'
         group = Group.objects.get(name='Speaker')
-        user.groups.add(group)
-        user.save()
-        p=user.get_profile()
         instance = Presentation()
-        instance.save()
-        instance.presenter.add(p)
 
     if request.method == 'POST':
         if instance.status.name != 'Approved':
+            # get the list of presenters
+            users = request.POST.getlist('presenter')
+            print "users: " + str(users)
+            instance.save()
+            for u in users:
+                if u:
+                    user = User.objects.get(id=u)
+                    user.groups.add(group)
+                    user.save()
+                    p=user.get_profile()
+                    instance.presenter.add(p)
+            instance.save()
+
             pf = PresentationForm(request.POST, request.FILES, instance=instance)
             sf = PresentationSlidesForm(instance=instance)
             abstracts = None
             if pf.is_valid():
-                pf.save()
-                send_confirm_email(user, pf)
+                prfrm = pf.save(commit=False)
+                for u in users:
+                    user = User.objects.get(id=u)
+                    prfrm.presenter.add(user.get_profile())
+                    prfrm.save()
+                    send_confirm_email(user, pf)
+                pf.save_m2m()
 
                 if abs_id:
                     return render_to_response('paper_updated.html',
@@ -213,7 +226,7 @@ def show_presentation(request, p_id):
     if count > 1:
         multiple = True
 
-    return render_to_response('show_presentation.html', {'presentation': p, 'spkr': spkr_list, 'multiple': multiple  },
+    return render_to_response('show_presentation.html', { 'presentation': p, 'spkr': spkr_list, 'multiple': multiple },
     context_instance=RequestContext(request))
 
 def speaker_info(request, s_id):
@@ -227,7 +240,7 @@ def speaker_info(request, s_id):
     profile, 'presentations': pres_list}, context_instance=RequestContext(request))
 
 def find_speakers(request, search=None):
-    if request.method == 'POST':
+ #    if request.method == 'POST':
         if search:
             user_list = User.objects.filter(Q(username__contains=search) | Q(first_name__contains=search) | Q(last_name__contains=search))
     
@@ -243,8 +256,8 @@ def find_speakers(request, search=None):
         else:
             pass
                 #show the search form with errors
-    else:
-        return render_to_response('find_speakers.html', context_instance=RequestContext(request))
+#    else:
+#        return render_to_response('find_speakers.html', context_instance=RequestContext(request))
 
 
 def list_audiences(request):

@@ -155,6 +155,7 @@ PRESENTATION_DELETED='The presentation has been deleted.'
 # set of libraries.  They can be checked out at
 # http://python-twitter.googlecode.com/svn/trunk/
 
+TWITTER_ENABLED = 'False'
 TWITTER_USERNAME = 'utostest'
 TWITTER_PASSWORD = 'utostest'
 

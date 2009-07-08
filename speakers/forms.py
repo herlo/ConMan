@@ -13,7 +13,7 @@ class PresentationForm(forms.ModelForm):
                                      help_text="An abstract less than 5000 characters")
     slides = forms.FileField(required=False, widget=forms.HiddenInput, label='')
 #    long_abstract = forms.CharField(widget=forms.Textarea,min_length=1,required=False,max_length=3000)
-#    presenter = forms.ModelMultipleChoiceField(UserProfile.objects.all(), widget=forms.SelectMultiple(attrs={'size': 4}), label=u'Presenter(s)', help_text='Multiple presenters can be added to a presentation')
+#    presenter = forms.ModelMultipleChoiceField(UserProfile.objects.none(), widget=forms.SelectMultiple(attrs={'size': 4}), label=u'Presenter(s)', help_text='Multiple presenters can be added to a presentation')
 
     class Meta:
         model = Presentation

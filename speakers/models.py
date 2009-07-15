@@ -119,6 +119,7 @@ class Presentation(models.Model):
     cat = models.ForeignKey(Category,blank=True,null=True)
     audiences = models.ManyToManyField(AudienceType)
     title = models.CharField(max_length=150, db_index=True)
+    description = models.CharField(max_length=255,blank=True,null=True)
     short_abstract = models.TextField(max_length=5000)
     long_abstract = models.TextField(blank=True,null=True)
     status = models.ForeignKey(Status, default=get_status)

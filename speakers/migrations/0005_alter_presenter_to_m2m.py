@@ -6,11 +6,11 @@ from speakers.models import *
 class Migration:
     
     def forwards(self, orm):
-        "Write your forwards migration here"
+        pass
     
     
     def backwards(self, orm):
-        "Write your backwards migration here"
+        pass
     
     
     models = {

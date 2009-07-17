@@ -14,10 +14,10 @@ MANAGERS = (
     ('Papers Managers', 'papers@utos.org'),
 )
 
-DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'testdatabase.db'             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_NAME = 'testdatabase_trunk'             # Or path to database file if using sqlite3.
+DATABASE_USER = 'root'             # Not used with sqlite3.
+DATABASE_PASSWORD = 'testbed'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -102,7 +102,11 @@ INSTALLED_APPS = (
     #'django.contrib.databrowse',
 
     # third-party apps
-    'sorl.thumbnail', # svn co http://sorl-thumbnail.googlecode.com/svn/trunk/sorl
+
+    # svn co -r446 http://sorl-thumbnail.googlecode.com/svn/trunk/sorl (already in an external checkout)
+    'sorl.thumbnail', 
+    #useful migrations tool -- http://south.aeracode.org/
+    'south', 
 )
 
 ###########NEW CHANGE TO ADD###########

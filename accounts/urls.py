@@ -19,6 +19,7 @@ urlpatterns = patterns('',
     # [a-fA-F0-9]{40} because a bad activation key should still get to the view;
     # that way it can return a sensible "invalid key" message instead of a
     # confusing 404.
+
     url(r'^activate/(?P<activation_key>\w+)/$', activate, name='registration_activate'),
     url(r'^login/$', auth_views.login,
         {'template_name': 'accounts/login.html'}, name='auth_login'),
@@ -37,6 +38,10 @@ urlpatterns = patterns('',
     url(r'^password/reset/done/$', auth_views.password_reset_done,
         {'template_name': 'accounts/password_reset_done.html'},
         name='auth_password_reset_done'),
+    url(r'^reset/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', auth_views.password_reset_confirm, {'template_name': 'accounts/password_reset_confirm.html'},
+        name='password_reset'),
+    url(r'^reset/done/$', auth_views.password_reset_complete, {'template_name': 'accounts/password_reset_complete.html'},
+        name='password_reset_complete'),
     url(r'^register/$', register, name='register'),
     url(r'^register/complete/$', direct_to_template,
         {'template': 'accounts/registration_complete.html'},

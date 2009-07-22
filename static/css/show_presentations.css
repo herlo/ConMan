@@ -26,8 +26,8 @@ h3:first {
 
 .presentation .title {
     font-weight: bold;
-    font-size: 16px;
-    border-bottom: 1px dotted #000;
+    font-size: 18px;
+    border-bottom: 1px solid #CCC;
 }
 
 .presentation .status {
@@ -69,15 +69,18 @@ h3:first {
 
 .presentation .presenter {
     float: right;
+    margin-bottom: 10px;
+    border-left: 1px solid #CCC;
+    border-bottom: 1px solid #CCC;
 }
 
 .presentation .presenter ul {
     margin: 0px;
+    padding: 10px;
     list-style: none;
 }
 
 .presentation .short_abstract {
     margin-top : 10px;
-    margin-left: 25px;
-    clear: both;
+    margin-left: 10px;
 }

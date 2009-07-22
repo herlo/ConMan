@@ -215,7 +215,7 @@ def show_speakers(request, status='all'):
 
 def show_presentations(request):
     # grab the presentions
-    presentations = Presentation.objects.all()
+    presentations = Presentation.objects.all().order_by('cat')
 
     return render_to_response('show_presentations.html', {'presentations': presentations}, context_instance=RequestContext(request))
     

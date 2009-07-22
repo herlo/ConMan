@@ -20,19 +20,17 @@ $(document).ready(function(){
 <p>New presentation are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2009 Program.</p>
 
 {% for presentation in presentations %}
+    {% ifchanged presentation.cat %}
+        <h3>Category: {{ presentation.cat }}</h3>
+    {% endifchanged %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
-        <div class="category">
-            {{ presentation.cat }} <br />
+        <div class="status">
+            {{ presentation.status }}
         </div>
         <div class="title">
             {{ presentation.title }}
         </div>
         <div class="presenter">
-            {% ifequal presentation.presenter|length 1 %}
-            Presenter
-            {% else %}
-            Presenters
-            {% endifequal %}
             <ul>
             {% for pres in presentation.presenter.all %}
                 <li>{{ pres.user.first_name }} {{ pres.user.last_name }}
@@ -62,9 +60,6 @@ $(document).ready(function(){
             {{ presentation.short_abstract }} 
             </div>
         {% endif %}
-        <div class="status">
-            Status: {{ presentation.status }} 
-        </div>
         {% if presentation.slides %}
             <div class="slides">
             Slides: {{ presentation.slides }}

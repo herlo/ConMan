@@ -9,6 +9,17 @@
     margin-top: 20px;
 }
 
+h3 {
+    margin-top: 40px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    font-size: 20px;
+}
+
+h3:first {
+    margin: 0px
+}
+
 .first {
     margin-top: 0px;
 }
@@ -19,12 +30,10 @@
     border-bottom: 1px dotted #000;
 }
 
-.presentation .category {
+.presentation .status {
     float: right;
     padding-left: 5px;
     padding-right: 0px;
-    border-left: 1px dotted #000;
-    /*border-top: 1px dotted #000;*/
 }
 
 .presentation .audiences {

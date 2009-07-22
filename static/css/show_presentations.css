@@ -1,0 +1,74 @@
+/* Show Presentations */
+
+.centercontent p {
+    padding: 0px;
+}
+
+.presentation {
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.first {
+    margin-top: 0px;
+}
+
+.presentation .title {
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 1px dotted #000;
+}
+
+.presentation .category {
+    float: right;
+    padding-left: 5px;
+    padding-right: 0px;
+    border-left: 1px dotted #000;
+    /*border-top: 1px dotted #000;*/
+}
+
+.presentation .audiences {
+    margin-top: 2px;
+}
+
+.presentation .audiences ul {
+    list-style:none;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+}
+
+.presentation .audiences ul li {
+    display: inline;
+    padding: 2px 5px;
+}
+
+.presentation .audiences .beginner {
+    background-color: green;
+    color: #FFF;
+}
+
+.presentation .audiences .intermediate {
+    background-color: yellow;
+    color: #000;
+}
+
+.presentation .audiences .advanced {
+    background-color: red;
+    color: #000;
+}
+
+.presentation .presenter {
+    float: right;
+}
+
+.presentation .presenter ul {
+    margin: 0px;
+    list-style: none;
+}
+
+.presentation .short_abstract {
+    margin-top : 10px;
+    margin-left: 25px;
+    clear: both;
+}

@@ -2,6 +2,10 @@
 
 {% block title %}Current Presenters{% endblock title%}
 
+{% block additionalCSS %}
+<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 
 {% block primaryContent %}
 <script type="text/javascript">
@@ -12,19 +16,87 @@ $(document).ready(function(){
 	});
 </script>
 
-<h2>Speakers</h2>
-New speakers are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2009 program.
+<h2>Presentations</h2>
+<p>New presentation are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2009 Program.</p>
 
-		{% for pres in presentations %}
-	<div id='presentation'> 
-			{% ifchanged pres.start %}
-			<br />
-			<b><font size="3">{{pres.start|date:"M d, g:i a"}}</font></b><br />
-			{% endifchanged %}
-		    <font size="-1"><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</font></a> <font size="-1">by</font> <a href="/speaker/{{ pres.presenter.user.id }}/"><font size="-1">{{ pres.presenter }}</font></a> {% if pres.presenter.company %}<font size='-1'><i> ({{ pres.presenter.company }})</i></font>{% endif %}
-			<br />
-	</div>
-		{% endfor %}
+{% for presentation in presentations %}
+    <div class="presentation {% if forloop.first %}first{% endif %}">
+        <div class="category">
+            {{ presentation.cat }} <br />
+        </div>
+        <div class="title">
+            {{ presentation.title }}
+        </div>
+        <div class="presenter">
+            {% ifequal presentation.presenter|length 1 %}
+            Presenter
+            {% else %}
+            Presenters
+            {% endifequal %}
+            <ul>
+            {% for pres in presentation.presenter.all %}
+                <li>{{ pres.user.first_name }} {{ pres.user.last_name }}
+                ({{ pres.user }})</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+       <div class="audiences">
+            <ul>
+            {% for audience in presentation.audiences.all %}
+                <li {% ifequal audience.name "Beginner" %}
+                    class="beginner"
+                    {% endifequal %}
+                    {% ifequal audience.name "Intermediate" %}
+                    class="intermediate"
+                    {% endifequal %}
+                    {% ifequal audience.name "Advanced" %}
+                    class="advanced"
+                    {% endifequal %}>{{ audience.name }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+        {% if presentation.short_abstract %}
+            <div class="short_abstract">
+            {{ presentation.short_abstract }} 
+            </div>
+        {% endif %}
+        <div class="status">
+            Status: {{ presentation.status }} 
+        </div>
+        {% if presentation.slides %}
+            <div class="slides">
+            Slides: {{ presentation.slides }}
+            </div>
+        {% endif %}
+        {% if presentation.score %}
+            <div class="score">
+            Score: {{ presentation.score }} 
+            </div>
+        {% endif %}
+        {% if presentation.start %}
+            <div class="start">
+            Start: {{ presentation.start }}
+            </div>
+        {% endif %}
+        {% if presentation.end %}
+            <div class="end">
+            End: {{ presentation.end }} 
+            </div>
+        {% endif %}
+        {% if presentation.location %}
+            <div class="location">
+            Location: {{ presentation.location }}
+            </div>
+        {% endif %}
+        <!-- not used this year 
+        Description: {{ presentation.description }} <br />
+        Long: {{ presentation.long_abstract }} <br />
+        Slides: {{ presentation.slides }} <br />
+        -->
+    </div> <!-- end of presentation -->
+{% endfor %}
 
 {% endblock primaryContent%}
 

@@ -213,6 +213,12 @@ def show_speakers(request, status='all'):
     #keep this indented here, don't move it unless you want things to not work!
     return render_to_response('show_speakers.html', {'speakers': speaker_list, 'feed': feed}, context_instance=RequestContext(request))
 
+def show_presentations(request):
+    # grab the presentions
+    presentations = Presentation.objects.all()
+
+    return render_to_response('show_presentations.html', {'presentations': presentations}, context_instance=RequestContext(request))
+    
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
 

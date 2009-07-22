@@ -6,11 +6,12 @@ from speakers.models import *
 class Migration:
     
     def forwards(self, orm):
-        pass
+        db.delete_column('speakers_presentation', 'presenter_id')
     
     
     def backwards(self, orm):
         pass
+#        db.add_column('speakers_presentation', 'presenter_id', models.ForeignKey(UserProfile))
     
     
     models = {

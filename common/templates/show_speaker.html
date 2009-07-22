@@ -29,6 +29,7 @@ $(document).ready(function(){
 <br /><b>Most Visited Channels:</b> {{ profile.common_channels }}
 {% endif %}
 
+{% if presentations %}
 <h3>Presentations</h3>
 {% for pres in presentations %}
 <b><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></b><br />
@@ -36,6 +37,7 @@ $(document).ready(function(){
 <br />Time: {{ pres.start|date:"M d, g:i a" }}</font></p>
 <br />
 {% endfor %}
+{% endif %}
 
 
 {% endblock primaryContent%}

@@ -133,16 +133,6 @@ function centerSpeakerSearch(vertCenter, horizCenter){
 				    <td>{{ field.label_tag }}
 				    </td>
 					<td>
-						{% ifequal field.name "presenter" %}
-							{% if field.presenter %}
-								{{ field }}
-							{% else %}
-							<select multiple name="presenter" id="id_presenter" size="4">
-								<option value="{{user.id}}" selected>{{user.first_name}} {{user.last_name}}</option>
-							</select>
-								<br /><a href="javascript:void(0);" onclick="load_presenter_search();">Add additional Presenters</a>
-							{% endif %}
-						{% else %}
 						{{ field }}
 						{% ifequal field.name "cat" %}
 							<br /><a target="_new" href="/speaker/categories/">Category Descriptions</a> (opens in new window)
@@ -150,12 +140,28 @@ function centerSpeakerSearch(vertCenter, horizCenter){
 						{% ifequal field.name "audiences" %}
 							<br /><a target="_new" href="/speaker/audiences/">Audience Descriptions</a> (opens in new window)
 						{% endifequal %}
-						{% endifequal %}
 					</td>
 				    {% if field.help_text %}<td valign="middle">{{ field.help_text }}</td>{% endif %}
 				    {% if field.errors %}<td class="error" valign="middle">{{ field.errors }}</td>{% endif %}
 				   </tr>
 				{% endfor %}
+				   <tr>
+						<td>Presenter(s)</td>
+					   <td>
+							<select multiple name="presenter" id="id_presenter" size="4">
+								<option value="{{user.id}}" selected>
+									{% if user.first_name %}
+										{{user.first_name}} {{user.last_name}}
+									{% else %}
+										{{user.username}}
+									{% endif %}		
+								</option>
+							</select>
+								<br /><a href="javascript:void(0);" onclick="load_presenter_search();">Add Presenters</a>
+						</td>
+						<td valign="middle">Choose the presenter(s).<br /><br />Other presenters may be added 
+							by choosing the 'Add Presenters' link.</td>
+					</tr>
 			</table>
 			<input type="submit" value="Submit" />
 		</form>

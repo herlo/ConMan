@@ -87,6 +87,7 @@ def abstract(request, abs_id=None):
             for u in users:
                 if u:
                     user = User.objects.get(id=u)
+                    print "user: " + str(user)
                     user.groups.add(group)
                     user.save()
                     p=user.get_profile()
@@ -98,8 +99,10 @@ def abstract(request, abs_id=None):
             abstracts = None
             if pf.is_valid():
                 prfrm = pf.save(commit=False)
+                print "users: " + str(users)
                 for u in users:
                     user = User.objects.get(id=u)
+                    print "user: " + str(user)
                     prfrm.presenter.add(user.get_profile())
                     prfrm.save()
                     send_confirm_email(user, pf)

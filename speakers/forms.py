@@ -17,7 +17,7 @@ class PresentationForm(forms.ModelForm):
 
     class Meta:
         model = Presentation
-        fields = ('cat', 'audiences', 'title', 'short_abstract', 'presenter')
+        fields = ('cat', 'audiences', 'title', 'short_abstract')
 
 
 #    def clean(self):

@@ -2,36 +2,117 @@
 
 {% block title %}Call for Papers{% endblock title%}
 
+{% block additionalCSS %}
+<link href="/static/css/call_for_papers.css" rel="stylesheet" type="text/css" />
+{% endblock additionalCSS %}
+
 {% block additionalJS %}
 <script type="text/javascript">
 function load_presenter_search() {
-	$("#presenter_results").hide();
-	$("#presenter_results").html("");
-	$("#presenter_search").show();
+    centerSpeakerSearch();
+    $("#blackout").css('opacity', '0.8');
+    $("#blackout").fadeIn('normal');
+    $("#blackout").click(close_speaker_search);
+    $("#presenter_results").fadeOut('normal');
+    $("#presenter_search").fadeIn('normal');
+}
+
+function close_speaker_search(){
+    $("#blackout").fadeOut('normal');
+    $("#presenter_results").fadeOut('normal');
+    $("#presenter_search").fadeOut('normal');
 }
 
 function find_presenters() {
-	var presenter = $("#presenter_name").val();
-	$.getJSON("/speaker/find/" + presenter + "/", function(json){
-			show_presenters(json)});
-	}
+    var presenter = $("#presenter_name").val();
+    $.getJSON("/speaker/find/" + presenter + "/", function(json){ show_presenters(json)});
+}
 
 function show_presenters(json) {
-	$("#presenter_search").hide();
-	for (var i = 0; i < json.length; i++) {
-		var old = $("#presenter_results").html();
-		$("#presenter_results").html(old + "<br /><a href=\"javascript:void(0);\" onclick=\"add_presenter(" + json[i]['id'] + ", '" + json[i]['name'] + "');\">" + json[i]['name'] + "</a>");
-	}
-	$("#presenter_results").show();
+    var currentPresenters = $("#id_presenter").val();
+    var showPresenters =  false;
+    $("#presenter_search").fadeOut('normal');
+    $("#presenter_results ul").html(''); 
+    if(json.length != 0){
+        for (var i = 0; i < json.length; i++) {
+           var old = $("#presenter_search ul").html();
+           var presenterExists = false;
+           for (var j = 0; j < currentPresenters.length; j ++) {
+               if( currentPresenters[j] == json[i]['id']){
+                   presenterExists = true;
+               }
+           }
+            if( presenterExists == false ){
+                showPresenters = true;
+                $("#presenter_results ul").append("<li><a href=\"javascript:void(0);\" onclick=\"add_presenter(" + json[i]['id'] + ", '" + json[i]['name'] + "');\">" + json[i]['name'] + "</a></li>"); 
+            } else {
+                 $("#presenter_results ul").append("<li>" + json[i]['name'] + " (already added) </li>"); 
+            }
+        }
+    } else {
+        $("#presenter_results ul ").append("<li><strong>No users found.</strong></li>");
+    }
+    $("#presenter_results").fadeIn('normal');
 }
 
 function add_presenter(id, name) {
-	var old = $("#id_presenter").html();
-	$("#id_presenter").html(old + "<option selected value=\"" + id + "\">" + name + "</option>");
+    var old = $("#id_presenter").html();
+    $("#id_presenter").html(old + "<option selected value=\"" + id + "\">" + name + "</option>");
+}
 
+function centerSpeakerSearch(vertCenter, horizCenter){
+    var windowWidth = 0;
+    var windowHeight = 0;
+
+    if( typeof( window.innerWidth ) == 'number' ) {
+        windowWidth = window.innerWidth;
+        windowHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+        windowWidth = document.documentElement.scrollLeft + document.documentElement.clientWidth;
+        windowHeight = document.documentElement.scrollTop + document.documentElement.clientHeight;
+    } else if( document.body && (document.body.clientWidth || document.body.clientHeight)){
+        windowWidth = document.body.clientWidth;
+        windowHeight = document.body.clientHeight;
+    }
+
+    var wizardHeight = $("#presenter_search").height();
+    var wizardWidth = $("#presenter_search").width();
+ 
+    if(vertCenter == undefined){
+        vertCenter = ( windowHeight / 2) + document.documentElement.scrollTop;
+    }
+
+    if(horizCenter == undefined){
+        horizCenter = (windowWidth / 2);
+    }
+                                                                                                                                                  
+    $('#presenter_search').css({'position':'absolute','top':vertCenter,'left':horizCenter - (wizardWidth / 2)});
+    $('#presenter_results').css({'position':'absolute','top':vertCenter,'left':horizCenter - (wizardWidth / 2)});
+    $('#blackout').css({'width':windowWidth,'height': windowHeight });
 }
 </script>
 {% endblock additionalJS %}
+
+{% block nonFlowDivs %}
+<div id="blackout"></div>
+<div id="presenter_search">
+    <p>To search for a presenter, simply enter their name or username</p>
+    <ul>
+        <li> Presenter Name: <input id="presenter_name" name="presenter_name" type="text" /></li>
+    </ul>
+    <input class="rightButton" type="button" value="Search" onclick="find_presenters();" />
+    <input class="leftButton" type="button" value="Cancel" onclick="close_speaker_search();" />
+</div>
+<div id="presenter_results" >
+    <p>To add a user, click their name:</p>
+    <ul>
+        
+    </ul>
+    <p>When you are done, you can search for more names, or close this dialog.</p>
+    <input class="rightButton" type="button" value="Return to Search" onclick="load_presenter_search();" />
+    <input class="leftButton" type="button" value="Close" onclick="close_speaker_search();" />
+</div>
+{% endblock nonFlowDivs %}
 
 {% block primaryContent %}
 <h2>Submit Presentation Proposal</h2>
@@ -77,11 +158,6 @@ function add_presenter(id, name) {
 				{% endfor %}
 			</table>
 			<input type="submit" value="Submit" />
-			<div id="presenter_search" style="display: none; background-color: gold;">
-				Presenter Name: <input id="presenter_name" name="presenter_name" type="text" /> 
-				<input type="button" value="Search" onclick="find_presenters();" />
-			</div>
-			<div id="presenter_results" style="display: hidden;"></div>
 		</form>
 	</div>
 {% endblock formsWrapper %}

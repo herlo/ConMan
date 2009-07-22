@@ -1,0 +1,52 @@
+/* Call For Papers CSS */
+
+#presenter_search, #presenter_results {
+    width: 400px;
+    min-height: 50px;
+    background-color:#DDD;
+    display: none;
+    z-index: 10;
+    border: 1px dotted #000;
+    color: #000;
+}
+
+#presenter_search .rightButton, #presenter_results .rightButton {
+    margin: 5px; 
+    float: right;
+}
+
+#presenter_search .leftButton, #presenter_results .leftButton {
+    margin: 5px;
+    float: left;
+}
+
+#presenter_search p , #presenter_results p {
+    margin: 5px;
+}
+
+#presenter_search ul, #presenter_results ul {
+    list-style: none;
+}
+
+#blackout {
+    position: fixed;
+    _position:absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    height:1px;
+    margin: 0px;
+    padding: 0px;
+    background: #000000;
+    z-index: 3;
+    display: none;
+}
+
+#speakerClose {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    color: #CC0000;
+    font-weight: bold;
+    cursor: pointer;
+}

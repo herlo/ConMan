@@ -5,7 +5,6 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('Clint Savage', 'clint@utos.org'),
-    ('Kevin Kubasik','kevin@kubasik.net'),
     ('Will Smith','undertakingyou@gmail.com'),
     ('Adam Barrett','utahcon@utahcon.com'),
 )

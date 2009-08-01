@@ -20,7 +20,9 @@ img { border: none;}
 .menubutton_left a { text-decoration: none; color: #ffffff;height:100%;text-transform: uppercase; }
 .bigbluebox {height:150px; width:900px; background-color:#d5e5fa; color: #000000; padding-top: 15px;}
 .bigbluebox .bbbleft { float: left; width: 200px; vertical-align: middle; padding-left: 50px;}
-.bigbluebox .bbbmiddle { width: 300px; margin: auto; float: left; text-align: center; padding-left: 50px; float: left; font-weight: bold; font-size: 20px; }
+.bigbluebox .bbbmiddle { width: 300px; margin: auto; float: left; padding-left: 50px; }
+.bigbluebox .bbbmiddle a { font-size: 16px; font-weight: bold; }
+.bigbluebox .bbbmiddle p { font-size: 14px; text-align: left; }
 .bigbluebox .bbbright { float: right; width: 250px; }
 .clearboth {clear:both;}
 .contentbox {width:900px; margin-top:5px;}
@@ -38,6 +40,8 @@ img { border: none;}
 .rightcontent h2 { margin-left: 5px; margin-top: -1px; }
 .rightcontent li { list-style: none; margin-left: -25px; line-height: 20px;}
 
+.404 { color: #FF0000; text-align: center; font-weight: bold; font-size: 25px; }
+.500 { color: #0000FF; text-align: center; font-weight: bold; font-size: 45px; }
 .error { color: #aa0000; font-weight: bold; }
 .footer { text-align: center; color: #000000; min-height: 30px; border-top: 5px solid #000000;background-color:#CCC;clear:both; }
 

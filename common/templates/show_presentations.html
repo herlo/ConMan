@@ -21,36 +21,31 @@ $(document).ready(function(){
 
 {% for presentation in presentations %}
     {% ifchanged presentation.cat %}
+	<div class="h3">
         <h3>Category: {{ presentation.cat }}</h3>
+		{% if presentation.cat.description %}
+		<p>{{ presentation.cat.description }}</p>
+		{% endif %}
+	</div>
     {% endifchanged %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
-        <div class="status">
+		<!--
+		<div class="status">
             {{ presentation.status }}
-        </div>
+		</div>
+		-->
         <div class="title">
-            {{ presentation.title }}
+			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
         </div>
         <div class="presenter">
             <ul>
             {% for pres in presentation.presenter.all %}
-                <li>{{ pres.user.first_name }} {{ pres.user.last_name }}
-                ({{ pres.user }})</li>
-            {% endfor %}
-            </ul>
-        </div>
+				{% if pres.user.first_name %}
+				<li><a href="/speaker/{{ pres.user.id }}/">{{ pres.user.first_name }} {{ pres.user.last_name }}</a></li>
+				{% else %}
+					<li>{{ pres.user }}</li>
+				{% endif %}
 
-       <div class="audiences">
-            <ul>
-            {% for audience in presentation.audiences.all %}
-                <li {% ifequal audience.name "Beginner" %}
-                    class="beginner"
-                    {% endifequal %}
-                    {% ifequal audience.name "Intermediate" %}
-                    class="intermediate"
-                    {% endifequal %}
-                    {% ifequal audience.name "Advanced" %}
-                    class="advanced"
-                    {% endifequal %}>{{ audience.name }}</li>
             {% endfor %}
             </ul>
         </div>
@@ -85,6 +80,21 @@ $(document).ready(function(){
             Location: {{ presentation.location }}
             </div>
         {% endif %}
+       <div class="audiences">
+            <ul>
+            {% for audience in presentation.audiences.all %}
+                <li {% ifequal audience.name "Beginner" %}
+                    class="beginner"
+                    {% endifequal %}
+                    {% ifequal audience.name "Intermediate" %}
+                    class="intermediate"
+                    {% endifequal %}
+                    {% ifequal audience.name "Advanced" %}
+                    class="advanced"
+                    {% endifequal %}>{{ audience.name }}</li>
+            {% endfor %}
+            </ul>
+        </div>
         <!-- not used this year 
         Description: {{ presentation.description }} <br />
         Long: {{ presentation.long_abstract }} <br />

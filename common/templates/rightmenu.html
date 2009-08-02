@@ -1,7 +1,7 @@
 {% for sponsor in sponsors %}
 	{% ifchanged sponsor.level %}
                             <br />
-		<h2>{{ sponsor.level }}</h2>
+		<h3>{{ sponsor.level }}</h3>
 	{% endifchanged %}
 		<a href='{{ sponsor.url }}'
                             target='_new'><img

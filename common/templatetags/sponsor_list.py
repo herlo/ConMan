@@ -11,7 +11,7 @@ def show_sponsors():
 def random_sponsor():
     count = Sponsor.objects.count()
     
-    random_id = random.randrange(1, count)
+    random_id = random.randrange(1, count+1)
     print "Random ID: " + str(random_id)
 
     sponsor = Sponsor.objects.get(id=random_id)

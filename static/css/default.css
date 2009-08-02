@@ -21,7 +21,7 @@ img { border: none;}
 .bigbluebox {height:150px; width:900px; background-color:#d5e5fa; color: #000000; padding-top: 15px;}
 .bigbluebox .bbbleft { float: left; width: 200px; vertical-align: middle; padding-left: 50px;}
 .bigbluebox .bbbmiddle { width: 300px; margin: auto; float: left; padding-left: 50px; }
-.bigbluebox .bbbmiddle a { font-size: 16px; font-weight: bold; }
+.bigbluebox .bbbmiddle a { font-size: 14px; font-weight: bold; }
 .bigbluebox .bbbmiddle p { font-size: 14px; text-align: left; }
 .bigbluebox .bbbright { float: right; width: 250px; }
 .clearboth {clear:both;}

@@ -47,6 +47,7 @@ h3:first {
 
 .presentation .audiences {
     margin-top: 2px;
+    border-top: 1px solid #CCC;
 }
 
 .presentation .audiences ul {

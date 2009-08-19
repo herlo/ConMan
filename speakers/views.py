@@ -82,7 +82,14 @@ def abstract(request, abs_id=None):
         if instance.status.name != 'Approved':
             # get the list of presenters
             users = request.POST.getlist('presenter')
-            print "users: " + str(users)
+            print "1 users: " + str(users)
+
+            #
+            # validate that the required fields have values
+            #
+            if request.POST['title'] != None and request.POST['short_abstract'] != None and request.POST['cat'] != None and request.POST.has_key('audiences') and request.POST['audiences'] != None:
+                instance.save()
+
             instance.save()
             for u in users:
                 if u:
@@ -99,14 +106,15 @@ def abstract(request, abs_id=None):
             abstracts = None
             if pf.is_valid():
                 prfrm = pf.save(commit=False)
-                print "users: " + str(users)
+                print "2 users: " + str(users)
                 for u in users:
                     user = User.objects.get(id=u)
-                    print "user: " + str(user)
+                    print "3 user: " + str(user)
                     prfrm.presenter.add(user.get_profile())
                     prfrm.save()
                     send_confirm_email(user, pf)
                 pf.save_m2m()
+                pf.save()
 
                 if abs_id:
                     return render_to_response('paper_updated.html',

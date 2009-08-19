@@ -1,8 +1,4 @@
 {% for fp in flatpages %}
-	{% if forloop.first %}
-	<li class="first"><a href="{{ fp.url }}">{{ fp.title}}</a></li>
-	{% else %}
-	<li><a href="{{ fp.url }}">{{ fp.title}}</a></li>
-	{% endif %}
+	<div class="menubutton_left"><a href="{{ fp.url }}">{{ fp.title}}</a></div>
 {% endfor %}
 

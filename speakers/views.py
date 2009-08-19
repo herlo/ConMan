@@ -183,7 +183,6 @@ def show_speakers(request, status='all'):
     feed = False
 
     speaker_list = list()
-    pending_list = list()
 
     for speaker in speakers:
         presentations = list()

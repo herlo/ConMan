@@ -1,7 +1,6 @@
 {% autoescape off %}
-<h2 style="margin-top: -15px; text-align: center;">{{ update.name }}</h2>
-<p style="text-align: center;">{{ update.description|linebreaks|truncatewords_html:25 }}</p>
-<p style="text-align: center;">{{ update.link }}</p>
+<p style="margin-top: -5px; text-align: center;">{{ update.name }}</p>
+<p style="text-align: center;">{{ update.description|linebreaks }}</p>
 {% endautoescape %}
 <p style="font-size: 12px; float:right; clear:both;">Get all the updates <a style="font-size: 12px;" href="/updates/history/">here</a></p>
 

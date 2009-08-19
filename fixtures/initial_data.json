@@ -70,7 +70,7 @@
       "sites": [
         1
       ], 
-      "content": "<h2>Utah Open Source Conference Registration Information</h2>\r\n\r\n<p>So you want to register for the Utah Open Source Conference 2009!  Well, registration is open!!</p>\r\n\r\n<h3>Quickstart: for those who don't want to read</h3>\r\n\r\n<p>Visit <a href=\"http://register.utosc.com/utoscreg/\">our registration site</a></p>\r\n\r\n<h3>If you are interested in pricing and what you will get for it, then read on!</h3>\r\n\r\n<p>For UTOSC 2009, we're introducing the Expo Only and Thursday Only tickets.</p>\r\n\r\n<h4>For Thursday, we have the following lined up:</h4>\r\n<ul>\r\n  <li>Guru Labs University: running only on October 8 - Come and see the Multi-distro Linux Training leaders in action.</li>\r\n  <li>Job Fair: we have several companies and recruiters lined up to get you into that dream position.  They'll even be doing interviews.</li>\r\n  <li>Ask an expert - Local User Groups (LUGs) will be around to help individuals with problems.  From Linux Installfests to debugging python and perl code, there will be several experts around to help out.</li>\r\n  <li>Fedora Activity Day - Come help Fedora grow and improve its free distribution of Linux.  Or just stop by and say hi!</li>\r\n  <li>And many more are in the works...</li>\r\n</ul>\r\n\r\n<p>Below is a table of the different types of registration, their costs and what you get for each.</p>\r\n<div style=\"width: 95%; margin-left: auto; margin-right: auto;\">\r\n<table border=\"1\">\r\n  <tr>\r\n    <th>Registration Type</th>\r\n    <th>Early Bird Price<br />(Before Sep 19, 2009)</th>\r\n    <th>Standard Price<br />(After Sep 19, 2009)</th>\r\n    <th>What you get access to</th>\r\n  </tr>\r\n  <tr>\r\n    <td>Full Access Pass<br /><br />Discounts available for:<br />Students and Local User Group Members</td>\r\n    <td>$70</td>\r\n    <td>$100</td>\r\n    <td>\r\n      <ul>\r\n        <li>Every presentation</li>\r\n        <li>The expo hall</li>\r\n        <li>Try-it Lab (and try-it lab presentations)</li>\r\n        <li>Community day</li>\r\n        <li>Job Fair</li>\r\n        <li>World premier of 'The Kenny Ho Project' a new cartoon on YouTube</li>\r\n      </ul>\r\n    </td>\r\n  </tr>\r\n  <tr>\r\n    <td>Expo Only Pass</td>\r\n    <td>$15</td>\r\n    <td>$25</td>\r\n    <td>\r\n      <ul>\r\n        <li>The expo hall</li>\r\n        <li>Try-it Lab (and try-it lab presentations)</li>\r\n        <li>Community day</li>\r\n        <li>Job Fair</li>\r\n      </ul>\r\n    </td>\r\n  <tr>\r\n    <td>Thursday Only Pass</td>\r\n    <td>$10</td>\r\n    <td>$20</td>\r\n    <td>\r\n      <ul>\r\n        <li>The expo hall (Thursday only)</li>\r\n        <li>Community day  (Thursday only)</li>\r\n        <li>Job Fair  (Thursday only)</li>\r\n      </ul>\r\n    </td>\r\n</table>\r\n</div>\r\n\r\n<p><a href=\"http://register.utosc.com/utoscreg/\">Register Now<a>.</p>\r\n\r\n<h3>More Questions?</h3>\r\n\r\n<p>We're a volunteer only organization, but we'd like to answer any questions you have. Feel free to send them to us at <a href=\"mailto:reg@utos.org\">reg aT utos . o-r-g</a>", 
+      "content": "<h2> Information & Registration</h2>\r\n\r\nComing Soon!", 
       "enable_comments": 0
     }
   }, 
@@ -981,7 +981,7 @@
       "is_active": 1, 
       "is_superuser": 1, 
       "is_staff": 1, 
-      "last_login": "2009-08-02 10:59:19", 
+      "last_login": "2009-07-21 21:02:16", 
       "groups": [
         2
       ], 
@@ -989,26 +989,6 @@
       "password": "sha1$c19a3$575779394cfbcb2ed67ca9342c02dad3bb1c4af4", 
       "email": "conman@utos.org", 
       "date_joined": "2009-06-22 22:19:21"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "auth.user", 
-    "fields": {
-      "username": "herlo", 
-      "first_name": "Clint", 
-      "last_name": "Savage", 
-      "is_active": 1, 
-      "is_superuser": 0, 
-      "is_staff": 0, 
-      "last_login": "2009-07-26 15:09:15", 
-      "groups": [
-        2
-      ], 
-      "user_permissions": [], 
-      "password": "sha1$504dc$6ff0aff69d870537066ed50cfc5220eeccec6a6b", 
-      "email": "clint@utos.org", 
-      "date_joined": "2009-07-21 23:43:59"
     }
   }, 
   {
@@ -1270,42 +1250,10 @@
     }
   }, 
   {
-    "pk": "5a682216c22dcb59414e13dfbcaae032", 
+    "pk": "d7de7876371104c10e80ee61b017cb5f", 
     "model": "sessions.session", 
     "fields": {
-      "expire_date": "2009-08-14 11:37:20", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigEBdS42ZjdmNjQwYTlhNzRiZGI4MGVl\nY2IzN2Q3ZTNjOGI2Ng==\n"
-    }
-  }, 
-  {
-    "pk": "c7eab5fa87fcfc7ad079b3a9f3484f1a", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-08-15 17:59:23", 
-      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
-    }
-  }, 
-  {
-    "pk": "b6102bd6670702312896b11894226f58", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-08-15 13:58:06", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigEBdS42ZjdmNjQwYTlhNzRiZGI4MGVl\nY2IzN2Q3ZTNjOGI2Ng==\n"
-    }
-  }, 
-  {
-    "pk": "7811124c64beaa3334bd97a37f74b8d3", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-08-09 15:09:15", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigECdS42ZjAzNmZiMWJiMDBiNzNmZDQ4\nZDM5OTUyNmIxNjUxOA==\n"
-    }
-  }, 
-  {
-    "pk": "f5cbb0744ee482b319bfef9f3afd5a0c", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-08-16 10:59:19", 
+      "expire_date": "2009-08-04 21:02:16", 
       "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigEBdS42ZjdmNjQwYTlhNzRiZGI4MGVl\nY2IzN2Q3ZTNjOGI2Ng==\n"
     }
   }, 
@@ -1315,162 +1263,6 @@
     "fields": {
       "domain": "localhost:8080", 
       "name": "Utah Open Source Conference 2009"
-    }
-  }, 
-  {
-    "pk": 103, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-08-02 10:59:34", 
-      "object_repr": "/pages/registration/ -- REGISTER", 
-      "object_id": "4", 
-      "change_message": "Changed content.", 
-      "user": 1, 
-      "content_type": 1
-    }
-  }, 
-  {
-    "pk": 102, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-08-01 15:23:59", 
-      "object_repr": "Sponsor object", 
-      "object_id": "2", 
-      "change_message": "Changed sm_logo and lg_logo.", 
-      "user": 1, 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 101, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-08-01 15:22:54", 
-      "object_repr": "Sponsor object", 
-      "object_id": "2", 
-      "change_message": "Changed sm_logo and lg_logo.", 
-      "user": 1, 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 100, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 15:18:38", 
-      "object_repr": "Sponsor object", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 99, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 14:04:12", 
-      "object_repr": "Sponsor object", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 98, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 14:00:26", 
-      "object_repr": "Sponsor object", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 97, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 13:59:14", 
-      "object_repr": "ISP", 
-      "object_id": "6", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 96, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 13:58:54", 
-      "object_repr": "Media", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 95, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 13:58:46", 
-      "object_repr": "General", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 94, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 13:58:41", 
-      "object_repr": "Emerald", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 93, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 13:58:35", 
-      "object_repr": "Sapphire", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 92, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-08-01 13:58:27", 
-      "object_repr": "Diamond", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 22
     }
   }, 
   {
@@ -2715,30 +2507,6 @@
     }
   }, 
   {
-    "pk": 3, 
-    "model": "common.userprofile", 
-    "fields": {
-      "bio": "This is my short bio", 
-      "user_photo": "", 
-      "common_channels": "", 
-      "company": "Backcountry.com", 
-      "site": "http://backcountry.com/", 
-      "irc_nick": "", 
-      "user": 2, 
-      "shirt_size": 5, 
-      "irc_server": "", 
-      "job_title": "Senior Systems Administrator"
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "accounts.registrationprofile", 
-    "fields": {
-      "activation_key": "0c4702b459ac576e4d90a02b93eec55baa9b6cc8", 
-      "user": 2
-    }
-  }, 
-  {
     "pk": 1, 
     "model": "speakers.category", 
     "fields": {
@@ -2814,43 +2582,18 @@
     }
   }, 
   {
-    "pk": 11, 
+    "pk": 10, 
     "model": "speakers.presentation", 
     "fields": {
       "status": 1, 
-      "short_abstract": "Woo! This is fun\r\n\r\nI like writing updates for the utos-conman site.\r\n\r\nGet all the updates here", 
+      "short_abstract": "This is test abstract 9044", 
       "end": null, 
       "description": null, 
-      "title": "A paper", 
+      "title": "Test Abstract #9044", 
       "presenter": [
-        3
-      ], 
-      "cat": 2, 
-      "slides": "", 
-      "start": null, 
-      "score": null, 
-      "audiences": [
-        1, 
         2
       ], 
-      "location": null, 
-      "long_abstract": null
-    }
-  }, 
-  {
-    "pk": 12, 
-    "model": "speakers.presentation", 
-    "fields": {
-      "status": 1, 
-      "short_abstract": "Woo! This is fun\r\n\r\nI like writing updates for the utos-conman site.\r\n\r\nGet all the updates here", 
-      "end": null, 
-      "description": null, 
-      "title": "A paper", 
-      "presenter": [
-        3, 
-        2
-      ], 
-      "cat": 2, 
+      "cat": 1, 
       "slides": "", 
       "start": null, 
       "score": null, 
@@ -2898,96 +2641,6 @@
       "user": 1, 
       "content_type": 17, 
       "object_id": 1
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "sponsors.level", 
-    "fields": {
-      "name": "Diamond", 
-      "order": 10
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "sponsors.level", 
-    "fields": {
-      "name": "Sapphire", 
-      "order": 8
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "sponsors.level", 
-    "fields": {
-      "name": "Emerald", 
-      "order": 6
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "sponsors.level", 
-    "fields": {
-      "name": "General", 
-      "order": 10
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "sponsors.level", 
-    "fields": {
-      "name": "Media", 
-      "order": 4
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "sponsors.level", 
-    "fields": {
-      "name": "ISP", 
-      "order": 3
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "sponsors.sponsor", 
-    "fields": {
-      "about": " As a local, independent Internet service provider, XMission provides customers with unmatched technical expertise and friendly customer service available 24/7. Since 1993, XMission has developed and supported effective connectivity, hosting, and colocation services for thousands of Utah residents and businesses. We have a variety of services to meet every requirement and for every price range. Call us, email us, or stop by our offices to customize your XMission account.\r\n", 
-      "level": 1, 
-      "url": "http://xmission.com", 
-      "company": "XMission", 
-      "sm_logo": "img/sponsors/logos_xmission_cmyk.jpg", 
-      "lg_logo": "img/sponsors/logos_xmission_cmyk_.jpg", 
-      "contact": "Emily Higbee", 
-      "email": "ehigbee@xmission.com"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "sponsors.sponsor", 
-    "fields": {
-      "about": "The Governor's Office of Economic Development (GOED) charter is based on Governor Huntsman's commitment to economic development statewide. The mandate for this office is to provide rich business resources for the creation, growth and recruitment of companies to Utah and to increase tourism and film production in the state. GOED accomplishes this mission through the administration of programs that are based around industries or \"economic clusters\" that demonstrate the best potential for development. GOED utilizes state resources and private sector contracts to fulfill its mission.", 
-      "level": 3, 
-      "url": "http://goed.utah.gov/", 
-      "company": "Governor's Office of Economic Development", 
-      "sm_logo": "img/sponsors/goed_logo_md.png", 
-      "lg_logo": "img/sponsors/goed_logo_md_.png", 
-      "contact": "Nicole Toomey Davis", 
-      "email": "ndavis@utah.gov"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "sponsors.sponsor", 
-    "fields": {
-      "about": "Linux Magazine is a polished, highly technical magazine designed for IT professionals who specialize in Linux technologies. The publication offers advertisers a direct line to the world of Linux. The readers are the leading experts who are first to identify key technical needs of their companies and also the first to locate opportunities for improving their networks. Linux Magazine reaches deep into the very heart of the IT business, where critical opinions regarding needs are formed and buying decisions begin. ", 
-      "level": 5, 
-      "url": "http://linuxpromagazine.com/", 
-      "company": "Linux Pro  Magazine ", 
-      "sm_logo": "img/sponsors/linuxpromagazine_weblogo__.jpg", 
-      "lg_logo": "img/sponsors/linuxpromagazine_weblogo___.jpg", 
-      "contact": "Rikki Kite", 
-      "email": "rkite@linuxpromagazine.com"
     }
   }, 
   {

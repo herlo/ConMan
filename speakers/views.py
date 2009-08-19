@@ -166,19 +166,6 @@ def show_presentation_schedule(request, day="1970-01-01"):
         template = 'show_presentation_day.html'
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
-
-#        import vobject
-#
-#        cal = vobject.iCalendar()
-#        print "test"
-#        for p in presentations:
-#            cal.add('vevent')
-#            cal.vevent.add('summary').value = p.title
-#            cal.vevent.add('dtstart').value = p.start
-#
-#        print cal
-#
-        #print "Presentation: " + p.title + " " + str(p.start)
         template = 'show_presentations.html'
         
     return render_to_response(template, {'day': date, 'presentations': presentations }, context_instance=RequestContext(request))

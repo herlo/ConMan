@@ -16,7 +16,7 @@ MANAGERS = (
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'testdatabase_trunk'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'root'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'testbed'         # Not used with sqlite3.
+DATABASE_PASSWORD = 'changme'         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
 
@@ -162,6 +162,17 @@ TWITTER_ENABLED = 'False'
 TWITTER_USERNAME = 'utostest'
 TWITTER_PASSWORD = 'utostest'
 
+# PING FM
+# THIS IS THE REAL ONE!!! 
+#PINGFM_APP_KEY = 'c982322d92d0a5b59a5db8dcb2373c76'
+#PINGFM_USER_KEY = '6ac23d3f50955af53d1a0238fad4727a-1234110993'
+
+#TESTING ACCOUNT
+PINGFM_APP_KEY = 'ffe126487a69e4e920a0629cc4778c5b'
+PINGFM_USER_KEY = 'eb029e56b271f687fe0bd853c7d04cf3-1251257314'
+
+PINGFM_ENABLED = 'True'
+PINGFM = 'http://api.ping.fm/v1/'
 
 #memcached detail
 #CACHE_BACKEND = 'memcached://127.0.0.1:11211/'

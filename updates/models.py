@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import datetime
 import settings
+import urllib
+import urllib2
 if settings.TWITTER_ENABLED:
     import twitter
 
@@ -25,6 +27,18 @@ class Update(models.Model):
             if settings.TWITTER_ENABLED:
                 twit = twitter.Api(username=settings.TWITTER_USERNAME, password=settings.TWITTER_PASSWORD)
                 twit.PostUpdate(self.description)
+            # honestly we should really flesh this out better, but I am too lazy
+            if settings.PINGFM_ENABLED:
+                post_uri = settings.PINGFM +'user.post'
+                params = {}
+                params['body'] = self.description
+                params['user_app_key'] = settings.PINGFM_USER_KEY
+                params['api_key'] = settings.PINGFM_APP_KEY
+                params['post_method'] = 'default'
+                post_params = urllib.urlencode(params)
+                post_response = urllib2.urlopen(post_uri, post_params).read()
+                # at this point we should check for failure or success, but as herlo noted "oh well!"
+                
         self.updated = datetime.datetime.today()
         super(Update, self).save()
 

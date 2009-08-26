@@ -75,8 +75,9 @@ def abstract(request, abs_id=None):
         page_to_render = 'update_abstract.html'
     else:
         page_to_render = 'call_for_papers.html'
-        group = Group.objects.get(name='Speaker')
         instance = Presentation()
+
+    group = Group.objects.get(name='Speaker')
 
     if request.method == 'POST':
         if instance.status.name != 'Approved':
@@ -137,8 +138,10 @@ def abstract(request, abs_id=None):
         pf = PresentationForm(instance=instance)
         sf = PresentationSlidesForm(instance=instance)
         abstracts = Presentation.objects.filter(presenter=user.get_profile())
+        presentation = Presentation.objects.get(id=abs_id)
 
     return render_to_response(page_to_render, {
+                'presentation': presentation,
                 'presenter_form': pf,
                 'slides_form': sf,
                 'abstract_list':abstracts,

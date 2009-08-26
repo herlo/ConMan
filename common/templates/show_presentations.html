@@ -35,6 +35,14 @@ $(document).ready(function(){
             {{ presentation.status }}
 		</div>
 		-->
+		    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
+		        {% vote_by_user user on presentation as vote %}
+		        {% if vote %}
+				<span style="background-color: #000000; padding: 2px; float: right; font-weight: bold; color: #AAFF00; margin-top: -4px;">Voted {{ vote|vote_display:"for,against" }}</span>
+		        {% else %}
+				<span style="background-color: #000000;  padding: 2px; float: right; font-weight: bold; margin-top: -4px;"><a style="clear: both; color: #FFAA00" href="/presentation/{{presentation.id}}/">Vote</a></span>
+		        {% endif %}
+		    {% endif %}
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
         </div>
@@ -94,14 +102,6 @@ $(document).ready(function(){
                     class="advanced"
                     {% endifequal %}>{{ audience.name }}</li>
             {% endfor %}
-		    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
-		        {% vote_by_user user on presentation as vote %}
-		        {% if vote %}
-				<li><span style="background-color: #FFaa00; padding: 2px; float: right; font-weight: bold; color: #336666; margin-top: 10px;">Voted {{ vote|vote_display:"for,against" }}</span></li>
-		        {% else %}
-				<li><span style="background-color: #FF0000;  padding: 2px; float: right; font-weight: bold; color: #336666; margin-top: 10px;"><a style="color: #ffffff" href="/presentation/{{presentation.id}}/">Vote Now</a></span></li>
-		        {% endif %}
-		    {% endif %}
             </ul>
         </div>
         <!-- not used this year 

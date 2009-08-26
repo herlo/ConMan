@@ -138,7 +138,10 @@ def abstract(request, abs_id=None):
         pf = PresentationForm(instance=instance)
         sf = PresentationSlidesForm(instance=instance)
         abstracts = Presentation.objects.filter(presenter=user.get_profile())
-        presentation = Presentation.objects.get(id=abs_id)
+        if abs_id:
+            presentation = Presentation.objects.get(id=abs_id)
+        else:
+            presentation = Presentation()
 
     return render_to_response(page_to_render, {
                 'presentation': presentation,

@@ -4,8 +4,6 @@ import datetime
 import settings
 import urllib
 import urllib2
-if settings.TWITTER_ENABLED:
-    import twitter
 
 # Create your models here.
 # Used to update what's going on before / during / after the conference.
@@ -22,12 +20,6 @@ class Update(models.Model):
     def save(self):
         if not self.id:
             self.created = datetime.date.today()
-            # add twitter code here (soon ping.fm)
-            # we want it to succeed, but if it doesn't, oh well!
-            if settings.TWITTER_ENABLED:
-                twit = twitter.Api(username=settings.TWITTER_USERNAME, password=settings.TWITTER_PASSWORD)
-                twit.PostUpdate(self.description)
-            # honestly we should really flesh this out better, but I am too lazy
             if settings.PINGFM_ENABLED:
                 post_uri = settings.PINGFM +'user.post'
                 params = {}

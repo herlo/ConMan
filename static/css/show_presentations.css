@@ -48,6 +48,7 @@ h3:first {
 .presentation .audiences {
     margin-top: 2px;
     border-top: 1px solid #CCC;
+    clear: both;
 }
 
 .presentation .audiences ul {
@@ -93,4 +94,5 @@ h3:first {
 .presentation .short_abstract {
     margin-top : 10px;
     margin-left: 10px;
+    min-height: 30px;
 }

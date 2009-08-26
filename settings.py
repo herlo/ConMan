@@ -158,10 +158,6 @@ PRESENTATION_DELETED='The presentation has been deleted.'
 # set of libraries.  They can be checked out at
 # http://python-twitter.googlecode.com/svn/trunk/
 
-TWITTER_ENABLED = 'False'
-TWITTER_USERNAME = 'utostest'
-TWITTER_PASSWORD = 'utostest'
-
 # PING FM
 # THIS IS THE REAL ONE!!! 
 #PINGFM_APP_KEY = 'c982322d92d0a5b59a5db8dcb2373c76'

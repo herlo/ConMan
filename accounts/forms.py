@@ -158,7 +158,7 @@ class UserForm(forms.ModelForm):
     """A form to allow a user to update his first and last names."""
     class Meta:
         model = User
-        fields = ('first_name', 'last_name')
+        fields = ('first_name', 'last_name', 'email')
 
     def __init__(self, *args, **kwargs):
         super(UserForm, self).__init__(*args, **kwargs)

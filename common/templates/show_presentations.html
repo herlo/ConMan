@@ -30,19 +30,18 @@ $(document).ready(function(){
 	</div>
     {% endifchanged %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
-		<!--
-		<div class="status">
-            {{ presentation.status }}
-		</div>
-		-->
-		    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
-		        {% vote_by_user user on presentation as vote %}
-		        {% if vote %}
-				<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -4px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="clear: both; color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
-		        {% else %}
-				<span style="background-color: #000000;  padding: 2px; float: right; font-weight: bold; margin-top: -4px;"><a style="clear: both; color: #FFAA00" href="/presentation/{{presentation.id}}/">Vote</a></span>
-		        {% endif %}
-		    {% endif %}
+	    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
+	        {% vote_by_user user on presentation as vote %}
+			{% if vote %}
+				{% ifchanged presentation.cat %}
+					<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -22px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
+				{% else %}
+					<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -4px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
+				{% endifchanged %}
+	        {% else %}
+				<span style="background-color: #000000; font-size: small; padding: 2px; float: right; font-weight: bold; margin-top: -4px;"><a style="clear: both; color: #FFAA00" href="/presentation/{{presentation.id}}/">Vote</a></span>
+	        {% endif %}
+	    {% endif %}
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
         </div>

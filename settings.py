@@ -1,6 +1,6 @@
 # Django settings for conman project.
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -167,8 +167,13 @@ PRESENTATION_DELETED='The presentation has been deleted.'
 PINGFM_APP_KEY = 'ffe126487a69e4e920a0629cc4778c5b'
 PINGFM_USER_KEY = 'eb029e56b271f687fe0bd853c7d04cf3-1251257314'
 
-PINGFM_ENABLED = 'True'
+PINGFM_ENABLED = True
 PINGFM = 'http://api.ping.fm/v1/'
+
+# ALL_CAN_VOTE 
+# This allows anyone who signs up to become part of a special group
+# called Voter (which must be in the Auth -> Groups in the admin with
+ALL_CAN_VOTE = True
 
 #memcached detail
 #CACHE_BACKEND = 'memcached://127.0.0.1:11211/'

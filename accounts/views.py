@@ -3,16 +3,19 @@ Views which allow users to create and activate accounts.
 
 """
 
-
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
-from common.models import *
+from django.contrib.auth.models import User,Group
 
 from accounts.forms import RegistrationForm, ProfileForm, UserForm
 from accounts.models import RegistrationProfile
+
+from common.models import *
+import settings
+
 
 def activate(request, activation_key, template_name='accounts/activate.html'):
     """
@@ -52,6 +55,7 @@ def make_basic_profile(user=None):
     up = UserProfile(user=user)
     up.user = user
     up.save();
+
 
 @login_required
 def profile(request, success_url='/accounts/profile/', 
@@ -120,6 +124,12 @@ def register(request, success_url='/accounts/register/complete/',
         form = form_class(request.POST)
         if form.is_valid():
             new_user = form.save(profile_callback=profile_callback)
+            # this is will make voting work for anyone as long as the 
+            # Voter group has voting rights
+            if settings.ALL_CAN_VOTE:
+                group = Group.objects.get(name='Voter')
+                new_user.groups.add(group)
+                new_user.save()
             return HttpResponseRedirect(success_url)
     else:
         form = form_class()

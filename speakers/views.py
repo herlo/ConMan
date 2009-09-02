@@ -174,6 +174,19 @@ def show_presentation_schedule(request, day=None, cat=None, location=None, audie
         extra = room.name
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(location__id=location).order_by('start')
         template = 'show_presentation_room.html'
+    elif cat:
+        cat = Category.objects.filter(id=cat)[0]
+        presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(cat=cat).order_by('start')
+        extra = { 'name': cat.name, 'description': cat.description }
+
+        template = 'show_presentation_cat.html'
+    elif audience:
+        audience = AudienceType.objects.filter(id=audience)[0]
+
+        presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(audiences=audience).order_by('start')
+        extra = { 'name': audience.name, 'description': audience.description }
+
+        template = 'show_presentation_audience.html'
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
         template = 'show_presentations.html'

@@ -28,9 +28,7 @@ $(document).ready(function(){
             <div class="presentationPresenter">
    
             <span class="presentationPresenter">
-	    		<a href="/speaker/{{ presenter.user_id }}/">
-                   {{ presenter.user.first_name }} {{ presenter.user.last_name }}
-                </a> 
+	    		<a href="/speaker/{{ presenter.user_id }}/">{{ presenter.user.first_name }} {{ presenter.user.last_name }}</a> 
             </span>
 
             {% if presenter.company %}

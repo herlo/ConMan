@@ -17,31 +17,16 @@ $(document).ready(function(){
 	});
 </script>
 
-<h2>Presentations</h2>
-<p>New presentation are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2009 Program.</p>
+<h2>Presentations for category: {{ extra.name }}</h2>
+<p>{{ extra.description }}</p>
 
 {% for presentation in presentations %}
-    {% ifchanged presentation.cat %}
+    {% ifchanged presentation.start %}
 	<div class="h3">
-        <h3>Category: {{ presentation.cat }}</h3>
-		{% if presentation.cat.description %}
-		<p>{{ presentation.cat.description }}</p>
-		{% endif %}
+		<h3>{{pres.start|date:"M d, g:i a"}}</h3>
 	</div>
     {% endifchanged %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
-	    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
-	        {% vote_by_user user on presentation as vote %}
-			{% if vote %}
-				{% ifchanged presentation.cat %}
-					<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -22px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
-				{% else %}
-					<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -4px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
-				{% endifchanged %}
-	        {% else %}
-				<span style="background-color: #000000; font-size: small; padding: 2px; float: right; font-weight: bold; margin-top: -4px;"><a style="clear: both; color: #FFAA00" href="/presentation/{{presentation.id}}/">Vote</a></span>
-	        {% endif %}
-	    {% endif %}
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
         </div>
@@ -62,20 +47,21 @@ $(document).ready(function(){
             <div class="short_abstract">
             {{ presentation.short_abstract|truncatewords:50 }} 
             </div>
+			<br />
         {% endif %}
         {% if presentation.start %}
             <div class="start">
-            Start: {{ presentation.start }}
+			Start: <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a>
             </div>
         {% endif %}
         {% if presentation.end %}
             <div class="end">
-            End: {{ presentation.end }} 
+            End: {{ presentation.end|date:"M d, g:i a" }} 
             </div>
         {% endif %}
         {% if presentation.location %}
             <div class="location">
-            Location: {{ presentation.location }}
+				Room: <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
             </div>
         {% endif %}
        <div class="audiences">
@@ -89,7 +75,7 @@ $(document).ready(function(){
                     {% endifequal %}
                     {% ifequal audience.name "Advanced" %}
                     class="advanced"
-                    {% endifequal %}>{{ audience.name }}</li>
+					{% endifequal %}><a href="/presentation/audience/{{ audience.id }}/">{{ audience.name }}</a></li>
             {% endfor %}
             </ul>
         </div>

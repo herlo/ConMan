@@ -65,19 +65,21 @@ h3:first {
     padding: 2px 5px;
 }
 
+.presentation .audiences a {
+    text-decoration: none;
+    color: #333;
+}
+
 .presentation .audiences .beginner {
-    background-color: green;
-    color: #FFF;
+    background-color: #ffffcc;
 }
 
 .presentation .audiences .intermediate {
-    background-color: yellow;
-    color: #000;
+    background-color: #ccffff;
 }
 
 .presentation .audiences .advanced {
-    background-color: red;
-    color: #000;
+    background-color: #ffccff;
 }
 
 .presentation .presenter {

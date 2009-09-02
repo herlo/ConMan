@@ -161,7 +161,7 @@ def delete_abstract(request, abs_id):
     deletedText = settings.PRESENTATION_DELETED
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
     
-def show_presentation_schedule(request, day="1970-01-01"):
+def show_presentation_schedule(request, day=None, cat=None, room=None, audience=None):
 #    print "Day: " + day
     date = datetime(1970, 01, 01)
     if day:
@@ -207,7 +207,6 @@ def show_speakers(request, status='all'):
         for p in pending_list:
             presentations.append({'id': p.id, 'title': p.title, 'status': p.status})
 
-        print "Presentations: " + str(presentations)
         if (presentations):
             speaker_list.append({ 'id': speaker.id, 'name': speaker.get_full_name(), 'company': profile.company, 'bio': profile.bio, 'irc_nick': profile.irc_nick, 'irc_server': profile.irc_server, 'job_title': profile.job_title, 'web_site': profile.site, 'photo': profile.user_photo, 'presentations': presentations})
 

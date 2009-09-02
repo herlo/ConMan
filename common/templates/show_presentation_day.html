@@ -2,7 +2,6 @@
 
 {% block title %}Current Presenters{% endblock title%}
 
-
 {% block primaryContent %}
 <script type="text/javascript">
 $(document).ready(function(){
@@ -17,13 +16,32 @@ $(document).ready(function(){
 			
 		{% for pres in presentations %}
 			{% ifchanged pres.start %}
-			<b><font size="3">{{pres.start|date:"g:i a"}}</font></b><br />
+               <span class="presentationDate">{{pres.start|date:"g:i a"}}</span>
 			{% endifchanged %}
-	<div id='presentation'> 
-		    <font size="+1"><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</font></a><br />
-			<a href="/speaker/{{ pres.presenter.user.id }}/"><font size="-2">{{ pres.presenter }}</font></a> {% if pres.presenter.company %}<font size='-3'><i>({{ pres.presenter.company }})</i></font>{% endif %}</b><br />
-			<br />
-	</div>
+
+   	        <div id='presentation'>
+            <span class="presentationTitle"> 
+       		    <a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a>
+            </span>
+            
+            {% for presenter in pres.presenter.all %}
+            <div class="presentationPresenter">
+   
+            <span class="presentationPresenter">
+	    		<a href="/speaker/{{ presenter.user_id }}/">
+                   {{ presenter.user.first_name }} {{ presenter.user.last_name }}
+                </a> 
+            </span>
+
+            {% if presenter.company %}
+            <span class="presentationCompany">
+               <i>({{ presenter.company }})</i>
+            </span>
+            {% endif %} 
+            </div>
+            {% endfor %}
+            <br /><br />
+        	</div>
 		{% endfor %}
 
 {% endblock primaryContent%}

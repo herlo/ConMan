@@ -162,11 +162,9 @@ def delete_abstract(request, abs_id):
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
     
 def show_presentation_schedule(request, day=None, cat=None, room=None, audience=None):
-#    print "Day: " + day
     date = datetime(1970, 01, 01)
     if day:
         d = day.rsplit("-")
-    #    print "Date: " + str(d)
         date = datetime(int(d[0]), int(d[1]), int(d[2]))
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(start__month=date.month).filter(start__day=date.day).order_by('start')
         template = 'show_presentation_day.html'

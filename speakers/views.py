@@ -161,18 +161,24 @@ def delete_abstract(request, abs_id):
     deletedText = settings.PRESENTATION_DELETED
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
     
-def show_presentation_schedule(request, day=None, cat=None, room=None, audience=None):
+def show_presentation_schedule(request, day=None, cat=None, location=None, audience=None):
+    extra = None
     date = datetime(1970, 01, 01)
     if day:
         d = day.rsplit("-")
         date = datetime(int(d[0]), int(d[1]), int(d[2]))
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(start__month=date.month).filter(start__day=date.day).order_by('start')
         template = 'show_presentation_day.html'
+    elif location:
+        room = Room.objects.filter(id=location)[0]
+        extra = room.name
+        presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(location__id=location).order_by('start')
+        template = 'show_presentation_room.html'
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
         template = 'show_presentations.html'
         
-    return render_to_response(template, {'day': date, 'presentations': presentations }, context_instance=RequestContext(request))
+    return render_to_response(template, {'day': date, 'presentations': presentations, 'extra': extra }, context_instance=RequestContext(request))
 
 def show_speakers(request, status='all'):
     group = Group.objects.get(name='Speaker')

@@ -47,7 +47,7 @@ urlpatterns = patterns('',
     (r'^speaker/(?P<s_id>\d+)/$', 'speakers.views.speaker_info'),
     (r'^presentation/schedule/(?P<day>\d{4}-\d{2}-\d{2})?/?$', 'speakers.views.show_presentation_schedule'),
     (r'^presentation/cat/(?P<cat>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
-    (r'^presentation/room/(?P<room>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
+    (r'^presentation/location/(?P<location>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
     (r'^presentation/audience/(?P<audience>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
 
     (r'^presentation/(?P<p_id>\d+)/$', 'speakers.views.show_presentation'),

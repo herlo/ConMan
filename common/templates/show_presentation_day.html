@@ -11,36 +11,81 @@ $(document).ready(function(){
 	});
 </script>
 
+<style type="text/css">
+
+#presentations {
+    margin: 10px;
+}
+
+#presentations a {
+    text-decoration: none;
+}
+
+.presentation {
+    margin-top: 5px;
+    margin-right: 20px;
+    border-bottom: 1px dotted #5181B3;
+}
+
+.presentationDate {
+    margin-top: 25px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    font-size:18px;
+    font-weight: bold;
+    border-bottom: 1px solid #5181B3;
+    width: 95%;
+}
+
+.presentationDate:first-child {
+    margin-top: 0px;
+}
+
+.presentationTitle {
+    font-size: 16px;
+    padding-top: 5px;
+}
+
+.presentation ul {
+    padding: 0px;
+    list-style: none;
+    display: inline;
+}
+
+.presentation ul li {
+    display: inline;
+}
+
+</style>
+
 <h2>Speakers for {{ day|date:"l, F d, Y" }}</h2>
 <p>Feel free to check out the <a href="/presentation/schedule/">full schedule</a> as well as <a href="/speaker/list/">ordered by speaker</a>.</p>
-			
-		{% for pres in presentations %}
-			{% ifchanged pres.start %}
-               <span class="presentationDate">{{pres.start|date:"g:i a"}}</span>
-			{% endifchanged %}
+<div id="presentations">
+{% for pres in presentations %}
+{% ifchanged pres.start %}
+    <div class="presentationDate">{{pres.start|date:"g:i a"}}</div>
+{% endifchanged %}
 
-   	        <div id='presentation'>
-            <span class="presentationTitle"> 
-       		    <a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a>
-            </span>
-            
-            {% for presenter in pres.presenter.all %}
-            <div class="presentationPresenter">
-   
-            <span class="presentationPresenter">
-	    		<a href="/speaker/{{ presenter.user_id }}/">{{ presenter.user.first_name }} {{ presenter.user.last_name }}</a> 
-            </span>
-
+<div class='presentation'>
+ 
+    <span class="presentationTitle"><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></span>
+    presented by 
+    <ul>
+    {% for presenter in pres.presenter.all %}
+        {% if not forloop.first %}
+        and
+        {% endif %}
+        <li class="presentationPresenter">
+            <a href="/speaker/{{ presenter.user_id }}/">{{ presenter.user.first_name }} {{ presenter.user.last_name }}</a> 
             {% if presenter.company %}
-            <span class="presentationCompany">
-               <i>({{ presenter.company }})</i>
-            </span>
-            {% endif %} 
-            </div>
-            {% endfor %}
-            <br /><br />
-        	</div>
-		{% endfor %}
-
+            <span class="presentationCompany"><em>({{ presenter.company }})</em></span>
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    <div class="presentationDescription">{{ pres.short_abstract|truncatewords:50 }}</div>
+</div>
+{% endfor %}
+</div>
 {% endblock primaryContent%}
 

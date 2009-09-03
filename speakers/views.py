@@ -200,6 +200,7 @@ def show_speakers(request, status='all'):
     user = request.user
     feed = False
 
+    pending_list = list()
     speaker_list = list()
 
     for speaker in speakers:

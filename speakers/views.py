@@ -307,31 +307,35 @@ def voting_results(request):
             context_instance=RequestContext(request))
 
 @user_passes_test(lambda u: u.is_staff)
-def show_speakers_admin(request):
+def show_speakers_admin(request, is_approved=None):
     """Display a list of users who are in the speakers group"""
 
     users = User.objects.all()
+    spkr_list = list()
 
-#    perms = users.get_all_permissions()
-#
-#    print "Perms: " + str(perms)
-    speakers = list()
+    if is_approved:
+        status = Status.objects.get(name='Approved')
+        for user in users:
+            abstracts = Presentation.objects.filter(presenter=user.get_profile()).filter(status=status)
+            if abstracts:
+                spkr_list.append(user)
+    else:
+        for user in users:
+            spkr_list.append(user)
 
-    for user in users:
-        if user.has_perm('speakers.add_presentation'):
-            speakers.append(user)
-
-            if request.method == 'POST':
-    
-                if settings.SEND_EMAIL:
-                    # send email here
-                    speakers.email_user(request.POST['subject'],
-                        request.POST['email'], settings.DEFAULT_FROM_EMAIL) 
-                else:
-                    print "To: " + user.first_name + "\nFrom: " + settings.DEFAULT_FROM_EMAIL + "\nSubject: " + request.POST['subject'] + "\nEmail: " + request.POST['email'] + "\n\nCheers,\n\nClint Savage\n\nhttp://utosc.com \| http://utos.org"
+    if request.method == 'POST':
+        for speaker in spkr_list:
+            if settings.SEND_EMAIL:
+                # send email here
+                speaker.email_user(request.POST['subject'],
+                    request.POST['email'], settings.DEFAULT_FROM_EMAIL) 
+            else:
+                print "To: " + speaker.first_name + "\nFrom: " + settings.DEFAULT_FROM_EMAIL + "\nSubject: " + request.POST['subject'] + "\nEmail: " + request.POST['email'] + "\n\nCheers,\n\nClint Savage\n\nhttp://utosc.com \| http://utos.org"
 
 
     return render_to_response(
             'admin/speakers/show_speakers.html', 
-            {'object_list': speakers, 'description': "Speaker Name"  },
+            {'object_list': spkr_list, 'description': "Speaker Name"  },
             context_instance=RequestContext(request))
+
+

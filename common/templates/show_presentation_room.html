@@ -43,7 +43,7 @@ $(document).ready(function(){
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
-                        <span class="presentationCategory">{{ presentation.cat }}</span>
+                        <span class="presentationCategory"><a href="/presentation/cat/{{ presentation.cat.id }}/">{{ presentation.cat }}</a></span>
         </div>
         <div class="presenter">
             <ul>

@@ -1,4 +1,4 @@
-{% extends "base_forms.html" %}
+{% extends "base_pres.html" %}
 {% load voting_tags %}
 
 {% block title %}Current Presenters | Audience: {{ extra.name }}{% endblock title%}
@@ -7,6 +7,26 @@
 <link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
+{% block leftMenu %}
+<h2>by Date</h2>
+	<ul>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-08/">Oct 8</a></li>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-09/">Oct 9</a></li>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-10/">Oct 10</a></li>
+	</ul>
+<h2>by Category</h2>
+	<ul>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/17/">Keynotes</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/18/">BoF Sessions</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/18/">Workshops</a></li>
+	</ul>
+<h2>by Audience</h2>
+	<ul>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/4/">Beginner</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/5/">Intermediate</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/6/">Advanced</a></li>
+	</ul>
+{% endblock leftMenu %}
 
 {% block primaryContent %}
 <script type="text/javascript">
@@ -17,12 +37,14 @@ $(document).ready(function(){
 	});
 </script>
 
-<h2>Presentations for audience: {{ extra.name }}</h2>
+<h3>Presentations for audience: {{ extra.name }}</h3>
+<p>{{ extra.description }}</p>
 
 {% for presentation in presentations %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
+                        <span class="presentationCategory">{{ presentation.cat }}</span>
         </div>
         <div class="presenter">
             <ul>
@@ -42,26 +64,20 @@ $(document).ready(function(){
             {{ presentation.short_abstract|truncatewords:50 }} 
             </div>
         {% endif %}
-<div style="width:100%; clear:right;">
-
+        <div style="width:100%; clear:right;">
         {% if presentation.start %}
-            <span class="start">
-	    <strong>Starts:</strong> <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a>
-            </span>
+            <span class="start"><strong>Start:</strong> <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a> </span>
         {% endif %}
-
         {% if presentation.end %}
-            <span class="end">
-            <strong>Ends:</strong> {{ presentation.end|date:"M d, g:i a" }} 
-            </span>
+            <span class="end" style="margin-left: 10px;"> <strong>End:</strong> {{ presentation.end|date:"M d, g:i a" }}</span>
         {% endif %}
         {% if presentation.location %}
             <span class="location">
-			<strong>Room:</strong> <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
+		<strong>Room:</strong> <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
             </span>
         {% endif %}
-</div>
-       <div class="audiences">
+        </div>
+       <div class="audiences" style="padding: 1px;">
             <ul>
             {% for audience in presentation.audiences.all %}
                 <li {% ifequal audience.name "Beginner" %}

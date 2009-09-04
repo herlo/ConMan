@@ -7,7 +7,6 @@
 <link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-
 {% block primaryContent %}
 <script type="text/javascript">
 $(document).ready(function(){
@@ -27,6 +26,7 @@ $(document).ready(function(){
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
+                        <span class="presentationCategory">{{ presentation.cat }}</span>
         </div>
         <div class="presenter">
             <ul>
@@ -45,24 +45,21 @@ $(document).ready(function(){
             <div class="short_abstract">
             {{ presentation.short_abstract|truncatewords:50 }} 
             </div>
-			<br />
         {% endif %}
+        <div style="width:100%; clear:right;">
         {% if presentation.start %}
-            <div class="start">
-			Start: <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a>
-            </div>
+            <span class="start"><strong>Start:</strong> <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a> </span>
         {% endif %}
         {% if presentation.end %}
-            <div class="end">
-            End: {{ presentation.end|date:"M d, g:i a" }} 
-            </div>
+            <span class="end" style="margin-left: 10px;"> <strong>End:</strong> {{ presentation.end|date:"M d, g:i a" }}</span>
         {% endif %}
         {% if presentation.location %}
-            <div class="location">
-				Room: <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
-            </div>
+            <span class="location">
+		<strong>Room:</strong> <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
+            </span>
         {% endif %}
-       <div class="audiences">
+        </div>
+       <div class="audiences" style="padding: 1px;">
             <ul>
             {% for audience in presentation.audiences.all %}
                 <li {% ifequal audience.name "Beginner" %}

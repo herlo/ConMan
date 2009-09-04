@@ -22,9 +22,7 @@ $(document).ready(function(){
 
 {% for presentation in presentations %}
     {% ifchanged presentation.start %}
-	<div class="h3">
-		<h3>{{pres.start|date:"M d, g:i a"}}</h3>
-	</div>
+		<h3>{{ presentation.start|date:"M d, g:i a" }}</h3>
     {% endifchanged %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">

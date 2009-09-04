@@ -168,6 +168,7 @@ def show_presentation_schedule(request, day=None, cat=None, location=None, audie
         d = day.rsplit("-")
         date = datetime(int(d[0]), int(d[1]), int(d[2]))
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(start__month=date.month).filter(start__day=date.day).order_by('start')
+        extra = date
         template = 'show_presentation_day.html'
     elif location:
         room = Room.objects.filter(id=location)[0]
@@ -189,7 +190,7 @@ def show_presentation_schedule(request, day=None, cat=None, location=None, audie
         template = 'show_presentation_audience.html'
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
-        template = 'show_presentations.html'
+        template = 'show_all_presentations.html'
         
     return render_to_response(template, {'day': date, 'presentations': presentations, 'extra': extra }, context_instance=RequestContext(request))
 

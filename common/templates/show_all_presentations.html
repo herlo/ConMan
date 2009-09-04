@@ -1,0 +1,39 @@
+{% extends "base_forms.html" %}
+{% load voting_tags %}
+
+{% block title %}Current Presenters{% endblock title%}
+
+{% block additionalCSS %}
+<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Presentations</h2>
+<p>New presentation are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2009 Program.</p>
+
+{% for pres in presentations %}
+	{% ifchanged pres.start %}
+		<h3><a style="text-decoration: none; color: #44a;" href="/presentation/schedule/{{ pres.start|date:"Y-m-d" }}">{{ pres.start|date:"M d, g:i a" }}</a></h3>
+    {% endifchanged %}
+		<p><a href="/presentation/{{ pres.id }}/">{{ pres.title }}</a> by
+		{% for pres in pres.presenter.all %}
+			{% if pres.user.first_name %}
+			<a href="/speaker/{{ pres.user.id }}/">{{ pres.user.first_name }} {{ pres.user.last_name }}</a>{% if not forloop.last %}, {% endif %}
+			{% else %}
+			{{ pres.user }}
+			{% endif %}
+		{% endfor %}
+		</p>
+ {% endfor %}
+
+{% endblock primaryContent%}
+

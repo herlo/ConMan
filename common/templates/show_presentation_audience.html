@@ -20,11 +20,6 @@ $(document).ready(function(){
 <h2>Presentations for audience: {{ extra.name }}</h2>
 
 {% for presentation in presentations %}
-    {% ifchanged presentation.start %}
-	<div class="h3">
-		<h3>{{pres.start|date:"M d, g:i a"}}</h3>
-	</div>
-    {% endifchanged %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">
 			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
@@ -50,17 +45,17 @@ $(document).ready(function(){
         {% endif %}
         {% if presentation.start %}
             <div class="start">
-			Start: <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a>
+			Begins: <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a>
             </div>
         {% endif %}
         {% if presentation.end %}
             <div class="end">
-            End: {{ presentation.end|date:"M d, g:i a" }} 
+            Ends: {{ presentation.end|date:"M d, g:i a" }} 
             </div>
         {% endif %}
         {% if presentation.location %}
             <div class="location">
-				Room: <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
+			Room: <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
             </div>
         {% endif %}
        <div class="audiences">

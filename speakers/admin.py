@@ -10,8 +10,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class PresentationAdmin(admin.ModelAdmin):
     list_filter = ('status', 'cat', 'audiences')
-    list_display = ('title', 'short_abstract', 'status')
+    list_display = ('title', 'shorter_abstract', 'cat', 'status')
     search_fields = ('@longabstract','status','@title','foreign_key__cat')
+
+    def shorter_abstract(self, obj):
+        return ("%s" % (obj.short_abstract))[:400]
 
 
 admin.site.register(Room)

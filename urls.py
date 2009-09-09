@@ -6,13 +6,16 @@ from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
 from django.contrib import admin
 from django.conf.urls.defaults import *
-from speakers.feeds import LatestEntries
+from speakers.feeds import LatestEntries,ApprovedPresentations,BoFList,EventList,WorkshopList
 
 #from common import admin
 
 feeds = {
     'latest': LatestEntries,
-#    'categories': LatestEntriesByCategory,
+    'approved': ApprovedPresentations,
+    'bofs': BoFList,
+    'events': EventList,
+    'workshops': WorkshopList,
 }
 
 admin.autodiscover()
@@ -32,7 +35,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
 #    (r'^admin/', include('django.contrib.admin.urls')),
-    (r'^feeds/speaker/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^feeds/presentation/(?P<url>\w+)?/?$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('accounts.urls')),
     (r'^about/tos/$', 'common.views.show_tos'),
 #    (r'^profile/$', 'common.views.profile_show'),
@@ -49,7 +52,6 @@ urlpatterns = patterns('',
     (r'^presentation/cat/(?P<cat>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
     (r'^presentation/location/(?P<location>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
     (r'^presentation/audience/(?P<audience>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
-
     (r'^presentation/(?P<p_id>\d+)/$', 'speakers.views.show_presentation'),
     (r'^presentation/(?P<object_id>\d+)/(?P<direction>up|down|clear)vote/?$', can_vote(vote_on_object), presentation_dict),
     (r'^sponsor/list/$', 'sponsors.views.index'),

@@ -6,7 +6,8 @@ from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
 from django.contrib import admin
 from django.conf.urls.defaults import *
-from speakers.feeds import LatestEntries,ApprovedPresentations,BoFList,EventList,WorkshopList
+from speakers.feeds import LatestEntries,ApprovedPresentations,BoFList,EventList,WorkshopList,KeynoteList
+from sponsors.feeds import SponsorList
 
 #from common import admin
 
@@ -16,6 +17,8 @@ feeds = {
     'bofs': BoFList,
     'events': EventList,
     'workshops': WorkshopList,
+    'keynotes': KeynoteList,
+    'sponsors': SponsorList,
 }
 
 admin.autodiscover()
@@ -35,7 +38,7 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
 
 #    (r'^admin/', include('django.contrib.admin.urls')),
-    (r'^feeds/presentation/(?P<url>\w+)?/?$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+    (r'^feeds/list/(?P<url>\w+)?/?$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('accounts.urls')),
     (r'^about/tos/$', 'common.views.show_tos'),
 #    (r'^profile/$', 'common.views.profile_show'),

@@ -51,3 +51,13 @@ class WorkshopList(Feed):
         events = Category.objects.get(name='Try-It Lab Workshop')
         return Presentation.objects.filter(status=status).filter(cat=events).order_by('start')
 
+class KeynoteList(Feed):
+    title = "UTOSC 2009 Keynotes"
+    link = "/presentation/cat/17/"
+    description = "Keynotes for UTOSC 2009"
+
+    def items(self):
+        status = Status.objects.get(name='Approved')
+        events = Category.objects.get(name='Keynote')
+        return Presentation.objects.filter(status=status).filter(cat=events).order_by('start')
+

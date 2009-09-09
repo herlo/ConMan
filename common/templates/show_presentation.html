@@ -25,7 +25,11 @@
 <br /><font size="-1">End: {{ presentation.end|date:"M d, g:i a" }}</font>
 {% endif %}
 {% if presentation.location.name %}
-<br /><font size="-1">Location: <a href="/presentation/location/{{ presentation.location.id }}" target="__map">{{ presentation.location.name }}</a> (<a href="/static/{{ presentation.location.here }}" class="thickbox" >map</a>)</font>
+<br /><font size="-1">Location: <a href="/presentation/location/{{ presentation.location.id }}">{{ presentation.location.name }}</a> 
+{% if presentation.location.here %}
+(<a href="/static/{{ presentation.location.here }}" class="thickbox" >map</a>)
+{% endif %}
+</font>
 {% endif %}
 {% if presentation.slides %}
 <br /><font size="-1"><a href="/static/{{ presentation.slides }}">Presentation Download(s)</a></font>

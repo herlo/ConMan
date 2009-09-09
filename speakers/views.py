@@ -26,7 +26,6 @@ from common.models import ShirtSize
 from speakers.models import Category,Status,Presentation,AudienceType
 from speakers.forms import *
 
-
 def send_confirm_email(user, form):
     #send the email here (note we could probably do this in one place later on)
     current_site = settings.HOST_NAME
@@ -160,6 +159,13 @@ def delete_abstract(request, abs_id):
     pf = PresentationForm()
     deletedText = settings.PRESENTATION_DELETED
     return render_to_response('call_for_papers.html', {'presenter_form': pf, 'deleted': deletedText }, context_instance=RequestContext(request))
+
+def speaker_schedule(request):
+    presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
+
+    print presentations
+
+    return render_to_response('show_speakers_schedule.html', {'presentations': presentations }, context_instance=RequestContext(request))
     
 def show_presentation_schedule(request, day=None, cat=None, location=None, audience=None):
     extra = None

@@ -48,6 +48,11 @@ urlpatterns = patterns('',
     (r'^speaker/list/(?P<status>\w+)?/?$', 'speakers.views.show_speakers'),
     (r'^speaker/find/(?P<search>\w+)?/?$', 'speakers.views.find_speakers'),
     (r'^speaker/(?P<s_id>\d+)/$', 'speakers.views.speaker_info'),
+
+# working on this one now -- utahcon
+#    (r'^speaker/schedule/$', 'speakers.views.speaker_schedule'),
+
+
     (r'^presentation/schedule/(?P<day>\d{4}-\d{2}-\d{2})?/?$', 'speakers.views.show_presentation_schedule'),
     (r'^presentation/cat/(?P<cat>\w+)?/?$', 'speakers.views.show_presentation_schedule'),
     (r'^presentation/location/(?P<location>\w+)?/?$', 'speakers.views.show_presentation_schedule'),

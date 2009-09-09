@@ -37,8 +37,7 @@ $(document).ready(function(){
 	});
 </script>
 
-<h3>Presentations for room #{{ extra }}</h3>
-
+<h3>Presentations for room #<a href="/static/{{ roomImage }}" class="thickbox">{{ extra }}</a></h3> 
 {% for presentation in presentations %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">

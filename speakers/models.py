@@ -50,7 +50,7 @@ class Room(models.Model):
     name = models.CharField(max_length=70)
     # this is for the 'you are here' section on a map.
     # could be coordinates, but I think it'll be an image for now
-    here = models.ImageField(upload_to='here',blank=True,null=True)
+    here = models.ImageField(upload_to='img/locations',blank=True,null=True)
 
     def __unicode__(self):
         return self.name

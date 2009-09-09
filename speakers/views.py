@@ -163,6 +163,7 @@ def delete_abstract(request, abs_id):
     
 def show_presentation_schedule(request, day=None, cat=None, location=None, audience=None):
     extra = None
+    roomImage = None
     date = datetime(1970, 01, 01)
     if day:
         d = day.rsplit("-")
@@ -173,6 +174,7 @@ def show_presentation_schedule(request, day=None, cat=None, location=None, audie
     elif location:
         room = Room.objects.filter(id=location)[0]
         extra = room.name
+        roomImage = room.here
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).filter(location__id=location).order_by('start')
         template = 'show_presentation_room.html'
     elif cat:
@@ -192,7 +194,7 @@ def show_presentation_schedule(request, day=None, cat=None, location=None, audie
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
         template = 'show_all_presentations.html'
         
-    return render_to_response(template, {'day': date, 'presentations': presentations, 'extra': extra }, context_instance=RequestContext(request))
+    return render_to_response(template, {'day': date, 'presentations': presentations, 'extra': extra, 'roomImage': roomImage }, context_instance=RequestContext(request))
 
 def show_speakers(request, status='all'):
     group = Group.objects.get(name='Speaker')

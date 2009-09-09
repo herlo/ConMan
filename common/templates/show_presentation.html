@@ -21,10 +21,11 @@
 
 <p style="font-size: x-large;">{{ presentation.title }}
 {% if presentation.start %}
-<br /><font size="-1">Time: {{ presentation.start|date:"M d, g:i a" }}</font>
+<br /><font size="-1">Start: <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}/">{{ presentation.start|date:"M d, g:i a" }}</a></font>
+<br /><font size="-1">End: {{ presentation.end|date:"M d, g:i a" }}</font>
 {% endif %}
 {% if presentation.location.name %}
-<br /><font size="-1">Location: <a href="http://dl.utosc.com/08/misc/slcc-map2.png" target="__map">{{ presentation.location.name }}</a></font>
+<br /><font size="-1">Location: <a href="/presentation/location/{{ presentation.location.id }}" target="__map">{{ presentation.location.name }}</a> (<a href="/static/{{ presentation.location.here }}" class="thickbox" >map</a>)</font>
 {% endif %}
 {% if presentation.slides %}
 <br /><font size="-1"><a href="/static/{{ presentation.slides }}">Presentation Download(s)</a></font>

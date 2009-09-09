@@ -32,10 +32,13 @@ $(document).ready(function(){
 {% if presentations %}
 <h3>Presentations</h3>
 {% for pres in presentations %}
-<b><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></b><br />
-<p><font size="-1"><a href="/static/{{ pres.slides }}" target="__new">Presentation Download(s)</a>
-<br />Time: {{ pres.start|date:"M d, g:i a" }}</font></p>
-<br />
+<p><b><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></b><br />
+Time: {{ pres.start|date:"M d, g:i a" }}</font>
+	{% if pres.slides %}
+	<br /><br />
+	<font size="-1"><a href="/static/{{ pres.slides }}" target="__new">Presentation Download(s)</a></p>
+	{% endif %}
+
 {% endfor %}
 {% endif %}
 

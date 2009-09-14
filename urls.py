@@ -33,7 +33,7 @@ can_vote = user_passes_test(lambda u: u.has_perm('voting.add_vote'), login_url='
 
 urlpatterns = patterns('',
     (r'^admin/speakers/presentation/voting-results/$', 'speakers.views.voting_results'),
-    (r'^admin/speakers/show/(?P<is_approved>\w+)?/?$', 'speakers.views.show_speakers_admin'),
+    (r'^admin/speakers/show/(?P<status>\w+)?/?$', 'speakers.views.show_speakers_admin'),
 #    (r'^admin/speakers/mass_email/$', 'common.views.mass_email', {'users': User.objects.all() }),
     (r'^admin/(.*)', admin.site.root),
 

@@ -317,14 +317,14 @@ def voting_results(request):
             context_instance=RequestContext(request))
 
 @user_passes_test(lambda u: u.is_staff)
-def show_speakers_admin(request, is_approved=None):
+def show_speakers_admin(request, status=None):
     """Display a list of users who are in the speakers group"""
 
     users = User.objects.all()
     spkr_list = list()
 
-    if is_approved:
-        status = Status.objects.get(name='Approved')
+    if status:
+        status = Status.objects.get(name=status)
         for user in users:
             abstracts = Presentation.objects.filter(presenter=user.get_profile()).filter(status=status)
             if abstracts:

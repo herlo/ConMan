@@ -330,6 +330,7 @@ def show_speakers_admin(request, status=None):
             if abstracts:
                 spkr_list.append(user)
     else:
+        status = "All"
         for user in users:
             spkr_list.append(user)
 
@@ -345,7 +346,7 @@ def show_speakers_admin(request, status=None):
 
     return render_to_response(
             'admin/speakers/show_speakers.html', 
-            {'object_list': spkr_list, 'description': "Speaker Name"  },
+            {'object_list': spkr_list, 'description': "Speaker Name", 'status': status },
             context_instance=RequestContext(request))
 
 

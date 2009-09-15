@@ -19,7 +19,7 @@
     </style>
 {% endblock %}
 
-{% block title %}Speakers List{% endblock %}
+{% block title %}{{ status }} Speaker Email{% endblock %}
 {% block breadcrumbs %}
 <div class="breadcrumbs">
     <a href="../../../">Home</a> ›
@@ -28,7 +28,7 @@
 
 {% block content %}
 <div id="content-main">
-    <h1>Potential Speaker Email</h1>
+	<h1>{{ status }} Speaker Email</h1>
 
 <form action="." method="post">
 	Subject: <input type="text" name="subject"></input><br />

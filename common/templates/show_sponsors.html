@@ -18,18 +18,28 @@ $(document).ready(function(){
   <li><a href='http://files.getdropbox.com/u/149379/docs/utosc2009prospectus.pdf' target='_new'>UTOSC 2009 Prospectus</a></li>
   <li><a href='http://files.getdropbox.com/u/149379/docs/utosc2009sponsorships.pdf' target='_new'>UTOSC 2009 Sponsorships</a></li>
 </ul>
-{% for sponsor in sponsors %}
+
 <div id="showsponsors">
-	{% ifchanged sponsor.level %}
-        <h2>{{ sponsor.level }}</h2>
-	{% endifchanged %}
-    <div id="sponsorimg" id="sponsor{{ sponsor.level|lower }}">
-       <a href="{{ sponsor.url }}" target="_new"><img border="0" src="/static/{{ sponsor.lg_logo }}" alt="{{ sponsor.company }}" style="float: left; padding: 5px;"/></a>
-	</div>
-	<div id="sponsortext">
-       <span>{{ sponsor.about }}</span>
+    {% for sponsor in sponsors %}
+
+    <div class="sponsor" style="clear: both; vertical-align: top;">
+
+        {% ifchanged sponsor.level %}
+        <h2 style="font-size: 22px;">{{ sponsor.level }}</h2>
+        {% endifchanged %}
+
+        <div id="sponsorimg" id="sponsor{{ sponsor.level|lower }}">
+            <a href="{{ sponsor.url }}" target="_new">
+                <img border="0" src="/static/{{ sponsor.lg_logo }}" alt="{{ sponsor.company }}" style="float: left; padding: 5px;"/>
+            </a>
+        </div>
+
+        <div id="sponsortext">
+            <span>{{ sponsor.about }}</span>
+        </div>
     </div>
-</div>
 {% endfor %}
+</div>
+
 {% endblock primaryContent%}
 

@@ -1,6 +1,6 @@
 {% load presenter_parser %}
 by {{obj.id|get_presenters|safe }}<br />
-category: <a href="/speaker/categories/">{{ obj.cat }}</a><br />
-location: <a href="/speaker/categories/">{{ obj.location }}</a><br />
+category: <a href="http://{{ site }}/speaker/categories/">{{ obj.cat }}</a><br />
+location: <a href="http://{{ site }}/presentation/location/{{ obj.location.id }}">{{ obj.location }}</a><br />
 Start: {{ obj.start }} | End: {{ obj.end }}
 {{ obj.short_abstract|linebreaks }}

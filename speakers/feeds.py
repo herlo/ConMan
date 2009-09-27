@@ -19,7 +19,8 @@ class ApprovedPresentations(Feed):
         events = Category.objects.get(name='Event')
         workshops = Category.objects.get(name='Try-It Lab Workshop')
         bofs = Category.objects.get(name='Birds of a Feather (BoF)')
-        return Presentation.objects.filter(status=status).exclude(cat=events).exclude(cat=workshops).exclude(cat=bofs).order_by('start')
+        lugs = Category.objects.get(name='Local User Group')
+        return Presentation.objects.filter(status=status).exclude(cat=events).exclude(cat=workshops).exclude(cat=bofs).exclude(cat=lugs).order_by('start')
 
 class BoFList(Feed):
     title = "UTOSC 2009 Birds of a Feather Sessions"
@@ -31,8 +32,18 @@ class BoFList(Feed):
         bofs = Category.objects.get(name='Birds of a Feather (BoF)')
         return Presentation.objects.filter(status=status).filter(cat=bofs).order_by('start')
 
+class LUGList(Feed):
+    title = "UTOSC 2009 Local User Group Meetings"
+    link = "/presentation/cat/19/"
+    description = "BoFs for UTOSC 2009"
+
+    def items(self):
+        status = Status.objects.get(name='Approved')
+        bofs = Category.objects.get(name='Local User Group')
+        return Presentation.objects.filter(status=status).filter(cat=bofs).order_by('start')
+
 class EventList(Feed):
-    title = "UTOSC 2009 Birds of a Feather Sessions"
+    title = "UTOSC 2009 Events"
     link = "/presentation/cat/16/"
     description = "Events for UTOSC 2009"
 

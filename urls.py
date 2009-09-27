@@ -6,7 +6,7 @@ from speakers.models import Presentation
 from django.contrib.auth.models import User,Group
 from django.contrib import admin
 from django.conf.urls.defaults import *
-from speakers.feeds import LatestEntries,ApprovedPresentations,BoFList,EventList,WorkshopList,KeynoteList
+from speakers.feeds import LatestEntries,ApprovedPresentations,LUGList,BoFList,EventList,WorkshopList,KeynoteList
 from sponsors.feeds import SponsorList
 
 #from common import admin
@@ -16,6 +16,7 @@ feeds = {
     'approved': ApprovedPresentations,
     'bofs': BoFList,
     'events': EventList,
+    'lugs': LUGList,
     'workshops': WorkshopList,
     'keynotes': KeynoteList,
     'sponsors': SponsorList,

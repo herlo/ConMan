@@ -14,13 +14,19 @@ def get_presenters(pres_id):
     print "presenters: " + str(presenters)
 
     pres_list = list()
+    count = 0
+    spkr_count = 0
     for p in presenters:
         full_name = p.user.get_full_name()
         pres_list.append({"uid": str(p.user.id), "name": full_name})
+        spkr_count += 1
 
     ret_txt = ""
     for pd in pres_list:
+        count += 1
         ret_txt += "<a href=\"/speaker/" + pd['uid'] + "/\">" + pd['name'] + "</a>"
+        if spkr_count > count:
+            ret_txt += ", "
 
     return ret_txt
 

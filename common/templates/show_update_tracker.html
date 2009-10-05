@@ -10,10 +10,11 @@
 
 var sinceId = 0;
 
-// 30 sec =  30000
-var slideInterval = setInterval("doSomething()", 60000)
-// 1 min = 60000
+// 1 min =  60000
+var slideInterval = setInterval("doSomething()", 30000)
+// 30 sec  = 30000
 setInterval("getTweets()", 30000)
+setInterval("getRSS()", 30000)
 
 $('document').ready(function(){
 
@@ -24,8 +25,23 @@ $('document').ready(function(){
 	$('#tweetHider').css('height', windowHeight - 63 +'px');
 	
 	getTweets();
+	getRSS();
 	 
 });
+
+function getRSS(){
+	$.ajax({
+		   type: "POST",
+		   url: "http://localhost:8000/updates/rss/",
+		   data: '',
+		   dataType: '',
+		   success: function(rss){
+
+				$('#schedulePost').html(rss);
+
+		   }
+	 });
+}
 
 function doSomething(){
 	$('#tweetHider').slideToggle('slow');
@@ -162,11 +178,11 @@ body{
 
 <div id="container">
 	<div id="tweets">
-		<div id="tweetHeader">@utsoc | #utosc2009 | #utosc</div>
+		<div id="tweetHeader">@utosc |  #utosc | #utosc2009</div>
 		
 		<div id="tweetHider">
 			<div class="tweet">
-				<img src="http://a3.twimg.com/profile_images/396384595/xbox_avatarpic_large.png" alt="avatar" />
+				<img src="http://a3.twimg.com/profile_images/396384595/xbox_avatarpic_large_normal.png" alt="avatar" />
 				<span class="tweetText" >This is a tweet!</span>
 			</div>
 		</div>
@@ -174,9 +190,7 @@ body{
 	<div id="schedule">
 		<div id="scheduleHeader">Coming up!</div>
 		<div id="scheduleHider">
-			<ul>
-				<li>Something to show</li>
-			</ul>
+			<div id="schedulePost"></div>
 		</div>
 	</div>
 </div>

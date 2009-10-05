@@ -66,6 +66,7 @@ urlpatterns = patterns('',
     (r'^sponsor/list/$', 'sponsors.views.index'),
 # updates
     (r'^updates/twitter/$', 'updates.views.twitter'),
+    (r'^updates/rss/$', 'updates.views.updateRSS'),
     (r'^updates/history/$', 'updates.views.history'),
     (r'^lug/list/$', 'lugs.views.index'),
 # volunteer stuff

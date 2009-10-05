@@ -3,6 +3,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.models import User
 import urllib
+import simplejson as json
+import time
+import sys
 
 def twitter(request):
     
@@ -10,7 +13,11 @@ def twitter(request):
         return render_to_response('show_update_tracker.html', {}, context_instance=RequestContext(request))
 
     if request.method == 'POST':
-        tweets = urllib.urlopen('http://search.twitter.com/search.json?q=utosc').read()
+
+        url = 'http://search.twitter.com/search.json?q=utosc%20OR%20%23utosc2009%20OR%20%23utosc&since_id='+ request.POST['since']
+        
+        tweets = urllib.urlopen(url).read()
+        
         return render_to_response('show_twitter_json.html', {'tweets':tweets}, context_instance=RequestContext(request))
 
 def history(request):

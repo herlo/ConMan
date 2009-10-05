@@ -18,10 +18,10 @@ setInterval("getTweets()", 30000)
 $('document').ready(function(){
 
 	windowHeight = window.innerHeight
-	$('#container').css('height', windowHeight - 20 +'px');
-	$('#container').css('max-height', windowHeight - 20 +'px');
-	$('#tweetHider').css('max-height', windowHeight - 83 +'px');
-	$('#tweetHider').css('height', windowHeight - 83 +'px');
+	$('#container').css('height', windowHeight +'px');
+	$('#container').css('max-height', windowHeight +'px');
+	$('#tweetHider').css('max-height', windowHeight - 63 +'px');
+	$('#tweetHider').css('height', windowHeight - 63 +'px');
 	
 	getTweets();
 	 
@@ -63,19 +63,20 @@ $.ajax({
 		   	tweetArray.sort();
 		   	tweetArray.reverse();
 
-	   		var startTweet = $('#tweetHider .tweet :first');
+	   		var startTweet = $('#tweetHider :first');
+
 	   		for ( tweet in tweetArray ){
 				tweetImage = tweetArray[tweet]['profile_image_url'];
 				tweetMsg = tweetArray[tweet]['text'];
 				tweetDate = tweetArray[tweet]['date'];
 				tweetID = tweetArray[tweet]['id'];
-	   			var tweetDiv = '<div style="display: none; clear: both;" class="tweet"><img src="'+ tweetImage +'" alt="avatar" /><div>'+ tweetMsg +'</div></div>'
-				$('#tweetHider .tweet :first').before(tweetDiv);
+	   			var tweetDiv = '<div class="tweet" style="display: none; clear: both;"><img src="'+ tweetImage +'" /><span class="tweetText" >'+ tweetMsg +'</span></div>';
+	   			$('#tweetHider :first').before(tweetDiv);
 			}
 
 	   		tweetArray = new Array();
 			
-   			if(startTweet != $('#tweetHider .tweet :first')){
+   			if(startTweet != $('#tweetHider :first')){
 		   		var newTweet = startTweet.prev();
 		   		slideTweet(newTweet);
 	   		}
@@ -88,7 +89,7 @@ $.ajax({
 
 function slideTweet(tweet){
 	tweet.slideDown('slow', function(){
-		if(tweet != $('#tweetHider .tweet :first')){
+		if(tweet != $('#tweetHider :first')){
 			slideTweet(tweet.prev());
 		}
 	});
@@ -105,8 +106,7 @@ body{
 }
 
 #container{
-	width: 75%;
-	margin: 10px auto;
+	margin: 0px;
 	border: 1px solid #000;
 	border-collapse: collapse;
 }
@@ -124,13 +124,16 @@ body{
 }
 
 .tweet {
+	border-bottom: 1px solid #000;
 	clear: both;
-	margin: 20px;
+	margin-bottom: 20px;
 }
 
 .tweet img {
-	margin-right: 10px;
-	float: left;
+}
+
+.tweetText {
+	margin-left: 10px;
 }
 
 #schedule{
@@ -149,7 +152,8 @@ body{
 #scheduleHider {
 	display: none;
 	border-collapse: collapse;
-}
+}				
+
 
 </style>
 
@@ -161,7 +165,10 @@ body{
 		<div id="tweetHeader">@utsoc | #utosc2009 | #utosc</div>
 		
 		<div id="tweetHider">
-			<div class="tweet"><img src="http://a3.twimg.com/profile_images/396384595/xbox_avatarpic_large_bigger.png" alt="avatar" /><span>This is a tweet!</span></div>
+			<div class="tweet">
+				<img src="http://a3.twimg.com/profile_images/396384595/xbox_avatarpic_large.png" alt="avatar" />
+				<span class="tweetText" >This is a tweet!</span>
+			</div>
 		</div>
 	</div>
 	<div id="schedule">

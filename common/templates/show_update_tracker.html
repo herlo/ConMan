@@ -8,13 +8,22 @@
 
 <script type="text/javascript">
 
+// Tell the script how often to get updates
+var howOftenToFetchTweets = 30000;
+var howOftenToFetchBlogs = 30000;
+
+// Tell the script how long to show each screen 
+var howLongToShowTweets = 20000;
+var howLongToShowBlogs = 20000;
+
 var sinceId = 0;
 
 // 1 min =  60000
-var slideInterval = setInterval("doSomething()", 30000)
+var slideInterval = setInterval("doSomething()", howLongToShowTweets)
+
 // 30 sec  = 30000
-setInterval("getTweets()", 30000)
-setInterval("getRSS()", 30000)
+setInterval("getTweets()", howOftenToFetchTweets)
+setInterval("getRSS()", howOftenToFetchBlogs)
 
 $('document').ready(function(){
 
@@ -32,7 +41,7 @@ $('document').ready(function(){
 function getRSS(){
 	$.ajax({
 		   type: "POST",
-		   url: "http://localhost:8000/updates/rss/",
+		   url: "/updates/rss/",
 		   data: '',
 		   dataType: '',
 		   success: function(rss){
@@ -48,9 +57,9 @@ function doSomething(){
 	$('#scheduleHider').slideToggle('slow', function(){
 		clearInterval(slideInterval); 
 		if( $('#scheduleHider').is(':visible') ){
-			slideInterval = setInterval('doSomething()', 10000);
+			slideInterval = setInterval('doSomething()', howLongToShowBlogs);
 		} else {
-			slideInterval = setInterval('doSomething()', 30000);
+			slideInterval = setInterval('doSomething()', howLongToShowTweets);
 		}
 	 });
 }
@@ -60,7 +69,7 @@ var tempTweetId
 function getTweets(){
 $.ajax({
 	   type: "POST",
-	   url: "http://localhost:8000/updates/twitter/",
+	   url: "/updates/twitter/",
 	   data: "since="+ sinceId,
 	   dataType: 'json',
 	   success: function(tweets){

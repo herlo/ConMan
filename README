@@ -1,3 +1,34 @@
 ConMan: Conference Manager
 
-Testing the CIA.vc bot
+About the Project
+-------------------------------
+
+The ConMan project was started by herlo <Clint Savage> to help run the Utah
+Open Source Conference. 
+
+The project is now maintained on GitHub but has been housed in Google Code as
+well. The GitHub is the current version of the ConMan project.
+
+Current Development
+-------------------------------
+
+Having just completed the 2009 season of the UTOSC development is underway with
+ConMan. We are currently in the planning and moving phases of the project but
+will soon begin updating and creating new code to make the project more stable
+and to bring the project inline with our goals for this coming year's
+conference.
+
+License 
+-------------------------------
+
+[INSERT HERE]
+
+
+Contact
+-------------------------------
+
+Current development is being maintained by herlo <clint@utos.org> and utahcon
+<utahcon@utos.org>, to communicate with them please email or join us in IRC on
+Freenode #utos-dev.
+
+

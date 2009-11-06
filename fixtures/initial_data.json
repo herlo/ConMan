@@ -975,19 +975,19 @@
     "pk": 1, 
     "model": "auth.user", 
     "fields": {
-      "username": "conman", 
+      "username": "event", 
       "first_name": "Confrence", 
       "last_name": "Manager", 
       "is_active": 1, 
       "is_superuser": 1, 
       "is_staff": 1, 
-      "last_login": "2009-07-21 21:02:16", 
+      "last_login": "2009-11-05 21:37:47", 
       "groups": [
-        2
+        1
       ], 
       "user_permissions": [], 
-      "password": "sha1$c19a3$575779394cfbcb2ed67ca9342c02dad3bb1c4af4", 
-      "email": "conman@utos.org", 
+      "password": "sha1$4e05e$f006f3f966fe3a8d8ddb604a3ac630ee22d3b8f0", 
+      "email": "event@eventrevolution.com", 
       "date_joined": "2009-06-22 22:19:21"
     }
   }, 
@@ -1258,11 +1258,45 @@
     }
   }, 
   {
+    "pk": "eb772356d8eb48a6ece8760941b06ae0", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2009-11-19 21:37:47", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigEBdS42ZjdmNjQwYTlhNzRiZGI4MGVl\nY2IzN2Q3ZTNjOGI2Ng==\n"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "sites.site", 
     "fields": {
       "domain": "localhost:8080", 
       "name": "Utah Open Source Conference 2009"
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2009-11-05 21:39:09", 
+      "object_repr": "event", 
+      "object_id": "1", 
+      "change_message": "Changed email and groups.", 
+      "user": 1, 
+      "content_type": 4
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2009-11-05 21:38:29", 
+      "object_repr": "event", 
+      "object_id": "1", 
+      "change_message": "Changed username.", 
+      "user": 1, 
+      "content_type": 4
     }
   }, 
   {
@@ -2780,6 +2814,15 @@
       "applied": "2009-07-22 03:01:17", 
       "app_name": "updates", 
       "migration": "0001_initial"
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "south.migrationhistory", 
+    "fields": {
+      "applied": "2009-11-06 04:35:36", 
+      "app_name": "updates", 
+      "migration": "0002_add_link_and_social_info"
     }
   }
 ]

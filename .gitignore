@@ -1,3 +1,7 @@
 *.pyc
 .svn
 .*sw*
+.*~
+*~
+.DS_Store
+local_settings.py

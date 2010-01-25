@@ -104,9 +104,9 @@ INSTALLED_APPS = (
     # third-party apps
 
     # svn co -r446 http://sorl-thumbnail.googlecode.com/svn/trunk/sorl (already in an external checkout)
-    'sorl.thumbnail', 
+    'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
-    'south', 
+    'south',
 )
 
 ###########NEW CHANGE TO ADD###########
@@ -152,15 +152,15 @@ ACCOUNT_ACTIVATION_DAYS = 3
 
 PRESENTATION_DELETED='The presentation has been deleted.'
 
-# social media is pretty important these days.  
+# social media is pretty important these days.
 # including settings for twitter for now
 # facebook, identi.ca and others to come.
-# this depends on the the python-twitter 
+# this depends on the the python-twitter
 # set of libraries.  They can be checked out at
 # http://python-twitter.googlecode.com/svn/trunk/
 
 # PING FM
-# THIS IS THE REAL ONE!!! 
+# THIS IS THE REAL ONE!!!
 #PINGFM_APP_KEY = 'c982322d92d0a5b59a5db8dcb2373c76'
 #PINGFM_USER_KEY = '6ac23d3f50955af53d1a0238fad4727a-1234110993'
 
@@ -171,7 +171,7 @@ PINGFM_USER_KEY = 'eb029e56b271f687fe0bd853c7d04cf3-1251257314'
 PINGFM_ENABLED = True
 PINGFM = 'http://api.ping.fm/v1/'
 
-# ALL_CAN_VOTE 
+# ALL_CAN_VOTE
 # This allows anyone who signs up to become part of a special group
 # called Voter (which must be in the Auth -> Groups in the admin with
 ALL_CAN_VOTE = True
@@ -184,3 +184,9 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 10
 
 # Google API Key
 GOOGLE_API_KEY = 'ABQIAAAAijiXc0gXuV9OSToAhQ6vfxTSDpTFJAVlOsTRzC7LuycYmlY3rxQ8Ytzr1XMe_od7B3qvBPb0JFGKtQ'
+
+# load local settings
+try:
+    from local_settings import *
+except ImportError:
+    print u'File local_settings.py is not found. Continuing with production settings.'

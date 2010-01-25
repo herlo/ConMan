@@ -3,7 +3,7 @@
 {% block title %}Presentations for room #{{ extra }}{% endblock title%}
 
 {% block additionalCSS %}
-<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+<link href="/css/show_presentations.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block leftMenu %}
@@ -37,7 +37,7 @@ $(document).ready(function(){
 	});
 </script>
 
-<h3>Presentations for room #<a href="/static/{{ roomImage }}" class="thickbox">{{ extra }}</a></h3> 
+<h3>Presentations for room #<a href="/{{ roomImage }}" class="thickbox">{{ extra }}</a></h3>
 {% for presentation in presentations %}
     <div class="presentation {% if forloop.first %}first{% endif %}">
         <div class="title">
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
         {% if presentation.short_abstract %}
             <div class="short_abstract">
-            {{ presentation.short_abstract|truncatewords:50 }} 
+            {{ presentation.short_abstract|truncatewords:50 }}
             </div>
         {% endif %}
         <div style="width:100%; clear:right;">
@@ -90,7 +90,7 @@ $(document).ready(function(){
             {% endfor %}
             </ul>
         </div>
-        <!-- not used this year 
+        <!-- not used this year
         Description: {{ presentation.description }} <br />
         Long: {{ presentation.long_abstract }} <br />
         Slides: {{ presentation.slides }} <br />

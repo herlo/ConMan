@@ -9,10 +9,10 @@
 	<li class="lugList">
         <a href='{{ lug.url }}' target='_new'>
             {% if lug.sm_logo %}
-            <img title="{{ lug.name }}" 
-                alt="{{ lug.name }}" 
-                border='0' 
-                src='/static/{{ lug.sm_logo}}' />{% else %}{{ lug.name }}{% endif %}
+            <img title="{{ lug.name }}"
+                alt="{{ lug.name }}"
+                border='0'
+                src='/{{ lug.sm_logo}}' />{% else %}{{ lug.name }}{% endif %}
         </a>
     </li>
     {% if forloop.last %}

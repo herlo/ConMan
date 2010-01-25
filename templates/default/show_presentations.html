@@ -4,7 +4,7 @@
 {% block title %}Current Presenters{% endblock title%}
 
 {% block additionalCSS %}
-<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+<link href="/css/show_presentations.css" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 
@@ -60,7 +60,7 @@ $(document).ready(function(){
 
         {% if presentation.short_abstract %}
             <div class="short_abstract">
-            {{ presentation.short_abstract|truncatewords:50 }} 
+            {{ presentation.short_abstract|truncatewords:50 }}
             </div>
         {% endif %}
         {% if presentation.start %}
@@ -70,7 +70,7 @@ $(document).ready(function(){
         {% endif %}
         {% if presentation.end %}
             <div class="end">
-            End: {{ presentation.end }} 
+            End: {{ presentation.end }}
             </div>
         {% endif %}
         {% if presentation.location %}
@@ -93,7 +93,7 @@ $(document).ready(function(){
             {% endfor %}
             </ul>
         </div>
-        <!-- not used this year 
+        <!-- not used this year
         Description: {{ presentation.description }} <br />
         Long: {{ presentation.long_abstract }} <br />
         Slides: {{ presentation.slides }} <br />

@@ -25,20 +25,20 @@
 <br /><font size="-1">End: {{ presentation.end|date:"M d, g:i a" }}</font>
 {% endif %}
 {% if presentation.location.name %}
-<br /><font size="-1">Location: <a href="/presentation/location/{{ presentation.location.id }}">{{ presentation.location.name }}</a> 
+<br /><font size="-1">Location: <a href="/presentation/location/{{ presentation.location.id }}">{{ presentation.location.name }}</a>
 {% if presentation.location.here %}
-(<a href="/static/{{ presentation.location.here }}" class="thickbox" >map</a>)
+(<a href="/{{ presentation.location.here }}" class="thickbox" >map</a>)
 {% endif %}
 </font>
 {% endif %}
 {% if presentation.slides %}
-<br /><font size="-1"><a href="/static/{{ presentation.slides }}">Presentation Download(s)</a></font>
+<br /><font size="-1"><a href="/{{ presentation.slides }}">Presentation Download(s)</a></font>
 {% endif %}
 
 </p>
 
 <p>{{ presentation.short_abstract|linebreaks }}</p>
-<div id='speaker'> 
+<div id='speaker'>
 	<h3>About the presenter{% if multiple %}s{% endif %}
 {% for s in spkr %}
     <h5 style="margin-left: 25px; font-size: x-small">

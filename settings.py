@@ -39,12 +39,12 @@ USE_I18N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = 'static/'
+MEDIA_ROOT = 'public/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/static/'
+MEDIA_URL = ''
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -139,7 +139,7 @@ EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = '[conman-papers] '
 SERVER_EMAIL = 'admin@utos.org'
 
-FONT_PATH = "static/fonts/DejaVuLGCSerifCondensed.ttf"
+FONT_PATH = "public/fonts/DejaVuLGCSerifCondensed.ttf"
 #FONT_PATH="arial.pil"
 FONT_SIZE = 14
 # Timeout in minutes

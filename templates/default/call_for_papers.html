@@ -3,7 +3,7 @@
 {% block title %}Call for Papers{% endblock title%}
 
 {% block additionalCSS %}
-<link href="/static/css/call_for_papers.css" rel="stylesheet" type="text/css" />
+<link href="/css/call_for_papers.css" rel="stylesheet" type="text/css" />
 {% endblock additionalCSS %}
 
 {% block additionalJS %}
@@ -32,7 +32,7 @@ function show_presenters(json) {
     var currentPresenters = $("#id_presenter").val();
     var showPresenters =  false;
     $("#presenter_search").fadeOut('normal');
-    $("#presenter_results ul").html(''); 
+    $("#presenter_results ul").html('');
     if(json.length != 0){
         for (var i = 0; i < json.length; i++) {
            var old = $("#presenter_search ul").html();
@@ -44,9 +44,9 @@ function show_presenters(json) {
            }
             if( presenterExists == false ){
                 showPresenters = true;
-                $("#presenter_results ul").append("<li><a href=\"javascript:void(0);\" onclick=\"add_presenter(" + json[i]['id'] + ", '" + json[i]['name'] + "');\">" + json[i]['name'] + "</a></li>"); 
+                $("#presenter_results ul").append("<li><a href=\"javascript:void(0);\" onclick=\"add_presenter(" + json[i]['id'] + ", '" + json[i]['name'] + "');\">" + json[i]['name'] + "</a></li>");
             } else {
-                 $("#presenter_results ul").append("<li>" + json[i]['name'] + " (already added) </li>"); 
+                 $("#presenter_results ul").append("<li>" + json[i]['name'] + " (already added) </li>");
             }
         }
     } else {
@@ -77,7 +77,7 @@ function centerSpeakerSearch(vertCenter, horizCenter){
 
     var wizardHeight = $("#presenter_search").height();
     var wizardWidth = $("#presenter_search").width();
- 
+
     if(vertCenter == undefined){
         vertCenter = ( windowHeight / 2) + document.documentElement.scrollTop;
     }
@@ -85,7 +85,7 @@ function centerSpeakerSearch(vertCenter, horizCenter){
     if(horizCenter == undefined){
         horizCenter = (windowWidth / 2);
     }
-                                                                                                                                                  
+
     $('#presenter_search').css({'position':'absolute','top':vertCenter,'left':horizCenter - (wizardWidth / 2)});
     $('#presenter_results').css({'position':'absolute','top':vertCenter,'left':horizCenter - (wizardWidth / 2)});
     $('#blackout').css({'width':windowWidth,'height': windowHeight });
@@ -106,7 +106,7 @@ function centerSpeakerSearch(vertCenter, horizCenter){
 <div id="presenter_results" >
     <p>To add a user, click their name:</p>
     <ul>
-        
+
     </ul>
     <p>When you are done, you can search for more names, or close this dialog.</p>
     <input class="rightButton" type="button" value="Return to Search" onclick="load_presenter_search();" />
@@ -121,10 +121,10 @@ function centerSpeakerSearch(vertCenter, horizCenter){
 
 <div id='error_text'>{{ error }}</div>
 <div id='deleted_text'>{{ deleted }}</div>
-	
+
 	<div id='form'>
 		<form method="post" action="/speaker/papers/{% if abs_id %}{{ abs_id }}/{% endif %}" enctype="multipart/form-data" >
-			<table> 
+			<table>
 					<tr>
  			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
 				  </tr>
@@ -154,12 +154,12 @@ function centerSpeakerSearch(vertCenter, horizCenter){
 										{{user.first_name}} {{user.last_name}}
 									{% else %}
 										{{user.username}}
-									{% endif %}		
+									{% endif %}
 								</option>
 							</select>
 								<br /><a href="javascript:void(0);" onclick="load_presenter_search();">Add Presenters</a>
 						</td>
-						<td valign="middle">Choose the presenter(s).<br /><br />Other presenters may be added 
+						<td valign="middle">Choose the presenter(s).<br /><br />Other presenters may be added
 							by choosing the 'Add Presenters' link.</td>
 					</tr>
 			</table>

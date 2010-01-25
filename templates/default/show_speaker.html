@@ -36,7 +36,7 @@ $(document).ready(function(){
 Time: {{ pres.start|date:"M d, g:i a" }}</font>
 	{% if pres.slides %}
 	<br /><br />
-	<font size="-1"><a href="/static/{{ pres.slides }}" target="__new">Presentation Download(s)</a></p>
+	<font size="-1"><a href="/{{ pres.slides }}" target="__new">Presentation Download(s)</a></p>
 	{% endif %}
 
 {% endfor %}

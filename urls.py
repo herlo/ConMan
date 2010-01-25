@@ -8,6 +8,7 @@ from django.contrib import admin
 from django.conf.urls.defaults import *
 from speakers.feeds import LatestEntries,ApprovedPresentations,LUGList,BoFList,EventList,WorkshopList,KeynoteList
 from sponsors.feeds import SponsorList
+from django.conf import settings
 
 #from common import admin
 
@@ -73,6 +74,16 @@ urlpatterns = patterns('',
     (r'^volunteer/$', 'volunteers.views.index'),
     (r'^volunteer/list/$', 'volunteers.views.list'),
     (r'^volunteer/(?P<vol_id>\d+)?/?$', 'volunteers.views.manage'),
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'static'}),
     (r'^$', 'common.views.index'),
 )
+
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        # Serve Theme Statics
+        #Images
+        (r'^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/img'}),
+        #CSS
+        (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/css'}),
+        #JavaScript
+        (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/js'}),
+    )

@@ -5,7 +5,7 @@ MODIFIED:
 -----------------------------------------------------*/
 
 /*BODY ELEMENTS*/
-body {background: url(/static/img/repeatSM.gif) repeat top left; color: #ffffff; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; line-height: 18px; font-weight: normal; }
+body {background: url(/img/repeatSM.gif) repeat top left; color: #ffffff; margin: 0px; font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; line-height: 18px; font-weight: normal; }
 img { border: none;}
 
 .bigpicture {width: 900px; margin-left:auto; margin-right:auto; margin-top:20px; margin-bottom: 10px;}
@@ -26,8 +26,8 @@ img { border: none;}
 .bigbluebox .bbbright { float: right; width: 250px; }
 .clearboth {clear:both;}
 .contentbox {width:900px; margin-top:5px;}
-.leftcontent {width:130px; margin-right:5px; float:left; min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; }
-.rightcontent {width:160px; float:right; text-align:center; min-height:400px; background: url('/static/img/gradient.png') no-repeat top left; }
+.leftcontent {width:130px; margin-right:5px; float:left; min-height:400px; background: url('/img/gradient.png') no-repeat top left; }
+.rightcontent {width:160px; float:right; text-align:center; min-height:400px; background: url('/img/gradient.png') no-repeat top left; }
 .centercontent {width:600px; margin-right:5px; float:right; background-color:#EEEEEE; color: #5181b3; }
 .centercontent h1 { text-align: center;}
 .centercontent h2 { text-align: center;}
@@ -45,8 +45,8 @@ img { border: none;}
 .error { color: #aa0000; font-weight: bold; }
 .footer { text-align: center; color: #000000; min-height: 30px; border-top: 5px solid #000000;background-color:#CCC;clear:both; }
 
-#wrapper-left { background-image: url('/static/img/130px.png'); background-repeat: repeat-y; }
-#wrapper-right { background-image: url('/static/img/160px.png'); background-repeat: repeat-y; background-position: right; }
+#wrapper-left { background-image: url('/img/130px.png'); background-repeat: repeat-y; }
+#wrapper-right { background-image: url('/img/160px.png'); background-repeat: repeat-y; background-position: right; }
 
 #sponsorimg { margin: 10px; display: block; float: left; width: 255px; }
 #sponsortext { margin: 10px; display: block; float: right; width: 300px; }

@@ -12,16 +12,16 @@ $(document).ready(function(){
 	});
 </script>
 
-{% if feed %}<div style="float:right; margin-top: 5px;"><a style="text-decoration: none;" href="/feeds/speaker/latest/"><img border="0" src="/static/img/rss.png" /> Abstracts RSS</a>&nbsp;&nbsp;&nbsp;</div>{% endif %}
+{% if feed %}<div style="float:right; margin-top: 5px;"><a style="text-decoration: none;" href="/feeds/speaker/latest/"><img border="0" src="/img/rss.png" /> Abstracts RSS</a>&nbsp;&nbsp;&nbsp;</div>{% endif %}
 <h2>Abstracts</h2>
 <p>Below is a list of submitted abstracts for UTOSC 2009.  Soon, we'll enable voting on these presentations.  Keep watching for updates here.</a>.</p>
 		{% for spkr in speakers %}
-	<div id='speaker'> 
+	<div id='speaker'>
 		    <p><b><a href='/speaker/{{ spkr.id }}/'>{{ spkr.name }}</a> {% if spkr.company %}<font size='-3'><i>({{ spkr.company }})</i></font>{% endif %}</b>
 			<br />
 				{% for pres in spkr.presentations %}
-					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>{% if pres.start %}<font size="-1"> - Presentation begins at {{pres.start|date:"M d, g:i"}}</font>{% endif %}{% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %} <font size='-1'>&nbsp; ({{ pres.status }})</font> {% endif %} 
-    
+					&nbsp;&nbsp;<a href='/presentation/{{ pres.id }}/'><font size='-1'>{{ pres.title }}</font></a>{% if pres.start %}<font size="-1"> - Presentation begins at {{pres.start|date:"M d, g:i"}}</font>{% endif %}{% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %} <font size='-1'>&nbsp; ({{ pres.status }})</font> {% endif %}
+
 				{% if not pres.last %}
 				<br />
 				{% endif %}

@@ -135,30 +135,30 @@
     }
   }, 
   {
-    "pk": 37, 
+    "pk": 40, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_category", 
-      "name": "Can add category", 
-      "content_type": 13
+      "codename": "add_room", 
+      "name": "Can add room", 
+      "content_type": 14
     }
   }, 
   {
-    "pk": 38, 
+    "pk": 41, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_category", 
-      "name": "Can change category", 
-      "content_type": 13
+      "codename": "change_room", 
+      "name": "Can change room", 
+      "content_type": 14
     }
   }, 
   {
-    "pk": 39, 
+    "pk": 42, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_category", 
-      "name": "Can delete category", 
-      "content_type": 13
+      "codename": "delete_room", 
+      "name": "Can delete room", 
+      "content_type": 14
     }
   }, 
   {
@@ -297,12 +297,39 @@
     }
   }, 
   {
+    "pk": 37, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_category", 
+      "name": "Can add category", 
+      "content_type": 13
+    }
+  }, 
+  {
     "pk": 34, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_registrationprofile", 
       "name": "Can add registration profile", 
       "content_type": 12
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_shirtsize", 
+      "name": "Can add shirt size", 
+      "content_type": 11
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_theme", 
+      "name": "Can add theme", 
+      "content_type": 13
     }
   }, 
   {
@@ -315,12 +342,48 @@
     }
   }, 
   {
+    "pk": 88, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_userprofile", 
+      "name": "Can add user profile", 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 38, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_category", 
+      "name": "Can change category", 
+      "content_type": 13
+    }
+  }, 
+  {
     "pk": 35, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_registrationprofile", 
       "name": "Can change registration profile", 
       "content_type": 12
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_shirtsize", 
+      "name": "Can change shirt size", 
+      "content_type": 11
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_theme", 
+      "name": "Can change theme", 
+      "content_type": 13
     }
   }, 
   {
@@ -333,6 +396,24 @@
     }
   }, 
   {
+    "pk": 89, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_userprofile", 
+      "name": "Can change user profile", 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 39, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_category", 
+      "name": "Can delete category", 
+      "content_type": 13
+    }
+  }, 
+  {
     "pk": 36, 
     "model": "auth.permission", 
     "fields": {
@@ -342,12 +423,39 @@
     }
   }, 
   {
+    "pk": 87, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_shirtsize", 
+      "name": "Can delete shirt size", 
+      "content_type": 11
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_theme", 
+      "name": "Can delete theme", 
+      "content_type": 13
+    }
+  }, 
+  {
     "pk": 33, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_userprofile", 
       "name": "Can delete user profile", 
       "content_type": 11
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_userprofile", 
+      "name": "Can delete user profile", 
+      "content_type": 12
     }
   }, 
   {
@@ -405,15 +513,6 @@
     }
   }, 
   {
-    "pk": 73, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_lug", 
-      "name": "Can add lug", 
-      "content_type": 24
-    }
-  }, 
-  {
     "pk": 76, 
     "model": "auth.permission", 
     "fields": {
@@ -423,12 +522,12 @@
     }
   }, 
   {
-    "pk": 74, 
+    "pk": 79, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_lug", 
-      "name": "Can change lug", 
-      "content_type": 24
+      "codename": "add_update", 
+      "name": "Can add update", 
+      "content_type": 26
     }
   }, 
   {
@@ -441,12 +540,12 @@
     }
   }, 
   {
-    "pk": 75, 
+    "pk": 80, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_lug", 
-      "name": "Can delete lug", 
-      "content_type": 24
+      "codename": "change_update", 
+      "name": "Can change update", 
+      "content_type": 26
     }
   }, 
   {
@@ -456,6 +555,15 @@
       "codename": "delete_update", 
       "name": "Can delete update", 
       "content_type": 25
+    }
+  }, 
+  {
+    "pk": 81, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_update", 
+      "name": "Can delete update", 
+      "content_type": 26
     }
   }, 
   {
@@ -558,201 +666,12 @@
     }
   }, 
   {
-    "pk": 40, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_room", 
-      "name": "Can add room", 
-      "content_type": 14
-    }
-  }, 
-  {
     "pk": 43, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_status", 
       "name": "Can add status", 
       "content_type": 15
-    }
-  }, 
-  {
-    "pk": 52, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_volunteerrole", 
-      "name": "Can add Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 47, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_audiencetype", 
-      "name": "Can change audience type", 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 50, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_presentation", 
-      "name": "Can change presentation", 
-      "content_type": 17
-    }
-  }, 
-  {
-    "pk": 41, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_room", 
-      "name": "Can change room", 
-      "content_type": 14
-    }
-  }, 
-  {
-    "pk": 44, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_status", 
-      "name": "Can change status", 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 53, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_volunteerrole", 
-      "name": "Can change Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 48, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_audiencetype", 
-      "name": "Can delete audience type", 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 51, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_presentation", 
-      "name": "Can delete presentation", 
-      "content_type": 17
-    }
-  }, 
-  {
-    "pk": 42, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_room", 
-      "name": "Can delete room", 
-      "content_type": 14
-    }
-  }, 
-  {
-    "pk": 45, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_status", 
-      "name": "Can delete status", 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 54, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_volunteerrole", 
-      "name": "Can delete Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 67, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_sponsor", 
-      "name": "Can add sponsor", 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 70, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_type", 
-      "name": "Can add type", 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 68, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_sponsor", 
-      "name": "Can change sponsor", 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 71, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_type", 
-      "name": "Can change type", 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 69, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_sponsor", 
-      "name": "Can delete sponsor", 
-      "content_type": 22
-    }
-  }, 
-  {
-    "pk": 72, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_type", 
-      "name": "Can delete type", 
-      "content_type": 23
-    }
-  }, 
-  {
-    "pk": 79, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_update", 
-      "name": "Can add update", 
-      "content_type": 26
-    }
-  }, 
-  {
-    "pk": 80, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_update", 
-      "name": "Can change update", 
-      "content_type": 26
-    }
-  }, 
-  {
-    "pk": 81, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_update", 
-      "name": "Can delete update", 
-      "content_type": 26
     }
   }, 
   {
@@ -765,12 +684,12 @@
     }
   }, 
   {
-    "pk": 61, 
+    "pk": 52, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_vote", 
-      "name": "Can add vote", 
-      "content_type": 20
+      "codename": "add_volunteerrole", 
+      "name": "Can add Volunteer Role", 
+      "content_type": 18
     }
   }, 
   {
@@ -801,6 +720,33 @@
     }
   }, 
   {
+    "pk": 47, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_audiencetype", 
+      "name": "Can change audience type", 
+      "content_type": 16
+    }
+  }, 
+  {
+    "pk": 50, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_presentation", 
+      "name": "Can change presentation", 
+      "content_type": 17
+    }
+  }, 
+  {
+    "pk": 44, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_status", 
+      "name": "Can change status", 
+      "content_type": 15
+    }
+  }, 
+  {
     "pk": 56, 
     "model": "auth.permission", 
     "fields": {
@@ -810,12 +756,39 @@
     }
   }, 
   {
-    "pk": 62, 
+    "pk": 53, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_vote", 
-      "name": "Can change vote", 
-      "content_type": 20
+      "codename": "change_volunteerrole", 
+      "name": "Can change Volunteer Role", 
+      "content_type": 18
+    }
+  }, 
+  {
+    "pk": 48, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_audiencetype", 
+      "name": "Can delete audience type", 
+      "content_type": 16
+    }
+  }, 
+  {
+    "pk": 51, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_presentation", 
+      "name": "Can delete presentation", 
+      "content_type": 17
+    }
+  }, 
+  {
+    "pk": 45, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_status", 
+      "name": "Can delete status", 
+      "content_type": 15
     }
   }, 
   {
@@ -828,12 +801,93 @@
     }
   }, 
   {
-    "pk": 63, 
+    "pk": 54, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_vote", 
-      "name": "Can delete vote", 
-      "content_type": 20
+      "codename": "delete_volunteerrole", 
+      "name": "Can delete Volunteer Role", 
+      "content_type": 18
+    }
+  }, 
+  {
+    "pk": 73, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_lug", 
+      "name": "Can add lug", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 70, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_type", 
+      "name": "Can add type", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 74, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_lug", 
+      "name": "Can change lug", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 71, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_type", 
+      "name": "Can change type", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_lug", 
+      "name": "Can delete lug", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 72, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_type", 
+      "name": "Can delete type", 
+      "content_type": 23
+    }
+  }, 
+  {
+    "pk": 82, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_update", 
+      "name": "Can add update", 
+      "content_type": 27
+    }
+  }, 
+  {
+    "pk": 83, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_update", 
+      "name": "Can change update", 
+      "content_type": 27
+    }
+  }, 
+  {
+    "pk": 84, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_update", 
+      "name": "Can delete update", 
+      "content_type": 27
     }
   }, 
   {
@@ -846,12 +900,30 @@
     }
   }, 
   {
+    "pk": 61, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_vote", 
+      "name": "Can add vote", 
+      "content_type": 20
+    }
+  }, 
+  {
     "pk": 65, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_level", 
       "name": "Can change level", 
       "content_type": 21
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_vote", 
+      "name": "Can change vote", 
+      "content_type": 20
     }
   }, 
   {
@@ -864,14 +936,50 @@
     }
   }, 
   {
+    "pk": 63, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_vote", 
+      "name": "Can delete vote", 
+      "content_type": 20
+    }
+  }, 
+  {
+    "pk": 67, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_sponsor", 
+      "name": "Can add sponsor", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 68, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_sponsor", 
+      "name": "Can change sponsor", 
+      "content_type": 22
+    }
+  }, 
+  {
+    "pk": 69, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_sponsor", 
+      "name": "Can delete sponsor", 
+      "content_type": 22
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "auth.group", 
     "fields": {
       "name": "Admin", 
       "permissions": [
-        37, 
-        38, 
-        39, 
+        40, 
+        41, 
+        42, 
         25, 
         26, 
         27, 
@@ -887,10 +995,13 @@
         15, 
         6, 
         12, 
+        37, 
         34, 
         31, 
+        38, 
         35, 
         32, 
+        39, 
         36, 
         33, 
         16, 
@@ -899,9 +1010,6 @@
         1, 
         2, 
         3, 
-        73, 
-        74, 
-        75, 
         19, 
         20, 
         21, 
@@ -913,37 +1021,37 @@
         30, 
         46, 
         49, 
-        40, 
         43, 
-        52, 
-        47, 
-        50, 
-        41, 
-        44, 
-        53, 
-        48, 
-        51, 
-        42, 
-        45, 
-        54, 
-        67, 
-        70, 
-        68, 
-        71, 
-        69, 
-        72, 
         55, 
-        61, 
+        52, 
         60, 
         58, 
         59, 
+        47, 
+        50, 
+        44, 
         56, 
-        62, 
+        53, 
+        48, 
+        51, 
+        45, 
         57, 
-        63, 
+        54, 
+        73, 
+        70, 
+        74, 
+        71, 
+        75, 
+        72, 
         64, 
+        61, 
         65, 
-        66
+        62, 
+        66, 
+        63, 
+        67, 
+        68, 
+        69
       ]
     }
   }, 
@@ -965,9 +1073,9 @@
     "fields": {
       "name": "Volunteer", 
       "permissions": [
+        55, 
         53, 
-        54, 
-        55
+        54
       ]
     }
   }, 
@@ -992,7 +1100,7 @@
     }
   }, 
   {
-    "pk": 17, 
+    "pk": 18, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "audiencetype", 
@@ -1001,7 +1109,7 @@
     }
   }, 
   {
-    "pk": 14, 
+    "pk": 15, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "category", 
@@ -1037,7 +1145,7 @@
     }
   }, 
   {
-    "pk": 22, 
+    "pk": 23, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "level", 
@@ -1055,7 +1163,7 @@
     }
   }, 
   {
-    "pk": 25, 
+    "pk": 26, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "lug", 
@@ -1091,7 +1199,7 @@
     }
   }, 
   {
-    "pk": 18, 
+    "pk": 19, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "presentation", 
@@ -1100,7 +1208,7 @@
     }
   }, 
   {
-    "pk": 13, 
+    "pk": 14, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "registrationprofile", 
@@ -1109,7 +1217,7 @@
     }
   }, 
   {
-    "pk": 15, 
+    "pk": 16, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "room", 
@@ -1145,7 +1253,7 @@
     }
   }, 
   {
-    "pk": 23, 
+    "pk": 24, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "sponsor", 
@@ -1154,7 +1262,7 @@
     }
   }, 
   {
-    "pk": 16, 
+    "pk": 17, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "status", 
@@ -1163,7 +1271,16 @@
     }
   }, 
   {
-    "pk": 24, 
+    "pk": 13, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "theme", 
+      "name": "theme", 
+      "app_label": "common"
+    }
+  }, 
+  {
+    "pk": 25, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "type", 
@@ -1172,7 +1289,7 @@
     }
   }, 
   {
-    "pk": 26, 
+    "pk": 27, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "update", 
@@ -1199,7 +1316,7 @@
     }
   }, 
   {
-    "pk": 20, 
+    "pk": 21, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "volunteer", 
@@ -1208,7 +1325,7 @@
     }
   }, 
   {
-    "pk": 19, 
+    "pk": 20, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "volunteerrole", 
@@ -1217,7 +1334,7 @@
     }
   }, 
   {
-    "pk": 21, 
+    "pk": 22, 
     "model": "contenttypes.contenttype", 
     "fields": {
       "model": "vote", 
@@ -1226,1334 +1343,11 @@
     }
   }, 
   {
-    "pk": "7633781536253286b9b100ad07154a4a", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-07-07 22:52:00", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwF1LjhlZmY2ZDhjOGFiZWQ2MjVhNTEw\nNGQ2MWMyYmYyZjdk\n"
-    }
-  }, 
-  {
-    "pk": "43151233c6621c06cf54a2d400048791", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-07-11 19:59:17", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwF1LjhlZmY2ZDhjOGFiZWQ2MjVhNTEw\nNGQ2MWMyYmYyZjdk\n"
-    }
-  }, 
-  {
-    "pk": "d047a8902b2777fcfddde8c747fdb1d5", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-07-21 21:25:35", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwF1LjhlZmY2ZDhjOGFiZWQ2MjVhNTEw\nNGQ2MWMyYmYyZjdk\n"
-    }
-  }, 
-  {
-    "pk": "d7de7876371104c10e80ee61b017cb5f", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-08-04 21:02:16", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigEBdS42ZjdmNjQwYTlhNzRiZGI4MGVl\nY2IzN2Q3ZTNjOGI2Ng==\n"
-    }
-  }, 
-  {
-    "pk": "eb772356d8eb48a6ece8760941b06ae0", 
-    "model": "sessions.session", 
-    "fields": {
-      "expire_date": "2009-11-19 21:37:47", 
-      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigEBdS42ZjdmNjQwYTlhNzRiZGI4MGVl\nY2IzN2Q3ZTNjOGI2Ng==\n"
-    }
-  }, 
-  {
     "pk": 1, 
     "model": "sites.site", 
     "fields": {
-      "domain": "localhost:8080", 
-      "name": "Utah Open Source Conference 2009"
-    }
-  }, 
-  {
-    "pk": 93, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-11-05 21:39:09", 
-      "object_repr": "event", 
-      "object_id": "1", 
-      "change_message": "Changed email and groups.", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 92, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-11-05 21:38:29", 
-      "object_repr": "event", 
-      "object_id": "1", 
-      "change_message": "Changed username.", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 91, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-08 00:43:22", 
-      "object_repr": "Panel", 
-      "object_id": "1", 
-      "change_message": "Changed name and description.", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 90, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-08 00:42:50", 
-      "object_repr": "Tools", 
-      "object_id": "2", 
-      "change_message": "Changed name and description.", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 89, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-07-08 00:41:46", 
-      "object_repr": "hibob", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 88, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-07-08 00:41:38", 
-      "object_repr": "bobman", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 87, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-07-08 00:41:23", 
-      "object_repr": "Bob is cool B Pending", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 17
-    }
-  }, 
-  {
-    "pk": 86, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-07-08 00:41:16", 
-      "object_repr": "Dude, I got Linux! A Pending", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 17
-    }
-  }, 
-  {
-    "pk": 85, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-07 22:33:19", 
-      "object_repr": "bobman", 
-      "object_id": "3", 
-      "change_message": "Added user profile \"Load Manager\".", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 84, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-07 22:32:14", 
-      "object_repr": "bobman", 
-      "object_id": "3", 
-      "change_message": "Changed first_name, last_name, email and groups.", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 83, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 22:31:50", 
-      "object_repr": "bobman", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 82, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-07 21:25:52", 
-      "object_repr": "Woo! This is fun", 
-      "object_id": "2", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 81, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-07 21:14:47", 
-      "object_repr": "hibob", 
-      "object_id": "2", 
-      "change_message": "Changed first_name and last_name.", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 80, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-07-07 21:14:33", 
-      "object_repr": "conman", 
-      "object_id": "1", 
-      "change_message": "Changed first_name and last_name.", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 79, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:13:31", 
-      "object_repr": "Advanced", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 78, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:13:20", 
-      "object_repr": "Intermediate", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 77, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:13:12", 
-      "object_repr": "Beginner", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 76, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:12:46", 
-      "object_repr": "B", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 75, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:12:39", 
-      "object_repr": "A", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 74, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:12:11", 
-      "object_repr": "Approved", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 73, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:12:06", 
-      "object_repr": "Alternate", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 72, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:12:03", 
-      "object_repr": "Cancelled", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 71, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:11:59", 
-      "object_repr": "Denied", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 70, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-07-07 21:11:55", 
-      "object_repr": "Pending", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 69, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:42:42", 
-      "object_repr": "Advanced", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 68, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:42:32", 
-      "object_repr": "Intermediate", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 67, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:42:14", 
-      "object_repr": "Beginner", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 66, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:41:59", 
-      "object_repr": "C", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 65, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:40:21", 
-      "object_repr": "B", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 64, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:40:15", 
-      "object_repr": "A", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 63, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:39:45", 
-      "object_repr": "Approved", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 62, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:39:40", 
-      "object_repr": "Alternate", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 61, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:39:37", 
-      "object_repr": "Cancelled", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 60, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:39:33", 
-      "object_repr": "Denied", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 59, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-30 20:39:30", 
-      "object_repr": "Pending", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 58, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-28 22:31:18", 
-      "object_repr": "Woo! This is fun", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 57, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-28 22:29:44", 
-      "object_repr": "Test Update", 
-      "object_id": "1", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 56, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-28 16:26:34", 
-      "object_repr": "Test Update", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 55, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-06-28 08:29:53", 
-      "object_repr": "Uh, Okay!", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 54, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-28 08:28:38", 
-      "object_repr": "Uh, Okay!", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 53, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-06-28 08:24:14", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 52, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-06-28 08:24:08", 
-      "object_repr": "Well, The world is going to end", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 51, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-06-28 08:24:03", 
-      "object_repr": "Blank stares and overall nastiness", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 50, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-06-28 08:23:58", 
-      "object_repr": "Abstracts accepted through August 27", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 49, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 23:58:15", 
-      "object_repr": "Abstracts accepted through August 27", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 48, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 23:57:56", 
-      "object_repr": "Abstracts accepted through August 27", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 47, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 23:49:15", 
-      "object_repr": "Abstracts accepted through August 27", 
-      "object_id": "4", 
-      "change_message": "Changed name and description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 46, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 23:04:17", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 45, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 23:03:46", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 44, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 23:03:01", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 43, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 19:59:41", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "No fields changed.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 42, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 19:40:55", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 41, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 19:35:35", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 40, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 19:35:00", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 39, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-27 19:34:10", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 38, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-27 19:08:26", 
-      "object_repr": "Blank stares and overall nastiness", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 37, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-27 19:06:19", 
-      "object_repr": "Well, The world is going to end", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 36, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 17:31:37", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "1", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 35, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 17:27:52", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "1", 
-      "change_message": "Changed description.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 34, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-27 16:52:49", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "1", 
-      "change_message": "No fields changed.", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 33, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-27 11:18:53", 
-      "object_repr": "Call for Papers Live", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 25
-    }
-  }, 
-  {
-    "pk": 32, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 3, 
-      "action_time": "2009-06-23 22:52:25", 
-      "object_repr": "whadda", 
-      "object_id": "None", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 4
-    }
-  }, 
-  {
-    "pk": 31, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 2, 
-      "action_time": "2009-06-23 01:32:35", 
-      "object_repr": "localhost:8080", 
-      "object_id": "1", 
-      "change_message": "Changed domain and name.", 
-      "user": 1, 
-      "content_type": 8
-    }
-  }, 
-  {
-    "pk": 30, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:04:08", 
-      "object_repr": "Advanced", 
-      "object_id": "6", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 29, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:04:02", 
-      "object_repr": "Intermediate", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 28, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:03:55", 
-      "object_repr": "Beginner", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 27, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:03:49", 
-      "object_repr": "General", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 26, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:03:41", 
-      "object_repr": "Business", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 25, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:03:36", 
-      "object_repr": "Technology", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 24, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:01:33", 
-      "object_repr": "Birds of a Feather", 
-      "object_id": "10", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 23, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:01:25", 
-      "object_repr": "Programming", 
-      "object_id": "9", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 22, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:01:16", 
-      "object_repr": "System Administration", 
-      "object_id": "8", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 21, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:01:07", 
-      "object_repr": "Tools", 
-      "object_id": "7", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 20, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:00:55", 
-      "object_repr": "Protocols", 
-      "object_id": "6", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 19, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:00:46", 
-      "object_repr": "Processes", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 18, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:00:32", 
-      "object_repr": "Scripting", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 17, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:00:24", 
-      "object_repr": "Scalability", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 16, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:00:18", 
-      "object_repr": "Reliability", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 15, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 23:00:07", 
-      "object_repr": "Affordability", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 14, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:58:58", 
-      "object_repr": "Volunteer", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 3
-    }
-  }, 
-  {
-    "pk": 13, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:58:44", 
-      "object_repr": "Speaker", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 3
-    }
-  }, 
-  {
-    "pk": 12, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:58:23", 
-      "object_repr": "Admin", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 3
-    }
-  }, 
-  {
-    "pk": 11, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:57:55", 
-      "object_repr": "Approved", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:57:48", 
-      "object_repr": "Alternate", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 9, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:57:44", 
-      "object_repr": "Cancelled", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 8, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:57:41", 
-      "object_repr": "Denied", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 7, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:57:38", 
-      "object_repr": "Pending", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 15
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:54:58", 
-      "object_repr": "XXX Large", 
-      "object_id": "6", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:54:53", 
-      "object_repr": "XX Large", 
-      "object_id": "5", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:54:49", 
-      "object_repr": "Extra Large", 
-      "object_id": "4", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:54:46", 
-      "object_repr": "Large", 
-      "object_id": "3", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:54:42", 
-      "object_repr": "Medium", 
-      "object_id": "2", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2009-06-22 22:54:39", 
-      "object_repr": "Small", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 1, 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "common.shirtsize", 
-    "fields": {
-      "name": "S"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "common.shirtsize", 
-    "fields": {
-      "name": "M"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "common.shirtsize", 
-    "fields": {
-      "name": "L"
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "common.shirtsize", 
-    "fields": {
-      "name": "XL"
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "common.shirtsize", 
-    "fields": {
-      "name": "2XL"
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "common.shirtsize", 
-    "fields": {
-      "name": "3XL"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "common.userprofile", 
-    "fields": {
-      "bio": "Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  Dude, this is cool.  ", 
-      "user_photo": "img/user_photos/conman_avatar.jpg", 
-      "common_channels": "", 
-      "company": "hibob", 
-      "site": "http://herlo.org/", 
-      "irc_nick": "", 
-      "user": 1, 
-      "shirt_size": 3, 
-      "irc_server": "", 
-      "job_title": "hibob"
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "speakers.category", 
-    "fields": {
-      "name": "Panel", 
-      "description": "Panels usually involve a few members of a particular topic. These sessions usually consist of a session leader and others who talk about the topic."
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "speakers.category", 
-    "fields": {
-      "name": "Tools", 
-      "description": "Usually the presentations in the tools category focus on one particular software application, how to use it and any tips or tricks for using the tool."
+      "domain": "example.com", 
+      "name": "example.com"
     }
   }, 
   {
@@ -2564,165 +1358,29 @@
     }
   }, 
   {
-    "pk": 2, 
-    "model": "speakers.status", 
-    "fields": {
-      "name": "Denied"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "speakers.status", 
-    "fields": {
-      "name": "Cancelled"
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "speakers.status", 
-    "fields": {
-      "name": "Alternate"
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "speakers.status", 
-    "fields": {
-      "name": "Approved"
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "speakers.audiencetype", 
-    "fields": {
-      "name": "Beginner", 
-      "description": "Beginner person"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "speakers.audiencetype", 
-    "fields": {
-      "name": "Intermediate", 
-      "description": "Intermediate person"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "speakers.audiencetype", 
-    "fields": {
-      "name": "Advanced", 
-      "description": "Advanced person"
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "speakers.presentation", 
-    "fields": {
-      "status": 1, 
-      "short_abstract": "This is test abstract 9044", 
-      "end": null, 
-      "description": null, 
-      "title": "Test Abstract #9044", 
-      "presenter": [
-        2
-      ], 
-      "cat": 1, 
-      "slides": "", 
-      "start": null, 
-      "score": null, 
-      "audiences": [
-        1, 
-        2
-      ], 
-      "location": null, 
-      "long_abstract": null
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "volunteers.volunteerrole", 
-    "fields": {
-      "name": "Room Manager"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "volunteers.volunteerrole", 
-    "fields": {
-      "name": "Technician"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "volunteers.volunteerrole", 
-    "fields": {
-      "name": "Greeter"
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "volunteers.volunteerrole", 
-    "fields": {
-      "name": "Usher"
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "voting.vote", 
-    "fields": {
-      "vote": 1, 
-      "user": 1, 
-      "content_type": 17, 
-      "object_id": 1
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "updates.update", 
-    "fields": {
-      "author": 1, 
-      "updated": "2009-06-28 22:29:44", 
-      "created": "2009-06-28 00:00:00", 
-      "name": "Test Update", 
-      "description": "This is a test update, submit your <a href=\"/speaker/abstract/\">abstract</a> today! Uh okay"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "updates.update", 
-    "fields": {
-      "author": 1, 
-      "updated": "2009-07-07 21:25:52", 
-      "created": "2009-06-28 00:00:00", 
-      "name": "Woo! This is fun", 
-      "description": "I like writing updates for the utos-conman site.  "
-    }
-  }, 
-  {
     "pk": 1, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:14", 
+      "applied": "2010-01-25 04:36:42", 
       "app_name": "common", 
       "migration": "0001_initial"
     }
   }, 
   {
-    "pk": 2, 
+    "pk": 16, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
-      "app_name": "accounts", 
-      "migration": "0001_initial"
+      "applied": "2010-01-25 04:57:13", 
+      "app_name": "common", 
+      "migration": "0002_add_theme"
     }
   }, 
   {
     "pk": 3, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
-      "app_name": "speakers", 
+      "applied": "2010-01-25 04:36:42", 
+      "app_name": "accounts", 
       "migration": "0001_initial"
     }
   }, 
@@ -2730,62 +1388,62 @@
     "pk": 4, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
+      "applied": "2010-01-25 04:36:42", 
       "app_name": "speakers", 
-      "migration": "0002_add_the_rest_of_the_tables"
+      "migration": "0001_initial"
     }
   }, 
   {
     "pk": 5, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
+      "applied": "2010-01-25 04:36:43", 
       "app_name": "speakers", 
-      "migration": "0003_add_presentation_presenter_table"
+      "migration": "0002_add_the_rest_of_the_tables"
     }
   }, 
   {
     "pk": 6, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
+      "applied": "2010-01-25 04:36:43", 
       "app_name": "speakers", 
-      "migration": "0004_migrate_presenters"
+      "migration": "0003_add_presentation_presenter_table"
     }
   }, 
   {
     "pk": 7, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
+      "applied": "2010-01-25 04:36:43", 
       "app_name": "speakers", 
-      "migration": "0005_alter_presenter_to_m2m"
+      "migration": "0004_migrate_presenters"
     }
   }, 
   {
     "pk": 8, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:15", 
+      "applied": "2010-01-25 04:36:43", 
       "app_name": "speakers", 
-      "migration": "0006_add_description_field"
+      "migration": "0005_alter_presenter_to_m2m"
     }
   }, 
   {
     "pk": 9, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:16", 
-      "app_name": "volunteers", 
-      "migration": "0001_initial"
+      "applied": "2010-01-25 04:36:43", 
+      "app_name": "speakers", 
+      "migration": "0006_add_description_field"
     }
   }, 
   {
     "pk": 10, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:16", 
-      "app_name": "voting", 
+      "applied": "2010-01-25 04:36:44", 
+      "app_name": "volunteers", 
       "migration": "0001_initial"
     }
   }, 
@@ -2793,8 +1451,8 @@
     "pk": 11, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:16", 
-      "app_name": "sponsors", 
+      "applied": "2010-01-25 04:36:44", 
+      "app_name": "voting", 
       "migration": "0001_initial"
     }
   }, 
@@ -2802,8 +1460,8 @@
     "pk": 12, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:17", 
-      "app_name": "lugs", 
+      "applied": "2010-01-25 04:36:44", 
+      "app_name": "sponsors", 
       "migration": "0001_initial"
     }
   }, 
@@ -2811,8 +1469,8 @@
     "pk": 13, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-07-22 03:01:17", 
-      "app_name": "updates", 
+      "applied": "2010-01-25 04:36:45", 
+      "app_name": "lugs", 
       "migration": "0001_initial"
     }
   }, 
@@ -2820,7 +1478,16 @@
     "pk": 14, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2009-11-06 04:35:36", 
+      "applied": "2010-01-25 04:36:45", 
+      "app_name": "updates", 
+      "migration": "0001_initial"
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "south.migrationhistory", 
+    "fields": {
+      "applied": "2010-01-25 04:36:45", 
       "app_name": "updates", 
       "migration": "0002_add_link_and_social_info"
     }

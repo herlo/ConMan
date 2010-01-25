@@ -4,27 +4,27 @@ from django.db import models
 from speakers.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding field 'Presentation.description'
         db.add_column('speakers_presentation', 'description', models.CharField(max_length=255, null=True, blank=True))
-        
+
         # Changing field 'Presentation.cat'
         db.alter_column('speakers_presentation', 'cat_id', models.ForeignKey(orm.Category, null=True, blank=True))
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting field 'Presentation.description'
         db.delete_column('speakers_presentation', 'description')
-        
+
         # Changing field 'Presentation.cat'
         db.alter_column('speakers_presentation', 'cat_id', models.ForeignKey(orm.Category, blank=True))
-        
-    
-    
+
+
+
     models = {
         'speakers.category': {
             'description': ('models.TextField', [], {'max_length': '1000', 'null': 'True', 'blank': 'True'}),
@@ -66,5 +66,5 @@ class Migration:
             'name': ('models.CharField', [], {'max_length': '150', 'db_index': 'True'})
         }
     }
-    
+
     complete_apps = ['speakers']

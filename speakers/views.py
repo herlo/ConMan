@@ -29,18 +29,18 @@ from speakers.forms import *
 def send_confirm_email(user, form):
     #send the email here (note we could probably do this in one place later on)
     current_site = settings.HOST_NAME
-    
+
     p = dict()
 #    p['cat'] = mark_safe(str(Category.objects.get(id=form.cleaned_data['category'])))
     p['title'] = mark_safe(form.cleaned_data['title'])
 #    p['audience'] = mark_safe(str(AudienceType.objects.get(id=form.cleaned_data['audience'])))
     p['abstract'] = mark_safe(form.cleaned_data['short_abstract'])
     p['name'] = mark_safe(user.first_name + ' ' + user.last_name)
-    
+
     subject = render_to_string('presentation_confirm_subject.txt')
     # Email subject *must not* contain newlines
     subject = ''.join(subject.splitlines())
-    
+
     message = render_to_string('presentation_confirm.txt',
                                { 'pres': p })
     if settings.SEND_EMAIL:
@@ -53,7 +53,7 @@ def send_confirm_email(user, form):
 
 # helper method for uploading files
 def handle_uploaded_file(file, path):
-    
+
     filename = settings.MEDIA_ROOT + str(file.name)
     print "Filename: " + filename
     destination = open(filename, 'wb+')
@@ -166,7 +166,7 @@ def speaker_schedule(request):
     print presentations
 
     return render_to_response('show_speakers_schedule.html', {'presentations': presentations }, context_instance=RequestContext(request))
-    
+
 def show_presentation_schedule(request, day=None, cat=None, location=None, audience=None):
     extra = None
     roomImage = None
@@ -199,7 +199,7 @@ def show_presentation_schedule(request, day=None, cat=None, location=None, audie
     else:
         presentations = Presentation.objects.filter(status=Status.objects.get(name='Approved')).order_by('start')
         template = 'show_all_presentations.html'
-        
+
     return render_to_response(template, {'day': date, 'presentations': presentations, 'extra': extra, 'roomImage': roomImage }, context_instance=RequestContext(request))
 
 def show_speakers(request, status='all'):
@@ -215,18 +215,18 @@ def show_speakers(request, status='all'):
     for speaker in speakers:
         presentations = list()
         profile = speaker.get_profile()
-        
+
         if (status == 'all'):
             pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
             approved_list = None
             feed = True
         else:
-            if isinstance(user,User) and (user.has_perm('voting.add_vote') 
+            if isinstance(user,User) and (user.has_perm('voting.add_vote')
                     or user.has_perm('voting.change_vote') or user.has_perm('voting.delete_vote')):
                 pending_list = profile.presentation_set.filter(status=Status.objects.get(name='Pending'))
 
             approved_list = profile.presentation_set.filter(status=Status.objects.get(name='Approved')).order_by('start')
-    
+
             if (len(approved_list)):
                 for p in approved_list:
                     presentations.append({'id': p.id, 'title': p.title, 'status': p.status, 'start': p.start})
@@ -245,7 +245,7 @@ def show_presentations(request):
     presentations = Presentation.objects.all().order_by('cat')
 
     return render_to_response('show_presentations.html', {'presentations': presentations}, context_instance=RequestContext(request))
-    
+
 def show_presentation(request, p_id):
     p = get_object_or_404(Presentation, id=p_id)
 
@@ -279,13 +279,13 @@ def find_speakers(request, search=None):
  #    if request.method == 'POST':
         if search:
             user_list = User.objects.filter(Q(username__contains=search) | Q(first_name__contains=search) | Q(last_name__contains=search))
-    
+
             users = list()
             for user in user_list:
                 profile = user.get_profile()
-                users.append({ 'id': user.id, 'name': user.get_full_name(), 
+                users.append({ 'id': user.id, 'name': user.get_full_name(),
                     'company': profile.company,  'job_title': profile.job_title})
-    
+
             json = simplejson.dumps(users)
             return HttpResponse(json, mimetype='application/json')
     #        return render_to_response('find_speakers.html', {'speakers': user_list }, context_instance=RequestContext(request))
@@ -339,13 +339,13 @@ def show_speakers_admin(request, status=None):
             if settings.SEND_EMAIL:
                 # send email here
                 speaker.email_user(request.POST['subject'],
-                    request.POST['email'], settings.DEFAULT_FROM_EMAIL) 
+                    request.POST['email'], settings.DEFAULT_FROM_EMAIL)
             else:
                 print "To: " + speaker.first_name + "\nFrom: " + settings.DEFAULT_FROM_EMAIL + "\nSubject: " + request.POST['subject'] + "\nEmail: " + request.POST['email'] + "\n\nCheers,\n\nClint Savage\n\nhttp://utosc.com \| http://utos.org"
 
 
     return render_to_response(
-            'admin/speakers/show_speakers.html', 
+            'admin/speakers/show_speakers.html',
             {'object_list': spkr_list, 'description': "Speaker Name", 'status': status },
             context_instance=RequestContext(request))
 

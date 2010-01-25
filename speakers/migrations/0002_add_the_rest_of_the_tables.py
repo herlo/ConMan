@@ -4,9 +4,9 @@ from django.db import models
 from speakers.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Category'
         db.create_table('speakers_category', (
             ('description', models.TextField(max_length=1000, null=True, blank=True)),
@@ -14,7 +14,7 @@ class Migration:
             ('name', models.CharField(max_length=150, db_index=True)),
         ))
         db.send_create_signal('speakers', ['Category'])
-        
+
         # Adding model 'AudienceType'
         db.create_table('speakers_audiencetype', (
             ('description', models.TextField(max_length=1000, null=True, blank=True)),
@@ -22,7 +22,7 @@ class Migration:
             ('name', models.CharField(max_length=150, db_index=True)),
         ))
         db.send_create_signal('speakers', ['AudienceType'])
-        
+
         # Adding model 'Room'
         db.create_table('speakers_room', (
             ('id', models.AutoField(primary_key=True)),
@@ -47,35 +47,35 @@ class Migration:
             ('status', models.ForeignKey(orm.Status)),
         ))
         db.send_create_signal('speakers', ['Presentation'])
-        
+
         # Adding ManyToManyField 'Presentation.audiences'
         db.create_table('speakers_presentation_audiences', (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
             ('presentation', models.ForeignKey(Presentation, null=False)),
             ('audiencetype', models.ForeignKey(AudienceType, null=False))
         ))
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Category'
         db.delete_table('speakers_category')
-        
+
         # Deleting model 'AudienceType'
         db.delete_table('speakers_audiencetype')
-        
+
         # Deleting model 'Room'
         db.delete_table('speakers_room')
-        
+
         # Deleting model 'Presentation'
         db.delete_table('speakers_presentation')
-        
+
         # Dropping ManyToManyField 'Presentation.audiences'
         db.delete_table('speakers_presentation_audiences')
-        
-    
-    
+
+
+
     models = {
         'speakers.category': {
             'description': ('models.TextField', [], {'max_length': '1000', 'null': 'True', 'blank': 'True'}),
@@ -116,5 +116,5 @@ class Migration:
             'name': ('models.CharField', [], {'max_length': '150', 'db_index': 'True'})
         }
     }
-    
+
     complete_apps = ['speakers']

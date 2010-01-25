@@ -4,20 +4,20 @@ from django.db import models
 from speakers.models import *
 
 class Migration:
-    
+
     no_dry_run = True
 
     def forwards(self, orm):
         for p in orm.Presentation.objects.values('id', 'presenter'):
             print "Presentation data: " + str(p)
-            db.execute("insert into speakers_presentation_presenter (presentation_id, userprofile_id) values(%s, %s)", 
+            db.execute("insert into speakers_presentation_presenter (presentation_id, userprofile_id) values(%s, %s)",
                     [int(p['id']), int(p['presenter'])] )
-    
-    
+
+
     def backwards(self, orm):
         pass
-    
-    
+
+
     models = {
         'speakers.category': {
             'description': ('models.TextField', [], {'max_length': '1000', 'null': 'True', 'blank': 'True'}),
@@ -58,5 +58,5 @@ class Migration:
             'name': ('models.CharField', [], {'max_length': '150', 'db_index': 'True'})
         }
     }
-    
+
     complete_apps = ['speakers']

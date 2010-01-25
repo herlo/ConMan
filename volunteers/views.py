@@ -9,9 +9,9 @@ from volunteers.forms import VolunteerForm
 # Create your views here.
 @login_required
 def index(request):
-    # First we need to check if the user has already submitted a request and 
+    # First we need to check if the user has already submitted a request and
     # if so we check to see if a role has been assigned.  If one has not we
-    # notify them that their request has already been processed but not 
+    # notify them that their request has already been processed but not
     # decision has been made.  If a role has been assigned we display it.
     volunteer_existed = False
     profile = request.user.get_profile()
@@ -56,7 +56,7 @@ def manage(request, vol_id):
             vf.save()
             return HttpResponseRedirect("/volunteer/list/")
 #            return render_to_response("volunteer_list.html",
-#                                      {"volunteers_form" : vf, 
+#                                      {"volunteers_form" : vf,
 #                                       "volunteer": volunteer },
 #                                      context_instance=RequestContext(request))
     else:

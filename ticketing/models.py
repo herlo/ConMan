@@ -23,7 +23,7 @@ class Ticket(models.Model):
         return self.get_name_display()
 
 class Item(models.Model):
-    
+
     name = models.CharField(max_length=50)
     summary = models.TextField(help_text="Short explanaion of the item (eg. Conference T-Shirt)")
     description = models.TextField(max_length=60, help_text="Complete (long) description of the item")

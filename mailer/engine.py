@@ -16,7 +16,7 @@ def prioritize():
     """
     Yield the messages in the queue in the order they should be sent.
     """
-    
+
     while True:
         while Message.objects.high_priority().count() or Message.objects.medium_priority().count():
             while Message.objects.high_priority().count():
@@ -34,7 +34,7 @@ def send_all():
     """
     Send all eligible messages in the queue.
     """
-    
+
     for message in prioritize():
         if DontSendEntry.objects.has_address(message.to_address):
             print "skipping email to %s as on don't send list " % message.to_address
@@ -54,7 +54,7 @@ def send_loop():
     Loop indefinitely, checking queue at intervals of EMPTY_QUEUE_SLEEP and
     sending messages if any are on queue.
     """
-    
+
     while True:
         while not Message.objects.all():
             print 'sleeping for %s seconds before checking queue again' % EMPTY_QUEUE_SLEEP

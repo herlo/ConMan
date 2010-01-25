@@ -4,7 +4,7 @@ from speakers.models import Category,Room,Status,AudienceType,Presentation
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    
+
     class Meta:
         verbose_name_plural = "Categories"
 

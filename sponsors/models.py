@@ -37,7 +37,7 @@ class Sponsor(models.Model):
 #        list_display = ('company', 'contact', 'level')
 
     def save(self):
-        
+
         if self.sm_logo:
             newImage = Image.open(self.sm_logo.path)
             newHeight = (smallImageWidth * newImage.size[1])/ newImage.size[0]

@@ -7,7 +7,7 @@ def show_lugs():
     lugs = LUG.objects.all().order_by('-type__order')
     return {'lugs': lugs}
 
-# register tags 	
- 
+# register tags
+
 register.inclusion_tag('leftmenu.html')(show_lugs)
 

@@ -4,16 +4,16 @@ from django.db import models
 from common.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'ShirtSize'
         db.create_table('common_shirtsize', (
             ('id', models.AutoField(primary_key=True)),
             ('name', models.CharField(max_length=50)),
         ))
         db.send_create_signal('common', ['ShirtSize'])
-        
+
         # Adding model 'UserProfile'
         db.create_table('common_userprofile', (
             ('bio', models.TextField(null=True, blank=True)),
@@ -29,19 +29,19 @@ class Migration:
             ('job_title', models.CharField(db_index=True, max_length=200, null=True, blank=True)),
         ))
         db.send_create_signal('common', ['UserProfile'])
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'ShirtSize'
         db.delete_table('common_shirtsize')
-        
+
         # Deleting model 'UserProfile'
         db.delete_table('common_userprofile')
-        
-    
-    
+
+
+
     models = {
         'auth.user': {
             '_stub': True,
@@ -65,5 +65,5 @@ class Migration:
             'user_photo': ('models.ImageField', [], {'storage': 'OverwriteStorage()', 'null': 'True', 'upload_to': 'normalize_photo_name', 'blank': 'True'})
         }
     }
-    
+
     complete_apps = ['common']

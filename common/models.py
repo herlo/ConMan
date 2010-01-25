@@ -29,7 +29,7 @@ class OverwriteStorage(FileSystemStorage):
     def get_available_name(self, name):
         """Overwrite an existing file on the filesystem."""
         if self.exists(name):
-            self.delete(name) 
+            self.delete(name)
         return name
 
 class ShirtSize(models.Model):
@@ -41,7 +41,7 @@ class ShirtSize(models.Model):
 #    class Admin:
 #        list_display = ('id', 'name',)
 
-class UserProfile(models.Model):    
+class UserProfile(models.Model):
 
 #    volunteerinfo = models.ForeignKey(Volunteer, null=True, blank=True,edit_inline=models.STACKED,num_extra_on_change=1)
     #presentation = models.ForeignKey(Presentation, null=True, blank=True,)

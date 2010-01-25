@@ -10,7 +10,7 @@ def show_sponsors():
 
 def random_sponsor():
     count = Sponsor.objects.count()
-    
+
     random_id = random.randrange(1, count+1)
     print "Random ID: " + str(random_id)
 
@@ -18,8 +18,8 @@ def random_sponsor():
     return {'sponsor': sponsor}
 
 
-# register tags 	
- 
+# register tags
+
 register.inclusion_tag('rightmenu.html')(show_sponsors)
 register.inclusion_tag('randomsponsor.html')(random_sponsor)
 

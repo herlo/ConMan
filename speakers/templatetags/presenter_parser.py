@@ -7,10 +7,10 @@ from common.models import UserProfile
 register = template.Library()
 
 def get_presenters(pres_id):
-    
+
     presentations = Presentation.objects.get(id=pres_id)
     presenters = presentations.presenter.all()
-    
+
     print "presenters: " + str(presenters)
 
     pres_list = list()
@@ -30,7 +30,7 @@ def get_presenters(pres_id):
 
     return ret_txt
 
-# register tags 	
- 
+# register tags
+
 register.filter('get_presenters', get_presenters)
 

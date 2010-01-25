@@ -4,7 +4,7 @@ from django.db import models
 from common.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
         "Write your forwards migration here"
         # Adding model 'ShirtSize'
@@ -16,11 +16,11 @@ class Migration:
             ('slug', models.SlugField(max_length=50, unique=True, editable=False))
         ))
         db.send_create_signal('common', ['Theme'])
-    
+
     def backwards(self, orm):
         "Write your backwards migration here"
-    
-    
+
+
     models = {
         'auth.group': {
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -74,5 +74,5 @@ class Migration:
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['common']

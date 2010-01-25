@@ -16,7 +16,7 @@ class Update(models.Model):
     created = models.DateTimeField(editable=False)
     updated = models.DateTimeField(editable=False)
     author = models.ForeignKey(User)
-    
+
     def save(self):
         if not self.id:
             self.created = datetime.date.today()
@@ -30,7 +30,7 @@ class Update(models.Model):
                 post_params = urllib.urlencode(params)
                 post_response = urllib2.urlopen(post_uri, post_params).read()
                 # at this point we should check for failure or success, but as herlo noted "oh well!"
-                
+
         self.updated = datetime.datetime.today()
         super(Update, self).save()
 

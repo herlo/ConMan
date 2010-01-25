@@ -4,18 +4,18 @@ from django.db import models
 from speakers.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
         db.create_table('speakers_presentation_presenter', (
             ('id', models.AutoField(primary_key=True)),
             ('presentation_id', models.IntegerField()),
             ('userprofile_id', models.IntegerField()),
         ))
-    
+
     def backwards(self, orm):
         db.delete_table('speakers_presentation_presenter')
-    
-    
+
+
     models = {
         'speakers.category': {
             'description': ('models.TextField', [], {'max_length': '1000', 'null': 'True', 'blank': 'True'}),
@@ -56,5 +56,5 @@ class Migration:
             'name': ('models.CharField', [], {'max_length': '150', 'db_index': 'True'})
         }
     }
-    
+
     complete_apps = ['speakers']

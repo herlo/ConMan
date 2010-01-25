@@ -26,7 +26,7 @@ CATEGORY_CHOICES = (
     ('Educational', 'Educational'),
 )
 
-# Create your models here.    
+# Create your models here.
 class Category(models.Model):
     '''
     >>> c = Category(name="hot_or_not")
@@ -38,11 +38,11 @@ class Category(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
 #    class Admin:
 #        list_display = ('name',)
 #        pass
-    
+
     class Meta:
         verbose_name_plural = "Categories"
 
@@ -54,7 +54,7 @@ class Room(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
 class Status(models.Model):
     '''
     >>> c = Status(name="hot_or_not")
@@ -65,7 +65,7 @@ class Status(models.Model):
 
     def __unicode__(self):
         return self.name
-    
+
     class Meta:
         verbose_name_plural = "Statuses"
 
@@ -130,7 +130,7 @@ class Presentation(models.Model):
     start = models.DateTimeField(blank=True, null=True)
     end = models.DateTimeField(blank=True, null=True)
     location = models.ForeignKey(Room, blank=True, null=True)
-    
+
     def __unicode__(self):
         return self.title + " " + str(self.cat.name) + " " + str(self.status.name)
 

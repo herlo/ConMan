@@ -4,9 +4,9 @@ from django.db import models
 from common.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Theme'
         db.create_table('common_theme', (
             ('id', orm['common.theme:id']),
@@ -16,26 +16,26 @@ class Migration:
             ('preview', orm['common.theme:preview']),
         ))
         db.send_create_signal('common', ['Theme'])
-        
+
         # Adding model 'SelectedTheme'
         db.create_table('common_selectedtheme', (
             ('id', orm['common.selectedtheme:id']),
             ('selected', orm['common.selectedtheme:selected']),
         ))
         db.send_create_signal('common', ['SelectedTheme'])
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Theme'
         db.delete_table('common_theme')
-        
+
         # Deleting model 'SelectedTheme'
         db.delete_table('common_selectedtheme')
-        
-    
-    
+
+
+
     models = {
         'auth.group': {
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -100,5 +100,5 @@ class Migration:
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
-    
+
     complete_apps = ['common']

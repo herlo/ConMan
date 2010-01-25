@@ -4,9 +4,9 @@ from django.db import models
 from lugs.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'LUG'
         db.create_table('lugs_lug', (
             ('about', models.TextField(null=True, blank=True)),
@@ -20,7 +20,7 @@ class Migration:
             ('email', models.EmailField(null=True, blank=True)),
         ))
         db.send_create_signal('lugs', ['LUG'])
-        
+
         # Adding model 'Type'
         db.create_table('lugs_type', (
             ('order', models.IntegerField(default=10)),
@@ -28,19 +28,19 @@ class Migration:
             ('name', models.CharField(max_length=150, db_index=True)),
         ))
         db.send_create_signal('lugs', ['Type'])
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'LUG'
         db.delete_table('lugs_lug')
-        
+
         # Deleting model 'Type'
         db.delete_table('lugs_type')
-        
-    
-    
+
+
+
     models = {
         'lugs.lug': {
             'about': ('models.TextField', [], {'null': 'True', 'blank': 'True'}),
@@ -59,5 +59,5 @@ class Migration:
             'order': ('models.IntegerField', [], {'default': '10'})
         }
     }
-    
+
     complete_apps = ['lugs']

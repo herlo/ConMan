@@ -14,7 +14,7 @@ def latest_update():
         update = items
     return {'update': update}
 
-# register tags 	
- 
+# register tags
+
 register.inclusion_tag('latest_update.html')(latest_update)
 

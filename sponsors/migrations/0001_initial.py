@@ -4,9 +4,9 @@ from django.db import models
 from sponsors.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Sponsor'
         db.create_table('sponsors_sponsor', (
             ('about', models.TextField(null=True, blank=True)),
@@ -20,7 +20,7 @@ class Migration:
             ('id', models.AutoField(primary_key=True)),
         ))
         db.send_create_signal('sponsors', ['Sponsor'])
-        
+
         # Adding model 'Level'
         db.create_table('sponsors_level', (
             ('order', models.IntegerField(default=10)),
@@ -28,19 +28,19 @@ class Migration:
             ('name', models.CharField(max_length=150, db_index=True)),
         ))
         db.send_create_signal('sponsors', ['Level'])
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Sponsor'
         db.delete_table('sponsors_sponsor')
-        
+
         # Deleting model 'Level'
         db.delete_table('sponsors_level')
-        
-    
-    
+
+
+
     models = {
         'sponsors.sponsor': {
             'about': ('models.TextField', [], {'null': 'True', 'blank': 'True'}),
@@ -59,5 +59,5 @@ class Migration:
             'order': ('models.IntegerField', [], {'default': '10'})
         }
     }
-    
+
     complete_apps = ['sponsors']

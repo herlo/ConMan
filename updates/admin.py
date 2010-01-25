@@ -5,6 +5,6 @@ from updates.models import Update
 
 class UpdateAdmin(admin.ModelAdmin):
     list_display = ('name', 'updated', 'author')
-    
+
 
 admin.site.register(Update, UpdateAdmin)

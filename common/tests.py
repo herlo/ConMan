@@ -6,7 +6,7 @@ class CategoryTestCase(unittest.TestCase):
         self.list = list()
         self.list.append(Category.objects.create(name="Kernel"))
         self.list.append(Category.objects.create(name="GUI"))
-        
+
 
     def testSpeaking(self):
         for cat in self.list:

@@ -4,9 +4,9 @@ from django.db import models
 from voting.models import *
 
 class Migration:
-    
+
     def forwards(self, orm):
-        
+
         # Adding model 'Vote'
         db.create_table('votes', (
             ('object_id', models.PositiveIntegerField()),
@@ -16,22 +16,22 @@ class Migration:
             ('user', models.ForeignKey(orm['auth.User'])),
         ))
         db.send_create_signal('voting', ['Vote'])
-        
+
         # Creating unique_together for [user, content_type, object_id] on Vote.
         db.create_unique('votes', ['user_id', 'content_type_id', 'object_id'])
-        
-    
-    
+
+
+
     def backwards(self, orm):
-        
+
         # Deleting model 'Vote'
         db.delete_table('votes')
-        
+
         # Deleting unique_together for [user, content_type, object_id] on Vote.
         db.delete_unique('votes', ['user_id', 'content_type_id', 'object_id'])
-        
-    
-    
+
+
+
     models = {
         'auth.user': {
             '_stub': True,
@@ -51,5 +51,5 @@ class Migration:
             'id': ('models.AutoField', [], {'primary_key': 'True'})
         }
     }
-    
+
     complete_apps = ['voting']

@@ -70,3 +70,9 @@ class Theme(models.Model):
     def __unicode__(self):
         return '%s' % self.name
 
+class SelectedTheme(models.Model):
+    selected = models.ForeignKey(Theme)
+
+    def __unicode__(self):
+        return '%s' % self.selected.name
+

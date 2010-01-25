@@ -54,11 +54,13 @@ ADMIN_MEDIA_PREFIX = '/media/'
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'e%k-fbsx3!2l&6(zjuf#f-$j95@*&o*4*9d7x4))e!%-g!att$'
 
+import common
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+    'common.templateloader.load_template_source',
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
+#    'django.template.loaders.eggs.load_template_source',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,7 +82,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "templates/default",
+    "templates/awesome",
 )
 
 INSTALLED_APPS = (

@@ -13,7 +13,6 @@ class Migration:
             ('description', models.TextField(blank=True, null=True)),
             ('name', models.CharField(max_length=40, unique=True)),
             ('preview', models.ImageField(blank=True,null=True,upload_to='theme_preview/')),
-            ('slug', models.SlugField(max_length=50, unique=True, editable=False))
         ))
         db.send_create_signal('common', ['Theme'])
 

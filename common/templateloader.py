@@ -16,7 +16,7 @@ def get_template_sources(template_name, template_dirs=None):
     """
 
     current_site = Site.objects.get_current()
-    print "Current Site: " + str(current_site)
+#    print "Current Site: " + str(current_site)
 
     try:
         option = Option.objects.get(id=current_site.id)

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.sites.models import Site
 #from speaker.models import Category
-from common.models import ShirtSize, UserProfile,Theme
+from common.models import ShirtSize,UserProfile,Theme,Option
 from django.contrib.auth.models import User, Group
 from django.contrib.auth.admin import UserAdmin
 
@@ -25,5 +25,6 @@ class ShirtSizeAdmin(admin.ModelAdmin):
 admin.site.unregister(User)
 #admin.site.unregister(ShirtSize)
 admin.site.register(ShirtSize, ShirtSizeAdmin)
+admin.site.register(Option)
 admin.site.register(Theme)
 admin.site.register(User, MyUserAdmin)

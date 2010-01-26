@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.files.storage import FileSystemStorage
+from django.contrib.sites.models import Site
+
 from common.config import Static
 from datetime import datetime,timedelta
 from random import random
@@ -60,15 +62,15 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
 
-#class Option(models.Model):
-#    site_id = 
-
 class Theme(models.Model):
     name = models.CharField(max_length=40, unique=True)
     description = models.TextField(blank=True)
-    selected = models.BooleanField(default=False)
     preview = models.ImageField(blank=True,null=True,upload_to='theme_preview/')
 
     def __unicode__(self):
         return '%s' % self.name
+
+class Option(models.Model):
+    site = models.ForeignKey(Site)
+    theme = models.ForeignKey(Theme)
 

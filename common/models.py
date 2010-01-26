@@ -60,19 +60,15 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name
 
+#class Option(models.Model):
+#    site_id = 
 
 class Theme(models.Model):
     name = models.CharField(max_length=40, unique=True)
     description = models.TextField(blank=True)
-    slug = models.SlugField(max_length=50, unique=True, editable=False)
+    selected = models.BooleanField(default=False)
     preview = models.ImageField(blank=True,null=True,upload_to='theme_preview/')
 
     def __unicode__(self):
         return '%s' % self.name
-
-class SelectedTheme(models.Model):
-    selected = models.ForeignKey(Theme)
-
-    def __unicode__(self):
-        return '%s' % self.selected.name
 

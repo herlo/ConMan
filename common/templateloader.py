@@ -5,7 +5,7 @@ Wrapper for loading templates from the filesystem.
 from django.conf import settings
 from django.template import TemplateDoesNotExist
 from django.utils._os import safe_join
-from common.models import Theme,SelectedTheme
+from common.models import Theme
 
 def get_template_sources(template_name, template_dirs=None):
     """
@@ -15,7 +15,7 @@ def get_template_sources(template_name, template_dirs=None):
     """
 
     try:
-        theme = Theme.objects.get(id=SelectedTheme.objects.get(id=1))
+        theme = Theme.objects.get(id=1)
         template_theme = theme.name
     except:
         template_theme = 'default'

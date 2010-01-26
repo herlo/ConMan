@@ -20,6 +20,9 @@ class Migration:
     def backwards(self, orm):
         "Write your backwards migration here"
 
+        # Deleting model 'ShirtSize'
+        db.delete_table('common_theme')
+
 
     models = {
         'auth.group': {

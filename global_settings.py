@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'sponsors',
     'lugs',
     'updates',
+    'ticketing',
     #'locations',
     #'django.contrib.databrowse',
 
@@ -107,7 +108,7 @@ INSTALLED_APPS = (
     # svn co -r446 http://sorl-thumbnail.googlecode.com/svn/trunk/sorl (already in an external checkout)
     'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
-    #'south',
+    'south',
 )
 
 ###########NEW CHANGE TO ADD###########
@@ -185,9 +186,3 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 10
 
 # Google API Key
 GOOGLE_API_KEY = 'ABQIAAAAijiXc0gXuV9OSToAhQ6vfxTSDpTFJAVlOsTRzC7LuycYmlY3rxQ8Ytzr1XMe_od7B3qvBPb0JFGKtQ'
-
-# load local settings
-try:
-    from local_settings import *
-except ImportError:
-    print u'File local_settings.py is not found. Continuing with production settings.'

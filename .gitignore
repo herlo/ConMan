@@ -5,3 +5,4 @@
 *~
 .DS_Store
 local_settings.py
+public/theme_preview

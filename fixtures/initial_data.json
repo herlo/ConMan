@@ -1,3 +1,5 @@
+File local_settings.py is not found. Continuing with production settings.
+File local_settings.py is not found. Continuing with production settings.
 [
   {
     "pk": 2, 
@@ -306,6 +308,15 @@
     }
   }, 
   {
+    "pk": 97, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_option", 
+      "name": "Can add option", 
+      "content_type": 29
+    }
+  }, 
+  {
     "pk": 34, 
     "model": "auth.permission", 
     "fields": {
@@ -360,6 +371,15 @@
     }
   }, 
   {
+    "pk": 98, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_option", 
+      "name": "Can change option", 
+      "content_type": 29
+    }
+  }, 
+  {
     "pk": 35, 
     "model": "auth.permission", 
     "fields": {
@@ -411,6 +431,15 @@
       "codename": "delete_category", 
       "name": "Can delete category", 
       "content_type": 13
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_option", 
+      "name": "Can delete option", 
+      "content_type": 29
     }
   }, 
   {
@@ -1080,23 +1109,21 @@
     }
   }, 
   {
-    "pk": 1, 
+    "pk": 2, 
     "model": "auth.user", 
     "fields": {
-      "username": "event", 
-      "first_name": "Confrence", 
-      "last_name": "Manager", 
+      "username": "conman", 
+      "first_name": "", 
+      "last_name": "", 
       "is_active": 1, 
       "is_superuser": 1, 
       "is_staff": 1, 
-      "last_login": "2009-11-05 21:37:47", 
-      "groups": [
-        1
-      ], 
+      "last_login": "2010-01-25 22:19:35", 
+      "groups": [], 
       "user_permissions": [], 
-      "password": "sha1$4e05e$f006f3f966fe3a8d8ddb604a3ac630ee22d3b8f0", 
-      "email": "event@eventrevolution.com", 
-      "date_joined": "2009-06-22 22:19:21"
+      "password": "sha1$3767d$e1a23bc93e5713e78be4f6cc3b184c470288ab04", 
+      "email": "conman@utos.org", 
+      "date_joined": "2010-01-24 22:09:08"
     }
   }, 
   {
@@ -1187,6 +1214,15 @@
       "model": "migrationhistory", 
       "name": "migration history", 
       "app_label": "south"
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "contenttypes.contenttype", 
+    "fields": {
+      "model": "option", 
+      "name": "option", 
+      "app_label": "common"
     }
   }, 
   {
@@ -1343,11 +1379,252 @@
     }
   }, 
   {
+    "pk": "564f708875302963d0dd3796d0cdcd26", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:00:34", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "522353215c746207b79dcc9b60a29485", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:06:26", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "29fe5f267b518054a5fdbb4660af26b4", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:07:05", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "7cf7dcca7aacf0f7a99d7d53f774b135", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:07:35", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "41bb28b8c6c1045cf1b81c8b8c58dea3", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:07:49", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "35a4841d77fec2beb7e0d75a226323d7", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:07:59", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "c3deda63c926325a07a9081bd451e2d8", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-07 22:09:21", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigECdS42ZjAzNmZiMWJiMDBiNzNmZDQ4\nZDM5OTUyNmIxNjUxOA==\n"
+    }
+  }, 
+  {
+    "pk": "2305ddd31cc0c055c9b303d03b1b0d7c", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-02-08 22:19:35", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEEigECdS42ZjAzNmZiMWJiMDBiNzNmZDQ4\nZDM5OTUyNmIxNjUxOA==\n"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "sites.site", 
+    "fields": {
+      "domain": "herlo-lap.egavas.org", 
+      "name": "herlo-lap testing machine"
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "sites.site", 
     "fields": {
-      "domain": "example.com", 
-      "name": "example.com"
+      "domain": "localhost", 
+      "name": "localhost on port 8080"
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-01-25 21:54:59", 
+      "object_repr": "localhost", 
+      "object_id": "1", 
+      "change_message": "Changed domain.", 
+      "user": 2, 
+      "content_type": 8
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-25 21:54:52", 
+      "object_repr": "herlo-lap.egavas.org", 
+      "object_id": "2", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 8
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-01-25 21:54:25", 
+      "object_repr": "localhost:8080", 
+      "object_id": "1", 
+      "change_message": "Changed domain and name.", 
+      "user": 2, 
+      "content_type": 8
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-25 21:53:21", 
+      "object_repr": "Option object", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-25 20:19:31", 
+      "object_repr": "anothertheme", 
+      "object_id": "2", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-25 20:18:57", 
+      "object_repr": "awesome", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-01-25 20:16:35", 
+      "object_repr": "awesome", 
+      "object_id": "1", 
+      "change_message": "Changed selected.", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-25 20:16:27", 
+      "object_repr": "awesome", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-24 23:26:59", 
+      "object_repr": "awesome", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-01-24 22:35:32", 
+      "object_repr": "awesome", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 3, 
+      "action_time": "2010-01-24 22:09:30", 
+      "object_repr": "event", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 4
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "common.theme", 
+    "fields": {
+      "preview": "theme_preview/utosc2009_2.png", 
+      "name": "awesome", 
+      "description": "an awesome theme"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "common.theme", 
+    "fields": {
+      "preview": "theme_preview/utosc2009_2_.png", 
+      "name": "anothertheme", 
+      "description": "another theme"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "common.option", 
+    "fields": {
+      "theme": 1, 
+      "site": 1
     }
   }, 
   {
@@ -1367,10 +1644,10 @@
     }
   }, 
   {
-    "pk": 16, 
+    "pk": 23, 
     "model": "south.migrationhistory", 
     "fields": {
-      "applied": "2010-01-25 04:57:13", 
+      "applied": "2010-01-26 04:41:39", 
       "app_name": "common", 
       "migration": "0002_add_theme"
     }
@@ -1490,6 +1767,15 @@
       "applied": "2010-01-25 04:36:45", 
       "app_name": "updates", 
       "migration": "0002_add_link_and_social_info"
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "south.migrationhistory", 
+    "fields": {
+      "applied": "2010-01-26 04:51:00", 
+      "app_name": "common", 
+      "migration": "0003_add_option_table"
     }
   }
 ]

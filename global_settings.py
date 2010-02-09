@@ -108,7 +108,7 @@ INSTALLED_APPS = (
     # svn co -r446 http://sorl-thumbnail.googlecode.com/svn/trunk/sorl (already in an external checkout)
     'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
-    'south',
+    #'south',
 )
 
 ###########NEW CHANGE TO ADD###########

@@ -16,11 +16,9 @@ def get_template_sources(template_name, template_dirs=None):
     """
 
     current_site = Site.objects.get_current()
-#    print "Current Site: " + str(current_site)
 
     try:
-        option = Option.objects.get(id=current_site.id)
-        print "Site Theme: " + str(option.theme)
+        option = Option.objects.get(site=current_site)
         template_theme = option.theme.name
     except:
         template_theme = 'default'
@@ -52,5 +50,5 @@ def load_template_source(template_name, template_dirs=None):
     else:
         error_msg = "Your TEMPLATE_DIRS setting is empty. Change it to point to at least one template directory."
     raise TemplateDoesNotExist, error_msg
-load_template_source.is_usable = True
 
+load_template_source.is_usable = True

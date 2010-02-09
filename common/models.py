@@ -74,3 +74,5 @@ class Option(models.Model):
     site = models.ForeignKey(Site)
     theme = models.ForeignKey(Theme)
 
+    def __unicode__(self):
+        return '%s' % self.site.name

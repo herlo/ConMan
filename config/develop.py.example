@@ -1,0 +1,9 @@
+from config.prod import *
+
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
+
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = 'conman_test.db'
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''

@@ -1,5 +1,6 @@
 # Django project settings loader
 import os
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 if 'DJANGO_ENV' in os.environ:
     config = os.environ['DJANGO_ENV']
@@ -11,7 +12,7 @@ try:
     config_module = __import__('config.%s' % config, globals(), locals(), 'ConMan')
 except ImportError:
     import sys
-    sys.stderr.write("Error: Can't find the file 'config.%s.py'.\n" % config)
+    sys.stderr.write("Error: Can't find the file 'config/%s.py'.\n" % config)
     sys.exit(1)
 
 # Load the config settings properties into the local scope.

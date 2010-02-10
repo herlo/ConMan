@@ -1,23 +1,60 @@
-"""
-A model (``RegistrationProfile``) for storing user-registration data,
-and an associated custom manager (``RegistrationManager``).
-
-"""
-
-
-import datetime, random, re, sha
-
-from django.conf import settings
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
+from django.core.files.storage import FileSystemStorage
+import datetime, random, re, sha
 
 from settings import SEND_EMAIL
 
 SHA1_RE = re.compile('^[a-f0-9]{40}$')
 
+def normalize_photo_name(instance, filename):
+    """Renames avatar image to match the username."""
+    return u'img/user_photos/%s_avatar.%s' % (
+            instance.user.username, filename.split('.')[-1])
+
+class OverwriteStorage(FileSystemStorage):
+    def get_available_name(self, name):
+        """Overwrite an existing file on the filesystem."""
+        if self.exists(name):
+            self.delete(name)
+        return name
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    address = models.CharField(max_length=100, blank=True)
+    city = models.CharField(max_length=50, blank=True)
+    state = models.CharField(max_length=2, blank=True)
+    zip = models.CharField(max_length=10, blank=True)
+    country = models.CharField(max_length=5, blank=True)
+    phoneHome = models.CharField('Phone Number', max_length=10, blank=True, help_text='(XXX) XXX-XXXX')
+    phoneWork = models.CharField('Work Number', max_length=10, blank=True, help_text='(XXX) XXX-XXXX')
+    phoneCell = models.CharField('Cell Number', max_length=10, blank=True, help_text='(XXX) XXX-XXXX')
+    jobTitle = models.CharField(max_length=50, blank=True)
+    company = models.CharField(max_length=50, blank=True)
+    referral = models.CharField(max_length=50, blank=True)
+    bio = models.TextField(null=True, blank=True)
+    ircNick = models.CharField(max_length=100, null=True, blank=True, db_index=True)
+    ircServer = models.CharField(max_length=150, null=True, blank=True, db_index=True)
+    commonChannels = models.CharField(max_length=500, null=True, blank=True, db_index=True)
+    userPhoto = models.ImageField(upload_to=normalize_photo_name, storage=OverwriteStorage(), null=True, blank=True)
+    url = models.URLField(db_index=True, blank=True, null=True)
+
+    def __unicode__(self):
+        return self.user.first_name + ' ' + self.user.last_name
+
+def signupProfile(sender, **kwargs):
+    user = kwargs['instance']
+    if kwargs['created']:
+        userProfile = UserProfile(user=user)
+        userProfile.save()
+
+post_save.connect(signupProfile, sender=User)
 
 class RegistrationManager(models.Manager):
     """

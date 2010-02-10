@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from common.models import UserProfile
+from accounts.models import UserProfile
 
 from voting.models import Vote
 

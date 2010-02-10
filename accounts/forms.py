@@ -8,7 +8,7 @@ from django import forms
 #from django.core.validators import alnum_re
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
-from common.models import ShirtSize, UserProfile
+from accounts.models import UserProfile
 from accounts.models import RegistrationProfile
 
 

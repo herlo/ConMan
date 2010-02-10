@@ -1,4 +1,3 @@
-# Create your views here.
 from django import forms as forms
 from django.shortcuts import render_to_response,get_object_or_404
 from django.template import RequestContext
@@ -22,7 +21,6 @@ import pdb,random
 import Image,ImageDraw,ImageFont
 
 import settings
-from common.models import ShirtSize
 from speakers.models import Category,Status,Presentation,AudienceType
 from speakers.forms import *
 

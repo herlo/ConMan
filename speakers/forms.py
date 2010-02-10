@@ -1,4 +1,4 @@
-from common.models import UserProfile
+from accounts.models import UserProfile
 from speakers.models import *
 from django import forms
 from django.forms import ValidationError

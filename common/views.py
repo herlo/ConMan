@@ -3,7 +3,8 @@ from django.template import RequestContext
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
-from common.models import User,UserProfile
+from common.models import User
+from accounts.models import UserProfile
 from common.forms import *
 from common.config import Static
 from django.contrib.auth import authenticate, login

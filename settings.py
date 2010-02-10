@@ -1,9 +1,21 @@
-from global_settings import *
-# don't change this file
-# use local_settings for any local changes you may need
-#
-# to use this configuration, the DJANGO_SETTINGS_MODULE=local_settings must be used
-# The easiest way to do that is to create a script or something that does the following:
-#
-# export DJANGO_SETTINGS_MODULE=local_settings
+# Django project settings loader
+import os
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
+if 'DJANGO_ENV' in os.environ:
+    config = os.environ['DJANGO_ENV']
+else:
+    config = 'develop'
+
+# Import the configuration settings file - REPLACE projectname with your project
+try:
+    config_module = __import__('config.%s' % config, globals(), locals(), 'ConMan')
+except ImportError:
+    import sys
+    sys.stderr.write("Error: Can't find the file 'config/%s.py'.\n" % config)
+    sys.exit(1)
+
+# Load the config settings properties into the local scope.
+for setting in dir(config_module):
+    if setting == setting.upper():
+        locals()[setting] = getattr(config_module, setting)

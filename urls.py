@@ -41,7 +41,11 @@ urlpatterns = patterns('',
 
 #    (r'^admin/', include('django.contrib.admin.urls')),
     (r'^feeds/list/(?P<url>\w+)?/?$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
+
+# Accounts
     (r'^accounts/', include('accounts.urls')),
+
+
     (r'^about/tos/$', 'common.views.show_tos'),
 #    (r'^profile/$', 'common.views.profile_show'),
     (r'^logout/$', 'django.contrib.auth.views.logout'),

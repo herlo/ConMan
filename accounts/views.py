@@ -11,50 +11,49 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User,Group
 
 from accounts.forms import RegistrationForm, ProfileForm, UserForm
-from accounts.models import RegistrationProfile
+from accounts.models import RegistrationProfile, UserProfile
 
 from common.models import *
 import settings
 
 
-def activate(request, activation_key, template_name='accounts/activate.html'):
-    """
-    Activates a ``User``'s account, if their key is valid and hasn't
-    expired.
+#def activate(request, activation_key, template_name='accounts/activate.html'):
+#    """
+#    Activates a ``User``'s account, if their key is valid and hasn't
+#    expired.
+#
+#    By default, uses the template ``registration/activate.html``; to
+#    change this, pass the name of a template as the keyword argument
+#    ``template_name``.
+#
+#    **Context:**
+#
+#    account
+#        The ``User`` object corresponding to the account, if the
+#        activation was successful. ``False`` if the activation was not
+#        successful.
+#
+#    expiration_days
+#        The number of days for which activation keys stay valid after
+#        registration.
+#
+#    **Template:**
+#
+#    registration/activate.html or ``template_name`` keyword argument.
+#
+#    """
+#    activation_key = activation_key.lower() # Normalize before trying anything with it.
+#    account = RegistrationProfile.objects.activate_user(activation_key)
+#    return render_to_response(template_name,
+#                              { 'account': account,
+#                                'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS },
+#                              context_instance=RequestContext(request))
 
-    By default, uses the template ``registration/activate.html``; to
-    change this, pass the name of a template as the keyword argument
-    ``template_name``.
-
-    **Context:**
-
-    account
-        The ``User`` object corresponding to the account, if the
-        activation was successful. ``False`` if the activation was not
-        successful.
-
-    expiration_days
-        The number of days for which activation keys stay valid after
-        registration.
-
-    **Template:**
-
-    registration/activate.html or ``template_name`` keyword argument.
-
-    """
-    activation_key = activation_key.lower() # Normalize before trying anything with it.
-    account = RegistrationProfile.objects.activate_user(activation_key)
-    return render_to_response(template_name,
-                              { 'account': account,
-                                'expiration_days': settings.ACCOUNT_ACTIVATION_DAYS },
-                              context_instance=RequestContext(request))
-
-
-def make_basic_profile(user=None):
-    isinstance(user,User)
-    up = UserProfile(user=user)
-    up.user = user
-    up.save();
+#def make_basic_profile(user=None):
+#    isinstance(user,User)
+#    up = UserProfile(user=user)
+#    up.user = user
+#    up.save();
 
 
 @login_required

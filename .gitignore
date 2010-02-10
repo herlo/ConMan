@@ -4,6 +4,6 @@
 .*~
 *~
 .DS_Store
-local_settings.py
 public/theme_preview
 conman_test.db
+config/develop.py

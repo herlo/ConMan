@@ -106,7 +106,8 @@ INSTALLED_APPS = (
 
     # third-party apps
 
-    # svn co -r446 http://sorl-thumbnail.googlecode.com/svn/trunk/sorl (already in an external checkout)
+    # wget http://sorl-thumbnail.googlecode.com/files/sorl-thumbnail-3.2.5.tar.gz -O /tmp/sorl-thumbnail.tar.gz && \ 
+    # tar xf /tmp/sorl-thumbnail.tar.gz -C /tmp && cd /tmp/sorl-thumbnail-3.2.5/ && python setup.py install
     'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
     #'south',

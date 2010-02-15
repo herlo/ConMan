@@ -43,8 +43,12 @@ def _sync_db():
 #    with _fab.cd('/var/www/er.net/www/'):
 #        _fab.run('./manage.py syncdb')
 
+def httpd_restart():
+    _fab.sudo('/etc/init.d/httpd restart')
+
 def deploy_develop():
     """Deploy the latest conman release from HEAD"""
     _put_and_expand()
     _build_new_db()
+    httpd_restart()
 

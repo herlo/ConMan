@@ -38,10 +38,12 @@ def do_deps():
     with _fab.cd('/tmp/sorl-thumbnail-3.2.5/'):
         _fab.sudo("python setup.py install")
 
-def _sync_db():
-    pass
-#    with _fab.cd('/var/www/er.net/www/'):
-#        _fab.run('./manage.py syncdb')
+def do_sync_db():
+    with _fab.cd('/var/www/er.net/www/'):
+        _fab.run('./manage.py syncdb')
+
+def do_httpd_restart():
+    _fab.sudo('/etc/init.d/httpd restart')
 
 def httpd_restart():
     _fab.sudo('/etc/init.d/httpd restart')

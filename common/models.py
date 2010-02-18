@@ -65,7 +65,7 @@ class UserProfile(models.Model):
 class Theme(models.Model):
     name = models.CharField(max_length=40, unique=True)
     description = models.TextField(blank=True)
-    preview = models.ImageField(blank=True,null=True,upload_to='theme_preview/')
+    preview = models.ImageField(blank=True,null=True,upload_to='preview_theme/')
 
     def __unicode__(self):
         return '%s' % self.name

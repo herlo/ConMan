@@ -1,0 +1,17 @@
+<script type="text/javascript" src="/static/js/jquery-1.2.2.min.js"></script>
+
+<script>
+function search(name) {
+  $.getJSON("/speakers/find/", { pk:{{ object.pk }}, vote: kind }, function(json){
+    alert("Was successful?: " + json['success']);
+  });
+}
+function addClickHandlers() {
+  $("#pick").click( function() { vote("up") });
+  $("#downvote").click( function() { vote("down") });
+}
+$(document).ready(addClickHandlers);
+</script>
+
+<h3>Find Speakers</h3>
+

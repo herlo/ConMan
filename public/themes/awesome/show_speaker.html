@@ -1,0 +1,47 @@
+{% extends "base_forms.html" %}
+{% load thumbnail %}
+
+{% block title %}{{ spkr.first_name }} {{ spkr.last_name }}{% endblock title%}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<p><font size='+2'>{{ spkr.first_name }} {{ spkr.last_name }}</font><br />
+<font size='-3'>({{ profile.job_title }}, {{ profile.company}})</font><br />
+<a href='{{ profile.site }}' target='_blank'><font size='-2'>{{ profile.site }}</font></a></p>
+<div id='speakerImg'> <img src="{% thumbnail profile.user_photo 100x100 %}" /></div>
+<p>{{ profile.bio }}</p>
+
+{% if profile.irc_nick %}
+<p><b>IRC NickName:</b> {{ profile.irc_nick }}
+{% endif %}
+{% if profile.irc_server %}
+<br /><b>Main IRC Server:</b> {{ profile.irc_server }}
+{% endif %}
+{% if profile.common_channels %}
+<br /><b>Most Visited Channels:</b> {{ profile.common_channels }}
+{% endif %}
+
+{% if presentations %}
+<h3>Presentations</h3>
+{% for pres in presentations %}
+<p><b><a href='/presentation/{{ pres.id }}/'>{{ pres.title }}</a></b><br />
+Time: {{ pres.start|date:"M d, g:i a" }}</font>
+	{% if pres.slides %}
+	<br /><br />
+	<font size="-1"><a href="/static/{{ pres.slides }}" target="__new">Presentation Download(s)</a></p>
+	{% endif %}
+
+{% endfor %}
+{% endif %}
+
+
+{% endblock primaryContent%}
+

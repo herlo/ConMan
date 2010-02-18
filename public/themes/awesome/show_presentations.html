@@ -1,0 +1,105 @@
+{% extends "base_forms.html" %}
+{% load voting_tags %}
+
+{% block title %}Current Presenters{% endblock title%}
+
+{% block additionalCSS %}
+<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Presentations</h2>
+<p>New presentation are being confirmed daily. Please check back often to see the latest additions to the UTOSC 2009 Program.</p>
+
+{% for presentation in presentations %}
+    {% ifchanged presentation.cat %}
+	<div class="h3">
+        <h3>Category: {{ presentation.cat }}</h3>
+		{% if presentation.cat.description %}
+		<p>{{ presentation.cat.description }}</p>
+		{% endif %}
+	</div>
+    {% endifchanged %}
+    <div class="presentation {% if forloop.first %}first{% endif %}">
+	    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
+	        {% vote_by_user user on presentation as vote %}
+			{% if vote %}
+				{% ifchanged presentation.cat %}
+					<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -22px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
+				{% else %}
+					<span style="background-color: #000000; padding: 2px; float: right; font-size: small; font-weight: bold; color: #AAFF00; margin-top: -4px; text-align: center;">Voted {{ vote|vote_display:"for,against" }}<br /><a style="color: #FFAA00; font-size: small" href="/presentation/{{presentation.id}}/">Change Vote</a></span>
+				{% endifchanged %}
+	        {% else %}
+				<span style="background-color: #000000; font-size: small; padding: 2px; float: right; font-weight: bold; margin-top: -4px;"><a style="clear: both; color: #FFAA00" href="/presentation/{{presentation.id}}/">Vote</a></span>
+	        {% endif %}
+	    {% endif %}
+        <div class="title">
+			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
+        </div>
+        <div class="presenter">
+            <ul>
+            {% for pres in presentation.presenter.all %}
+				{% if pres.user.first_name %}
+				<li><a href="/speaker/{{ pres.user.id }}/">{{ pres.user.first_name }} {{ pres.user.last_name }}</a></li>
+				{% else %}
+					<li>{{ pres.user }}</li>
+				{% endif %}
+
+            {% endfor %}
+            </ul>
+        </div>
+
+        {% if presentation.short_abstract %}
+            <div class="short_abstract">
+            {{ presentation.short_abstract|truncatewords:50 }} 
+            </div>
+        {% endif %}
+        {% if presentation.start %}
+            <div class="start">
+            Start: {{ presentation.start }}
+            </div>
+        {% endif %}
+        {% if presentation.end %}
+            <div class="end">
+            End: {{ presentation.end }} 
+            </div>
+        {% endif %}
+        {% if presentation.location %}
+            <div class="location">
+            Location: {{ presentation.location }}
+            </div>
+        {% endif %}
+       <div class="audiences">
+            <ul>
+            {% for audience in presentation.audiences.all %}
+                <li {% ifequal audience.name "Beginner" %}
+                    class="beginner"
+                    {% endifequal %}
+                    {% ifequal audience.name "Intermediate" %}
+                    class="intermediate"
+                    {% endifequal %}
+                    {% ifequal audience.name "Advanced" %}
+                    class="advanced"
+                    {% endifequal %}>{{ audience.name }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <!-- not used this year 
+        Description: {{ presentation.description }} <br />
+        Long: {{ presentation.long_abstract }} <br />
+        Slides: {{ presentation.slides }} <br />
+        -->
+    </div> <!-- end of presentation -->
+{% endfor %}
+
+{% endblock primaryContent%}
+

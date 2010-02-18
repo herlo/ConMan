@@ -1,0 +1,21 @@
+Hierarchy of Templating - 
+everything here cascades...
+
+	base.html
+		base_forms.html
+			call_for_papers.html
+			call_for_volunteers.html
+			contactus.html
+		login.html
+		
+		
+		!---TO DO ------------------!
+			profile.html
+				profile_papers.html
+				profile_volunteers.html		
+			edit.html
+				edit_volunteers.html
+				edit_papers.html
+
+			
+		(test_template.html is a sand box / test bed...it is not part of the actual site...)

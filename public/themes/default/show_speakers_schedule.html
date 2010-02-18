@@ -1,0 +1,87 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Full Schedule{% endblock title%}
+
+{% block primaryContent %}
+
+<style type="text/css">
+#schedule { 
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+#schedule table {
+    border: 1px solid #666;
+    width: 90%;
+    margin: 10px auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+#schedule tr, #schedule th, #schedule td {
+    margin: 0px;
+    padding: 0px;
+}
+
+#schedule th {
+    margin:0px;
+    padding: 0px;
+    font-size: 14px;
+    font-weight: bold;
+    border-bottom: 1px solid #666;
+}
+
+#schedule th.time {
+    border-right: 1px solid #666;
+}
+
+</style>
+
+<div id="schedule">
+
+{% for presentation in presentations %}
+
+{% ifchanged presentation.start|date:"Y-m-d" %}
+
+<h1>{{ presentation.start|date:"Y-m-d" }}</h1>
+
+<table>
+    <tbody>
+        <tr>
+            <th class="time">Start</th>
+            <th>Presentations</th>
+        </tr>
+
+{% endifchanged %}
+
+{% ifchanged presentation.start %}
+    {% if not forloop.first %}
+        </tr>
+    {% endif %}
+        <tr>
+            <th class="time">
+            {{ presentation.start|date:"h:i a" }}
+            </th>
+            
+{% endifchanged %}
+
+            <td>
+               <div class="room">{{ presentation.location.name }}</div>
+               <div class="title">{{ presentation.title }}</div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
+
+
+
+

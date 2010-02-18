@@ -1,0 +1,4 @@
+{% load presenter_parser %}
+by {{obj.id|get_presenters|safe }}<br />
+category: <a href="/speaker/categories/">{{ obj.cat }}</a>
+{{ obj.short_abstract|linebreaks }}

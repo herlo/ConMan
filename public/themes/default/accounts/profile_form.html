@@ -1,0 +1,69 @@
+{% extends "base_forms.html" %}
+{% load thumbnail %}
+
+{% block title %}User Profile - Edit{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>Update/Edit Profile</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+
+</script>
+
+{% block formsWrapper %}
+
+<div id='error_text'>{{ error }}</div>
+	
+		<form name="profile_form" enctype="multipart/form-data" method="post" action="">
+			<table> 
+					<tr>
+				    <td>Profile for:</td><td><b>{{ user.username }}</b></td>
+				  </tr>
+
+				{% for field in user_form %}
+                                <tr>
+                                    <td>{{ field.label_tag }}
+                                    </td>
+                                    <td>{{ field }}</td>
+                                    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+                                    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+                                </tr>
+                                {% endfor %}
+
+				{% for field in form %}
+					<tr>
+				    <td>{{ field.label_tag }}
+				    </td>
+				    <td>{{ field }}</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				{% endfor %}
+				
+				{% if profile.user_photo %}
+				   <tr>
+                                       <td>&nbsp;</td>
+                                       <td>
+                                           <img src="{% thumbnail profile.user_photo 100x100 %}" />
+                                       </td>
+				   </tr>
+				{% endif %}
+			</table>
+			{% if  user %}
+            <p><a href="{% url auth_password_change %}">Change Your Password</a></p>
+			<input type="submit" value="Submit"/>
+			{% else %}
+			<input type="submit" value="Update Profile"/>
+			{% endif %}
+		</form>
+	
+	
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+

@@ -1,0 +1,59 @@
+{% extends "base_forms.html" %}
+{% load voting_tags %}
+
+{% block title %}Current Presenters{% endblock title%}
+
+{% block additionalCSS %}
+<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block leftMenu %}
+<h2><a style="font-size: large; color: #FFF;" href="/presentation/schedule/">Full Schedule</a></h2>
+<h2>by Date</h2>
+	<ul>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-08/">Oct 8</a></li>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-09/">Oct 9</a></li>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-10/">Oct 10</a></li>
+	</ul>
+<h2>by Category</h2>
+	<ul>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/17/">Keynotes</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/14/">BoF Sessions</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/18/">Workshops</a></li>
+	</ul>
+<h2>by Audience</h2>
+	<ul>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/4/">Beginner</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/5/">Intermediate</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/6/">Advanced</a></li>
+	</ul>
+{% endblock leftMenu %}
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Presentations</h2>
+
+{% for pres in presentations %}
+	{% ifchanged pres.start %}
+		<h3><a style="text-decoration: none; color: #44a;" href="/presentation/schedule/{{ pres.start|date:"Y-m-d" }}">{{ pres.start|date:"M d, g:i a" }}</a></h3>
+    {% endifchanged %}
+		<p><a href="/presentation/{{ pres.id }}/">{{ pres.title }}</a> by
+		{% for pres in pres.presenter.all %}
+			{% if pres.user.first_name %}
+			<a href="/speaker/{{ pres.user.id }}/">{{ pres.user.first_name }} {{ pres.user.last_name }}</a>{% if not forloop.last %}, {% endif %}
+			{% else %}
+			{{ pres.user }}
+			{% endif %}
+		{% endfor %}
+		</p>
+ {% endfor %}
+
+{% endblock primaryContent%}
+

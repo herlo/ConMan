@@ -1,0 +1,205 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Call for Papers{% endblock title%}
+
+{% block additionalCSS %}
+<link href="/static/css/call_for_papers.css" rel="stylesheet" type="text/css" />
+{% endblock additionalCSS %}
+
+{% block additionalJS %}
+<script type="text/javascript">
+function load_presenter_search() {
+    centerSpeakerSearch();
+    $("#blackout").css('opacity', '0.8');
+    $("#blackout").fadeIn('normal');
+    $("#blackout").click(close_speaker_search);
+    $("#presenter_results").fadeOut('normal');
+    $("#presenter_search").fadeIn('normal');
+}
+
+function close_speaker_search(){
+    $("#blackout").fadeOut('normal');
+    $("#presenter_results").fadeOut('normal');
+    $("#presenter_search").fadeOut('normal');
+}
+
+function find_presenters() {
+    var presenter = $("#presenter_name").val();
+    $.getJSON("/speaker/find/" + presenter + "/", function(json){ show_presenters(json)});
+}
+
+function show_presenters(json) {
+    var currentPresenters = $("#id_presenter").val();
+    var showPresenters =  false;
+    $("#presenter_search").fadeOut('normal');
+    $("#presenter_results ul").html(''); 
+    if(json.length != 0){
+        for (var i = 0; i < json.length; i++) {
+           var old = $("#presenter_search ul").html();
+           var presenterExists = false;
+           for (var j = 0; j < currentPresenters.length; j ++) {
+               if( currentPresenters[j] == json[i]['id']){
+                   presenterExists = true;
+               }
+           }
+            if( presenterExists == false ){
+                showPresenters = true;
+                $("#presenter_results ul").append("<li><a href=\"javascript:void(0);\" onclick=\"add_presenter(" + json[i]['id'] + ", '" + json[i]['name'] + "');\">" + json[i]['name'] + "</a></li>"); 
+            } else {
+                 $("#presenter_results ul").append("<li>" + json[i]['name'] + " (already added) </li>"); 
+            }
+        }
+    } else {
+        $("#presenter_results ul ").append("<li><strong>No users found.</strong></li>");
+    }
+    $("#presenter_results").fadeIn('normal');
+}
+
+function add_presenter(id, name) {
+    var old = $("#id_presenter").html();
+    $("#id_presenter").html(old + "<option selected value=\"" + id + "\">" + name + "</option>");
+}
+
+function centerSpeakerSearch(vertCenter, horizCenter){
+    var windowWidth = 0;
+    var windowHeight = 0;
+
+    if( typeof( window.innerWidth ) == 'number' ) {
+        windowWidth = window.innerWidth;
+        windowHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+        windowWidth = document.documentElement.scrollLeft + document.documentElement.clientWidth;
+        windowHeight = document.documentElement.scrollTop + document.documentElement.clientHeight;
+    } else if( document.body && (document.body.clientWidth || document.body.clientHeight)){
+        windowWidth = document.body.clientWidth;
+        windowHeight = document.body.clientHeight;
+    }
+
+    var wizardHeight = $("#presenter_search").height();
+    var wizardWidth = $("#presenter_search").width();
+ 
+    if(vertCenter == undefined){
+        vertCenter = ( windowHeight / 2) + document.documentElement.scrollTop;
+    }
+
+    if(horizCenter == undefined){
+        horizCenter = (windowWidth / 2);
+    }
+                                                                                                                                                  
+    $('#presenter_search').css({'position':'absolute','top':vertCenter,'left':horizCenter - (wizardWidth / 2)});
+    $('#presenter_results').css({'position':'absolute','top':vertCenter,'left':horizCenter - (wizardWidth / 2)});
+    $('#blackout').css({'width':windowWidth,'height': windowHeight });
+}
+</script>
+{% endblock additionalJS %}
+
+{% block nonFlowDivs %}
+<div id="blackout"></div>
+<div id="presenter_search">
+    <p>To search for a presenter, simply enter their name or username</p>
+    <ul>
+        <li> Presenter Name: <input id="presenter_name" name="presenter_name" type="text" /></li>
+    </ul>
+    <input class="rightButton" type="button" value="Search" onclick="find_presenters();" />
+    <input class="leftButton" type="button" value="Cancel" onclick="close_speaker_search();" />
+</div>
+<div id="presenter_results" >
+    <p>To add a user, click their name:</p>
+    <ul>
+        
+    </ul>
+    <p>When you are done, you can search for more names, or close this dialog.</p>
+    <input class="rightButton" type="button" value="Return to Search" onclick="load_presenter_search();" />
+    <input class="leftButton" type="button" value="Close" onclick="close_speaker_search();" />
+</div>
+{% endblock nonFlowDivs %}
+
+
+{% block primaryContent %}
+<h2>Submit Presentation Proposal</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+{% block formsWrapper %}
+
+<div id='error_text'>{{ error }}</div>
+<div id='deleted_text'>{{ deleted }}</div>
+	
+	<div id='form'>
+		<form method="post" action="/speaker/papers/{% if abs_id %}{{ abs_id }}/{% endif %}" enctype="multipart/form-data" >
+			<table> 
+					<tr>
+ 			    <td><b>{{ user.email }}</b></td><td><b><font size='+2'>{{ user.first_name }} {{ user.last_name }}</font></b></td>
+				  </tr>
+					{% for field in presenter_form %}
+					{% ifequal field.name "slides" %}
+					<tr>
+				    <td valign='top'>{{ field.label_tag }}
+				    </td>
+				    <td>{{ field }}<br />
+						<a href="{{ slides_form.instance.get_slides_url }}" target="__new">View Slides</a>
+					</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				   {% else %}
+					<tr>
+				    <td>{{ field.label_tag }}
+				    </td>
+				    <td>{{ field }}</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				   {% endifequal %}
+				{% endfor %}
+				   <tr>
+						<td>Presenter(s)</td>
+					   <td>
+							<select multiple name="presenter" id="id_presenter" size="4">
+                            {% for pres in presentation.presenter.all %}
+
+                                <option value="{{pres.user.id}}" selected>
+                                    {% if pres.user.first_name %}
+                                        {{pres.user.first_name}} {{pres.user_last_name}}
+                                    {% else %}
+                                        {{pres.user.username}}
+                                    {% endif %}
+                                </option>
+                            {% endfor %}
+							</select>
+								<br /><a href="javascript:void(0);" onclick="load_presenter_search();">Add Presenters</a>
+						</td>
+						<td valign="middle">Choose the presenter(s).<br /><br />Other presenters may be added 
+							by choosing the 'Add Presenters' link.</td>
+					</tr>
+
+			</table>
+			<input type="submit" value="Submit" />
+		</form>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		{% ifnotequal presenter_form.instance.status.pk approved_status.pk %}
+		<form method="post" action="/speaker/papers/{{ abs_id }}/delete/">
+			<input type='submit' value='Delete This Abstract' />
+		</form>
+		{% endifnotequal %}
+	</div>
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+
+{% block rightMenu %}
+	<h2>Submitted Abstracts</h2>
+		<ul>
+		{% for abs in abstract_list %}
+			<li><a href='/speaker/papers/{{ abs.id }}/'>{{ abs.title }}</a></li>
+		{% endfor %}
+		</ul>
+{% endblock rightMenu %}
+
+
+

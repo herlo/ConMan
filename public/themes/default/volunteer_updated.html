@@ -1,0 +1,15 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Call for Volunteers{% endblock title%}
+
+{% block primaryContent %}
+<h2>Call for Volunteers</h2>
+
+<h3>Congratulations!</h3>
+<p>
+Thank you {{ user.first_name }}, your interest in volunteering has been updated.
+A confirmation email has been sent to {{user.email}}.
+</p>
+
+{% endblock primaryContent%}
+

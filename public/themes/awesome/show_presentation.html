@@ -1,0 +1,76 @@
+{% extends "base_forms.html" %}
+{% load voting_tags %}
+{% load thumbnail %}
+
+{% block title %}{{ presentation.title }}{% endblock title %}
+
+{% block additionalCSS %}
+{{ block.super }}
+<style type="text/css">
+    form.voting { display: inline; }
+</style>
+{% endblock %}
+
+{% block primaryContent %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#id_password').pstrength();
+        $('#id_short_abstract').autogrow();
+        $('#id_bio').autogrow();
+</script>
+
+<p style="font-size: x-large;">{{ presentation.title }}
+{% if presentation.start %}
+<br /><font size="-1">Start: <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}/">{{ presentation.start|date:"M d, g:i a" }}</a></font>
+<br /><font size="-1">End: {{ presentation.end|date:"M d, g:i a" }}</font>
+{% endif %}
+{% if presentation.location.name %}
+<br /><font size="-1">Location: <a href="/presentation/location/{{ presentation.location.id }}">{{ presentation.location.name }}</a> 
+{% if presentation.location.here %}
+(<a href="/static/{{ presentation.location.here }}" class="thickbox" >map</a>)
+{% endif %}
+</font>
+{% endif %}
+{% if presentation.slides %}
+<br /><font size="-1"><a href="/static/{{ presentation.slides }}">Presentation Download(s)</a></font>
+{% endif %}
+
+</p>
+
+<p>{{ presentation.short_abstract|linebreaks }}</p>
+<div id='speaker'> 
+	<h3>About the presenter{% if multiple %}s{% endif %}
+{% for s in spkr %}
+    <h5 style="margin-left: 25px; font-size: x-small">
+        <a href='/speaker/{{ s.id }}/' style="color: #43484C">{{ s.name }}</a>
+		{% if s.spkr.company %}<em>({{ s.spkr.company }})</em>{% endif %}
+    </h5>
+
+    <p style="margin-left: 30px;">{{ s.spkr.bio }}</p>
+{% endfor %}
+
+	{% ifnotequal presentation.status.name 'Approved' %}
+    {% if perms.voting.add_vote or perms.voting.change_vote or perms.voting.delete_vote %}
+    <div id="presentation-voting">
+        {% vote_by_user user on presentation as vote %}
+        {% if vote %}
+        <p>You voted <em>{{ vote|vote_display:"for,against" }}</em> this presentation.</p>
+        {% else %}
+        <p>Vote on this presentation.</p>
+        {% endif %}
+        <form action="./upvote/" method="post" class="voting">
+            <button type="submit">+1</button>
+        </form>
+        <form action="./clearvote/" method="post" class="voting">
+            <button type="submit">reset</button>
+        </form>
+        <form action="./downvote/" method="post" class="voting">
+            <button type="submit">-1</button>
+        </form>
+    </div>
+    {% endif %}
+    {% endifnotequal %}
+
+</div>
+
+{% endblock primaryContent %}

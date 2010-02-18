@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock title%}
+{% block additionalCSS %}		<link href="/static/css/blog.css" rel="stylesheet" type="text/css" />{% endblock additionalCSS %}
+
+{% block primaryContent %}
+<h2>Welcome to the Utah Open Source Conference 2008</h2>
+<p></p>
+
+<div class="linkEntries" >
+<ul>
+{% for ll in left_links %}
+  <li><a href='{{ ll.href }}'>{{ ll.innertext }}</a></li>
+{% endfor %}
+</ul>
+</div>
+
+<div class="blogEntry" >
+	<div> 
+		<div class="blogUserProfile">
+
+				<div class="blogFullName">{{ p.fullname }}</div>
+<!--				<img class="blogUserImage" src="/static/{{ p.pic }}" />
+				<div class="blogUserEmail">{{ p.email }}</div> -->
+
+		</div>
+		
+		<span class="blogEntryTitle">{{ p.title }} </span> <span class="blogCreatedDate"> written on {{ p.created }} </span>	
+		<span class="blogTags"> <!-- Should be looping here over each object in the tags <a>One Fish</a>, <a>Two Fish</a> --> </span>
+		
+		<div class="blogText">{{ p.content }}</div>
+		
+		<span class="blogIncludedFiles"> <!--Should be looping here over each object in the files getting the urls and making links out of them --> </span>
+	</div>
+</div>
+
+{% endblock primaryContent%}
+
+djangoproject.com/documentation/forms/

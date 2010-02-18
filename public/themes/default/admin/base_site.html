@@ -1,0 +1,10 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title|escape }} | {% trans 'Conman site admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">{% trans 'Conman administration' %}
+    <a href="http://code.google.com/p/utos-conman/" class="small">project site &raquo;</a></h1>
+<h2><a href="/">&raquo; visit site</a></h2>
+{% endblock %}

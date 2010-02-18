@@ -1,0 +1,37 @@
+{% extends "profile.html" %}
+
+{% block title %}Call for Papers{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>View/Edit Profile</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+{% block profileWrapper %}
+<p>This profile will be used to represent you during the conference.  The information below will appear in the program, on the website, etc.</p>
+	
+		<h2>Speaker Profile</h2>
+			<table> 
+				{% for field in presenter_form %}
+					<tr>
+				    <td>{{ field.label_tag }}</td>
+				    <td>{{ field }}</td>
+				   </tr>
+				{% endfor %}
+		
+				<tr> 
+					<td>Bio: </td> <td> {{ user.bio }}</td>				
+				</tr>				
+				
+			</table>
+	
+{% endblock profileWrapper %}
+
+{% endblock primaryContent%}
+

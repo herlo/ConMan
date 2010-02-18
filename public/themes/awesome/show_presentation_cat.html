@@ -1,0 +1,105 @@
+{% extends "base_forms.html" %}
+{% load voting_tags %}
+
+{% block title %}Current Presenters{% endblock title%}
+
+{% block additionalCSS %}
+<link href="/static/css/show_presentations.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block leftMenu %}
+<h2><a style="font-size: large; color: #FFF;" href="/presentation/schedule/">Full Schedule</a></h2>
+<h2>by Date</h2>
+	<ul>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-08/">Oct 8</a></li>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-09/">Oct 9</a></li>
+      <li><a style="font-size: medium; color: #222;" href="/presentation/schedule/2009-10-10/">Oct 10</a></li>
+	</ul>
+<h2>by Category</h2>
+	<ul>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/17/">Keynotes</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/14/">BoF Sessions</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/cat/18/">Workshops</a></li>
+	</ul>
+<h2>by Audience</h2>
+	<ul>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/4/">Beginner</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/5/">Intermediate</a></li>
+	  <li><a style="font-size: medium; color: #222;" href="/presentation/audience/6/">Advanced</a></li>
+	</ul>
+{% endblock leftMenu %}
+
+{% block primaryContent %}
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password').pstrength();
+	$('#id_short_abstract').autogrow();
+	$('#id_bio').autogrow();
+	});
+</script>
+
+<h2>Presentations for category: {{ extra.name }}</h2>
+<p>{{ extra.description }}</p>
+
+{% for presentation in presentations %}
+    <div class="presentation {% if forloop.first %}first{% endif %}">
+        <div class="title">
+			<a href="/presentation/{{ presentation.id }}/">{{ presentation.title }}</a>
+                        <span class="presentationCategory"><a href="/presentation/cat/{{ presentation.cat.id }}/">{{ presentation.cat }}</a></span>
+        </div>
+        <div class="presenter">
+            <ul>
+            {% for pres in presentation.presenter.all %}
+				{% if pres.user.first_name %}
+				<li><a href="/speaker/{{ pres.user.id }}/">{{ pres.user.first_name }} {{ pres.user.last_name }}</a></li>
+				{% else %}
+					<li>{{ pres.user }}</li>
+				{% endif %}
+
+            {% endfor %}
+            </ul>
+        </div>
+
+        {% if presentation.short_abstract %}
+            <div class="short_abstract">
+            {{ presentation.short_abstract|truncatewords:50 }} 
+            </div>
+        {% endif %}
+        <div style="width:100%; clear:right;">
+        {% if presentation.start %}
+            <span class="start"><strong>Start:</strong> <a href="/presentation/schedule/{{ presentation.start|date:"Y-m-d" }}">{{ presentation.start|date:"M d, g:i a" }}</a> </span>
+        {% endif %}
+        {% if presentation.end %}
+            <span class="end" style="margin-left: 10px;"> <strong>End:</strong> {{ presentation.end|date:"M d, g:i a" }}</span>
+        {% endif %}
+        {% if presentation.location %}
+            <span class="location">
+		<strong>Room:</strong> <a href="/presentation/location/{{ presentation.location.id }}/">{{ presentation.location }}</a>
+            </span>
+        {% endif %}
+        </div>
+       <div class="audiences" style="padding: 1px;">
+            <ul>
+            {% for audience in presentation.audiences.all %}
+                <li {% ifequal audience.name "Beginner" %}
+                    class="beginner"
+                    {% endifequal %}
+                    {% ifequal audience.name "Intermediate" %}
+                    class="intermediate"
+                    {% endifequal %}
+                    {% ifequal audience.name "Advanced" %}
+                    class="advanced"
+					{% endifequal %}><a href="/presentation/audience/{{ audience.id }}/">{{ audience.name }}</a></li>
+            {% endfor %}
+            </ul>
+        </div>
+        <!-- not used this year 
+        Description: {{ presentation.description }} <br />
+        Long: {{ presentation.long_abstract }} <br />
+        Slides: {{ presentation.slides }} <br />
+        -->
+    </div> <!-- end of presentation -->
+{% endfor %}
+
+{% endblock primaryContent%}
+

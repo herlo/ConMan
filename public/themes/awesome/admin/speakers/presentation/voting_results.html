@@ -1,0 +1,60 @@
+{% extends "admin/change_list.html" %}
+{% load voting_tags %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="/static/js/jquery-1.2.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.tablesorter.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#voting-results').tablesorter({
+                sortList: [[1,1], [2,1]],
+                cssAsc: "ascending",
+                cssDesc: "descending",
+                cssHeader: "sorted"
+            });
+        });
+    </script>
+    <style type="text/css">
+        #voting-results th { cursor: pointer; }
+    </style>
+{% endblock %}
+
+{% block title %}Presentation Voting Results{% endblock %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="../../../">Home</a> ›
+    <a href="../">Presentations</a> ›
+    Presentation Voting Results
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <h1>Presentation Voting Results</h1>
+
+    {% scores_for_objects object_list as scores %}
+
+    <table id="voting-results">
+        <thead>
+            <tr>
+                <th><a href="#">Presentation</a></th>
+                <th><a href="#">Score</a></th>
+                <th><a href="#">Number of votes</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+            {% dict_entry_for_item obj from scores as score %}
+            <tr>
+                <td><a href="../{{ obj.id }}/">{{ obj }}</a></td>
+                <td>{{ score.score|stringformat:"+d"|default:"0" }}</td>
+                <td>{{ score.num_votes|default:"0" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="small quiet">Hold shift when clicking to sort by multiple
+    headings.</p>
+
+</div>
+{% endblock %}

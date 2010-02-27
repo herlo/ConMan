@@ -1,0 +1,58 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block primaryContent %}Sign up
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#id_password1').pstrength();
+	$('#id_password2').pstrength();
+	});
+</script>
+{% block formsWrapper %}
+
+{% if form.errors %}
+<p class="error">Please correct the errors below:</p>
+{% endif %}
+
+
+
+<form method="post" action="">
+
+<!--
+##############################
+
+Need to add CSRF
+
+Need to add AJAX here to check if Username is available.
+
+Need to add JS here to check that password is secure.
+
+Need to force email as username.
+
+##############################
+-->
+
+<table class="registration">
+<tr>
+    <th>{{ regForm.username.label_tag }}:</th>
+    <td>{{ regForm.username }}</td>
+</tr>
+<tr>
+    <th>{{ regForm.password1.label_tag }}:</th>
+    <td>{{ regForm.password1 }}</td>
+</tr>
+<tr>
+    <th>{{ regForm.password2.label_tag }}:</th>
+    <td>{{ regForm.password2 }}</td>
+</tr>
+<tr>
+    <td colspan="2" class="right">
+        <input type="submit" name="registerSubmit" value="Register" />
+    </td>
+</tr>
+</table>
+
+</form>
+{% endblock %}
+{% endblock %}

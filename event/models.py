@@ -39,6 +39,17 @@ class Attendee(models.Model):
     ticket
     user
     meta
+    order
+
 class AttendeeMeta(models.Model):
     name
     value
+
+class Order(models.Model):
+    user
+    order_num
+    valid
+    payment_type
+    auth_code
+
+

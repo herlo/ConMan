@@ -1,4 +1,5 @@
 from global_settings import *
+
 # don't change this file
 # use local_settings for any local changes you may need
 #
@@ -7,3 +8,4 @@ from global_settings import *
 #
 # export DJANGO_SETTINGS_MODULE=local_settings
 
+AUTH_PROFILE_MODULE='accounts.UserProfile'

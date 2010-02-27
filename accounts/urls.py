@@ -1,18 +1,8 @@
-"""
-URLConf for Django user registration.
-
-Recommended usage is to use a call to ``include()`` in your project's
-root URLConf to include this URLConf for any URL beginning with
-'/accounts/'.
-
-"""
-
-
 from django.conf.urls.defaults import *
 from django.views.generic.simple import direct_to_template
 from django.contrib.auth import views as auth_views
 
-from accounts.views import activate, register, profile
+from accounts.views import register
 
 urlpatterns = patterns('',
     # Activation keys get matched by \w+ instead of the more specific
@@ -20,7 +10,7 @@ urlpatterns = patterns('',
     # that way it can return a sensible "invalid key" message instead of a
     # confusing 404.
 
-    url(r'^activate/(?P<activation_key>\w+)/$', activate, name='registration_activate'),
+#    url(r'^activate/(?P<activation_key>\w+)/$', activate, name='registration_activate'),
     url(r'^login/$', auth_views.login,
         {'template_name': 'accounts/login.html'}, name='auth_login'),
     url(r'^logout/$', auth_views.logout,
@@ -46,5 +36,5 @@ urlpatterns = patterns('',
     url(r'^register/complete/$', direct_to_template,
         {'template': 'accounts/registration_complete.html'},
         name='registration_complete'),
-    url(r'^profile/$', profile, name='profile_form'),
+#    url(r'^profile/$', profile, name='profile_form'),
 )

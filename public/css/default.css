@@ -55,3 +55,11 @@ img { border: none;}
 /* fixes for konqueror and safari */
 h1 { font-size: 24px; }
 h2 { font-size: 16px; }
+
+.registration label {
+    text-transform: capitalize;
+}
+
+.right {
+    text-align: right;
+}

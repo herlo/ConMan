@@ -1,23 +1,13 @@
-"""
-Forms and validation code for user registration.
-
-"""
-
-
 from django import forms
-#from django.core.validators import alnum_re
 from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 from accounts.models import UserProfile
-from accounts.models import RegistrationProfile
-
 
 # I put this on all required fields, because it's easier to pick up
 # on them with CSS or JavaScript if they have a class of "required"
 # in the HTML. Your mileage may vary. If/when Django ticket #3515
 # lands in trunk, this will no longer be necessary.
 attrs_dict = { 'class': 'required' }
-
 
 class RegistrationForm(forms.Form):
     """

@@ -7,7 +7,8 @@ class TicketType(models.Model):
     summary = models.TextField(help_text="Short explanation of the ticket (eg. Thursday Only)")
 
     def __unicode__(self):
-        return self.get_name_display()
+        # return self.get_name_display()
+        return self.name
 
 class Ticket(models.Model):
 
@@ -18,9 +19,11 @@ class Ticket(models.Model):
     active = models.BooleanField(default=True, help_text="Does this show up on the main site?")
     start_date = models.DateTimeField(blank=True, null=True, help_text="Ticket will be available at this date and time")
     end_date = models.DateTimeField(blank=True, null=True, help_text="Ticket will be be removed at this date and time")
+    event
 
     def __unicode__(self):
-        return self.get_name_display()
+        # return self.get_name_display()
+        return self.name
 
 class Item(models.Model):
 
@@ -29,9 +32,16 @@ class Item(models.Model):
     description = models.TextField(max_length=60, help_text="Complete (long) description of the item")
     active = models.BooleanField(default=True, help_text="Does this show up on the main site?")
     price = models.DecimalField(max_digits=8, decimal_places=2, help_text="Price before discounts")
+    event
+    tickets
+    options
 
     def __unicode__(self):
         return self.get_name_display()
+
+class ItemOption(models.Model):
+    name
+    value
 
 DISCOUNT_CHOICES = (
   ('%', 'Percent discount'),

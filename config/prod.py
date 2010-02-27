@@ -1,6 +1,8 @@
+import os
+from settings import SITE_ROOT
 # Django settings for conman project.
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -39,7 +41,7 @@ USE_I18N = False
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = 'public/'
+MEDIA_ROOT = os.path.join(SITE_ROOT, 'public/')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -82,7 +84,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    "templates",
+    os.path.join(SITE_ROOT, "templates"),
 )
 
 INSTALLED_APPS = (
@@ -106,23 +108,24 @@ INSTALLED_APPS = (
 
     # third-party apps
 
-    # svn co -r446 http://sorl-thumbnail.googlecode.com/svn/trunk/sorl (already in an external checkout)
+    # wget http://sorl-thumbnail.googlecode.com/files/sorl-thumbnail-3.2.5.tar.gz -O /tmp/sorl-thumbnail.tar.gz && \ 
+    # tar xf /tmp/sorl-thumbnail.tar.gz -C /tmp && cd /tmp/sorl-thumbnail-3.2.5/ && python setup.py install
     'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
-    #'south',
+    'south',
 )
 
 ###########NEW CHANGE TO ADD###########
 TEMPLATE_CONTEXT_PROCESSORS = (
-'django.core.context_processors.auth',
-'django.core.context_processors.debug',
-'django.core.context_processors.i18n',
-'django.core.context_processors.media',
-'django.core.context_processors.request'
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request'
 )
 ######################################
 
-AUTH_PROFILE_MODULE = 'common.userprofile'
+AUTH_PROFILE_MODULE = 'accounts.userprofile'
 
 HOST_NAME = 'http://localhost:8080'
 
@@ -142,7 +145,7 @@ EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = '[conman-papers] '
 SERVER_EMAIL = 'admin@utos.org'
 
-FONT_PATH = "public/fonts/DejaVuLGCSerifCondensed.ttf"
+FONT_PATH = os.path.join(SITE_ROOT, "public/fonts/DejaVuLGCSerifCondensed.ttf")
 #FONT_PATH="arial.pil"
 FONT_SIZE = 14
 # Timeout in minutes

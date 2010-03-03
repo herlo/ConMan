@@ -2,7 +2,8 @@
 
 {% block title %}Sign up{% endblock %}
 
-{% block primaryContent %}Sign up
+{% block primaryContent %}
+Sign up
 <script type="text/javascript">
 $(document).ready(function(){
 	$('#id_password1').pstrength();
@@ -17,7 +18,11 @@ $(document).ready(function(){
 
 
 
-<form method="post" action="">
+<form method="POST" action="">
+
+{% if errorMessage %}
+    {{ errorMessage }}
+{% endif %}
 
 <!--
 ##############################
@@ -35,8 +40,8 @@ Need to force email as username.
 
 <table class="registration">
 <tr>
-    <th>{{ regForm.username.label_tag }}:</th>
-    <td>{{ regForm.username }}</td>
+    <th>{{ regForm.email.label_tag }}:</th>
+    <td>{{ regForm.email }}</td>
 </tr>
 <tr>
     <th>{{ regForm.password1.label_tag }}:</th>

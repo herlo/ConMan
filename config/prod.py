@@ -127,6 +127,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 AUTH_PROFILE_MODULE = 'accounts.userprofile'
 
+AUTHENTICATION_BACKENDS = (
+    "accounts.EmailBackend",
+)
+
 HOST_NAME = 'http://localhost:8080'
 
 # UTOS-ConMan specific settings

@@ -1,5 +1,36 @@
-from django.db import models
 from datetime import datetime
+from django.db import models
+# from event.models import *
+
+class Event(models.Model):
+    logo = models.FileField(upload_to='logos')
+    name = models.CharField(max_length=255)
+    summary = models.CharField(max_length=255)
+    description = models.TextField()
+    host = models.CharField(max_length=255)
+
+class EventDays(models.Model):
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+
+class Location(models.Model):
+    name = models.CharField(max_length=255)
+    street1 = models.CharField(max_length=255)
+    street2 = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    zip = models.CharField(max_length=255)
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=255)
+    primary = models.BooleanField()
+
+class HostOrg(models.Model):
+    name = models.CharField(max_length=255)
+    url = models.CharField(max_length=255)
+    contacts = models.ManyToManyField(Contact)
 
 class TicketType(models.Model):
 
@@ -7,7 +38,8 @@ class TicketType(models.Model):
     summary = models.TextField(help_text="Short explanation of the ticket (eg. Thursday Only)")
 
     def __unicode__(self):
-        return self.get_name_display()
+        # return self.get_name_display()
+        return self.name
 
 class Ticket(models.Model):
 
@@ -18,9 +50,15 @@ class Ticket(models.Model):
     active = models.BooleanField(default=True, help_text="Does this show up on the main site?")
     start_date = models.DateTimeField(blank=True, null=True, help_text="Ticket will be available at this date and time")
     end_date = models.DateTimeField(blank=True, null=True, help_text="Ticket will be be removed at this date and time")
+    event = models.ForeignKey(Event)
 
     def __unicode__(self):
-        return self.get_name_display()
+        # return self.get_name_display()
+        return self.name
+
+class ItemOption(models.Model):
+    name = models.CharField(max_length=255)
+    value = models.CharField(max_length=255)
 
 class Item(models.Model):
 
@@ -29,6 +67,9 @@ class Item(models.Model):
     description = models.TextField(max_length=60, help_text="Complete (long) description of the item")
     active = models.BooleanField(default=True, help_text="Does this show up on the main site?")
     price = models.DecimalField(max_digits=8, decimal_places=2, help_text="Price before discounts")
+    event = models.ForeignKey(Event)
+    tickets = models.ManyToManyField(Ticket)
+    options = models.ManyToManyField(ItemOption)
 
     def __unicode__(self):
         return self.get_name_display()
@@ -53,3 +94,4 @@ class Discount(models.Model):
 
     def __unicode__(self):
         return self.get_name_display()
+

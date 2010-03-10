@@ -112,7 +112,7 @@ INSTALLED_APPS = (
     # tar xf /tmp/sorl-thumbnail.tar.gz -C /tmp && cd /tmp/sorl-thumbnail-3.2.5/ && python setup.py install
     'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
-    'south',
+    #'south',
 )
 
 ###########NEW CHANGE TO ADD###########

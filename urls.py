@@ -78,13 +78,15 @@ urlpatterns = patterns('',
     (r'^$', 'common.views.index'),
 )
 
+from common.templatetags.get_theme import theme
+
 if settings.DEBUG:
     urlpatterns += patterns('',
         # Serve Theme Statics
         #Images
-        (r'^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/img'}),
+        (r'^img/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/themes/%s/img' % theme()}),
         #CSS
-        (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/css'}),
+        (r'^css/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/themes/%s/css' % theme()}),
         #JavaScript
-        (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/js'}),
+        (r'^js/(?P<path>.*)$', 'django.views.static.serve', {'document_root': 'public/themes/%s/js' % theme()}),
     )

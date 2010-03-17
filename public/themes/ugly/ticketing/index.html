@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Designed and Modded out by Clint Savage
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!-- css goes here -->
+	{% load get_theme %}
+    <link href="/public/{% theme %}/css/default.css" rel="stylesheet" type="text/css" />
+    {% block additionalCSS %}
+    {% endblock additionalCSS %}
+    <!-- js goes here -->
+    {% block additionalJS %}
+    {% endblock additionalJS %}
+</head>
+<body>
+
+<div class="bigpicture">
+    <!-- so:left -->
+    <div class="left">
+        This is the left
+    </div>
+    <!-- eo:left -->
+    <!-- so:middle -->
+    <div class="middle">
+        This is the middle
+    </div>
+    <!-- eo:middle -->
+    <!-- so:right -->
+    <div class="right">
+        This is the right
+    </div>
+</div>
+<!-- eo:bigpicture -->
+
+</body>
+</html>

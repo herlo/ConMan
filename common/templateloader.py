@@ -6,6 +6,7 @@ from django.conf import settings
 from django.template import TemplateDoesNotExist
 from django.utils._os import safe_join
 from django.contrib.sites.models import Site
+
 from common.models import Theme,Option
 
 def get_template_sources(template_name, template_dirs=None):

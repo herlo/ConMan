@@ -1,1 +1,69 @@
-bob
+.bigpicture {
+    width: 900px; 
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:20px; 
+    margin-bottom: 10px;
+}
+
+.left { 
+    float: left; 
+    width: 250px; 
+}
+
+.left .logo_image {
+    top:    20px;
+    width:  200px;
+    height: 100px;
+}
+
+.left .event_date {
+    margin-top: 20px;
+    width:  220px;
+}
+
+.left .event_time {
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.left .event_location {
+    margin-top: 15px;
+}
+
+.left .event_location .addr1 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location .addr2 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location .addr3 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location .addr4 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location_map {
+    margin-top: 15px;
+    width:  200px;
+    height: 200px;
+}
+
+.middle { 
+    width: 250px; 
+    margin: auto; 
+    float: left;
+}
+
+.right { 
+    float: right; 
+    width: 400px;
+}

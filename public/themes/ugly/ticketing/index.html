@@ -9,8 +9,8 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <!-- css goes here -->
-	{% load get_theme %}
-    <link href="/public/{% theme %}/css/default.css" rel="stylesheet" type="text/css" />
+    {% load get_theme %}
+    <link href="/css/default.css" rel="stylesheet" type="text/css" />
     {% block additionalCSS %}
     {% endblock additionalCSS %}
     <!-- js goes here -->
@@ -22,7 +22,30 @@
 <div class="bigpicture">
     <!-- so:left -->
     <div class="left">
-        This is the left
+        <div class="logo_image">
+            <img src="/img/event_logo.png" />
+        </div>
+        <div class="event_date">
+            October 14, 2010
+            <div class="event_time">8:30am to 9:00pm</div>
+        </div>
+        <div class="event_date">
+            October 15, 2010
+            <div class="event_time">8:30am to 9:00pm</div>
+        </div>
+        <div class="event_date">
+            October 16, 2010
+            <div class="event_time">8:30am to 5:00pm</div>
+        </div>
+        <div class="event_location">
+            <div class="addr1">Miller Free Enterprise Center</div>
+            <div class="addr2">Salt Lake Community College</div>
+            <div class="addr3">9750 South 300 West</div>
+            <div class="addr4">Sandy, Utah 84070</div>
+        </div>
+        <div class="event_location_map">
+            <img src="/img/event_location_map.png" /> 
+        </div>
     </div>
     <!-- eo:left -->
     <!-- so:middle -->

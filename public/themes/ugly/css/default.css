@@ -57,6 +57,19 @@
     height: 200px;
 }
 
+.left .new_event {
+    margin-top: 15px;
+}
+
+.left .new_event a {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.copyright {
+    margin-top: 15px;
+}
+
 .middle { 
     width: 250px; 
     margin: auto; 

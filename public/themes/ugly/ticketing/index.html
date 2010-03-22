@@ -54,7 +54,10 @@
     <!-- eo:left -->
     <!-- so:middle -->
     <div class="middle">
-        {{ event.name }}
+        <h2>{{ event.name }}</h2>
+        <p class="description">{{ event.description }}</p>
+        <h3>Hosted By:</h3>
+        <p>{{ event.host.name }}<br />{{ event.host.url }}</p>
     </div>
     <!-- eo:middle -->
     <!-- so:right -->

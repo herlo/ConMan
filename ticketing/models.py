@@ -1,13 +1,16 @@
 from datetime import datetime
 from django.db import models
-# from event.models import *
 
 class Event(models.Model):
     logo = models.FileField(upload_to='logos')
     name = models.CharField(max_length=255)
+    slug = models.CharField(max_length=255)
     summary = models.CharField(max_length=255)
     description = models.TextField()
     host = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
 
 class EventDays(models.Model):
     start = models.DateTimeField()

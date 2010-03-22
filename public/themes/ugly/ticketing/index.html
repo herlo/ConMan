@@ -44,7 +44,7 @@
             <div class="addr4">Sandy, Utah 84070</div>
         </div>
         <div class="event_location_map">
-            <img src="/img/event_location_map.png" /> 
+            <img src="/img/event_location_map.png" />
         </div>
         <div class="new_event">
             Create your own<br /><a href="/event/new/">Event Revolution</a>!!
@@ -54,12 +54,13 @@
     <!-- eo:left -->
     <!-- so:middle -->
     <div class="middle">
-        This is the middle
+        {{ event.name }}
     </div>
     <!-- eo:middle -->
     <!-- so:right -->
     <div class="right">
-        This is the right
+        {% block rightColumn %}
+        {% endblock rightColumn %}
     </div>
 </div>
 <!-- eo:bigpicture -->

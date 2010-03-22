@@ -1,0 +1,16 @@
+{% extends 'ticketing/index.html' %}
+
+{% block rightColumn %}
+<ul>
+    {% for ticket in event.ticket_set.all %}
+        <li>
+            {{ ticket.name }}
+            {{ ticket.price }}
+            <br/>
+            Ends: {{ ticket.end_date|date:'M d, Y' }}
+            <br/>
+            {{ ticket.description }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock rightColumn %}

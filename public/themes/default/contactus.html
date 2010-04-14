@@ -1,0 +1,46 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Contact Us{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>Contact Us</h2>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('#id_message').autogrow();
+
+	});
+</script>
+
+{% 	  block formsWrapper %}
+
+	
+		<form method="post" action="">
+			<table> 
+				{% for field in contactform %}
+				{% ifnotequal field.label "captcha_uid" %}
+					<tr>
+				    <td>{{ field.label_tag }}
+				    {%ifequal field.label "captcha_text" %}
+	<img src="http://localhost:8080/captcha/{{ captcha.uid }}.jpg"/> 
+				{% endifequal %}				    
+				    </td>
+				    <td>{{ field }}</td>
+				    {% if field.help_text %}<td>{{ field.help_text }}</td>{% endif %}
+				    {% if field.errors %}<td class="myerrors">{{ field.errors }}</td>{% endif %}
+				   </tr>
+				   {% endifnotequal %}
+				{% endfor %}
+				
+				
+			</table>
+			<img src="/captcha/{{ captcha.uid }}.jpg"/>
+			<input type="submit" value="Submit" />
+		</form>
+	
+	
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+

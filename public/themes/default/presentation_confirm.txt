@@ -1,0 +1,24 @@
+*** PLEASE DO NOT REPLY TO THIS EMAIL, IT WILL NOT BE READ ***
+
+Thank you for submitting your abstract for the Utah Open Source
+Conference.  As you might already know, we are really excited to receive this
+submission and look forward to reviewing your paper.  As we get closer to the
+actual conference dates (October 8-10, 2009), we'll be back in contact with
+you regarding your submission.
+
+We look forward to hearing this presentation and should be able to provide you
+with information on whether this presentation is approved by August 27, 2009.
+
+Please verify the information below, if anything is incorrect, please feel
+free to send an email to papers@utos.org with any corrections.
+
+Presenter: {{ pres.name }}
+Title:  {{ pres.title }}
+Abstract: {{ pres.abstract }}
+
+Again, thank you for submitting your paper.  We'll see you at UTOSC 2009!!!
+
+Cheers,
+
+Clint Savage
+Founder, Utah Open Source Foundation

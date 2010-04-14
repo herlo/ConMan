@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>UTOSC 2009 Tracker</title>
+
+<script type="text/javascript" src="/static/js/jquery-1.3.2.min.js"></script>
+
+<script type="text/javascript">
+
+// Tell the script how often to get updates
+var howOftenToFetchTweets = 30000;
+var howOftenToFetchBlogs = 30000;
+
+// Tell the script how long to show each screen 
+var howLongToShowTweets = 20000;
+var howLongToShowBlogs = 20000;
+
+var sinceId = 0;
+
+// 1 min =  60000
+var slideInterval = setInterval("doSomething()", howLongToShowTweets)
+
+// 30 sec  = 30000
+setInterval("getTweets()", howOftenToFetchTweets)
+setInterval("getRSS()", howOftenToFetchBlogs)
+
+$('document').ready(function(){
+
+	windowHeight = window.innerHeight
+	$('#container').css('height', windowHeight +'px');
+	$('#container').css('max-height', windowHeight +'px');
+	$('#tweetHider').css('max-height', windowHeight - 63 +'px');
+	$('#tweetHider').css('height', windowHeight - 63 +'px');
+	
+	getTweets();
+	getRSS();
+	 
+});
+
+function getRSS(){
+	$.ajax({
+		   type: "POST",
+		   url: "/updates/rss/",
+		   data: '',
+		   dataType: '',
+		   success: function(rss){
+
+				$('#schedulePost').html(rss);
+
+		   }
+	 });
+}
+
+function doSomething(){
+	$('#tweetHider').slideToggle('slow');
+	$('#scheduleHider').slideToggle('slow', function(){
+		clearInterval(slideInterval); 
+		if( $('#scheduleHider').is(':visible') ){
+			slideInterval = setInterval('doSomething()', howLongToShowBlogs);
+		} else {
+			slideInterval = setInterval('doSomething()', howLongToShowTweets);
+		}
+	 });
+}
+
+var tempTweetId
+
+function getTweets(){
+$.ajax({
+	   type: "POST",
+	   url: "/updates/twitter/",
+	   data: "since="+ sinceId,
+	   dataType: 'json',
+	   success: function(tweets){
+
+	   		//conver the OBJECT to and ARRAY so we can sort it
+	   		tweetArray = new Array();
+
+	   		for ( tweet in tweets['results'] ){
+		   		tweetArray[tweet] = new Array();
+		   		tweetArray[tweet]['id'] = tweets['results'][tweet]['id'];
+		   		tweetArray[tweet]['text'] = tweets['results'][tweet]['text'];
+		   		tweetArray[tweet]['date'] = tweets['results'][tweet]['created_at'];
+		   		tweetArray[tweet]['profile_image_url'] = tweets['results'][tweet]['profile_image_url'];
+		   	}
+
+		   	tweetArray.sort();
+		   	tweetArray.reverse();
+
+	   		var startTweet = $('#tweetHider :first');
+
+	   		for ( tweet in tweetArray ){
+				tweetImage = tweetArray[tweet]['profile_image_url'];
+				tweetMsg = tweetArray[tweet]['text'];
+				tweetDate = tweetArray[tweet]['date'];
+				tweetID = tweetArray[tweet]['id'];
+	   			var tweetDiv = '<div class="tweet" style="display: none; clear: both;"><img src="'+ tweetImage +'" /><span class="tweetText" >'+ tweetMsg +'</span></div>';
+	   			$('#tweetHider :first').before(tweetDiv);
+			}
+
+	   		tweetArray = new Array();
+			
+   			if(startTweet != $('#tweetHider :first')){
+		   		var newTweet = startTweet.prev();
+		   		slideTweet(newTweet);
+	   		}
+
+	   		sinceId = tweets['max_id'];
+
+	   }
+ });
+}
+
+function slideTweet(tweet){
+	tweet.slideDown('slow', function(){
+		if(tweet != $('#tweetHider :first')){
+			slideTweet(tweet.prev());
+		}
+	});
+}
+
+</script>
+
+<style type="text/css">
+
+body{
+	background-color: #CCC;
+	margin: 0;
+	padding: 0;
+}
+
+#container{
+	margin: 0px;
+	border: 1px solid #000;
+	border-collapse: collapse;
+}
+
+#tweetHeader {
+	background: #ACACAC;
+	padding: 5px;
+	font-weight: bold;
+	border-bottom: 1px solid #666;
+	border-collapse: collapse;
+}
+
+#tweetHider {
+	overflow: hidden;
+}
+
+.tweet {
+	border-bottom: 1px solid #000;
+	clear: both;
+	margin-bottom: 20px;
+}
+
+.tweet img {
+}
+
+.tweetText {
+	margin-left: 10px;
+}
+
+#schedule{
+	border-top: 1px solid #000;
+	border-collapse: collapse;
+}
+
+#scheduleHeader {
+	background: #ACACAC;
+	padding: 5px;
+	font-weight: bold;
+	border-bottom: 1px solid #666;
+	border-collapse: collapse;
+}
+
+#scheduleHider {
+	display: none;
+	border-collapse: collapse;
+}				
+
+
+</style>
+
+</head>
+<body>
+
+<div id="container">
+	<div id="tweets">
+		<div id="tweetHeader">@utosc |  #utosc | #utosc2009</div>
+		
+		<div id="tweetHider">
+			<div class="tweet">
+				<img src="http://a3.twimg.com/profile_images/396384595/xbox_avatarpic_large_normal.png" alt="avatar" />
+				<span class="tweetText" >This is a tweet!</span>
+			</div>
+		</div>
+	</div>
+	<div id="schedule">
+		<div id="scheduleHeader">Coming up!</div>
+		<div id="scheduleHider">
+			<div id="schedulePost"></div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

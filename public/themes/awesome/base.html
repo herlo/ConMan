@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+	Designed by Emily Shaw <memilyrae@gmail.com>
+	Modded out by Adam Barrett <admin@utahcon.com> and Victor Villa <vvilla@gmail.com>
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>UTOSC 2009 | (Afford|Scal|Reli)Ability - {% block title %}{% endblock title %}</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	{% block additionalCSS %}
+ 	{% endblock additionalCSS %}
+	<script type="text/javascript" src="/static/js/jquery-1.2.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-passwordstrength.min.1.1.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-autoexpand.1.02.js"></script>
+    <script type="text/javascript" src="/static/js/thickbox.js"></script>
+	{% block additionalJS %}
+ 	{% endblock additionalJS %}
+</head>
+<body>
+
+	AWESOME!!
+
+{% block nonFlowDivs %}
+{% endblock nonFlowDivs %}
+
+<div class="bigpicture">
+	<div class="masthead">
+		<img style="float:right;" src="/static/img/utosLogo.png" alt="UTOS logo" />
+        <div class="clearboth"></div>
+		<div class="titlebar">
+			<img src="/static/img/utosTitle.png" alt="Utah Open Source" />
+		</div>
+		<div class="menubar_left">
+			{% load flatpages_links %}
+			{% show_flatpages %}
+		</div>
+		<div class="menubar_right">
+			{% if user.is_authenticated %}
+				<div class="menubutton_right"><a href="/accounts/logout/" accesskey="2" title="">Logout</a></div>
+				<div class="menubutton_right"><a href="/speaker/papers/" accesskey="2" title="">Submit/Manage Abstract</a></div>
+			{% endif %}
+<!--
+				<div class="menubutton_left"><a href="/volunteer/" accesskey="3" title="">Call for Volunteers</a></div>
+				<div class="menubutton_left"><a href="/contact/" accesskey="5" title="">Contact Us</a></div>
+-->
+			{% if not user.is_authenticated %}
+			  <div class="menubutton_right"><a href="/accounts/login/" accesskey="2" title="">Login</a></div>
+			  <div class="menubutton_right"><a href="/accounts/register/" accesskey="2" title="">Create Account</a></div>
+			{% else %}
+			  <div class="menubutton_right"><a href="/accounts/profile/" accesskey="2" title="">Profile</a></div>
+			  <div class="user"> Welcome, {{ user.username }} </div>
+			{% endif %}
+		</div>
+	</div>
+	<!-- eo:masthead -->
+
+    <div class="clearboth"></div>
+	{% block heading %}
+	<div class="bigbluebox">
+		<div class="bbbleft">
+			<img src="/static/img/utosc2009_2_sm.png" alt="" />
+		</div>
+		<div class="bbbmiddle">
+			{% load update_tags %}
+			{% latest_update %}
+		</div>
+		<div class="bbbright">
+			Hosted by:<br />
+			<img src="/static/img/slcc_logo_4clr_75x200.jpg" alt="" /><br />
+			Miller Free Enterprise Center (MFEC)<br />
+			Sandy, Utah
+		</div>
+        <div class="clearboth"></div>
+	</div>
+	{% endblock heading %}
+	<!-- eo: bigbluebox -->
+
+	<div id="wrapper-left">
+		<div id="wrapper-right">
+			<div class="contentbox">
+				<div class="rightcontent">
+					{% block rightMenu %}
+					<h2>Sponsors</h2>
+					{% load sponsor_list %}
+					{% show_sponsors %}
+					{% endblock rightMenu %}
+				</div>
+		<!-- eo: rightcontent -->
+
+				<div class="centercontent">
+					{% block primaryContent %}
+					{% endblock primaryContent %}
+				</div>
+				<!-- eo: centercontent -->
+
+				<div class="leftcontent">
+					<h2>In The Past</h2>
+					<ul>
+						<li><a target="_new" href="http://2008.utosc.com">UTOSC 2008</a></li>
+					</ul>
+					{% block leftMenu %}
+					<h2>Groups</h2>
+					{% load lug_list %}
+					{% show_lugs %}
+					{% endblock leftMenu %}
+				</div>
+			</div>
+
+			<div class="footer">
+				<a href='http://code.google.com/p/utos-conman/' target='_base'><img align="top" src="/static/img/conman.png"  border='0' alt="ConMan rocks!" /></a>
+				<br />
+				<a href='http://code.google.com/p/utos-conman/' target='_base'> Powered by ConMan </a>
+				<br />
+				<span><em>UTOSC 2009:</em> Copyright 2007-2009 Utah Open Source Conference. All Rights Reserved.</span>
+			</div>
+		</div>
+	</div>
+	<!-- eo: footer -->
+
+
+</div>
+<!-- eo:bigpicture -->
+
+</body>
+</html>

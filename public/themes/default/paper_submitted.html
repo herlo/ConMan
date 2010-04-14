@@ -1,0 +1,20 @@
+{% extends "base_forms.html" %}
+
+{% block title %}Call for Papers{% endblock title%}
+
+
+{% block primaryContent %}
+<h2>Call for Papers</h2>
+{% block formsWrapper %}
+
+{% with user.user_profile as user %}
+		<h3>Congratulations {{user.first_name}}!</h3>
+		<p>Your account has been created and your presentation saved. A confirmation email has been sent to {{user.email}} for verification of the details of your paper submission.  If this is in error, please feel free to visit <a href="{{ site }}/">our site</a> and update the submission until the Call for Papers Deadline. {{ cfp_deadline }}</p>
+	 
+{% endwith %}
+	
+{% endblock formsWrapper %}
+
+{% endblock primaryContent%}
+
+djangoproject.com/documentation/forms/

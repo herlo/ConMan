@@ -1,0 +1,33 @@
+<!-- this is a generic view for audiences and categories -->
+{% extends "base.html" %}
+
+{% block title %}{{ page_info.title }}{% endblock title%}
+
+{% block primaryContent %}
+
+<h2>{{ page_info.title }}</h2>
+
+<table style="margin-left: 10px;" border="none" width="95%" >
+	<tr>
+		<th width="30%">{{ page_info.item_name_heading }}</th>
+		<th>{{ page_info.item_value_heading }}</th>
+		{% if page_info.updated_heading %}
+		<th width="14%">{{ page_info.updated_heading }}
+		{% endif %}
+	</tr>
+			
+	{% for item in items %}
+	<tr>
+		<td>{{ item.name }}</td>
+		{% autoescape off %}
+		<td>{{ item.description }}</td>
+		{% endautoescape %}
+		{% if item.updated %}
+		<td>{{ item.updated|date:"M d, Y H:i" }}</td>
+		{% endif %}
+	</tr>
+	{% endfor %}
+</table>
+
+{% endblock primaryContent%}
+

@@ -84,7 +84,7 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(SITE_ROOT, "templates"),
+    os.path.join(SITE_ROOT, "public/themes"),
 )
 
 INSTALLED_APPS = (
@@ -112,7 +112,7 @@ INSTALLED_APPS = (
     # tar xf /tmp/sorl-thumbnail.tar.gz -C /tmp && cd /tmp/sorl-thumbnail-3.2.5/ && python setup.py install
     'sorl.thumbnail',
     #useful migrations tool -- http://south.aeracode.org/
-    'south',
+    #'south',
 )
 
 ###########NEW CHANGE TO ADD###########

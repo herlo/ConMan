@@ -20,11 +20,15 @@ class UserProfile(models.Model):
     ircNick = models.CharField(max_length=100, null=True, blank=True, db_index=True)
     ircServer = models.CharField(max_length=150, null=True, blank=True, db_index=True)
     commonChannels = models.CharField(max_length=500, null=True, blank=True, db_index=True)
+    activation_key = models.CharField(max_length=40, null=True, blan=True, db_index=True)
 
 # work this back in later
 #    userPhoto = models.ImageField(upload_to=normalize_photo_name, storage=OverwriteStorage(), null=True, blank=True)
 
     url = models.URLField(db_index=True, blank=True, null=True)
+
+    def create_inactive_user(username, password, profile_callback=profile_callback):
+		return self
 
     def __unicode__(self):
         return self.user.first_name + ' ' + self.user.last_name

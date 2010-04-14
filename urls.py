@@ -45,7 +45,6 @@ urlpatterns = patterns('',
 # Accounts
     (r'^accounts/', include('accounts.urls')),
 
-
     (r'^about/tos/$', 'common.views.show_tos'),
 #    (r'^profile/$', 'common.views.profile_show'),
     (r'^logout/$', 'django.contrib.auth.views.logout'),

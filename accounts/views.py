@@ -24,12 +24,10 @@ def register(request):
         regForm = RegistrationForm(reqPOST)
 
         if regForm.is_valid():
-            print "This shit is valid!"
-        else:
-            errorMessage = regForm.errors
+			regForm.save()
 
     else: 
         regForm = RegistrationForm()
     
-    return render_to_response('accounts/registration.html',{'regForm': regForm, 'errorMessage': errorMessage})
+    return render_to_response('accounts/registration_form.html',{'form': regForm, 'errorMessage': errorMessage})
     

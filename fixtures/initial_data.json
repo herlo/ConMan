@@ -138,8 +138,8 @@
     "pk": 40, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_room", 
-      "name": "Can add room", 
+      "codename": "add_registrationprofile", 
+      "name": "Can add registration profile", 
       "content_type": 14
     }
   }, 
@@ -147,8 +147,8 @@
     "pk": 41, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_room", 
-      "name": "Can change room", 
+      "codename": "change_registrationprofile", 
+      "name": "Can change registration profile", 
       "content_type": 14
     }
   }, 
@@ -156,8 +156,8 @@
     "pk": 42, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_room", 
-      "name": "Can delete room", 
+      "codename": "delete_registrationprofile", 
+      "name": "Can delete registration profile", 
       "content_type": 14
     }
   }, 
@@ -300,18 +300,9 @@
     "pk": 37, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_category", 
-      "name": "Can add category", 
+      "codename": "add_option", 
+      "name": "Can add option", 
       "content_type": 13
-    }
-  }, 
-  {
-    "pk": 34, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_registrationprofile", 
-      "name": "Can add registration profile", 
-      "content_type": 12
     }
   }, 
   {
@@ -324,21 +315,12 @@
     }
   }, 
   {
-    "pk": 85, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_shirtsize", 
-      "name": "Can add shirt size", 
-      "content_type": 11
-    }
-  }, 
-  {
-    "pk": 91, 
+    "pk": 34, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_theme", 
       "name": "Can add theme", 
-      "content_type": 13
+      "content_type": 12
     }
   }, 
   {
@@ -351,30 +333,12 @@
     }
   }, 
   {
-    "pk": 88, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_userprofile", 
-      "name": "Can add user profile", 
-      "content_type": 12
-    }
-  }, 
-  {
     "pk": 38, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_category", 
-      "name": "Can change category", 
+      "codename": "change_option", 
+      "name": "Can change option", 
       "content_type": 13
-    }
-  }, 
-  {
-    "pk": 35, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_registrationprofile", 
-      "name": "Can change registration profile", 
-      "content_type": 12
     }
   }, 
   {
@@ -387,21 +351,12 @@
     }
   }, 
   {
-    "pk": 86, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_shirtsize", 
-      "name": "Can change shirt size", 
-      "content_type": 11
-    }
-  }, 
-  {
-    "pk": 92, 
+    "pk": 35, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_theme", 
       "name": "Can change theme", 
-      "content_type": 13
+      "content_type": 12
     }
   }, 
   {
@@ -414,30 +369,12 @@
     }
   }, 
   {
-    "pk": 89, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_userprofile", 
-      "name": "Can change user profile", 
-      "content_type": 12
-    }
-  }, 
-  {
     "pk": 39, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_category", 
-      "name": "Can delete category", 
+      "codename": "delete_option", 
+      "name": "Can delete option", 
       "content_type": 13
-    }
-  }, 
-  {
-    "pk": 36, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_registrationprofile", 
-      "name": "Can delete registration profile", 
-      "content_type": 12
     }
   }, 
   {
@@ -450,21 +387,12 @@
     }
   }, 
   {
-    "pk": 87, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_shirtsize", 
-      "name": "Can delete shirt size", 
-      "content_type": 11
-    }
-  }, 
-  {
-    "pk": 93, 
+    "pk": 36, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_theme", 
       "name": "Can delete theme", 
-      "content_type": 13
+      "content_type": 12
     }
   }, 
   {
@@ -474,15 +402,6 @@
       "codename": "delete_userprofile", 
       "name": "Can delete user profile", 
       "content_type": 11
-    }
-  }, 
-  {
-    "pk": 90, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_userprofile", 
-      "name": "Can delete user profile", 
-      "content_type": 12
     }
   }, 
   {
@@ -675,29 +594,20 @@
     }
   }, 
   {
-    "pk": 76, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_update", 
-      "name": "Can add update", 
-      "content_type": 25
-    }
-  }, 
-  {
     "pk": 79, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_update", 
-      "name": "Can add update", 
+      "codename": "add_lug", 
+      "name": "Can add lug", 
       "content_type": 26
     }
   }, 
   {
-    "pk": 77, 
+    "pk": 76, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_update", 
-      "name": "Can change update", 
+      "codename": "add_type", 
+      "name": "Can add type", 
       "content_type": 25
     }
   }, 
@@ -705,17 +615,17 @@
     "pk": 80, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_update", 
-      "name": "Can change update", 
+      "codename": "change_lug", 
+      "name": "Can change lug", 
       "content_type": 26
     }
   }, 
   {
-    "pk": 78, 
+    "pk": 77, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_update", 
-      "name": "Can delete update", 
+      "codename": "change_type", 
+      "name": "Can change type", 
       "content_type": 25
     }
   }, 
@@ -723,9 +633,18 @@
     "pk": 81, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_update", 
-      "name": "Can delete update", 
+      "codename": "delete_lug", 
+      "name": "Can delete lug", 
       "content_type": 26
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_type", 
+      "name": "Can delete type", 
+      "content_type": 25
     }
   }, 
   {
@@ -783,29 +702,20 @@
     }
   }, 
   {
-    "pk": 46, 
+    "pk": 52, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_audiencetype", 
       "name": "Can add audience type", 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 49, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_presentation", 
-      "name": "Can add presentation", 
-      "content_type": 17
+      "content_type": 18
     }
   }, 
   {
     "pk": 43, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_status", 
-      "name": "Can add status", 
+      "codename": "add_category", 
+      "name": "Can add category", 
       "content_type": 15
     }
   }, 
@@ -813,71 +723,44 @@
     "pk": 55, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_volunteer", 
-      "name": "Can add Volunteer", 
+      "codename": "add_presentation", 
+      "name": "Can add presentation", 
       "content_type": 19
     }
   }, 
   {
-    "pk": 52, 
+    "pk": 46, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_volunteerrole", 
-      "name": "Can add Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 60, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "can_drink", 
-      "name": "Can drink alcohol", 
-      "content_type": 19
-    }
-  }, 
-  {
-    "pk": 58, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "can_drive", 
-      "name": "Can drive", 
-      "content_type": 19
-    }
-  }, 
-  {
-    "pk": 59, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "can_vote", 
-      "name": "Can vote in elections", 
-      "content_type": 19
-    }
-  }, 
-  {
-    "pk": 47, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_audiencetype", 
-      "name": "Can change audience type", 
+      "codename": "add_room", 
+      "name": "Can add room", 
       "content_type": 16
     }
   }, 
   {
-    "pk": 50, 
+    "pk": 49, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_presentation", 
-      "name": "Can change presentation", 
+      "codename": "add_status", 
+      "name": "Can add status", 
       "content_type": 17
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_audiencetype", 
+      "name": "Can change audience type", 
+      "content_type": 18
     }
   }, 
   {
     "pk": 44, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_status", 
-      "name": "Can change status", 
+      "codename": "change_category", 
+      "name": "Can change category", 
       "content_type": 15
     }
   }, 
@@ -885,44 +768,44 @@
     "pk": 56, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_volunteer", 
-      "name": "Can change Volunteer", 
+      "codename": "change_presentation", 
+      "name": "Can change presentation", 
       "content_type": 19
     }
   }, 
   {
-    "pk": 53, 
+    "pk": 47, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_volunteerrole", 
-      "name": "Can change Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 48, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_audiencetype", 
-      "name": "Can delete audience type", 
+      "codename": "change_room", 
+      "name": "Can change room", 
       "content_type": 16
     }
   }, 
   {
-    "pk": 51, 
+    "pk": 50, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_presentation", 
-      "name": "Can delete presentation", 
+      "codename": "change_status", 
+      "name": "Can change status", 
       "content_type": 17
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_audiencetype", 
+      "name": "Can delete audience type", 
+      "content_type": 18
     }
   }, 
   {
     "pk": 45, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_status", 
-      "name": "Can delete status", 
+      "codename": "delete_category", 
+      "name": "Can delete category", 
       "content_type": 15
     }
   }, 
@@ -930,44 +813,44 @@
     "pk": 57, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_volunteer", 
-      "name": "Can delete Volunteer", 
+      "codename": "delete_presentation", 
+      "name": "Can delete presentation", 
       "content_type": 19
     }
   }, 
   {
-    "pk": 54, 
+    "pk": 48, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_volunteerrole", 
-      "name": "Can delete Volunteer Role", 
-      "content_type": 18
+      "codename": "delete_room", 
+      "name": "Can delete room", 
+      "content_type": 16
     }
   }, 
   {
-    "pk": 73, 
+    "pk": 51, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_lug", 
-      "name": "Can add lug", 
-      "content_type": 24
+      "codename": "delete_status", 
+      "name": "Can delete status", 
+      "content_type": 17
     }
   }, 
   {
     "pk": 70, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_type", 
-      "name": "Can add type", 
+      "codename": "add_level", 
+      "name": "Can add level", 
       "content_type": 23
     }
   }, 
   {
-    "pk": 74, 
+    "pk": 73, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_lug", 
-      "name": "Can change lug", 
+      "codename": "add_sponsor", 
+      "name": "Can add sponsor", 
       "content_type": 24
     }
   }, 
@@ -975,17 +858,17 @@
     "pk": 71, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_type", 
-      "name": "Can change type", 
+      "codename": "change_level", 
+      "name": "Can change level", 
       "content_type": 23
     }
   }, 
   {
-    "pk": 75, 
+    "pk": 74, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_lug", 
-      "name": "Can delete lug", 
+      "codename": "change_sponsor", 
+      "name": "Can change sponsor", 
       "content_type": 24
     }
   }, 
@@ -993,9 +876,27 @@
     "pk": 72, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_type", 
-      "name": "Can delete type", 
+      "codename": "delete_level", 
+      "name": "Can delete level", 
       "content_type": 23
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_sponsor", 
+      "name": "Can delete sponsor", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_discount", 
+      "name": "Can add discount", 
+      "content_type": 32
     }
   }, 
   {
@@ -1008,12 +909,39 @@
     }
   }, 
   {
-    "pk": 97, 
+    "pk": 91, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_option", 
-      "name": "Can add option", 
+      "codename": "add_itemoption", 
+      "name": "Can add item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_ticket", 
+      "name": "Can add ticket", 
       "content_type": 29
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_tickettype", 
+      "name": "Can add ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_discount", 
+      "name": "Can change discount", 
+      "content_type": 32
     }
   }, 
   {
@@ -1026,12 +954,39 @@
     }
   }, 
   {
-    "pk": 98, 
+    "pk": 92, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_option", 
-      "name": "Can change option", 
+      "codename": "change_itemoption", 
+      "name": "Can change item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_ticket", 
+      "name": "Can change ticket", 
       "content_type": 29
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_tickettype", 
+      "name": "Can change ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_discount", 
+      "name": "Can delete discount", 
+      "content_type": 32
     }
   }, 
   {
@@ -1044,12 +999,30 @@
     }
   }, 
   {
-    "pk": 99, 
+    "pk": 93, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_option", 
-      "name": "Can delete option", 
+      "codename": "delete_itemoption", 
+      "name": "Can delete item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_ticket", 
+      "name": "Can delete ticket", 
       "content_type": 29
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_tickettype", 
+      "name": "Can delete ticket type", 
+      "content_type": 28
     }
   }, 
   {
@@ -1080,38 +1053,20 @@
     }
   }, 
   {
-    "pk": 64, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_level", 
-      "name": "Can add level", 
-      "content_type": 21
-    }
-  }, 
-  {
     "pk": 61, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_vote", 
-      "name": "Can add vote", 
-      "content_type": 20
-    }
-  }, 
-  {
-    "pk": 65, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_level", 
-      "name": "Can change level", 
+      "codename": "add_volunteer", 
+      "name": "Can add Volunteer", 
       "content_type": 21
     }
   }, 
   {
-    "pk": 62, 
+    "pk": 58, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_vote", 
-      "name": "Can change vote", 
+      "codename": "add_volunteerrole", 
+      "name": "Can add Volunteer Role", 
       "content_type": 20
     }
   }, 
@@ -1119,17 +1074,62 @@
     "pk": 66, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_level", 
-      "name": "Can delete level", 
+      "codename": "can_drink", 
+      "name": "Can drink alcohol", 
       "content_type": 21
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "can_drive", 
+      "name": "Can drive", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "can_vote", 
+      "name": "Can vote in elections", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_volunteer", 
+      "name": "Can change Volunteer", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_volunteerrole", 
+      "name": "Can change Volunteer Role", 
+      "content_type": 20
     }
   }, 
   {
     "pk": 63, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_vote", 
-      "name": "Can delete vote", 
+      "codename": "delete_volunteer", 
+      "name": "Can delete Volunteer", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_volunteerrole", 
+      "name": "Can delete Volunteer Role", 
       "content_type": 20
     }
   }, 
@@ -1137,8 +1137,8 @@
     "pk": 67, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_sponsor", 
-      "name": "Can add sponsor", 
+      "codename": "add_vote", 
+      "name": "Can add vote", 
       "content_type": 22
     }
   }, 
@@ -1146,8 +1146,8 @@
     "pk": 68, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_sponsor", 
-      "name": "Can change sponsor", 
+      "codename": "change_vote", 
+      "name": "Can change vote", 
       "content_type": 22
     }
   }, 
@@ -1155,8 +1155,8 @@
     "pk": 69, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_sponsor", 
-      "name": "Can delete sponsor", 
+      "codename": "delete_vote", 
+      "name": "Can delete vote", 
       "content_type": 22
     }
   }, 
@@ -1185,16 +1185,16 @@
         6, 
         12, 
         37, 
-        34, 
         28, 
+        34, 
         31, 
         38, 
-        35, 
         29, 
+        35, 
         32, 
         39, 
-        36, 
         30, 
+        36, 
         33, 
         16, 
         17, 
@@ -1208,36 +1208,36 @@
         22, 
         23, 
         24, 
-        46, 
-        49, 
+        52, 
         43, 
         55, 
-        52, 
-        60, 
-        58, 
-        59, 
-        47, 
-        50, 
+        46, 
+        49, 
+        53, 
         44, 
         56, 
-        53, 
-        48, 
-        51, 
+        47, 
+        50, 
+        54, 
         45, 
         57, 
-        54, 
-        73, 
+        48, 
+        51, 
         70, 
-        74, 
+        73, 
         71, 
-        75, 
+        74, 
         72, 
-        64, 
+        75, 
         61, 
+        58, 
+        66, 
+        64, 
         65, 
         62, 
-        66, 
+        59, 
         63, 
+        60, 
         67, 
         68, 
         69
@@ -1278,345 +1278,12 @@
       "is_active": true, 
       "is_superuser": true, 
       "is_staff": true, 
-      "last_login": "2010-03-21 20:48:21", 
+      "last_login": "2010-04-13 19:24:10", 
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$3767d$e1a23bc93e5713e78be4f6cc3b184c470288ab04", 
       "email": "conman@utos.org", 
       "date_joined": "2010-01-24 22:09:08"
-    }
-  }, 
-  {
-    "pk": 21, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "volunteer", 
-      "name": "Volunteer", 
-      "app_label": "volunteers"
-    }
-  }, 
-  {
-    "pk": 20, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "volunteerrole", 
-      "name": "Volunteer Role", 
-      "app_label": "volunteers"
-    }
-  }, 
-  {
-    "pk": 18, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "audiencetype", 
-      "name": "audience type", 
-      "app_label": "speakers"
-    }
-  }, 
-  {
-    "pk": 15, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "category", 
-      "name": "category", 
-      "app_label": "speakers"
-    }
-  }, 
-  {
-    "pk": 35, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "contact", 
-      "name": "contact", 
-      "app_label": "event"
-    }
-  }, 
-  {
-    "pk": 6, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "contenttype", 
-      "name": "content type", 
-      "app_label": "contenttypes"
-    }
-  }, 
-  {
-    "pk": 32, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "discount", 
-      "name": "discount", 
-      "app_label": "ticketing"
-    }
-  }, 
-  {
-    "pk": 37, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "event", 
-      "name": "event", 
-      "app_label": "event"
-    }
-  }, 
-  {
-    "pk": 33, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "eventdays", 
-      "name": "event days", 
-      "app_label": "event"
-    }
-  }, 
-  {
-    "pk": 1, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "flatpage", 
-      "name": "flat page", 
-      "app_label": "flatpages"
-    }
-  }, 
-  {
-    "pk": 3, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "group", 
-      "name": "group", 
-      "app_label": "auth"
-    }
-  }, 
-  {
-    "pk": 36, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "hostorg", 
-      "name": "host org", 
-      "app_label": "event"
-    }
-  }, 
-  {
-    "pk": 31, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "item", 
-      "name": "item", 
-      "app_label": "ticketing"
-    }
-  }, 
-  {
-    "pk": 30, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "itemoption", 
-      "name": "item option", 
-      "app_label": "ticketing"
-    }
-  }, 
-  {
-    "pk": 23, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "level", 
-      "name": "level", 
-      "app_label": "sponsors"
-    }
-  }, 
-  {
-    "pk": 34, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "location", 
-      "name": "location", 
-      "app_label": "event"
-    }
-  }, 
-  {
-    "pk": 9, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "logentry", 
-      "name": "log entry", 
-      "app_label": "admin"
-    }
-  }, 
-  {
-    "pk": 26, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "lug", 
-      "name": "lug", 
-      "app_label": "lugs"
-    }
-  }, 
-  {
-    "pk": 5, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "message", 
-      "name": "message", 
-      "app_label": "auth"
-    }
-  }, 
-  {
-    "pk": 13, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "option", 
-      "name": "option", 
-      "app_label": "common"
-    }
-  }, 
-  {
-    "pk": 2, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "permission", 
-      "name": "permission", 
-      "app_label": "auth"
-    }
-  }, 
-  {
-    "pk": 19, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "presentation", 
-      "name": "presentation", 
-      "app_label": "speakers"
-    }
-  }, 
-  {
-    "pk": 14, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "registrationprofile", 
-      "name": "registration profile", 
-      "app_label": "accounts"
-    }
-  }, 
-  {
-    "pk": 16, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "room", 
-      "name": "room", 
-      "app_label": "speakers"
-    }
-  }, 
-  {
-    "pk": 7, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "session", 
-      "name": "session", 
-      "app_label": "sessions"
-    }
-  }, 
-  {
-    "pk": 10, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "shirtsize", 
-      "name": "shirt size", 
-      "app_label": "common"
-    }
-  }, 
-  {
-    "pk": 8, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "site", 
-      "name": "site", 
-      "app_label": "sites"
-    }
-  }, 
-  {
-    "pk": 24, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "sponsor", 
-      "name": "sponsor", 
-      "app_label": "sponsors"
-    }
-  }, 
-  {
-    "pk": 17, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "status", 
-      "name": "status", 
-      "app_label": "speakers"
-    }
-  }, 
-  {
-    "pk": 12, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "theme", 
-      "name": "theme", 
-      "app_label": "common"
-    }
-  }, 
-  {
-    "pk": 29, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "ticket", 
-      "name": "ticket", 
-      "app_label": "ticketing"
-    }
-  }, 
-  {
-    "pk": 28, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "tickettype", 
-      "name": "ticket type", 
-      "app_label": "ticketing"
-    }
-  }, 
-  {
-    "pk": 25, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "type", 
-      "name": "type", 
-      "app_label": "lugs"
-    }
-  }, 
-  {
-    "pk": 27, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "update", 
-      "name": "update", 
-      "app_label": "updates"
-    }
-  }, 
-  {
-    "pk": 4, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "user", 
-      "name": "user", 
-      "app_label": "auth"
-    }
-  }, 
-  {
-    "pk": 11, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "userprofile", 
-      "name": "user profile", 
-      "app_label": "common"
-    }
-  }, 
-  {
-    "pk": 22, 
-    "model": "contenttypes.contenttype", 
-    "fields": {
-      "model": "vote", 
-      "name": "vote", 
-      "app_label": "voting"
     }
   }, 
   {
@@ -1692,6 +1359,30 @@
     }
   }, 
   {
+    "pk": "a870da6e4278313a83e961cd752f9d36", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-04 20:51:48", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "083214ad57bbfc58c3355e283ad57e79", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-27 19:15:30", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwJ1LjIwNTdlMjI2M2IyYTg1NDVjNmU0\nNDYzNWY4MDM4ZDI3\n"
+    }
+  }, 
+  {
+    "pk": "fef6ab696243cd3b010386ebb3eb89c6", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-27 19:24:10", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwJ1LjIwNTdlMjI2M2IyYTg1NDVjNmU0\nNDYzNWY4MDM4ZDI3\n"
+    }
+  }, 
+  {
     "pk": 2, 
     "model": "sites.site", 
     "fields": {
@@ -1705,6 +1396,97 @@
     "fields": {
       "domain": "localhost", 
       "name": "localhost on port 8080"
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 19:42:51", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed site.", 
+      "user": 2, 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 19:19:19", 
+      "object_repr": "ugly", 
+      "object_id": "3", 
+      "change_message": "No fields changed.", 
+      "user": 2, 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:47", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:45", 
+      "object_repr": "Utah Open Source Foundation", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:43", 
+      "object_repr": "Contact object", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 19, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:12", 
+      "object_repr": "EventDays object", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 33
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:56:49", 
+      "object_repr": "Location object", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 34
     }
   }, 
   {
@@ -1933,6 +1715,62 @@
     "model": "speakers.status", 
     "fields": {
       "name": "Pending"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.eventdays", 
+    "fields": {
+      "start": "2010-10-07 08:30:00", 
+      "end": "2010-10-09 18:00:00"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.location", 
+    "fields": {
+      "city": "Sandy", 
+      "name": "Miller Free Enterprise Center", 
+      "zip": "84070", 
+      "street1": "Salt Lake Community College", 
+      "street2": "9750 South 300 West", 
+      "state": "Utah"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.contact", 
+    "fields": {
+      "phone": "801-358-4736", 
+      "primary": true, 
+      "name": "Clint Savage", 
+      "email": "clint@utos.org"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.hostorg", 
+    "fields": {
+      "url": "http://utos.org", 
+      "name": "Utah Open Source Foundation", 
+      "contacts": [
+        1
+      ]
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.event", 
+    "fields": {
+      "description": "Free Software is like sex, it's better when it's free!!", 
+      "days": 1, 
+      "summary": "Utah Open Source Conference 2010", 
+      "host": 1, 
+      "location": 1, 
+      "site": 1, 
+      "logo": "logos/utosLogo_sm_.png", 
+      "slug": "utosc2010", 
+      "name": "Utah Open Source Conference 2010"
     }
   }
 ]

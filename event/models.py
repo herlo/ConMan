@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.contrib.sites.models import Site
 
 # Create your models here.
 class EventDays(models.Model):
@@ -37,6 +38,7 @@ class Event(models.Model):
     location = models.ForeignKey(Location)
     days = models.ForeignKey(EventDays)
     host = models.ForeignKey(HostOrg)
+    site = models.ForeignKey(Site)
 
     def __unicode__(self):
         return self.name

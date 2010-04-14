@@ -432,138 +432,273 @@
     }
   }, 
   {
-    "pk": 106, 
+    "pk": 118, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_contact", 
       "name": "Can add contact", 
-      "content_type": 35
+      "content_type": 29
     }
   }, 
   {
-    "pk": 112, 
+    "pk": 97, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_discount", 
+      "name": "Can add discount", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 124, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_event", 
       "name": "Can add event", 
-      "content_type": 37
+      "content_type": 31
     }
   }, 
   {
-    "pk": 100, 
+    "pk": 127, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_eventdays", 
-      "name": "Can add event days", 
-      "content_type": 33
+      "codename": "add_eventday", 
+      "name": "Can add event day", 
+      "content_type": 32
     }
   }, 
   {
-    "pk": 109, 
+    "pk": 121, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_hostorg", 
       "name": "Can add host org", 
-      "content_type": 36
+      "content_type": 30
     }
   }, 
   {
-    "pk": 103, 
+    "pk": 94, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_item", 
+      "name": "Can add item", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_itemoption", 
+      "name": "Can add item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 115, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_location", 
       "name": "Can add location", 
-      "content_type": 34
+      "content_type": 28
     }
   }, 
   {
-    "pk": 107, 
+    "pk": 88, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_ticket", 
+      "name": "Can add ticket", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_tickettype", 
+      "name": "Can add ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 119, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_contact", 
       "name": "Can change contact", 
-      "content_type": 35
+      "content_type": 29
     }
   }, 
   {
-    "pk": 113, 
+    "pk": 98, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_discount", 
+      "name": "Can change discount", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 125, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_event", 
       "name": "Can change event", 
-      "content_type": 37
+      "content_type": 31
     }
   }, 
   {
-    "pk": 101, 
+    "pk": 128, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_eventdays", 
-      "name": "Can change event days", 
-      "content_type": 33
+      "codename": "change_eventday", 
+      "name": "Can change event day", 
+      "content_type": 32
     }
   }, 
   {
-    "pk": 110, 
+    "pk": 122, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_hostorg", 
       "name": "Can change host org", 
-      "content_type": 36
+      "content_type": 30
     }
   }, 
   {
-    "pk": 104, 
+    "pk": 95, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_item", 
+      "name": "Can change item", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_itemoption", 
+      "name": "Can change item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 116, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_location", 
       "name": "Can change location", 
-      "content_type": 34
+      "content_type": 28
     }
   }, 
   {
-    "pk": 108, 
+    "pk": 89, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_ticket", 
+      "name": "Can change ticket", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_tickettype", 
+      "name": "Can change ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 120, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_contact", 
       "name": "Can delete contact", 
-      "content_type": 35
+      "content_type": 29
     }
   }, 
   {
-    "pk": 114, 
+    "pk": 99, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_discount", 
+      "name": "Can delete discount", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 126, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_event", 
       "name": "Can delete event", 
-      "content_type": 37
+      "content_type": 31
     }
   }, 
   {
-    "pk": 102, 
+    "pk": 129, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_eventdays", 
-      "name": "Can delete event days", 
-      "content_type": 33
+      "codename": "delete_eventday", 
+      "name": "Can delete event day", 
+      "content_type": 32
     }
   }, 
   {
-    "pk": 111, 
+    "pk": 123, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_hostorg", 
       "name": "Can delete host org", 
-      "content_type": 36
+      "content_type": 30
     }
   }, 
   {
-    "pk": 105, 
+    "pk": 96, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_item", 
+      "name": "Can delete item", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_itemoption", 
+      "name": "Can delete item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 117, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_location", 
       "name": "Can delete location", 
-      "content_type": 34
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_ticket", 
+      "name": "Can delete ticket", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_tickettype", 
+      "name": "Can delete ticket type", 
+      "content_type": 28
     }
   }, 
   {
@@ -891,138 +1026,246 @@
     }
   }, 
   {
-    "pk": 97, 
+    "pk": 106, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_contact", 
+      "name": "Can add contact", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 142, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_discount", 
       "name": "Can add discount", 
-      "content_type": 32
+      "content_type": 37
     }
   }, 
   {
-    "pk": 94, 
+    "pk": 112, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_event", 
+      "name": "Can add event", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_hostorg", 
+      "name": "Can add host org", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 139, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_item", 
       "name": "Can add item", 
-      "content_type": 31
+      "content_type": 36
     }
   }, 
   {
-    "pk": 91, 
+    "pk": 136, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_itemoption", 
       "name": "Can add item option", 
-      "content_type": 30
+      "content_type": 35
     }
   }, 
   {
-    "pk": 88, 
+    "pk": 103, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_location", 
+      "name": "Can add location", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 133, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_ticket", 
       "name": "Can add ticket", 
-      "content_type": 29
+      "content_type": 34
     }
   }, 
   {
-    "pk": 85, 
+    "pk": 130, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_tickettype", 
       "name": "Can add ticket type", 
-      "content_type": 28
+      "content_type": 33
     }
   }, 
   {
-    "pk": 98, 
+    "pk": 107, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_contact", 
+      "name": "Can change contact", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 143, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_discount", 
       "name": "Can change discount", 
-      "content_type": 32
+      "content_type": 37
     }
   }, 
   {
-    "pk": 95, 
+    "pk": 113, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_event", 
+      "name": "Can change event", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_hostorg", 
+      "name": "Can change host org", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 140, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_item", 
       "name": "Can change item", 
-      "content_type": 31
+      "content_type": 36
     }
   }, 
   {
-    "pk": 92, 
+    "pk": 137, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_itemoption", 
       "name": "Can change item option", 
-      "content_type": 30
+      "content_type": 35
     }
   }, 
   {
-    "pk": 89, 
+    "pk": 104, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_location", 
+      "name": "Can change location", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 134, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_ticket", 
       "name": "Can change ticket", 
-      "content_type": 29
+      "content_type": 34
     }
   }, 
   {
-    "pk": 86, 
+    "pk": 131, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_tickettype", 
       "name": "Can change ticket type", 
-      "content_type": 28
+      "content_type": 33
     }
   }, 
   {
-    "pk": 99, 
+    "pk": 108, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_contact", 
+      "name": "Can delete contact", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 144, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_discount", 
       "name": "Can delete discount", 
-      "content_type": 32
+      "content_type": 37
     }
   }, 
   {
-    "pk": 96, 
+    "pk": 114, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_event", 
+      "name": "Can delete event", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_hostorg", 
+      "name": "Can delete host org", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 141, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_item", 
       "name": "Can delete item", 
-      "content_type": 31
+      "content_type": 36
     }
   }, 
   {
-    "pk": 93, 
+    "pk": 138, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_itemoption", 
       "name": "Can delete item option", 
-      "content_type": 30
+      "content_type": 35
     }
   }, 
   {
-    "pk": 90, 
+    "pk": 105, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_location", 
+      "name": "Can delete location", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 135, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_ticket", 
       "name": "Can delete ticket", 
-      "content_type": 29
+      "content_type": 34
     }
   }, 
   {
-    "pk": 87, 
+    "pk": 132, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_tickettype", 
       "name": "Can delete ticket type", 
-      "content_type": 28
+      "content_type": 33
     }
   }, 
   {
@@ -1399,6 +1642,149 @@
     }
   }, 
   {
+    "pk": 35, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 23:30:07", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed logo.", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 23:29:33", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed logo.", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 23:14:43", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed logo.", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:41:13", 
+      "object_repr": "2010-10-09: 08:00:00 to 18:30:00", 
+      "object_id": "3", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 21:40:53", 
+      "object_repr": "2010-10-08: 08:00:00 to 22:30:00", 
+      "object_id": "2", 
+      "change_message": "No fields changed.", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:40:46", 
+      "object_repr": "2010-10-08: 08:00:00 to 22:30:00", 
+      "object_id": "2", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:39:43", 
+      "object_repr": "2010-10-07: 08:00:00 to 22:30:00", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:34:00", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:30:39", 
+      "object_repr": "Miller Free Enterprise Center", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:30:17", 
+      "object_repr": "Utah Open Source Foundation", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:30:15", 
+      "object_repr": "Clint Savage", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 29
+    }
+  }, 
+  {
     "pk": 24, 
     "model": "admin.logentry", 
     "fields": {
@@ -1461,19 +1847,6 @@
       "change_message": "", 
       "user": 2, 
       "content_type": 35
-    }
-  }, 
-  {
-    "pk": 19, 
-    "model": "admin.logentry", 
-    "fields": {
-      "action_flag": 1, 
-      "action_time": "2010-03-21 20:58:12", 
-      "object_repr": "EventDays object", 
-      "object_id": "1", 
-      "change_message": "", 
-      "user": 2, 
-      "content_type": 33
     }
   }, 
   {
@@ -1719,14 +2092,6 @@
   }, 
   {
     "pk": 1, 
-    "model": "event.eventdays", 
-    "fields": {
-      "start": "2010-10-07 08:30:00", 
-      "end": "2010-10-09 18:00:00"
-    }
-  }, 
-  {
-    "pk": 1, 
     "model": "event.location", 
     "fields": {
       "city": "Sandy", 
@@ -1762,15 +2127,44 @@
     "pk": 1, 
     "model": "event.event", 
     "fields": {
-      "description": "Free Software is like sex, it's better when it's free!!", 
-      "days": 1, 
-      "summary": "Utah Open Source Conference 2010", 
+      "description": "Helping Open Source Grow in Utah and the Mountain West<br /><br />\r\nTheme: It's Better When It's Free!*\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n* - Just like sex! :-P", 
+      "site": 1, 
+      "summary": "UTOSC 2010", 
       "host": 1, 
       "location": 1, 
-      "site": 1, 
-      "logo": "logos/utosLogo_sm_.png", 
+      "logo": "themes/ugly/img/logos/utosLogo_crop.png", 
       "slug": "utosc2010", 
       "name": "Utah Open Source Conference 2010"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.eventday", 
+    "fields": {
+      "date": "2010-10-07", 
+      "start": "08:00:00", 
+      "end": "22:30:00", 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "event.eventday", 
+    "fields": {
+      "date": "2010-10-08", 
+      "start": "08:00:00", 
+      "end": "22:30:00", 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "event.eventday", 
+    "fields": {
+      "date": "2010-10-09", 
+      "start": "08:00:00", 
+      "end": "18:30:00", 
+      "event": 1
     }
   }
 ]

@@ -8,5 +8,6 @@ local_settings.py
 public/preview_theme/*png
 public/preview_theme/*jpg
 public/preview_theme/*gif
-conman_test.db
+public/themes/*
+conman_test.db*
 config/develop.py

@@ -76,3 +76,15 @@ class Option(models.Model):
 
     def __unicode__(self):
         return '%s' % self.site.name
+
+    @staticmethod
+    def get_theme_name():
+        current_site = Site.objects.get_current()
+
+        try:
+            option = Option.objects.get(site=current_site)
+            template_theme = unicode(option.theme.name)
+        except:
+            template_theme = u'default'
+
+        return template_theme

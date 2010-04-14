@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.db import models
-from event.models import EventDays,Location,Contact,HostOrg,Event
+from event.models import Location,Contact,HostOrg,Event
 
 class TicketType(models.Model):
 

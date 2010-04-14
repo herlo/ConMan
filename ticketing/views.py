@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.contrib.sites.models import Site
 
-from models import Ticket,Event
+from event.models import Event,EventDay
 from forms import TicketQtyForm
 
 def index(request):
@@ -15,8 +15,10 @@ def index(request):
     else:
         current_site = Site.objects.get_current()
         event = Event.objects.get(site=current_site)
+        event_days = event.eventday_set.all()
+        event_logo = event.logo.name.split('/')[-2] + "/" + event.logo.name.split('/')[-1]
 
-    return render_to_response('ticketing/index.html', { 'event': event }, context_instance=RequestContext(request))
+    return render_to_response('ticketing/index.html', { 'event': event, 'event_days': event_days, 'event_logo': event_logo }, context_instance=RequestContext(request))
 
 def event(request, slug):
     tickets = get_object_or_404(Event, slug=slug).ticket_set.all()

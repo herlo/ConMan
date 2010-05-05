@@ -20,9 +20,6 @@ class Level(models.Model):
     def __unicode__(self):
         return self.name
 
-#    class Admin:
-#        list_display = ('name', 'order')
-
 class Sponsor(models.Model):
     company = models.CharField(max_length=150)
     contact = models.CharField(max_length=150)
@@ -33,8 +30,6 @@ class Sponsor(models.Model):
     sm_logo = models.ImageField(upload_to='img/sponsors')
     lg_logo = models.ImageField(upload_to='img/sponsors')
 
-#    class Admin:
-#        list_display = ('company', 'contact', 'level')
 
     def save(self):
 

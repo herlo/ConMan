@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>{{ event.name}} - {{event.summary }}</title>
+    <title>{{ event.name}} - {{event.summary }}</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <!-- css goes here -->
@@ -23,18 +23,18 @@
     <!-- so:left -->
     <div class="left">
         <div class="logo_image">
-			<img src="/img/{{ event_logo }}" />
+            <img src="/img/{{ event_logo }}" />
         </div>
 
-		{% for day in event_days %}
+        {% for day in event_days %}
         <div class="event_date">
-			{{ day.date|date:"M j, Y" }}
-			<div class="event_time">{{ day.start|time:"g:i a" }} to {{ day.end|time:"g:i a" }}</div>
+            {{ day.date|date:"M j, Y" }}
+            <div class="event_time">{{ day.start|time:"g:i a" }} to {{ day.end|time:"g:i a" }}</div>
         </div>
-		{% endfor %}
+        {% endfor %}
 
         <div class="event_location">
-			<div class="name">{{ event.location.name }}</div>
+            <div class="name">{{ event.location.name }}</div>
             <div class="addr1">{{ event.location.street1 }}</div>
             <div class="addr2">{{ event.location.street2 }}</div>
             <div class="addr3">{{ event.location.city }}, {{ event.location.state }} {{ event.location.zip }}</div>
@@ -51,13 +51,13 @@
     <!-- so:middle -->
     <div class="middle">
         <h2>{{ event.name }}</h2>
-		<!--        <p class="summary">{{ event.summary }}</p> -->
-		{% autoescape off %}
+        <!--        <p class="summary">{{ event.summary }}</p> -->
+        {% autoescape off %}
         <p class="description">{{ event.description }}</p>
-		{% endautoescape %}
+        {% endautoescape %}
         <h3 class="hosted_by">Hosted By:</h3>
-		<p class="event_host_name"></p>{{ event.host.name }}</p>
-		<p class="event_host_url"><a href="{{ event.host.url }}">{{ event.host.url }}</a></p>
+        <p class="event_host_name"></p>{{ event.host.name }}</p>
+        <p class="event_host_url"><a href="{{ event.host.url }}">{{ event.host.url }}</a></p>
     </div>
     <!-- eo:middle -->
     <!-- so:right -->

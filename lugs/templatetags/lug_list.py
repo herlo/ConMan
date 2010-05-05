@@ -9,5 +9,5 @@ def show_lugs():
 
 # register tags
 
-register.inclusion_tag('leftmenu.html')(show_lugs)
+register.inclusion_tag('lugs/lug_list.html')(show_lugs)
 

@@ -25,12 +25,11 @@ body { background:url(/img/body-bg.png) top left repeat-x #b3b3b3; }
 
 #header { width:900px; height:180px; }
 #header .left { float:left; width:578px; height:180px; }
-#header .logo h1 { position:relative; width:578px; height:120px; margin:0; }
-#header .logo h1 span { position:absolute; height:100%; width:100%;  background:url(/img/logo-top.png) top left no-repeat; }
-#header .logo h3 { position:relative; width:578px; height:60px; margin:0; }
-#header .logo h3 span { position:absolute; height:100%; width:100%;  background:url(/img/logo-bottom.png) top left no-repeat; }
-#header .right { float:right; width:322px; height:180px; background:url(/img/header-right.png) top left no-repeat; }
-#header .crown { float:right; width:228px; height:22px; padding-top:4px; background:url(/img/crown-bg.png) top left no-repeat; text-align:center; font-size:12px; letter-spacing:1px; color:#ffffff; }
+#header .logo { position:absolute; width:900px; height:180px; margin:0; float: left; background:url(/img/logo-background.png); z-index: -1; }
+#header .logo span { position:absolute; width:150px; height:150px; margin:0; top: 25px; float: left;}
+#header .logo h1 { position:absolute; margin-left: 170px; width:350px; top: 0px;  height:90px; }
+#header .logo h3 { position:absolute; margin-left: 170px; width:548px; height:60px; top: 85px; }
+#header .crown { float:right; width:228px; height:22px; padding-top:4px; text-align:center; font-size:12px; letter-spacing:1px; color:#ffffff; }
 #header .crown a { text-decoration:none; color:#ffffff; }
 #header .crown a:hover { color:#fddcc3; }
 

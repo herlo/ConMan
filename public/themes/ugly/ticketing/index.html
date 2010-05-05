@@ -4,69 +4,95 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<title>{{ event.name}} - {{event.summary }}</title>
-    <meta name="keywords" content="" />
-    <meta name="description" content="" />
-    <!-- css goes here -->
-    {% load get_theme %}
-    <link href="/css/default.css" rel="stylesheet" type="text/css" />
-    {% block additionalCSS %}
-    {% endblock additionalCSS %}
-    <!-- js goes here -->
-    {% block additionalJS %}
-    {% endblock additionalJS %}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>UTOSC 2010 - It's Better When It's Free* - {% block title %}{% endblock title %}</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <link href="/css/ugly.css" rel="stylesheet" type="text/css" />
+	{% block additionalCSS %}
+ 	{% endblock additionalCSS %}
+	<script type="text/javascript" src="/static/js/jquery-1.2.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-passwordstrength.min.1.1.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-autoexpand.1.02.js"></script>
+    <script type="text/javascript" src="/static/js/thickbox.js"></script>
+	{% block additionalJS %}
+ 	{% endblock additionalJS %}
 </head>
+
 <body>
+<div id="omni">
+	<div id="body">
+  		<div id="header">
+        	<div class="left">
+            	<div class="logo">
+                    <span></span><img src="/img/{{ event_logo }}" /></span>
+                	<h1>{{ event.name }}</h1>
+                    <h3>{{ event.summary }}</h3>
+                </div>
+            </div>
+            <div class="right">
+				{% if user.is_authenticated %}
+				<div class="crown"><a href="/speaker/papers/" accesskey="2" title="">CFP</a> / <a href="/accounts/profile/" accesskey="2" title="">Profile</a> / <a href="/accounts/logout/" accesskey="2" title="">Logout</a></div>
+				<div class="user">Welcome {{ user.username }}</div>
+				{% else %}
+				<div class="crown"><a href="/accounts/login/" accesskey="2" title="">Login</a> / <a href="/accounts/register/" accesskey="2" title="">Create Account</a></div>
+				{% endif %}
+                <div class="dates">
+            		{% for day in event_days %}
+                    <div class="event_date">
+            			{{ day.date|date:"M j, Y" }}
+            			<div class="event_time">{{ day.start|time:"g:i a" }} to {{ day.end|time:"g:i a" }}</div>
+                    </div>
+            		{% endfor %}
+                </div>
+                <div class="event_info">
+                    <div class="name">{{ event.location.name }}</div>
+		            <p class="event_host_name"></p>{{ event.host.name }}</p>
+		            <p class="event_host_url"><a href="{{ event.host.url }}">{{ event.host.url }}</a></p>
+                </div>
+            </div>            
+        </div>
+        <div id="mainNav">
+        <div class="pad">
+			{% load flatpages_links %}
+			{% show_flatpages %}
+        </div>
+        </div>
+        <div id="page">
+        	<div id="sidebar" class="right">
+            	<div id="sponsors">
+					{% block sponsors %}
+					{% load sponsor_list %}
+					{% show_sponsors %}
+					{% endblock sponsors %}
+                </div>
+                <div id="groups">
+					{% block lugs %}
+                	<h3>Local User Groups</h3>
+					{% load lug_list %}
+					{% show_lugs %}
+					{% endblock lugs %}
+                </div>
+            </div>
+            <div id="content">
+				{% load update_tags %}
+				{% latest_update %}
 
-<div class="bigpicture">
-    <!-- so:left -->
-    <div class="left">
-        <div class="logo_image">
-			<img src="/img/{{ event_logo }}" />
+				{% block primaryContent %}
+				{% endblock primaryContent %}
+            </div>
+            <div class="bottom"></div>
         </div>
-
-		{% for day in event_days %}
-        <div class="event_date">
-			{{ day.date|date:"M j, Y" }}
-			<div class="event_time">{{ day.start|time:"g:i a" }} to {{ day.end|time:"g:i a" }}</div>
+        <div id="footer">
+			<a href="http://code.google.com/p/utos-conman/" target="_blank">
+            	<img src="images/conman.gif" alt="ConMan - Conference Management Software" /><br />
+                Powered by ConMan
+            </a>        
+			<span><em>UTOSC 2010:</em> Copyright 2007-2010 Utah Open Source Foundation. All Rights Reserved.</span>
         </div>
-		{% endfor %}
-
-        <div class="event_location">
-			<div class="name">{{ event.location.name }}</div>
-            <div class="addr1">{{ event.location.street1 }}</div>
-            <div class="addr2">{{ event.location.street2 }}</div>
-            <div class="addr3">{{ event.location.city }}, {{ event.location.state }} {{ event.location.zip }}</div>
-        </div>
-        <div class="event_location_map">
-            <img src="/img/event_location_map.png" />
-        </div>
-        <div class="new_event">
-            Create your own<br /><a href="/event/new/">Event Revolution</a>!!
-        </div>
-        <div class="copyright">&copy; 2010 <a href="http://eventrevolution.com">Event Revolution</a></div>
-    </div>
-    <!-- eo:left -->
-    <!-- so:middle -->
-    <div class="middle">
-        <h2>{{ event.name }}</h2>
-		<!--        <p class="summary">{{ event.summary }}</p> -->
-		{% autoescape off %}
-        <p class="description">{{ event.description }}</p>
-		{% endautoescape %}
-        <h3 class="hosted_by">Hosted By:</h3>
-		<p class="event_host_name"></p>{{ event.host.name }}</p>
-		<p class="event_host_url"><a href="{{ event.host.url }}">{{ event.host.url }}</a></p>
-    </div>
-    <!-- eo:middle -->
-    <!-- so:right -->
-    <div class="right">
-        {% block rightColumn %}
-        {% endblock rightColumn %}
     </div>
 </div>
-<!-- eo:bigpicture -->
-
 </body>
 </html>
+
+

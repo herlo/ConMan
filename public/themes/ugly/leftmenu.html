@@ -1,0 +1,22 @@
+{% for lug in lugs %}
+	{% ifchanged lug.type %}
+    {% if not forloop.first %}
+    </ul>
+    {% endif %}
+	<h3>{{ lug.type }}</h3>
+    <ul>
+	{% endifchanged %}
+	<li class="lugList">
+        <a href='{{ lug.url }}' target='_new'>
+            {% if lug.sm_logo %}
+            <img title="{{ lug.name }}" 
+                alt="{{ lug.name }}" 
+                border='0' 
+                src='/static/{{ lug.sm_logo}}' />{% else %}{{ lug.name }}{% endif %}
+        </a>
+    </li>
+    {% if forloop.last %}
+    </ul>
+    {% endif %}
+{% endfor %}
+

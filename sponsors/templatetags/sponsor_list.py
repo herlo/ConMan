@@ -20,6 +20,6 @@ def random_sponsor():
 
 # register tags
 
-register.inclusion_tag('rightmenu.html')(show_sponsors)
-register.inclusion_tag('randomsponsor.html')(random_sponsor)
+register.inclusion_tag('sponsors/sponsor_list.html')(show_sponsors)
+register.inclusion_tag('sponsors/random_sponsor.html')(random_sponsor)
 

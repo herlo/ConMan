@@ -15,6 +15,8 @@ class Type(models.Model):
 #    class Admin:
 #        list_display = ('name', 'order')
 
+from common.models import Option
+
 class LUG(models.Model):
     name = models.CharField(max_length=150)
     contact = models.CharField(max_length=150)
@@ -22,14 +24,12 @@ class LUG(models.Model):
     url = models.CharField(max_length=250)
     about = models.TextField(blank=True,null=True)
     type = models.ForeignKey(Type,blank=True,null=True)
-    sm_logo = models.ImageField(upload_to='img/groups',blank=True,null=True)
-    lg_logo = models.ImageField(upload_to='img/groups',blank=True,null=True)
-
-#    class Admin:
-#        list_display = ('company', 'contact', 'level')
+    sm_logo = models.ImageField(upload_to='img/groups', blank=True,null=True)
+    lg_logo = models.ImageField(upload_to='img/groups', blank=True,null=True)
 
     def save(self):
 
+        print "sm_logo: " + self.sm_logo.path
         if self.sm_logo:
             newImage = Image.open(self.sm_logo.path)
             newHeight = (smallImageWidth * newImage.size[1])/ newImage.size[0]

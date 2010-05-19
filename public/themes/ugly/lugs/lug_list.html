@@ -1,0 +1,14 @@
+{% for lug in lugs %}
+    <div class="group">
+        <a href='{{ lug.url }}' target='_new'>
+            {% if lug.sm_logo %}
+            <img title="{{ lug.name }}" 
+                alt="{{ lug.name }}" 
+                border='0' 
+                src='/static/{{ lug.sm_logo}}' />{% else %}{{ lug.name }}{% endif %}
+        </a>
+    </div>
+    {% if forloop.last %}
+    {% endif %}
+{% endfor %}
+

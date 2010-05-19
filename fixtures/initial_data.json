@@ -3,7 +3,7 @@
     "pk": 2, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "About", 
       "url": "/pages/about/", 
       "template_name": "", 
@@ -11,14 +11,14 @@
         1
       ], 
       "content": "<h2>About UTOS and UTOSC</h2>\r\n\r\n<h3>Utah Open Source Foundation (UTOS)</h3>\r\n\r\n<p>The Utah Open Source Foundation was created in June of 2006 with the goal of \u2018Helping grow open source in Utah\u2019.  This goal, while a tremendous challenge, has brought with it some great successes, and some serious trials.  UTOS is in place because of the hard work and efforts from a group of volunteers, several business folk who are interested in UTOS\u2019 success and the generous encouragement of the Utah Open Source community.</p>\r\n\r\n<p>UTOS launched out of the now defunct Utah Open Source Coalition.  Our ideals are similar in nature to theirs, though on a larger scale.  UTOS plans help Local User Groups (LUGs) and others involved in open source in Utah in several areas.  Our main focuses are community, technology and business, with a growing interest in spreading open source in education.  We believe that helping those who help free software succeed is a noble goal.</p>\r\n\r\n<p>The charter of the Utah Open Source Foundation (UTOS) is to help open source grow in Utah.  To do this, it was decided to help the Local User Group (LUG) communities.  Developers and others generally participate in a LUG and can benefit more directly through a LUG.</p>\r\n\r\n<h3>Utah Open Source Conference (UTOSC)</h3>\r\n\r\n<p>This is year three for UTOSC and we're growing like crazy!  UTOSC 2009 will be held October 8 - 10 @ Miller Campus of the Salt Lake Community College in Sandy, Utah (about 15 miles south of Salt Lake City)</p>\r\n", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 8, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "EVENTS", 
       "url": "/pages/events/", 
       "template_name": "", 
@@ -26,14 +26,14 @@
         1
       ], 
       "content": "Coming Soon!", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 1, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "Home", 
       "url": "/pages/home/", 
       "template_name": "", 
@@ -41,14 +41,14 @@
         1
       ], 
       "content": "<h1>Utah Open Source Conference 2009</h1>\r\n\t\t\t<h2>Theme: Affordability, Scalability, Reliability</h2>\r\n\t\t\t<p>The <a href=\"http://utos.org\">Utah Open Source Foundation</a> has been working very hard this year.  We've got a lot of fun things in store.  In fact, we're starting this year off with a new theme that really builds upon the foundations of open source and free software.  We really believe that with this year's theme for the <a href=\"http://2009.utosc.com\">Utah Open Source Conference 2009</a> we've hit the current trends on the head.</p>\r\n\r\n<h3>Affordability</h3>\r\n<p><strong>Affordability</strong> doesn't just mean cost, it also means value.  Free and open source software (FOSS) provides this value.  Not only in it's low costs (aka free as in beer), but in it's maintenance costs being only those of expertise.  No contracts to sign, no company to ask for improvements, and value added because you can make the change yourself. In addition, because expertise is generally the only cost, companies that use free software won't feel locked in when looking for support options.</p>\r\n\r\n<h3>Scalability</h3>\r\n<p><strong>Scalability</strong> means many things to many people: flexibility of costs, software load management, ability to grow without complication, and many more.  Scalability makes things better.  Free and open source software provides solutions in every area from customer management to security, and simple applications to complex environments.  Because code is so easy to view and change, FOSS has the most flexible, scalable solutions around.</p>\r\n\r\n<h3>Reliability</h3>\r\n<p><strong>Reliability</strong> is among the most important components in free and open source software.  The number of eyes looking at the code, and the community that helps make the software, provides a paradigm which sets FOSS apart.  Being able to make changes and have a community willing to test the software makes it more reliable and solid.  If you want reliability, you go with free and open source software, its community of developers, testers, and users.</p>\r\n\r\n<p>These three components of the Utah Open Source Conference 2009 will excite the mind, challenge the soul and ultimately improve free and open source software.  We at the Utah Open Source Foundation look forward to seeing your presentation, thoughts and enjoyment of this theme during the upcoming UTOSC 2009.</p>", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 9, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "LODGING / DINING", 
       "url": "/pages/lodgingdining/", 
       "template_name": "", 
@@ -56,14 +56,14 @@
         1
       ], 
       "content": "<a name=\"top\"></a>\r\n<h2>Lodging / Dining</h2>\r\n\r\nComing Soon!", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 4, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "REGISTER", 
       "url": "/pages/registration/", 
       "template_name": "", 
@@ -71,14 +71,14 @@
         1
       ], 
       "content": "<h2> Information & Registration</h2>\r\n\r\nComing Soon!", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 10, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "VENUE", 
       "url": "/pages/venue/", 
       "template_name": "", 
@@ -86,14 +86,14 @@
         1
       ], 
       "content": "<h3>Salt Lake Community College</h3>\r\n\r\nMore information coming soon!", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 3, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "ABSTRACTS", 
       "url": "/speaker/list/all/", 
       "template_name": "", 
@@ -101,14 +101,14 @@
         1
       ], 
       "content": "This is a dummy page to point at the real data!", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 12, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": " SCHEDULE", 
       "url": "/speaker/schedule/", 
       "template_name": "", 
@@ -116,14 +116,14 @@
         1
       ], 
       "content": "Coming Soon!", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 5, 
     "model": "flatpages.flatpage", 
     "fields": {
-      "registration_required": 0, 
+      "registration_required": false, 
       "title": "SPONSORS", 
       "url": "/sponsor/list/", 
       "template_name": "", 
@@ -131,15 +131,15 @@
         1
       ], 
       "content": "<h2>How to Sponsor the Utah Open Source Conference 2008</h2>\r\n\r\n<p>Sponsorships are being accepted through our sponsorship committee leader, Stephen Shaw.  He can be reached by email <a href=\"mailto:sshaw@utos.org\">sshaw@utos.org</a>.  Feel free to peruse our sponsorship documents below:</p>\r\n\r\n<ul>\r\n  <li><a href='http://dl.utosc.com/08/pdfs/utosc2008prospectus.pdf' target='_new'>UTOSC 2008 Prospectus</a></li>\r\n  <li><a href='http://dl.utosc.com/08/pdfs/utosc2008sponsorships.pdf' target='_new'>UTOSC 2008 Sponsorships</a></li>\r\n</ul>", 
-      "enable_comments": 0
+      "enable_comments": false
     }
   }, 
   {
     "pk": 40, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_room", 
-      "name": "Can add room", 
+      "codename": "add_registrationprofile", 
+      "name": "Can add registration profile", 
       "content_type": 14
     }
   }, 
@@ -147,8 +147,8 @@
     "pk": 41, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_room", 
-      "name": "Can change room", 
+      "codename": "change_registrationprofile", 
+      "name": "Can change registration profile", 
       "content_type": 14
     }
   }, 
@@ -156,8 +156,8 @@
     "pk": 42, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_room", 
-      "name": "Can delete room", 
+      "codename": "delete_registrationprofile", 
+      "name": "Can delete registration profile", 
       "content_type": 14
     }
   }, 
@@ -300,45 +300,27 @@
     "pk": 37, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_category", 
-      "name": "Can add category", 
+      "codename": "add_option", 
+      "name": "Can add option", 
       "content_type": 13
     }
   }, 
   {
-    "pk": 97, 
+    "pk": 28, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_option", 
-      "name": "Can add option", 
-      "content_type": 29
+      "codename": "add_shirtsize", 
+      "name": "Can add shirt size", 
+      "content_type": 10
     }
   }, 
   {
     "pk": 34, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_registrationprofile", 
-      "name": "Can add registration profile", 
-      "content_type": 12
-    }
-  }, 
-  {
-    "pk": 85, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_shirtsize", 
-      "name": "Can add shirt size", 
-      "content_type": 11
-    }
-  }, 
-  {
-    "pk": 91, 
-    "model": "auth.permission", 
-    "fields": {
       "codename": "add_theme", 
       "name": "Can add theme", 
-      "content_type": 13
+      "content_type": 12
     }
   }, 
   {
@@ -351,57 +333,30 @@
     }
   }, 
   {
-    "pk": 88, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_userprofile", 
-      "name": "Can add user profile", 
-      "content_type": 12
-    }
-  }, 
-  {
     "pk": 38, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_category", 
-      "name": "Can change category", 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 98, 
     "model": "auth.permission", 
     "fields": {
       "codename": "change_option", 
       "name": "Can change option", 
-      "content_type": 29
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_shirtsize", 
+      "name": "Can change shirt size", 
+      "content_type": 10
     }
   }, 
   {
     "pk": 35, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_registrationprofile", 
-      "name": "Can change registration profile", 
-      "content_type": 12
-    }
-  }, 
-  {
-    "pk": 86, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_shirtsize", 
-      "name": "Can change shirt size", 
-      "content_type": 11
-    }
-  }, 
-  {
-    "pk": 92, 
-    "model": "auth.permission", 
-    "fields": {
       "codename": "change_theme", 
       "name": "Can change theme", 
-      "content_type": 13
+      "content_type": 12
     }
   }, 
   {
@@ -414,57 +369,30 @@
     }
   }, 
   {
-    "pk": 89, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_userprofile", 
-      "name": "Can change user profile", 
-      "content_type": 12
-    }
-  }, 
-  {
     "pk": 39, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_category", 
-      "name": "Can delete category", 
-      "content_type": 13
-    }
-  }, 
-  {
-    "pk": 99, 
     "model": "auth.permission", 
     "fields": {
       "codename": "delete_option", 
       "name": "Can delete option", 
-      "content_type": 29
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_shirtsize", 
+      "name": "Can delete shirt size", 
+      "content_type": 10
     }
   }, 
   {
     "pk": 36, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_registrationprofile", 
-      "name": "Can delete registration profile", 
-      "content_type": 12
-    }
-  }, 
-  {
-    "pk": 87, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_shirtsize", 
-      "name": "Can delete shirt size", 
-      "content_type": 11
-    }
-  }, 
-  {
-    "pk": 93, 
-    "model": "auth.permission", 
-    "fields": {
       "codename": "delete_theme", 
       "name": "Can delete theme", 
-      "content_type": 13
+      "content_type": 12
     }
   }, 
   {
@@ -474,15 +402,6 @@
       "codename": "delete_userprofile", 
       "name": "Can delete user profile", 
       "content_type": 11
-    }
-  }, 
-  {
-    "pk": 90, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_userprofile", 
-      "name": "Can delete user profile", 
-      "content_type": 12
     }
   }, 
   {
@@ -513,6 +432,276 @@
     }
   }, 
   {
+    "pk": 118, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_contact", 
+      "name": "Can add contact", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 97, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_discount", 
+      "name": "Can add discount", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 124, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_event", 
+      "name": "Can add event", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 127, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_eventday", 
+      "name": "Can add event day", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 121, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_hostorg", 
+      "name": "Can add host org", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 94, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_item", 
+      "name": "Can add item", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 91, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_itemoption", 
+      "name": "Can add item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 115, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_location", 
+      "name": "Can add location", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 88, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_ticket", 
+      "name": "Can add ticket", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 85, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_tickettype", 
+      "name": "Can add ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 119, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_contact", 
+      "name": "Can change contact", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 98, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_discount", 
+      "name": "Can change discount", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 125, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_event", 
+      "name": "Can change event", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 128, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_eventday", 
+      "name": "Can change event day", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 122, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_hostorg", 
+      "name": "Can change host org", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 95, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_item", 
+      "name": "Can change item", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 92, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_itemoption", 
+      "name": "Can change item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 116, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_location", 
+      "name": "Can change location", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 89, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_ticket", 
+      "name": "Can change ticket", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 86, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_tickettype", 
+      "name": "Can change ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 120, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_contact", 
+      "name": "Can delete contact", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 99, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_discount", 
+      "name": "Can delete discount", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 126, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_event", 
+      "name": "Can delete event", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 129, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_eventday", 
+      "name": "Can delete event day", 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 123, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_hostorg", 
+      "name": "Can delete host org", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 96, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_item", 
+      "name": "Can delete item", 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 93, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_itemoption", 
+      "name": "Can delete item option", 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 117, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_location", 
+      "name": "Can delete location", 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 90, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_ticket", 
+      "name": "Can delete ticket", 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 87, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_tickettype", 
+      "name": "Can delete ticket type", 
+      "content_type": 28
+    }
+  }, 
+  {
     "pk": 1, 
     "model": "auth.permission", 
     "fields": {
@@ -540,29 +729,20 @@
     }
   }, 
   {
-    "pk": 76, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_update", 
-      "name": "Can add update", 
-      "content_type": 25
-    }
-  }, 
-  {
     "pk": 79, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_update", 
-      "name": "Can add update", 
+      "codename": "add_lug", 
+      "name": "Can add lug", 
       "content_type": 26
     }
   }, 
   {
-    "pk": 77, 
+    "pk": 76, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_update", 
-      "name": "Can change update", 
+      "codename": "add_type", 
+      "name": "Can add type", 
       "content_type": 25
     }
   }, 
@@ -570,17 +750,17 @@
     "pk": 80, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_update", 
-      "name": "Can change update", 
+      "codename": "change_lug", 
+      "name": "Can change lug", 
       "content_type": 26
     }
   }, 
   {
-    "pk": 78, 
+    "pk": 77, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_update", 
-      "name": "Can delete update", 
+      "codename": "change_type", 
+      "name": "Can change type", 
       "content_type": 25
     }
   }, 
@@ -588,9 +768,18 @@
     "pk": 81, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_update", 
-      "name": "Can delete update", 
+      "codename": "delete_lug", 
+      "name": "Can delete lug", 
       "content_type": 26
+    }
+  }, 
+  {
+    "pk": 78, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_type", 
+      "name": "Can delete type", 
+      "content_type": 25
     }
   }, 
   {
@@ -648,56 +837,20 @@
     }
   }, 
   {
-    "pk": 28, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_shirtsize", 
-      "name": "Can add shirt size", 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 29, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_shirtsize", 
-      "name": "Can change shirt size", 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 30, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_shirtsize", 
-      "name": "Can delete shirt size", 
-      "content_type": 10
-    }
-  }, 
-  {
-    "pk": 46, 
+    "pk": 52, 
     "model": "auth.permission", 
     "fields": {
       "codename": "add_audiencetype", 
       "name": "Can add audience type", 
-      "content_type": 16
-    }
-  }, 
-  {
-    "pk": 49, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_presentation", 
-      "name": "Can add presentation", 
-      "content_type": 17
+      "content_type": 18
     }
   }, 
   {
     "pk": 43, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_status", 
-      "name": "Can add status", 
+      "codename": "add_category", 
+      "name": "Can add category", 
       "content_type": 15
     }
   }, 
@@ -705,71 +858,44 @@
     "pk": 55, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_volunteer", 
-      "name": "Can add Volunteer", 
+      "codename": "add_presentation", 
+      "name": "Can add presentation", 
       "content_type": 19
     }
   }, 
   {
-    "pk": 52, 
+    "pk": 46, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_volunteerrole", 
-      "name": "Can add Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 60, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "can_drink", 
-      "name": "Can drink alcohol", 
-      "content_type": 19
-    }
-  }, 
-  {
-    "pk": 58, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "can_drive", 
-      "name": "Can drive", 
-      "content_type": 19
-    }
-  }, 
-  {
-    "pk": 59, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "can_vote", 
-      "name": "Can vote in elections", 
-      "content_type": 19
-    }
-  }, 
-  {
-    "pk": 47, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_audiencetype", 
-      "name": "Can change audience type", 
+      "codename": "add_room", 
+      "name": "Can add room", 
       "content_type": 16
     }
   }, 
   {
-    "pk": 50, 
+    "pk": 49, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_presentation", 
-      "name": "Can change presentation", 
+      "codename": "add_status", 
+      "name": "Can add status", 
       "content_type": 17
+    }
+  }, 
+  {
+    "pk": 53, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_audiencetype", 
+      "name": "Can change audience type", 
+      "content_type": 18
     }
   }, 
   {
     "pk": 44, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_status", 
-      "name": "Can change status", 
+      "codename": "change_category", 
+      "name": "Can change category", 
       "content_type": 15
     }
   }, 
@@ -777,44 +903,44 @@
     "pk": 56, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_volunteer", 
-      "name": "Can change Volunteer", 
+      "codename": "change_presentation", 
+      "name": "Can change presentation", 
       "content_type": 19
     }
   }, 
   {
-    "pk": 53, 
+    "pk": 47, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_volunteerrole", 
-      "name": "Can change Volunteer Role", 
-      "content_type": 18
-    }
-  }, 
-  {
-    "pk": 48, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "delete_audiencetype", 
-      "name": "Can delete audience type", 
+      "codename": "change_room", 
+      "name": "Can change room", 
       "content_type": 16
     }
   }, 
   {
-    "pk": 51, 
+    "pk": 50, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_presentation", 
-      "name": "Can delete presentation", 
+      "codename": "change_status", 
+      "name": "Can change status", 
       "content_type": 17
+    }
+  }, 
+  {
+    "pk": 54, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_audiencetype", 
+      "name": "Can delete audience type", 
+      "content_type": 18
     }
   }, 
   {
     "pk": 45, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_status", 
-      "name": "Can delete status", 
+      "codename": "delete_category", 
+      "name": "Can delete category", 
       "content_type": 15
     }
   }, 
@@ -822,44 +948,44 @@
     "pk": 57, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_volunteer", 
-      "name": "Can delete Volunteer", 
+      "codename": "delete_presentation", 
+      "name": "Can delete presentation", 
       "content_type": 19
     }
   }, 
   {
-    "pk": 54, 
+    "pk": 48, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_volunteerrole", 
-      "name": "Can delete Volunteer Role", 
-      "content_type": 18
+      "codename": "delete_room", 
+      "name": "Can delete room", 
+      "content_type": 16
     }
   }, 
   {
-    "pk": 73, 
+    "pk": 51, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_lug", 
-      "name": "Can add lug", 
-      "content_type": 24
+      "codename": "delete_status", 
+      "name": "Can delete status", 
+      "content_type": 17
     }
   }, 
   {
     "pk": 70, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_type", 
-      "name": "Can add type", 
+      "codename": "add_level", 
+      "name": "Can add level", 
       "content_type": 23
     }
   }, 
   {
-    "pk": 74, 
+    "pk": 73, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_lug", 
-      "name": "Can change lug", 
+      "codename": "add_sponsor", 
+      "name": "Can add sponsor", 
       "content_type": 24
     }
   }, 
@@ -867,17 +993,17 @@
     "pk": 71, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_type", 
-      "name": "Can change type", 
+      "codename": "change_level", 
+      "name": "Can change level", 
       "content_type": 23
     }
   }, 
   {
-    "pk": 75, 
+    "pk": 74, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_lug", 
-      "name": "Can delete lug", 
+      "codename": "change_sponsor", 
+      "name": "Can change sponsor", 
       "content_type": 24
     }
   }, 
@@ -885,9 +1011,261 @@
     "pk": 72, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_type", 
-      "name": "Can delete type", 
+      "codename": "delete_level", 
+      "name": "Can delete level", 
       "content_type": 23
+    }
+  }, 
+  {
+    "pk": 75, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_sponsor", 
+      "name": "Can delete sponsor", 
+      "content_type": 24
+    }
+  }, 
+  {
+    "pk": 106, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_contact", 
+      "name": "Can add contact", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 142, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_discount", 
+      "name": "Can add discount", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 112, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_event", 
+      "name": "Can add event", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 109, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_hostorg", 
+      "name": "Can add host org", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 139, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_item", 
+      "name": "Can add item", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 136, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_itemoption", 
+      "name": "Can add item option", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 103, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_location", 
+      "name": "Can add location", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 133, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_ticket", 
+      "name": "Can add ticket", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 130, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "add_tickettype", 
+      "name": "Can add ticket type", 
+      "content_type": 33
+    }
+  }, 
+  {
+    "pk": 107, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_contact", 
+      "name": "Can change contact", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 143, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_discount", 
+      "name": "Can change discount", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 113, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_event", 
+      "name": "Can change event", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 110, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_hostorg", 
+      "name": "Can change host org", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 140, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_item", 
+      "name": "Can change item", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 137, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_itemoption", 
+      "name": "Can change item option", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 104, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_location", 
+      "name": "Can change location", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 134, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_ticket", 
+      "name": "Can change ticket", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 131, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_tickettype", 
+      "name": "Can change ticket type", 
+      "content_type": 33
+    }
+  }, 
+  {
+    "pk": 108, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_contact", 
+      "name": "Can delete contact", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 144, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_discount", 
+      "name": "Can delete discount", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 114, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_event", 
+      "name": "Can delete event", 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 111, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_hostorg", 
+      "name": "Can delete host org", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 141, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_item", 
+      "name": "Can delete item", 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 138, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_itemoption", 
+      "name": "Can delete item option", 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 105, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_location", 
+      "name": "Can delete location", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 135, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_ticket", 
+      "name": "Can delete ticket", 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 132, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_tickettype", 
+      "name": "Can delete ticket type", 
+      "content_type": 33
     }
   }, 
   {
@@ -918,38 +1296,20 @@
     }
   }, 
   {
-    "pk": 64, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "add_level", 
-      "name": "Can add level", 
-      "content_type": 21
-    }
-  }, 
-  {
     "pk": 61, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_vote", 
-      "name": "Can add vote", 
-      "content_type": 20
-    }
-  }, 
-  {
-    "pk": 65, 
-    "model": "auth.permission", 
-    "fields": {
-      "codename": "change_level", 
-      "name": "Can change level", 
+      "codename": "add_volunteer", 
+      "name": "Can add Volunteer", 
       "content_type": 21
     }
   }, 
   {
-    "pk": 62, 
+    "pk": 58, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_vote", 
-      "name": "Can change vote", 
+      "codename": "add_volunteerrole", 
+      "name": "Can add Volunteer Role", 
       "content_type": 20
     }
   }, 
@@ -957,17 +1317,62 @@
     "pk": 66, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_level", 
-      "name": "Can delete level", 
+      "codename": "can_drink", 
+      "name": "Can drink alcohol", 
       "content_type": 21
+    }
+  }, 
+  {
+    "pk": 64, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "can_drive", 
+      "name": "Can drive", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 65, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "can_vote", 
+      "name": "Can vote in elections", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 62, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_volunteer", 
+      "name": "Can change Volunteer", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 59, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "change_volunteerrole", 
+      "name": "Can change Volunteer Role", 
+      "content_type": 20
     }
   }, 
   {
     "pk": 63, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_vote", 
-      "name": "Can delete vote", 
+      "codename": "delete_volunteer", 
+      "name": "Can delete Volunteer", 
+      "content_type": 21
+    }
+  }, 
+  {
+    "pk": 60, 
+    "model": "auth.permission", 
+    "fields": {
+      "codename": "delete_volunteerrole", 
+      "name": "Can delete Volunteer Role", 
       "content_type": 20
     }
   }, 
@@ -975,8 +1380,8 @@
     "pk": 67, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "add_sponsor", 
-      "name": "Can add sponsor", 
+      "codename": "add_vote", 
+      "name": "Can add vote", 
       "content_type": 22
     }
   }, 
@@ -984,8 +1389,8 @@
     "pk": 68, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "change_sponsor", 
-      "name": "Can change sponsor", 
+      "codename": "change_vote", 
+      "name": "Can change vote", 
       "content_type": 22
     }
   }, 
@@ -993,8 +1398,8 @@
     "pk": 69, 
     "model": "auth.permission", 
     "fields": {
-      "codename": "delete_sponsor", 
-      "name": "Can delete sponsor", 
+      "codename": "delete_vote", 
+      "name": "Can delete vote", 
       "content_type": 22
     }
   }, 
@@ -1023,12 +1428,15 @@
         6, 
         12, 
         37, 
+        28, 
         34, 
         31, 
         38, 
+        29, 
         35, 
         32, 
         39, 
+        30, 
         36, 
         33, 
         16, 
@@ -1043,39 +1451,36 @@
         22, 
         23, 
         24, 
-        28, 
-        29, 
-        30, 
-        46, 
-        49, 
+        52, 
         43, 
         55, 
-        52, 
-        60, 
-        58, 
-        59, 
-        47, 
-        50, 
+        46, 
+        49, 
+        53, 
         44, 
         56, 
-        53, 
-        48, 
-        51, 
+        47, 
+        50, 
+        54, 
         45, 
         57, 
-        54, 
-        73, 
+        48, 
+        51, 
         70, 
-        74, 
+        73, 
         71, 
-        75, 
+        74, 
         72, 
-        64, 
+        75, 
         61, 
+        58, 
+        66, 
+        64, 
         65, 
         62, 
-        66, 
+        59, 
         63, 
+        60, 
         67, 
         68, 
         69
@@ -1113,10 +1518,10 @@
       "username": "conman", 
       "first_name": "", 
       "last_name": "", 
-      "is_active": 1, 
-      "is_superuser": 1, 
-      "is_staff": 1, 
-      "last_login": "2010-01-25 22:19:35", 
+      "is_active": true, 
+      "is_superuser": true, 
+      "is_staff": true, 
+      "last_login": "2010-04-13 19:24:10", 
       "groups": [], 
       "user_permissions": [], 
       "password": "sha1$3767d$e1a23bc93e5713e78be4f6cc3b184c470288ab04", 
@@ -1189,6 +1594,38 @@
     }
   }, 
   {
+    "pk": "a644c990ed14d5e135fc6d202b6ca8bc", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-04 20:48:21", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwJ1LjIwNTdlMjI2M2IyYTg1NDVjNmU0\nNDYzNWY4MDM4ZDI3\n"
+    }
+  }, 
+  {
+    "pk": "a870da6e4278313a83e961cd752f9d36", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-04 20:51:48", 
+      "session_data": "gAJ9cQEuZjI5MzhhODlmMmE5MDk4ZDJmNzU3MDJhMzZjYTJmY2E=\n"
+    }
+  }, 
+  {
+    "pk": "083214ad57bbfc58c3355e283ad57e79", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-27 19:15:30", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwJ1LjIwNTdlMjI2M2IyYTg1NDVjNmU0\nNDYzNWY4MDM4ZDI3\n"
+    }
+  }, 
+  {
+    "pk": "fef6ab696243cd3b010386ebb3eb89c6", 
+    "model": "sessions.session", 
+    "fields": {
+      "expire_date": "2010-04-27 19:24:10", 
+      "session_data": "gAJ9cQEoVRJfYXV0aF91c2VyX2JhY2tlbmRxAlUpZGphbmdvLmNvbnRyaWIuYXV0aC5iYWNrZW5k\ncy5Nb2RlbEJhY2tlbmRxA1UNX2F1dGhfdXNlcl9pZHEESwJ1LjIwNTdlMjI2M2IyYTg1NDVjNmU0\nNDYzNWY4MDM4ZDI3\n"
+    }
+  }, 
+  {
     "pk": 2, 
     "model": "sites.site", 
     "fields": {
@@ -1202,6 +1639,279 @@
     "fields": {
       "domain": "localhost", 
       "name": "localhost on port 8080"
+    }
+  }, 
+  {
+    "pk": 35, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 23:30:07", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed logo.", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 34, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 23:29:33", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed logo.", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 33, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 23:14:43", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed logo.", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 32, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:41:13", 
+      "object_repr": "2010-10-09: 08:00:00 to 18:30:00", 
+      "object_id": "3", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 31, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 21:40:53", 
+      "object_repr": "2010-10-08: 08:00:00 to 22:30:00", 
+      "object_id": "2", 
+      "change_message": "No fields changed.", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 30, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:40:46", 
+      "object_repr": "2010-10-08: 08:00:00 to 22:30:00", 
+      "object_id": "2", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 29, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:39:43", 
+      "object_repr": "2010-10-07: 08:00:00 to 22:30:00", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 32
+    }
+  }, 
+  {
+    "pk": 28, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:34:00", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 31
+    }
+  }, 
+  {
+    "pk": 27, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:30:39", 
+      "object_repr": "Miller Free Enterprise Center", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 28
+    }
+  }, 
+  {
+    "pk": 26, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:30:17", 
+      "object_repr": "Utah Open Source Foundation", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 30
+    }
+  }, 
+  {
+    "pk": 25, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-04-13 21:30:15", 
+      "object_repr": "Clint Savage", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 29
+    }
+  }, 
+  {
+    "pk": 24, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 19:42:51", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "Changed site.", 
+      "user": 2, 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 23, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-04-13 19:19:19", 
+      "object_repr": "ugly", 
+      "object_id": "3", 
+      "change_message": "No fields changed.", 
+      "user": 2, 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 22, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:47", 
+      "object_repr": "Utah Open Source Conference 2010", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 37
+    }
+  }, 
+  {
+    "pk": 21, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:45", 
+      "object_repr": "Utah Open Source Foundation", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 36
+    }
+  }, 
+  {
+    "pk": 20, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:58:43", 
+      "object_repr": "Contact object", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 35
+    }
+  }, 
+  {
+    "pk": 18, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:56:49", 
+      "object_repr": "Location object", 
+      "object_id": "1", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 34
+    }
+  }, 
+  {
+    "pk": 17, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-03-21 20:49:02", 
+      "object_repr": "default", 
+      "object_id": "1", 
+      "change_message": "Changed name.", 
+      "user": 2, 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 16, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 3, 
+      "action_time": "2010-03-21 20:48:54", 
+      "object_repr": "anothertheme", 
+      "object_id": "2", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 12
+    }
+  }, 
+  {
+    "pk": 15, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 2, 
+      "action_time": "2010-03-21 20:48:42", 
+      "object_repr": "localhost on port 8080", 
+      "object_id": "1", 
+      "change_message": "Changed theme.", 
+      "user": 2, 
+      "content_type": 13
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "admin.logentry", 
+    "fields": {
+      "action_flag": 1, 
+      "action_time": "2010-03-21 20:48:34", 
+      "object_repr": "ugly", 
+      "object_id": "3", 
+      "change_message": "", 
+      "user": 2, 
+      "content_type": 12
     }
   }, 
   {
@@ -1352,24 +2062,24 @@
     "model": "common.theme", 
     "fields": {
       "preview": "theme_preview/utosc2009_2.png", 
-      "name": "awesome", 
+      "name": "default", 
       "description": "an awesome theme"
     }
   }, 
   {
-    "pk": 2, 
+    "pk": 3, 
     "model": "common.theme", 
     "fields": {
-      "preview": "theme_preview/utosc2009_2_.png", 
-      "name": "anothertheme", 
-      "description": "another theme"
+      "preview": "", 
+      "name": "ugly", 
+      "description": "Ugly Theme"
     }
   }, 
   {
     "pk": 1, 
     "model": "common.option", 
     "fields": {
-      "theme": 1, 
+      "theme": 3, 
       "site": 1
     }
   }, 
@@ -1379,5 +2089,82 @@
     "fields": {
       "name": "Pending"
     }
-  } 
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.location", 
+    "fields": {
+      "city": "Sandy", 
+      "name": "Miller Free Enterprise Center", 
+      "zip": "84070", 
+      "street1": "Salt Lake Community College", 
+      "street2": "9750 South 300 West", 
+      "state": "Utah"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.contact", 
+    "fields": {
+      "phone": "801-358-4736", 
+      "primary": true, 
+      "name": "Clint Savage", 
+      "email": "clint@utos.org"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.hostorg", 
+    "fields": {
+      "url": "http://utos.org", 
+      "name": "Utah Open Source Foundation", 
+      "contacts": [
+        1
+      ]
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.event", 
+    "fields": {
+      "description": "Helping Open Source Grow in Utah and the Mountain West<br /><br />\r\nTheme: It's Better When It's Free!*\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n<br />\r\n* - Just like sex! :-P", 
+      "site": 1, 
+      "summary": "UTOSC 2010", 
+      "host": 1, 
+      "location": 1, 
+      "logo": "themes/ugly/img/logos/utosLogo_crop.png", 
+      "slug": "utosc2010", 
+      "name": "Utah Open Source Conference 2010"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "event.eventday", 
+    "fields": {
+      "date": "2010-10-07", 
+      "start": "08:00:00", 
+      "end": "22:30:00", 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "event.eventday", 
+    "fields": {
+      "date": "2010-10-08", 
+      "start": "08:00:00", 
+      "end": "22:30:00", 
+      "event": 1
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "event.eventday", 
+    "fields": {
+      "date": "2010-10-09", 
+      "start": "08:00:00", 
+      "end": "18:30:00", 
+      "event": 1
+    }
+  }
 ]

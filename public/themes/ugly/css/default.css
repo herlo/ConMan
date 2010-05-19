@@ -1,0 +1,112 @@
+.bigpicture {
+    width: 900px; 
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:20px; 
+    margin-bottom: 10px;
+}
+
+.left { 
+    float: left; 
+    width: 250px; 
+}
+
+.left .logo_image {
+    top:    20px;
+    width:  200px;
+    height: 100px;
+}
+
+.left .event_date {
+    margin-top: 20px;
+    width:  220px;
+}
+
+.left .event_time {
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.left .event_location {
+    margin-top: 15px;
+}
+
+.left .event_location .name {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location .addr1 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location .addr2 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location .addr3 {
+   margin-top: 1px; 
+   margin-left: 5px;
+}
+
+.left .event_location_map {
+    margin-top: 15px;
+    width:  200px;
+    height: 200px;
+}
+
+.left .new_event {
+    margin-top: 15px;
+}
+
+.left .new_event a {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.copyright {
+    margin-top: 15px;
+}
+
+.middle { 
+    width: 400px;
+    margin-left: 20px;
+    float: left;
+}
+
+.middle h2 {
+    font-size: 2em;
+    text-align: center;
+}
+
+.middle .summary {
+    font-weight: bold;
+    font-size: 1.25em;
+    text-align: left;
+}
+
+.middle .description {
+    font-size: 1em;
+    text-align: left;
+}
+
+.middle .hosted_by {
+    margin-top: 45px;
+    text-align: left;
+}
+
+.middle .event_host_name {
+    margin-top: 5px;
+    text-align: left;
+}
+.middle .event_host_url {
+    margin-top: 2px;
+    text-align: left;
+}
+
+.right { 
+    float: right; 
+    width: 250px;
+}

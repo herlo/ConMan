@@ -4,6 +4,7 @@ from ticketing.models import TicketType,Ticket,Discount,Item
 
 site = admin.AdminSite()
 
+#ticketing
 admin.site.register(Item)
 admin.site.register(Discount)
 admin.site.register(Ticket)

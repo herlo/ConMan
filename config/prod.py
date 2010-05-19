@@ -103,6 +103,7 @@ INSTALLED_APPS = (
     'lugs',
     'updates',
     'ticketing',
+    'event',
     #'locations',
     #'django.contrib.databrowse',
 

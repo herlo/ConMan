@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Designed and Modded out by Clint Savage
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>UTOSC 2010 - It's Better When It's Free* - {% block title %}{% endblock title %}</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+    <link href="/css/ugly.css" rel="stylesheet" type="text/css" />
+	{% block additionalCSS %}
+ 	{% endblock additionalCSS %}
+	<script type="text/javascript" src="/static/js/jquery-1.2.2.min.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-passwordstrength.min.1.1.js"></script>
+	<script type="text/javascript" src="/static/js/jquery-autoexpand.1.02.js"></script>
+    <script type="text/javascript" src="/static/js/thickbox.js"></script>
+	{% block additionalJS %}
+ 	{% endblock additionalJS %}
+</head>
+
+<body>
+<div id="omni">
+	<div id="body">
+  		<div id="header">
+        	<div class="left">
+            	<div class="logo">
+                    <span></span><img src="/img/{{ event_logo }}" /></span>
+                	<h1>{{ event.name }}</h1>
+                    <h3>{{ event.summary }}</h3>
+                </div>
+            </div>
+            <div class="right">
+				{% if user.is_authenticated %}
+				<div class="crown"><a href="/speaker/papers/" accesskey="2" title="">CFP</a> / <a href="/accounts/profile/" accesskey="2" title="">Profile</a> / <a href="/accounts/logout/" accesskey="2" title="">Logout</a></div>
+				<div class="user">Welcome {{ user.username }}</div>
+				{% else %}
+				<div class="crown"><a href="/accounts/login/" accesskey="2" title="">Login</a> / <a href="/accounts/register/" accesskey="2" title="">Create Account</a></div>
+				{% endif %}
+                <div class="dates">
+            		{% for day in event_days %}
+                    <div class="event_date">
+            			{{ day.date|date:"M j, Y" }}
+            			<div class="event_time">{{ day.start|time:"g:i a" }} to {{ day.end|time:"g:i a" }}</div>
+                    </div>
+            		{% endfor %}
+                </div>
+                <div class="event_info">
+                    <div class="name">{{ event.location.name }}</div>
+		            <p class="event_host_name"></p>{{ event.host.name }}</p>
+		            <p class="event_host_url"><a href="{{ event.host.url }}">{{ event.host.url }}</a></p>
+                </div>
+            </div>            
+        </div>
+        <div id="mainNav">
+        <div class="pad">
+			{% load flatpages_links %}
+			{% show_flatpages %}
+        </div>
+        </div>
+        <div id="page">
+        	<div id="sidebar" class="right">
+            	<div id="sponsors">
+					{% block sponsors %}
+					{% load sponsor_list %}
+					{% show_sponsors %}
+					{% endblock sponsors %}
+                </div>
+                <div id="groups">
+					{% block lugs %}
+                	<h3>Local User Groups</h3>
+					{% load lug_list %}
+					{% show_lugs %}
+					{% endblock lugs %}
+                </div>
+            </div>
+            <div id="content">
+				{% load update_tags %}
+				{% latest_update %}
+
+				{% block primaryContent %}
+				{% endblock primaryContent %}
+            </div>
+            <div class="bottom"></div>
+        </div>
+        <div id="footer">
+			<a href="http://code.google.com/p/utos-conman/" target="_blank">
+            	<img src="images/conman.gif" alt="ConMan - Conference Management Software" /><br />
+                Powered by ConMan
+            </a>        
+			<span><em>UTOSC 2010:</em> Copyright 2007-2010 Utah Open Source Foundation. All Rights Reserved.</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+

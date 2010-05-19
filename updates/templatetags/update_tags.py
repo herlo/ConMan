@@ -16,5 +16,5 @@ def latest_update():
 
 # register tags
 
-register.inclusion_tag('latest_update.html')(latest_update)
+register.inclusion_tag('updates/latest_update.html')(latest_update)
 

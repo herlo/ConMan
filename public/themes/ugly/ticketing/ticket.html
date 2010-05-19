@@ -1,0 +1,31 @@
+{% extends 'ticketing/index.html' %}
+
+{% block rightColumn %}
+<form method="post">
+    <ul>
+        {% for ticket in tickets %}
+            <li>
+                {{ ticket.name }}
+                {{ ticket.price }}
+                <select name="qty_{{ticket.id}}">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+                <br/>
+                Ends: {{ ticket.end_date|date:'M d, Y' }}
+                <br/>
+                {{ ticket.description }}
+            </li>
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Next" />
+</form>
+{% endblock rightColumn %}

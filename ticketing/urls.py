@@ -21,4 +21,5 @@ urlpatterns = patterns('',
     # confusing 404.
 
     url(r'^start/', 'ticketing.views.index'),
+    url(r'^items/', 'ticketing.views.items'),
 )

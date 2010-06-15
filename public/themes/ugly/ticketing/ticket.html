@@ -1,6 +1,6 @@
 {% extends 'ticketing/index.html' %}
 
-{% block rightColumn %}
+{% block primaryContent %}
 <form method="post">
     <ul>
         {% for ticket in tickets %}
@@ -28,4 +28,4 @@
     </ul>
     <input type="submit" value="Next" />
 </form>
-{% endblock rightColumn %}
+{% endblock primaryContent %}

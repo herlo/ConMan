@@ -27,3 +27,17 @@ class TicketQtyForm(forms.Form):
             if name.startswith('qty_'):
                 yield (name.replace('qty_', ''), value)
 
+class ItemQtyForm(forms.Form):
+
+    def __init__(self, *args, **kwargs):
+        items = kwargs.pop('items')
+        super(ItemQtyForm, self).__init__(*args, **kwargs)
+
+        for i, item in enumerate(items):
+            self.fields['qty_%s' % item.id] = forms.ChoiceField(label=item, choices=QTY_CHOICES)
+
+    def items(self):
+        for name, value in self.cleaned_data.items():
+            if name.startswith('qty_'):
+                yield (name.replace('qty_', ''), value)
+

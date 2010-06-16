@@ -8,7 +8,6 @@ class TicketType(models.Model):
     summary = models.TextField(help_text="Short explanation of the ticket (eg. Thursday Only)")
 
     def __unicode__(self):
-        # return self.get_name_display()
         return self.name
 
 class Ticket(models.Model):
@@ -23,7 +22,6 @@ class Ticket(models.Model):
     event = models.ForeignKey(Event)
 
     def __unicode__(self):
-        # return self.get_name_display()
         return self.name
 
 class ItemOption(models.Model):
@@ -39,10 +37,10 @@ class Item(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2, help_text="Price before discounts")
     event = models.ForeignKey(Event)
     tickets = models.ManyToManyField(Ticket)
-    options = models.ManyToManyField(ItemOption)
+    # options = models.ManyToManyField(ItemOption)
 
     def __unicode__(self):
-        return self.get_name_display()
+        return self.name
 
 DISCOUNT_CHOICES = (
   ('%', 'Percent discount'),
@@ -63,5 +61,5 @@ class Discount(models.Model):
     end_date = models.DateTimeField(blank=True, null=True, help_text="Ticket will be be removed at this date and time")
 
     def __unicode__(self):
-        return self.get_name_display()
+        return self.name
 

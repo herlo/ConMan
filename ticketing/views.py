@@ -46,13 +46,12 @@ def items(request):
     form = ItemQtyForm(request.POST or None, items=items)
     if form.is_valid():
         cart = Cart(request)
-        for (ticket, qty) in form.tickets():
+        for (item, qty) in form.items():
             if int(qty) > 0:
                 # print ticket, qty
-                ticket = Ticket.objects.get(id=ticket)
-                cart.add(ticket, ticket.price, qty)
-                # request.session['tickets'].append((ticket,qty))
-        return HttpResponseRedirect('/tickets/items')
+                item = Item.objects.get(id=item)
+                cart.add(item, item.price, qty)
+        return HttpResponseRedirect('/tickets/cart')
 
     return render_to_response('ticketing/items.html', {
         'event': event,

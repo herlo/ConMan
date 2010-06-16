@@ -1,0 +1,29 @@
+{% extends 'ticketing/index.html' %}
+
+{% block primaryContent %}
+<form method="post">
+    <ul>
+        {% for item in items %}
+            <li>
+                {{ item.name }}
+                {{ item.price }}
+                <select name="qty_{{item.id}}">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+                <br/>
+                {{ item.description }}
+            </li>
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Next" />
+</form>
+{% endblock primaryContent %}

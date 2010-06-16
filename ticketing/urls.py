@@ -22,4 +22,5 @@ urlpatterns = patterns('',
 
     url(r'^start/', 'ticketing.views.index'),
     url(r'^items/', 'ticketing.views.items'),
+    url(r'^cart/', 'ticketing.views.cart'),
 )

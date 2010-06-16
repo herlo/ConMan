@@ -61,3 +61,8 @@ def items(request):
         'items': items,
         'cart': Cart(request),
     }, context_instance=RequestContext(request))
+
+def cart(request):
+    return render_to_response('ticketing/cart.html', {
+        'cart': Cart(request),
+    }, context_instance=RequestContext(request))

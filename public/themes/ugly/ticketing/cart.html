@@ -1,0 +1,23 @@
+{% extends 'ticketing/index.html' %}
+
+{% block primaryContent %}
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Total Price</th>
+    </tr>
+    {% for item in cart %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>${{ item.total_price }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>${{ cart.total_price }}</td>
+    </tr>
+</table>
+{% endblock primaryContent %}

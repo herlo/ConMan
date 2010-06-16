@@ -71,3 +71,9 @@ class Cart:
         for item in self.cart.item_set:
             item.delete()
 
+    def total_price(self):
+        total = 0
+        for item in self:
+            total+= item.total_price
+        return total
+    total_price = property(total_price)

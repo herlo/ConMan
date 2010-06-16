@@ -19,3 +19,4 @@ class SiteIdOnFlyMiddleware:
         except:
             settings.SITE_ID = 1
 
+

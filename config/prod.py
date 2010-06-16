@@ -102,8 +102,8 @@ INSTALLED_APPS = (
     'sponsors',
     'lugs',
     'updates',
-    'ticketing',
     'event',
+    'ticketing',
     #'locations',
     #'django.contrib.databrowse',
 

@@ -2,9 +2,7 @@ from datetime import datetime
 from django.db import models
 from django.contrib.sites.models import Site
 
-
 # Create your models here.
-
 
 class Location(models.Model):
     name = models.CharField(max_length=255)
@@ -36,11 +34,14 @@ class HostOrg(models.Model):
 
 from common.models import Option
 
+def show_theme(instance, filename):
+    return 'themes/' + Option.get_theme_name() + '/img/logos'
+
 class Event(models.Model):
-    logo = models.ImageField(upload_to='themes/' + Option.get_theme_name() + '/img/logos')
     name = models.CharField(max_length=255)
     slug = models.CharField(max_length=255)
     summary = models.CharField(max_length=255)
+    logo = models.ImageField(upload_to=show_theme)
     description = models.TextField()
     location = models.ForeignKey(Location)
     host = models.ForeignKey(HostOrg)

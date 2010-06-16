@@ -6,6 +6,8 @@ from django.http import HttpRequest,HttpResponseRedirect,HttpResponse
 from django.contrib.sites.models import Site
 
 from cart import Cart
+from paypal.standard.forms import PayPalPaymentsForm
+
 from event.models import Event,EventDay
 from ticketing.models import Ticket, Item
 from forms import TicketQtyForm, ItemQtyForm
@@ -63,6 +65,22 @@ def items(request):
     }, context_instance=RequestContext(request))
 
 def cart(request):
-    return render_to_response('ticketing/cart.html', {
-        'cart': Cart(request),
-    }, context_instance=RequestContext(request))
+    cart = Cart(request)
+    paypal_dict = {
+        "business": "utos.org",
+        "amount": cart.total_price,
+        "item_name": "UTOS 2010 Registration",
+        "invoice": "unique-invoice-id",
+        "notify_url": "http://www.example.com/your-ipn-location/",
+        "return_url": "http://www.example.com/your-return-location/",
+        "cancel_return": "http://www.example.com/your-cancel-location/",
+    }
+
+    # Create the instance.
+    form = PayPalPaymentsForm(initial=paypal_dict)
+
+    context = {
+        "form": form,
+        'cart': cart,
+    }
+    return render_to_response('ticketing/cart.html', context, context_instance=RequestContext(request))

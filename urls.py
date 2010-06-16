@@ -77,6 +77,9 @@ urlpatterns = patterns('',
     (r'^volunteer/list/$', 'volunteers.views.list'),
     (r'^volunteer/(?P<vol_id>\d+)?/?$', 'volunteers.views.manage'),
     (r'^$', 'common.views.index'),
+
+
+    (r'^something/hard/to/guess/', include('paypal.standard.ipn.urls')),
 )
 
 from common.templatetags.get_theme import theme

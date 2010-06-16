@@ -115,7 +115,10 @@ INSTALLED_APPS = (
     #useful migrations tool -- http://south.aeracode.org/
     #'south',
     'cart',
+    'paypal.standard.ipn',
 )
+
+PAYPAL_RECEIVER_EMAIL = "clint@utos.org"
 
 ###########NEW CHANGE TO ADD###########
 TEMPLATE_CONTEXT_PROCESSORS = (

@@ -21,5 +21,5 @@ urlpatterns = patterns('',
     # confusing 404.
 
     url(r'test', 'ticketing.views.index'),
-    url(r'^(?P<slug>\w+)', 'ticketing.views.event'),
+    #url(r'^(?P<slug>\w+)', 'ticketing.views.event'),)
 )

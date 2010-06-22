@@ -23,12 +23,15 @@ def index(request):
     if form.is_valid():
         cart = Cart(request)
         for (ticket, qty) in form.tickets():
-            if int(qty) > 0:
+            if qty > 0:
                 # print ticket, qty
                 ticket = Ticket.objects.get(id=ticket)
                 cart.add(ticket, ticket.price, qty)
                 # request.session['tickets'].append((ticket,qty))
-        return HttpResponseRedirect('/tickets/items')
+        if event.item_set.all():
+            return HttpResponseRedirect('/tickets/items')
+        else:
+            return HttpResponseRedirect('/tickets/cart')
 
     return render_to_response('ticketing/ticket.html', {
         'event': event,
@@ -49,7 +52,7 @@ def items(request):
     if form.is_valid():
         cart = Cart(request)
         for (item, qty) in form.items():
-            if int(qty) > 0:
+            if qty > 0:
                 # print ticket, qty
                 item = Item.objects.get(id=item)
                 cart.add(item, item.price, qty)

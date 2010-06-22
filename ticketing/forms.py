@@ -27,6 +27,14 @@ class TicketQtyForm(forms.Form):
             if name.startswith('qty_'):
                 yield (name.replace('qty_', ''), value)
 
+    def clean(self):
+        data = self.cleaned_data
+        for name, value in data.items():
+            if name.startswith('qty_'):
+                data[name] = int(value)
+        return data
+
+
 class ItemQtyForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
@@ -40,4 +48,11 @@ class ItemQtyForm(forms.Form):
         for name, value in self.cleaned_data.items():
             if name.startswith('qty_'):
                 yield (name.replace('qty_', ''), value)
+
+    def clean(self):
+        data = self.cleaned_data
+        for name, value in data.items():
+            if name.startswith('qty_'):
+                data[name] = int(value)
+        return data
 

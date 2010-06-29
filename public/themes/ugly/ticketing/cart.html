@@ -6,12 +6,14 @@
         <th>Product</th>
         <th>Quantity</th>
         <th>Total Price</th>
+        <th></th>
     </tr>
     {% for item in cart %}
     <tr>
         <td>{{ item.product.name }}</td>
         <td>{{ item.quantity }}</td>
         <td>${{ item.total_price }}</td>
+        <td><a href='/tickets/delete/{{item.id}}'>Remove</a></td>
     </tr>
     {% endfor %}
     <tr>

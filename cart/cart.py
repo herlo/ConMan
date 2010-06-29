@@ -58,6 +58,16 @@ class Cart:
         else:
             item.delete()
 
+    def delete_item(self, id):
+        try:
+            item = models.Item.objects.get(
+                id=id,
+            )
+        except models.Item.DoesNotExist:
+            raise ItemDoesNotExist
+        else:
+            item.delete()
+
     def update(self, product, quantity, unit_price=None):
         try:
             item = models.Item.objects.get(

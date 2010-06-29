@@ -14,7 +14,6 @@ QTY_CHOICES = (
 )
 
 class TicketQtyForm(forms.Form):
-
     def __init__(self, *args, **kwargs):
         tickets = kwargs.pop('tickets')
         super(TicketQtyForm, self).__init__(*args, **kwargs)
@@ -36,7 +35,6 @@ class TicketQtyForm(forms.Form):
 
 
 class ItemQtyForm(forms.Form):
-
     def __init__(self, *args, **kwargs):
         items = kwargs.pop('items')
         super(ItemQtyForm, self).__init__(*args, **kwargs)

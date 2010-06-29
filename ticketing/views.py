@@ -24,10 +24,8 @@ def index(request):
         cart = Cart(request)
         for (ticket, qty) in form.tickets():
             if qty > 0:
-                # print ticket, qty
                 ticket = Ticket.objects.get(id=ticket)
                 cart.add(ticket, ticket.price, qty)
-                # request.session['tickets'].append((ticket,qty))
         if event.item_set.all():
             return HttpResponseRedirect('/tickets/items')
         else:
@@ -53,7 +51,6 @@ def items(request):
         cart = Cart(request)
         for (item, qty) in form.items():
             if qty > 0:
-                # print ticket, qty
                 item = Item.objects.get(id=item)
                 cart.add(item, item.price, qty)
         return HttpResponseRedirect('/tickets/cart')
@@ -66,6 +63,12 @@ def items(request):
         'items': items,
         'cart': Cart(request),
     }, context_instance=RequestContext(request))
+
+def delete(request, id):
+    cart = Cart(request)
+    cart.delete_item(id)
+    return HttpResponseRedirect('/tickets/cart')
+
 
 def cart(request):
     cart = Cart(request)

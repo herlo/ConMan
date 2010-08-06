@@ -6,7 +6,7 @@ from django.contrib.sites.models import Site
 from common.config import Static
 from datetime import datetime,timedelta
 from random import random
-import sha
+import hashlib
 
 from settings import TIMEOUT
 
